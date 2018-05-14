@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B37503C520AA224E00AFB23A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37503C420AA224E00AFB23A /* LoginViewController.swift */; };
+		FFDC3E8520AA250A00AADF8A /* kimchi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDC3E8320AA250A00AADF8A /* kimchi.storyboard */; };
 		FFF2740B20A9E92300D66A0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF2740A20A9E92300D66A0B /* AppDelegate.swift */; };
 		FFF2740D20A9E92300D66A0B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF2740C20A9E92300D66A0B /* ViewController.swift */; };
 		FFF2741020A9E92300D66A0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFF2740E20A9E92300D66A0B /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		B37503C420AA224E00AFB23A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		FFDC3E8420AA250A00AADF8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = InterviewMeApp/Base.lproj/kimchi.storyboard; sourceTree = "<group>"; };
 		FFF2740720A9E92300D66A0B /* InterviewMeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InterviewMeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFF2740A20A9E92300D66A0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFF2740C20A9E92300D66A0B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 				FFF2740C20A9E92300D66A0B /* ViewController.swift */,
 				B37503C420AA224E00AFB23A /* LoginViewController.swift */,
 				FFF2740E20A9E92300D66A0B /* Main.storyboard */,
+				FFDC3E8320AA250A00AADF8A /* kimchi.storyboard */,
 				FFF2741120A9E92400D66A0B /* Assets.xcassets */,
 				FFF2741320A9E92400D66A0B /* LaunchScreen.storyboard */,
 				FFF2741620A9E92400D66A0B /* Info.plist */,
@@ -126,6 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFF2741520A9E92400D66A0B /* LaunchScreen.storyboard in Resources */,
+				FFDC3E8520AA250A00AADF8A /* kimchi.storyboard in Resources */,
 				FFF2741220A9E92400D66A0B /* Assets.xcassets in Resources */,
 				FFF2741020A9E92300D66A0B /* Main.storyboard in Resources */,
 			);
@@ -147,6 +151,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		FFDC3E8320AA250A00AADF8A /* kimchi.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FFDC3E8420AA250A00AADF8A /* Base */,
+			);
+			name = kimchi.storyboard;
+			sourceTree = "<group>";
+		};
 		FFF2740E20A9E92300D66A0B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
