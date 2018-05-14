@@ -1,39 +1,35 @@
 //
-//  LoginViewController.swift
+//  CreateProfileViewController.swift
 //  InterviewMeApp
 //
-//  Created by Daniel Lau on 5/14/18.
+//  Created by Kimba Hintze on 5/14/18.
 //  Copyright © 2018 Kim Lundquist. All rights reserved.
 //
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class CreateProfileViewController: UIViewController {
     
     // MARK: - Outlets
+    @IBOutlet weak var firstNameTextField: UIStackView!
+    @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var birthdayTextField: UITextField!
+    @IBOutlet weak var industryTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var forgotPasswordButton: UIButton!
-    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var signupButton: UIButton!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
-    // MARK: - Actions
-    @IBAction func forgotPasswordButtonTapped(_ sender: Any) {
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
-    
-    @IBAction func loginButtonTapped(_ sender: Any) {
-    }
-    
-    @IBAction func signupButtonTapped(_ sender: Any) {
-    }
-    
     
 
     /*
