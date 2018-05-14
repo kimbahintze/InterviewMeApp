@@ -141,6 +141,21 @@
             </objects>
             <point key="canvasLocation" x="874" y="322"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="QTJ-5u-Ldh">
+            <objects>
+                <viewController id="4cc-Fd-Gph" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PEZ-Es-BHX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="xYV-Do-rVN"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FoP-MT-zEC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1906" y="-416"/>
+        </scene>
         <!--kimchi-->
         <scene sceneID="aKI-Q5-gcg">
             <objects>
@@ -219,7 +234,7 @@
                                         <rect key="frame" x="40" y="268" width="59" height="30"/>
                                         <state key="normal" title="Sign Up!"/>
                                         <connections>
-                                            <segue destination="2zv-Se-ers" kind="show" id="Yy4-Ka-LvY"/>
+                                            <segue destination="4cc-Fd-Gph" kind="show" id="Yy4-Ka-LvY"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -246,14 +261,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J5g-5S-Nye" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="867" y="-345"/>
-        </scene>
-        <!--Kevin-->
-        <scene sceneID="oTy-E0-7q0">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Kevin" id="2zv-Se-ers" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xrb-Nu-5Va" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1906" y="-416"/>
         </scene>
     </scenes>
 </document>
