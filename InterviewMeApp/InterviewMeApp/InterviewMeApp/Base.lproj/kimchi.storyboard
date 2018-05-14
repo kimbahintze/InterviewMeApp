@@ -18,20 +18,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fFc-HD-eA3">
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fFc-HD-eA3">
                                 <rect key="frame" x="139" y="167" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wyG-ec-817">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wyG-ec-817">
                                 <rect key="frame" x="164" y="365" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                             </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qvM-eP-gKO">
+                                <rect key="frame" x="0.0" y="441" width="375" height="216"/>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKh-fS-uOt">
+                                <rect key="frame" x="65" y="264" width="245" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="1Qz-kD-T2J" firstAttribute="bottom" secondItem="qvM-eP-gKO" secondAttribute="bottom" constant="10" id="1rE-Lt-pK9"/>
+                            <constraint firstItem="1Qz-kD-T2J" firstAttribute="trailing" secondItem="DKh-fS-uOt" secondAttribute="trailing" constant="65" id="7hd-co-SId"/>
+                            <constraint firstItem="DKh-fS-uOt" firstAttribute="leading" secondItem="1Qz-kD-T2J" secondAttribute="leading" constant="65" id="BTt-UL-gv8"/>
+                            <constraint firstItem="qvM-eP-gKO" firstAttribute="trailing" secondItem="1Qz-kD-T2J" secondAttribute="trailing" id="FWh-kN-BXw"/>
+                            <constraint firstItem="qvM-eP-gKO" firstAttribute="leading" secondItem="1Qz-kD-T2J" secondAttribute="leading" id="Jll-Pe-LDp"/>
+                            <constraint firstItem="DKh-fS-uOt" firstAttribute="top" secondItem="fFc-HD-eA3" secondAttribute="bottom" constant="65" id="JmJ-De-R8I"/>
+                            <constraint firstItem="wyG-ec-817" firstAttribute="top" secondItem="DKh-fS-uOt" secondAttribute="bottom" constant="80" id="j8L-3n-QUX"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="1Qz-kD-T2J"/>
                     </view>
                 </viewController>
