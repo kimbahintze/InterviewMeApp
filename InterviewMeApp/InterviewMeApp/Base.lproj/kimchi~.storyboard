@@ -53,7 +53,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="bottom button"/>
                                 <connections>
-                                    <segue destination="ofA-YP-OCx" kind="show" id="t6i-Hb-Bg8"/>
+                                    <segue destination="moT-qo-8dF" kind="show" id="t6i-Hb-Bg8"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -65,11 +65,18 @@
             </objects>
             <point key="canvasLocation" x="875" y="35"/>
         </scene>
-        <!--kimchi-->
-        <scene sceneID="aKI-Q5-gcg">
+        <!--View Controller-->
+        <scene sceneID="2bZ-et-SSP">
             <objects>
-                <viewControllerPlaceholder storyboardName="kimchi" id="ofA-YP-OCx" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AFF-H1-8Me" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="moT-qo-8dF" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kxn-d3-pQ3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="1Qz-kD-T2J"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Li-4c-CU3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="874" y="835"/>
         </scene>
