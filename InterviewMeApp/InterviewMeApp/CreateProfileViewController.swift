@@ -10,6 +10,8 @@ import UIKit
 
 class CreateProfileViewController: UIViewController {
     
+    var today: NSDate = NSDate()
+    
     // MARK: - Outlets
     @IBOutlet weak var firstNameTextField: UIStackView!
     @IBOutlet weak var lastNameTextField: UITextField!
@@ -20,17 +22,39 @@ class CreateProfileViewController: UIViewController {
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var signupButton: UIButton!
     
+    let picker = UIDatePicker()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+      createDatePicker()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func createDatePicker() {
+        
+        // toolbar
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        // done button for toolbar
+        let done = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
+        toolbar.setItems([done], animated: false)
+        
+        birthdayTextField.inputAccessoryView = toolbar
+        birthdayTextField.inputView = picker
+        
+        picker.datePickerMode = .date
     }
-    
+    @objc func donePressed() {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+      
+ //       let age = today - picker.date
+        let dateString = formatter.string(from: .init(timeIntervalSinceReferenceDate: TimeInterval(picker.datePickerMode.rawValue)))
+        birthdayTextField.text = "\(dateString)"
+        self.view.endEditing(true)
+    }
 
     /*
     // MARK: - Navigation
