@@ -251,15 +251,25 @@
 				B31F155620AB3EE3002A20E2 /* ImageViewController.swift in Sources */,
 				FFDC3E8B20AA425300AADF8A /* CreateProfileViewController.swift in Sources */,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				FF5DF61120AB4EC4009C2897 /* FireBaseManager.swift in Sources */,
 =======
 <<<<<<< HEAD
+=======
+
+>>>>>>> 5b43a9885ce7d665a521515654285dcac379e73d
 				FFDC3E8720AA39D900AADF8A /* AuthenticationManger.swift in Sources */,
 				B31F155420AB3E02002A20E2 /* CameraViewController.swift in Sources */,
-=======
+
 				FF5DF61120AB4EC4009C2897 /* FireBaseManager.swift in Sources */,
+<<<<<<< HEAD
 >>>>>>> develop
 >>>>>>> daniel
+=======
+
+				FF5DF61120AB4EC4009C2897 /* FireBaseManager.swift in Sources */,
+
+>>>>>>> 5b43a9885ce7d665a521515654285dcac379e73d
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
