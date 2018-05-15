@@ -10,8 +10,6 @@ import UIKit
 
 class CreateProfileViewController: UIViewController {
     
-    var today: NSDate = NSDate()
-    
     // MARK: - Outlets
     @IBOutlet weak var firstNameTextField: UIStackView!
     @IBOutlet weak var lastNameTextField: UITextField!
@@ -45,15 +43,15 @@ class CreateProfileViewController: UIViewController {
         
         picker.datePickerMode = .date
     }
+    
     @objc func donePressed() {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
-      
-
- //       let dateString = formatter.string(from: Date.timeIntervalSince(picker.date))
-  //      birthdayTextField.text = "\(dateString)"
-        self.view.endEditing(true)
+        let dateString = formatter.string(from: picker.date)
+        
+        birthdayTextField.text = "\(dateString)"
+  //      self.view.endEditing(true)
     }
 
     /*
