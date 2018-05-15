@@ -34,7 +34,19 @@ class LoginViewController: UIViewController {
     @IBAction func signupButtonTapped(_ sender: Any) {
     }
     
-    
+    @objc func handleSignUp() {
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        
+        
+        FirebaseAuthenticationManager.shared.createUser(withEmail: email, password: password, completion: { (user, error) in
+            if error == nil && user != nil {
+                print("User created!")
+            } else {
+                print("Error creating user: \(error!.localizedDescription)")
+            }
+        })
+    }
 
     /*
     // MARK: - Navigation
