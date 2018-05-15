@@ -50,9 +50,9 @@ class CreateProfileViewController: UIViewController {
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
       
- //       let age = today - picker.date
-        let dateString = formatter.string(from: .init(timeIntervalSinceReferenceDate: TimeInterval(picker.datePickerMode.rawValue)))
-        birthdayTextField.text = "\(dateString)"
+
+ //       let dateString = formatter.string(from: Date.timeIntervalSince(picker.date))
+  //      birthdayTextField.text = "\(dateString)"
         self.view.endEditing(true)
     }
 
