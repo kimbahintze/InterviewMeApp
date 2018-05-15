@@ -167,7 +167,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Self Practice"/>
                                 <connections>
-                                    <segue destination="u63-PT-vjG" kind="show" id="PPr-YL-IQH"/>
+                                    <segue destination="ctz-ur-M7Q" kind="show" id="PPr-YL-IQH"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZGH-4R-OAR">
@@ -199,6 +199,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbc-4o-dIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2164" y="53"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Ggi-kK-lTO">
+            <objects>
+                <viewController id="ctz-ur-M7Q" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="i09-e0-mmu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="DLO-PE-PzT"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ETM-Xx-7Mf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3270" y="35"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Nph-DE-M6C">
@@ -255,14 +270,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="srJ-eV-gFZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="69.599999999999994" y="34.632683658170919"/>
-        </scene>
-        <!--RecordVideo-->
-        <scene sceneID="cIk-Ip-URF">
-            <objects>
-                <viewControllerPlaceholder storyboardName="RecordVideo" id="u63-PT-vjG" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Hsu-c5-DAi" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3270" y="35"/>
         </scene>
     </scenes>
 </document>
