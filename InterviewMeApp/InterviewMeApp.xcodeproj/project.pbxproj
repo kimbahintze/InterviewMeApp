@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF1696ED091B42610905A063 /* Pods_InterviewMeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E313558045188ED812C8FDAD /* Pods_InterviewMeApp.framework */; };
+		B31F155220AB395D002A20E2 /* RecordVideo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B31F155020AB395D002A20E2 /* RecordVideo.storyboard */; };
+		B37503C520AA224E00AFB23A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37503C420AA224E00AFB23A /* LoginViewController.swift */; };
+		B37503C820AA276700AFB23A /* daniel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B37503C620AA276700AFB23A /* daniel.storyboard */; };
+		FF14868120AA508B00FE71FD /* createProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF14867F20AA508B00FE71FD /* createProfile.storyboard */; };
+		FF5DF60F20AB4D83009C2897 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF5DF60E20AB4D83009C2897 /* GoogleService-Info.plist */; };
+		FF5DF61120AB4EC4009C2897 /* FireBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5DF61020AB4EC4009C2897 /* FireBaseManager.swift */; };
+		FFDC3E8520AA250A00AADF8A /* kimchi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDC3E8320AA250A00AADF8A /* kimchi.storyboard */; };
+		FFDC3E8B20AA425300AADF8A /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDC3E8A20AA425300AADF8A /* CreateProfileViewController.swift */; };
 		FFF2740B20A9E92300D66A0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF2740A20A9E92300D66A0B /* AppDelegate.swift */; };
 		FFF2740D20A9E92300D66A0B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF2740C20A9E92300D66A0B /* ViewController.swift */; };
 		FFF2741020A9E92300D66A0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFF2740E20A9E92300D66A0B /* Main.storyboard */; };
@@ -15,6 +24,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2597FF0BF0726ABBFA91CF62 /* Pods-InterviewMeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InterviewMeApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InterviewMeApp/Pods-InterviewMeApp.debug.xcconfig"; sourceTree = "<group>"; };
+		9923D488D981203123E3D81C /* Pods-InterviewMeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InterviewMeApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-InterviewMeApp/Pods-InterviewMeApp.release.xcconfig"; sourceTree = "<group>"; };
+		B31F155120AB395D002A20E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = InterviewMeApp/Base.lproj/RecordVideo.storyboard; sourceTree = "<group>"; };
+		B37503C420AA224E00AFB23A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B37503C720AA276700AFB23A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = InterviewMeApp/Base.lproj/daniel.storyboard; sourceTree = "<group>"; };
+		E313558045188ED812C8FDAD /* Pods_InterviewMeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InterviewMeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF14868020AA508B00FE71FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = InterviewMeApp/Base.lproj/createProfile.storyboard; sourceTree = "<group>"; };
+		FF5DF60E20AB4D83009C2897 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FF5DF61020AB4EC4009C2897 /* FireBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseManager.swift; sourceTree = "<group>"; };
+		FFDC3E8420AA250A00AADF8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = InterviewMeApp/Base.lproj/kimchi.storyboard; sourceTree = "<group>"; };
+		FFDC3E8A20AA425300AADF8A /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
 		FFF2740720A9E92300D66A0B /* InterviewMeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InterviewMeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFF2740A20A9E92300D66A0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFF2740C20A9E92300D66A0B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +49,44 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF1696ED091B42610905A063 /* Pods_InterviewMeApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		006667B41507BF3768E4B8B0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2597FF0BF0726ABBFA91CF62 /* Pods-InterviewMeApp.debug.xcconfig */,
+				9923D488D981203123E3D81C /* Pods-InterviewMeApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		94C55B9CB1DE2FDF7AA6595A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E313558045188ED812C8FDAD /* Pods_InterviewMeApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B31F154F20AB3462002A20E2 /* Video Capture */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Video Capture";
+			sourceTree = "<group>";
+		};
 		FFF273FE20A9E92300D66A0B = {
 			isa = PBXGroup;
 			children = (
 				FFF2740920A9E92300D66A0B /* InterviewMeApp */,
 				FFF2740820A9E92300D66A0B /* Products */,
+				006667B41507BF3768E4B8B0 /* Pods */,
+				94C55B9CB1DE2FDF7AA6595A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,10 +103,19 @@
 			children = (
 				FFF2740A20A9E92300D66A0B /* AppDelegate.swift */,
 				FFF2740C20A9E92300D66A0B /* ViewController.swift */,
+				B37503C420AA224E00AFB23A /* LoginViewController.swift */,
+				FFDC3E8A20AA425300AADF8A /* CreateProfileViewController.swift */,
+				FF14867F20AA508B00FE71FD /* createProfile.storyboard */,
 				FFF2740E20A9E92300D66A0B /* Main.storyboard */,
+				FFDC3E8320AA250A00AADF8A /* kimchi.storyboard */,
+				B37503C620AA276700AFB23A /* daniel.storyboard */,
+				B31F155020AB395D002A20E2 /* RecordVideo.storyboard */,
 				FFF2741120A9E92400D66A0B /* Assets.xcassets */,
 				FFF2741320A9E92400D66A0B /* LaunchScreen.storyboard */,
 				FFF2741620A9E92400D66A0B /* Info.plist */,
+				FF5DF60E20AB4D83009C2897 /* GoogleService-Info.plist */,
+				B31F154F20AB3462002A20E2 /* Video Capture */,
+				FF5DF61020AB4EC4009C2897 /* FireBaseManager.swift */,
 			);
 			path = InterviewMeApp;
 			sourceTree = "<group>";
@@ -71,9 +127,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FFF2741920A9E92400D66A0B /* Build configuration list for PBXNativeTarget "InterviewMeApp" */;
 			buildPhases = (
+				28139BBCFD2A1B08304DFCA3 /* [CP] Check Pods Manifest.lock */,
 				FFF2740320A9E92300D66A0B /* Sources */,
 				FFF2740420A9E92300D66A0B /* Frameworks */,
 				FFF2740520A9E92300D66A0B /* Resources */,
+				57A22DDAEB22A7563D0D0C4D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -122,7 +180,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF14868120AA508B00FE71FD /* createProfile.storyboard in Resources */,
+				FF5DF60F20AB4D83009C2897 /* GoogleService-Info.plist in Resources */,
 				FFF2741520A9E92400D66A0B /* LaunchScreen.storyboard in Resources */,
+				B37503C820AA276700AFB23A /* daniel.storyboard in Resources */,
+				FFDC3E8520AA250A00AADF8A /* kimchi.storyboard in Resources */,
+				B31F155220AB395D002A20E2 /* RecordVideo.storyboard in Resources */,
 				FFF2741220A9E92400D66A0B /* Assets.xcassets in Resources */,
 				FFF2741020A9E92300D66A0B /* Main.storyboard in Resources */,
 			);
@@ -130,19 +193,95 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		28139BBCFD2A1B08304DFCA3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-InterviewMeApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		57A22DDAEB22A7563D0D0C4D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-InterviewMeApp/Pods-InterviewMeApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-InterviewMeApp/Pods-InterviewMeApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FFF2740320A9E92300D66A0B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B37503C520AA224E00AFB23A /* LoginViewController.swift in Sources */,
 				FFF2740D20A9E92300D66A0B /* ViewController.swift in Sources */,
 				FFF2740B20A9E92300D66A0B /* AppDelegate.swift in Sources */,
+				FFDC3E8B20AA425300AADF8A /* CreateProfileViewController.swift in Sources */,
+				FF5DF61120AB4EC4009C2897 /* FireBaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		B31F155020AB395D002A20E2 /* RecordVideo.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B31F155120AB395D002A20E2 /* Base */,
+			);
+			name = RecordVideo.storyboard;
+			sourceTree = "<group>";
+		};
+		B37503C620AA276700AFB23A /* daniel.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B37503C720AA276700AFB23A /* Base */,
+			);
+			name = daniel.storyboard;
+			sourceTree = "<group>";
+		};
+		FF14867F20AA508B00FE71FD /* createProfile.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF14868020AA508B00FE71FD /* Base */,
+			);
+			name = createProfile.storyboard;
+			sourceTree = "<group>";
+		};
+		FFDC3E8320AA250A00AADF8A /* kimchi.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FFDC3E8420AA250A00AADF8A /* Base */,
+			);
+			name = kimchi.storyboard;
+			sourceTree = "<group>";
+		};
 		FFF2740E20A9E92300D66A0B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -278,6 +417,7 @@
 		};
 		FFF2741A20A9E92400D66A0B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2597FF0BF0726ABBFA91CF62 /* Pods-InterviewMeApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -296,6 +436,7 @@
 		};
 		FFF2741B20A9E92400D66A0B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9923D488D981203123E3D81C /* Pods-InterviewMeApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
