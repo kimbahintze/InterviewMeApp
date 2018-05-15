@@ -10,6 +10,7 @@
 		A047E1F420AA4EFB0043F7B9 /* Kevin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A047E1F220AA4EFB0043F7B9 /* Kevin.storyboard */; };
 		B37503C520AA224E00AFB23A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37503C420AA224E00AFB23A /* LoginViewController.swift */; };
 		B37503C820AA276700AFB23A /* daniel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B37503C620AA276700AFB23A /* daniel.storyboard */; };
+		FF14868120AA508B00FE71FD /* createProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF14867F20AA508B00FE71FD /* createProfile.storyboard */; };
 		FFDC3E8520AA250A00AADF8A /* kimchi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDC3E8320AA250A00AADF8A /* kimchi.storyboard */; };
 		FFDC3E8720AA39D900AADF8A /* AuthenticationManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDC3E8620AA39D900AADF8A /* AuthenticationManger.swift */; };
 		FFDC3E8B20AA425300AADF8A /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDC3E8A20AA425300AADF8A /* CreateProfileViewController.swift */; };
@@ -24,6 +25,7 @@
 		A047E1F320AA4EFB0043F7B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = InterviewMeApp/Base.lproj/Kevin.storyboard; sourceTree = "<group>"; };
 		B37503C420AA224E00AFB23A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B37503C720AA276700AFB23A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = InterviewMeApp/Base.lproj/daniel.storyboard; sourceTree = "<group>"; };
+		FF14868020AA508B00FE71FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = InterviewMeApp/Base.lproj/createProfile.storyboard; sourceTree = "<group>"; };
 		FFDC3E8420AA250A00AADF8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = InterviewMeApp/Base.lproj/kimchi.storyboard; sourceTree = "<group>"; };
 		FFDC3E8620AA39D900AADF8A /* AuthenticationManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManger.swift; sourceTree = "<group>"; };
 		FFDC3E8A20AA425300AADF8A /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				FFF2740C20A9E92300D66A0B /* ViewController.swift */,
 				B37503C420AA224E00AFB23A /* LoginViewController.swift */,
 				FFDC3E8A20AA425300AADF8A /* CreateProfileViewController.swift */,
+				FF14867F20AA508B00FE71FD /* createProfile.storyboard */,
 				FFF2740E20A9E92300D66A0B /* Main.storyboard */,
 				FFDC3E8320AA250A00AADF8A /* kimchi.storyboard */,
 				A047E1F220AA4EFB0043F7B9 /* Kevin.storyboard */,
@@ -141,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A047E1F420AA4EFB0043F7B9 /* Kevin.storyboard in Resources */,
+				FF14868120AA508B00FE71FD /* createProfile.storyboard in Resources */,
 				FFF2741520A9E92400D66A0B /* LaunchScreen.storyboard in Resources */,
 				B37503C820AA276700AFB23A /* daniel.storyboard in Resources */,
 				FFDC3E8520AA250A00AADF8A /* kimchi.storyboard in Resources */,
@@ -181,6 +185,14 @@
 				B37503C720AA276700AFB23A /* Base */,
 			);
 			name = daniel.storyboard;
+			sourceTree = "<group>";
+		};
+		FF14867F20AA508B00FE71FD /* createProfile.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF14868020AA508B00FE71FD /* Base */,
+			);
+			name = createProfile.storyboard;
 			sourceTree = "<group>";
 		};
 		FFDC3E8320AA250A00AADF8A /* kimchi.storyboard */ = {
