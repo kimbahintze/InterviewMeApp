@@ -27,7 +27,7 @@ class CreateProfileViewController: UIViewController {
 
       createDatePicker()
     }
-
+   
     func createDatePicker() {
         
         // toolbar
@@ -51,8 +51,19 @@ class CreateProfileViewController: UIViewController {
         let dateString = formatter.string(from: picker.date)
         
         birthdayTextField.text = "\(dateString)"
-  //      self.view.endEditing(true)
+        self.view.endEditing(true)
     }
+
+  
+//    @objc func donePressed() {
+//        let formatter = DateFormatter()
+//        formatter.dateStyle = .medium
+//        formatter.timeStyle = .none
+//        let dateString = formatter.string(from: picker.date)
+//
+//        birthdayTextField.text = "\(dateString)"
+//        self.view.endEditing(true)
+//    }
 
     /*
     // MARK: - Navigation
