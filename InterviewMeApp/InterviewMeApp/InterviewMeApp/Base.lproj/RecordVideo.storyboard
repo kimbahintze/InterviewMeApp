@@ -1,25 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ctz-ur-M7Q">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Camera View Controller-->
         <scene sceneID="Ggi-kK-lTO">
             <objects>
-                <viewController id="ctz-ur-M7Q" sceneMemberID="viewController">
+                <viewController id="ctz-ur-M7Q" customClass="CameraViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i09-e0-mmu">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCh-cd-RPT">
+                                <rect key="frame" x="108" y="519" width="131" height="122"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="CameraButton"/>
+                                <connections>
+                                    <action selector="shutterButtonDidTap:" destination="ctz-ur-M7Q" eventType="touchUpInside" id="UCl-As-1K3"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="DLO-PE-PzT"/>
                     </view>
+                    <connections>
+                        <outlet property="cameraButton" destination="bCh-cd-RPT" id="fq7-6m-lBU"/>
+                        <segue destination="ggb-dP-HlR" kind="presentation" identifier="showPhoto" id="bWz-rh-yua"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ETM-Xx-7Mf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3270" y="35"/>
+            <point key="canvasLocation" x="3512.8000000000002" y="44.527736131934034"/>
+        </scene>
+        <!--Image View Controller-->
+        <scene sceneID="tda-vH-2vz">
+            <objects>
+                <viewController id="ggb-dP-HlR" customClass="ImageViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ht0-Jm-CTW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="84j-I2-Qsw">
+                                <rect key="frame" x="0.0" y="20" width="375" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9WP-6a-Xxv">
+                                        <rect key="frame" x="5" y="14" width="52" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="X" image="cross"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8W-t4-WCM">
+                                        <rect key="frame" x="327" y="19" width="34" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Save"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NUC-71-dQz">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="NUC-71-dQz" firstAttribute="bottom" secondItem="3qX-Ri-RLm" secondAttribute="bottom" id="Mr9-3g-Lag"/>
+                            <constraint firstItem="NUC-71-dQz" firstAttribute="trailing" secondItem="3qX-Ri-RLm" secondAttribute="trailing" id="OuL-JO-mNQ"/>
+                            <constraint firstItem="NUC-71-dQz" firstAttribute="leading" secondItem="3qX-Ri-RLm" secondAttribute="leading" id="PXQ-jH-9uh"/>
+                            <constraint firstItem="NUC-71-dQz" firstAttribute="top" secondItem="3qX-Ri-RLm" secondAttribute="top" id="Sf7-Yf-Wu4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3qX-Ri-RLm"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6WQ-Ba-Ddj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4238" y="35"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="CameraButton" width="122" height="122"/>
+        <image name="cross" width="40" height="40"/>
+    </resources>
 </document>
