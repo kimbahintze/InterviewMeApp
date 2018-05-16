@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Create Profile View Controller-->
+        <!--Signup View Controller-->
         <scene sceneID="ugy-hH-vZI">
             <objects>
-                <viewController id="jN2-FM-dRg" customClass="CreateProfileViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="jN2-FM-dRg" customClass="SignupViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AyB-2L-gym">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

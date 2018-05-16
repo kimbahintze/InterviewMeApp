@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeViewController.swift
 //  InterviewMeApp
 //
 //  Created by Kimba Hintze on 5/14/18.
@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseAuth
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

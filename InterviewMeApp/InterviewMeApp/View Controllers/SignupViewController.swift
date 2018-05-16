@@ -1,5 +1,5 @@
 //
-//  CreateProfileViewController.swift
+//  SignupViewController.swift
 //  InterviewMeApp
 //
 //  Created by Kimba Hintze on 5/14/18.
@@ -10,7 +10,7 @@ import UIKit
 import FirebaseDatabase
 import FirebaseAuth
 
-class CreateProfileViewController: UIViewController, UITextFieldDelegate {
+class SignupViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Outlets
     
@@ -37,7 +37,6 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
         confirmPasswordTextField.delegate = self
         activityView = UIActivityIndicatorView()
       createDatePicker()
-//        signupButton.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
     }
    
     // Picker
@@ -95,7 +94,6 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
             confirmPasswordTextField.becomeFirstResponder()
             break
         case confirmPasswordTextField:
-//            handleSignUp()
             break
         default:
             break
@@ -106,16 +104,6 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
-    // Sign up
-//    func setSignUpButton(enabled: Bool) {
-//        if enabled {
-//            signupButton.alpha = 1.0
-//            signupButton.isEnabled = true
-//        } else {
-//            signupButton.alpha = 0.5
-//            signupButton.isEnabled = false
-//        }
-//    }
     
     @IBAction func handleSignup(_ sender: UIButton) {
         guard let firstName = firstNameTextField.text, !firstName.isEmpty else { return }
@@ -146,7 +134,6 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
                 let sb = UIStoryboard(name: "Main", bundle: nil)
                 
                 let mainViewController = sb.instantiateViewController(withIdentifier: "MainViewController")
-                //                self.present(mainViewController, animated: true, completion: nil)
                 self.navigationController?.pushViewController(mainViewController, animated: true)
                 print("IT moved")
             } else {
@@ -154,61 +141,4 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
-    
-//    @objc func handleSignUp() {
-//        guard let firstName = firstNameTextField.text, !firstName.isEmpty else { return }
-//        guard let lastName = lastNameTextField.text, !lastName.isEmpty else { return }
-//        guard let email = emailTextField.text, !email.isEmpty else { return }
-//        guard let password = passwordTextField.text, !password.isEmpty else { return }
-//        guard let confirmPass = passwordTextField.text, !confirmPass.isEmpty else { return }
-//        guard let birthday = birthdayTextField.text, !birthday.isEmpty else { return }
-//        guard let jobIndustry = industryTextField.text, !jobIndustry.isEmpty else { return }
-//
-//        setSignUpButton(enabled: false)
-////        signupButton.setTitle("", for: .normal)
-////        activityView.startAnimating()
-//
-//
-//
-//
-//        Auth.auth().createUser(withEmail: email, password: password) { (dataResult, error) in
-//            if error == nil && dataResult != nil {
-//                print("User created!")
-//                let name = "\(firstName) \(lastName)"
-//
-//                let changeRequest = dataResult?.user.createProfileChangeRequest()
-//                changeRequest?.displayName = name
-//                changeRequest?.commitChanges(completion: { (error) in
-//                    if let error = error {
-//
-//                        print("Error commiting name: \(error.localizedDescription)")
-//                        self.dismiss(animated: false, completion: nil)
-//                    }
-//
-//                    guard let currentUser = Auth.auth().currentUser else { return }
-//                    Database.database().reference().child("users").child(currentUser.uid).setValue(["jobindustry": jobIndustry, "birthday":birthday])
-//                })
-//                guard let mainViewController = self.storyboard?.instantiateViewController(withIdentifier: "MainViewController") else { return }
-////                self.present(mainViewController, animated: true, completion: nil)
-//                self.navigationController?.pushViewController(mainViewController, animated: true)
-//                print("IT moved")
-//            } else {
-//                print("Error creating user: \(error!.localizedDescription)")
-//            }
-//        }
-//    }
-    
-   
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
