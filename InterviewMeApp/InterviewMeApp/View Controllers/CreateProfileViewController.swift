@@ -10,7 +10,7 @@ import UIKit
 import FirebaseDatabase
 import FirebaseAuth
 
-class CreateProfileViewController: UIViewController {
+class CreateProfileViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Outlets
     
@@ -21,7 +21,6 @@ class CreateProfileViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
-    @IBOutlet weak var signupButton: UIButton!
     
     var activityView: UIActivityIndicatorView!
     
@@ -29,9 +28,16 @@ class CreateProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        firstNameTextField.delegate = self
+        lastNameTextField.delegate = self
+        birthdayTextField.delegate = self
+        industryTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        confirmPasswordTextField.delegate = self
+        activityView = UIActivityIndicatorView()
       createDatePicker()
-        signupButton.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
+//        signupButton.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
     }
    
     // Picker
@@ -89,7 +95,7 @@ class CreateProfileViewController: UIViewController {
             confirmPasswordTextField.becomeFirstResponder()
             break
         case confirmPasswordTextField:
-            handleSignUp()
+//            handleSignUp()
             break
         default:
             break
@@ -97,18 +103,21 @@ class CreateProfileViewController: UIViewController {
         return true
     }
     
-    // Sign up
-    func setSignUpButton(enabled: Bool) {
-        if enabled {
-            signupButton.alpha = 1.0
-            signupButton.isEnabled = true
-        } else {
-            signupButton.alpha = 0.5
-            signupButton.isEnabled = false
-        }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
+    // Sign up
+//    func setSignUpButton(enabled: Bool) {
+//        if enabled {
+//            signupButton.alpha = 1.0
+//            signupButton.isEnabled = true
+//        } else {
+//            signupButton.alpha = 0.5
+//            signupButton.isEnabled = false
+//        }
+//    }
     
-    @objc func handleSignUp() {
+    @IBAction func handleSignup(_ sender: UIButton) {
         guard let firstName = firstNameTextField.text, !firstName.isEmpty else { return }
         guard let lastName = lastNameTextField.text, !lastName.isEmpty else { return }
         guard let email = emailTextField.text, !email.isEmpty else { return }
@@ -116,11 +125,6 @@ class CreateProfileViewController: UIViewController {
         guard let confirmPass = passwordTextField.text, !confirmPass.isEmpty else { return }
         guard let birthday = birthdayTextField.text, !birthday.isEmpty else { return }
         guard let jobIndustry = industryTextField.text, !jobIndustry.isEmpty else { return }
-        
-        setSignUpButton(enabled: false)
-        signupButton.setTitle("", for: .normal)
-    //    activityView.startAnimating()
-
         
         Auth.auth().createUser(withEmail: email, password: password) { (dataResult, error) in
             if error == nil && dataResult != nil {
@@ -131,17 +135,68 @@ class CreateProfileViewController: UIViewController {
                 changeRequest?.displayName = name
                 changeRequest?.commitChanges(completion: { (error) in
                     if let error = error {
+                        
                         print("Error commiting name: \(error.localizedDescription)")
+                        self.dismiss(animated: false, completion: nil)
                     }
                     
                     guard let currentUser = Auth.auth().currentUser else { return }
                     Database.database().reference().child("users").child(currentUser.uid).setValue(["jobindustry": jobIndustry, "birthday":birthday])
                 })
+                let sb = UIStoryboard(name: "Main", bundle: nil)
+                
+                let mainViewController = sb.instantiateViewController(withIdentifier: "MainViewController")
+                //                self.present(mainViewController, animated: true, completion: nil)
+                self.navigationController?.pushViewController(mainViewController, animated: true)
+                print("IT moved")
             } else {
                 print("Error creating user: \(error!.localizedDescription)")
             }
         }
     }
+    
+//    @objc func handleSignUp() {
+//        guard let firstName = firstNameTextField.text, !firstName.isEmpty else { return }
+//        guard let lastName = lastNameTextField.text, !lastName.isEmpty else { return }
+//        guard let email = emailTextField.text, !email.isEmpty else { return }
+//        guard let password = passwordTextField.text, !password.isEmpty else { return }
+//        guard let confirmPass = passwordTextField.text, !confirmPass.isEmpty else { return }
+//        guard let birthday = birthdayTextField.text, !birthday.isEmpty else { return }
+//        guard let jobIndustry = industryTextField.text, !jobIndustry.isEmpty else { return }
+//
+//        setSignUpButton(enabled: false)
+////        signupButton.setTitle("", for: .normal)
+////        activityView.startAnimating()
+//
+//
+//
+//
+//        Auth.auth().createUser(withEmail: email, password: password) { (dataResult, error) in
+//            if error == nil && dataResult != nil {
+//                print("User created!")
+//                let name = "\(firstName) \(lastName)"
+//
+//                let changeRequest = dataResult?.user.createProfileChangeRequest()
+//                changeRequest?.displayName = name
+//                changeRequest?.commitChanges(completion: { (error) in
+//                    if let error = error {
+//
+//                        print("Error commiting name: \(error.localizedDescription)")
+//                        self.dismiss(animated: false, completion: nil)
+//                    }
+//
+//                    guard let currentUser = Auth.auth().currentUser else { return }
+//                    Database.database().reference().child("users").child(currentUser.uid).setValue(["jobindustry": jobIndustry, "birthday":birthday])
+//                })
+//                guard let mainViewController = self.storyboard?.instantiateViewController(withIdentifier: "MainViewController") else { return }
+////                self.present(mainViewController, animated: true, completion: nil)
+//                self.navigationController?.pushViewController(mainViewController, animated: true)
+//                print("IT moved")
+//            } else {
+//                print("Error creating user: \(error!.localizedDescription)")
+//            }
+//        }
+//    }
     
    
 

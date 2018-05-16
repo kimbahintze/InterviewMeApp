@@ -14,12 +14,20 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(signout))
+
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
+    
     
     @objc func signout() {
         do {
             try Auth.auth().signOut()
-            performSegue(withIdentifier: "toLogin", sender: self)
+            navigationController?.popViewController(animated: true)
         } catch {
             print("Error signing out: \(error)")
         }

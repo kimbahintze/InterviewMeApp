@@ -285,20 +285,7 @@
 				FFF2740B20A9E92300D66A0B /* AppDelegate.swift in Sources */,
 				B31F155620AB3EE3002A20E2 /* ImageViewController.swift in Sources */,
 				FFDC3E8B20AA425300AADF8A /* CreateProfileViewController.swift in Sources */,
-
-
-				FF5DF61120AB4EC4009C2897 /* FireBaseManager.swift in Sources */,
-
-				FFDC3E8720AA39D900AADF8A /* AuthenticationManger.swift in Sources */,
 				B31F155420AB3E02002A20E2 /* CameraViewController.swift in Sources */,
-
-				FF5DF61120AB4EC4009C2897 /* FireBaseManager.swift in Sources */,
-
-
-				FF5DF61120AB4EC4009C2897 /* FireBaseManager.swift in Sources */,
-
-
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,13 +457,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-
 				DEVELOPMENT_TEAM = A6SH4SB8PT;
 				INFOPLIST_FILE = "$(SRCROOT)/InterviewMeApp/Resources/Info.plist";
-
-				DEVELOPMENT_TEAM = 7VSPJ2N6B9;
-				INFOPLIST_FILE = InterviewMeApp/Info.plist;
-
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -494,13 +476,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-
 				DEVELOPMENT_TEAM = A6SH4SB8PT;
 				INFOPLIST_FILE = "$(SRCROOT)/InterviewMeApp/Resources/Info.plist";
-
-				DEVELOPMENT_TEAM = 7VSPJ2N6B9;
-				INFOPLIST_FILE = InterviewMeApp/Info.plist;
-
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

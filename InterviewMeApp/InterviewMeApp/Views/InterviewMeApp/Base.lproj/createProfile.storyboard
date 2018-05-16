@@ -71,6 +71,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="llE-aY-ava">
                                         <rect key="frame" x="40" y="268" width="59" height="30"/>
                                         <state key="normal" title="Sign Up!"/>
+                                        <connections>
+                                            <action selector="handleSignup:" destination="jN2-FM-dRg" eventType="touchUpInside" id="ocC-lq-esu"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -90,7 +93,6 @@
                         <outlet property="industryTextField" destination="6Qn-eb-exQ" id="wmz-bR-wbF"/>
                         <outlet property="lastNameTextField" destination="sZ7-dO-pRa" id="Pby-bJ-IIF"/>
                         <outlet property="passwordTextField" destination="9la-Te-bcg" id="REL-j7-2ES"/>
-                        <outlet property="signupButton" destination="llE-aY-ava" id="ocG-yW-VZQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J5g-5S-Nye" userLabel="First Responder" sceneMemberID="firstResponder"/>
