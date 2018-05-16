@@ -66,7 +66,7 @@
                                                 <state key="normal" title="Sign Up"/>
                                                 <connections>
                                                     <action selector="signupButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cwf-ao-0wE"/>
-                                                    <segue destination="nwY-8I-Vkz" kind="show" identifier="toCreateProfileVC" id="dgx-XA-TfO"/>
+                                                    <segue destination="nwY-8I-Vkz" kind="show" id="fBX-qV-VBO"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -227,10 +227,10 @@
             </objects>
             <point key="canvasLocation" x="3270" y="-739"/>
         </scene>
-        <!--createProfile-->
+        <!--Signup-->
         <scene sceneID="DhB-Ae-WWY">
             <objects>
-                <viewControllerPlaceholder storyboardName="createProfile" id="nwY-8I-Vkz" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Signup" id="nwY-8I-Vkz" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZtQ-8f-qo0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1578" y="-511"/>
