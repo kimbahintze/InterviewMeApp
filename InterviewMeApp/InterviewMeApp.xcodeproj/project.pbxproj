@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A05052DB20ACCDA3005981CF /* ChatRoomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05052DA20ACCDA3005981CF /* ChatRoomController.swift */; };
 		A05052DD20ACCF0B005981CF /* ChatLobbyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05052DC20ACCF0B005981CF /* ChatLobbyUser.swift */; };
+		A05052E020ACD445005981CF /* LobbyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05052DF20ACD445005981CF /* LobbyTableViewController.swift */; };
+		A05052E220ACD4C9005981CF /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05052E120ACD4C9005981CF /* ChatRoomViewController.swift */; };
 		AF1696ED091B42610905A063 /* Pods_InterviewMeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E313558045188ED812C8FDAD /* Pods_InterviewMeApp.framework */; };
 		B31F155220AB395D002A20E2 /* RecordVideo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B31F155020AB395D002A20E2 /* RecordVideo.storyboard */; };
 		B37503C520AA224E00AFB23A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37503C420AA224E00AFB23A /* LoginViewController.swift */; };
@@ -27,6 +29,8 @@
 		9923D488D981203123E3D81C /* Pods-InterviewMeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InterviewMeApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-InterviewMeApp/Pods-InterviewMeApp.release.xcconfig"; sourceTree = "<group>"; };
 		A05052DA20ACCDA3005981CF /* ChatRoomController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatRoomController.swift; path = "InterviewMeApp/View Controllers/ChatRoomController.swift"; sourceTree = SOURCE_ROOT; };
 		A05052DC20ACCF0B005981CF /* ChatLobbyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatLobbyUser.swift; path = "InterviewMeApp/View Controllers/ChatLobbyUser.swift"; sourceTree = SOURCE_ROOT; };
+		A05052DF20ACD445005981CF /* LobbyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyTableViewController.swift; sourceTree = "<group>"; };
+		A05052E120ACD4C9005981CF /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
 		B31F155120AB395D002A20E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = InterviewMeApp/Base.lproj/RecordVideo.storyboard; sourceTree = "<group>"; };
 		B37503C420AA224E00AFB23A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E313558045188ED812C8FDAD /* Pods_InterviewMeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InterviewMeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +110,8 @@
 				FFF2740C20A9E92300D66A0B /* HomeViewController.swift */,
 				B37503C420AA224E00AFB23A /* LoginViewController.swift */,
 				FFDC3E8A20AA425300AADF8A /* SignupViewController.swift */,
+				A05052DF20ACD445005981CF /* LobbyTableViewController.swift */,
+				A05052E120ACD4C9005981CF /* ChatRoomViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -279,8 +285,10 @@
 				B37503C520AA224E00AFB23A /* LoginViewController.swift in Sources */,
 				FFF2740D20A9E92300D66A0B /* HomeViewController.swift in Sources */,
 				FFF2740B20A9E92300D66A0B /* AppDelegate.swift in Sources */,
+				A05052E220ACD4C9005981CF /* ChatRoomViewController.swift in Sources */,
 				A05052DD20ACCF0B005981CF /* ChatLobbyUser.swift in Sources */,
 				FFDC3E8B20AA425300AADF8A /* SignupViewController.swift in Sources */,
+				A05052E020ACD445005981CF /* LobbyTableViewController.swift in Sources */,
 				A05052DB20ACCDA3005981CF /* ChatRoomController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

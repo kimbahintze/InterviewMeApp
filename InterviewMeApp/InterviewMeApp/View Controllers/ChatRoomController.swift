@@ -7,14 +7,23 @@
 //
 
 import Foundation
+import FirebaseDatabase
+import FirebaseAuth
 
 class ChatRoomController {
     
     static let shared = ChatRoomController()
     
+    enum NotificationKeys {
+        static let reloadTable = Notification.Name("ReloadTable")
+    }
+    var user: User? {
+        return Auth.auth().currentUser
+    }
+    
     var chatLobbyUsers: [String] = [] {
         didSet {
-            
+            NotificationCenter.default.post(name: NotificationKeys.reloadTable, object: self)
         }
     }
     
