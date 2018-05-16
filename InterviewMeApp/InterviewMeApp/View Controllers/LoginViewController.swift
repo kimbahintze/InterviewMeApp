@@ -30,7 +30,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidAppear(animated)
         
         if Auth.auth().currentUser != nil {
-            
+            guard let mainViewController = storyboard?.instantiateViewController(withIdentifier: "MainViewController") else { return }
+            navigationController?.pushViewController(mainViewController, animated: true)
         }
     }
     

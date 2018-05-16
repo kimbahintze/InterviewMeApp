@@ -9,18 +9,17 @@
 import UIKit
 
 private let reuseIdentifier = "UserCell"
+
 class LobbyTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super .viewDidLoad()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create", style: .done, target: self, action: #selector(createChatRoom))
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super .viewDidAppear(animated)
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super .viewDidDisappear(animated)
+        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,6 +40,11 @@ class LobbyTableViewController: UITableViewController {
         if segue.identifier == "toJoinChatRoom" {
             
         }
+    }
+    
+    @objc func createChatRoom() {
+        guard let mainViewController = self.storyboard?.instantiateViewController(withIdentifier: "ChatRoomViewController") else { return }
+        navigationController?.pushViewController(mainViewController, animated: true)
     }
 }
 

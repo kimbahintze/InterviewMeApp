@@ -186,7 +186,7 @@
         <!--Chatroom-->
         <scene sceneID="f0r-aO-Vrw">
             <objects>
-                <viewController title="Chatroom" id="1Sp-zt-e8O" customClass="ChatRoomViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatRoomViewController" title="Chatroom" id="1Sp-zt-e8O" customClass="ChatRoomViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Nm-vU-YkJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
