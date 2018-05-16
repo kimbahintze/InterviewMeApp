@@ -49,8 +49,7 @@
                                                 <rect key="frame" x="39" y="0.0" width="38" height="30"/>
                                                 <state key="normal" title="Login"/>
                                                 <connections>
-                                                    <action selector="loginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T9l-9A-ylk"/>
-                                                    <segue destination="q5H-cc-BIw" kind="show" identifier="toHomeScreen" id="AA9-1v-8SI"/>
+                                                    <action selector="loginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1nY-Px-LoD"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kq2-Y9-6UW">
@@ -94,9 +93,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="CwD-br-ydk" id="q7G-zf-VtW"/>
                         <outlet property="forgotPasswordButton" destination="Kq2-Y9-6UW" id="R1Z-ZM-rAx"/>
-                        <outlet property="loginButton" destination="wca-ak-pni" id="C3h-Ue-5mD"/>
                         <outlet property="passwordTextField" destination="scs-6r-XQH" id="8Uf-uY-IIn"/>
-                        <outlet property="signupButton" destination="jo1-eB-iZU" id="2DE-Hh-dXC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -156,7 +153,7 @@
         <!--Title-->
         <scene sceneID="5vp-Sc-cog">
             <objects>
-                <viewController id="q5H-cc-BIw" customClass="ViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" id="q5H-cc-BIw" customClass="ViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="se0-ts-9cE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -195,9 +192,6 @@
                     <navigationItem key="navigationItem" title="Title" id="IcQ-XZ-Et2">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="j4C-9d-vyW"/>
                     </navigationItem>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="toLogin" id="BKv-zH-GMQ"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbc-4o-dIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -216,7 +210,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5tc-YK-ctJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3270" y="1041"/>
+            <point key="canvasLocation" x="2164" y="976"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="OpK-46-nkx">
@@ -236,8 +230,8 @@
         <!--createProfile-->
         <scene sceneID="DhB-Ae-WWY">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZtQ-8f-qo0" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardName="createProfile" id="nwY-8I-Vkz" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZtQ-8f-qo0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1578" y="-511"/>
         </scene>
@@ -268,7 +262,4 @@
             <point key="canvasLocation" x="3270" y="35"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="HxJ-2s-mSG"/>
-    </inferredMetricsTieBreakers>
 </document>
