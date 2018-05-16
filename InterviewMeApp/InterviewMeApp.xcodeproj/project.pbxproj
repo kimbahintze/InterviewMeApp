@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		AF1696ED091B42610905A063 /* Pods_InterviewMeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E313558045188ED812C8FDAD /* Pods_InterviewMeApp.framework */; };
 		B31F155220AB395D002A20E2 /* RecordVideo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B31F155020AB395D002A20E2 /* RecordVideo.storyboard */; };
+		B31F155420AB3E02002A20E2 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31F155320AB3E02002A20E2 /* CameraViewController.swift */; };
+		B31F155620AB3EE3002A20E2 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31F155520AB3EE3002A20E2 /* ImageViewController.swift */; };
 		B37503C520AA224E00AFB23A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37503C420AA224E00AFB23A /* LoginViewController.swift */; };
 		FF14868120AA508B00FE71FD /* createProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF14867F20AA508B00FE71FD /* createProfile.storyboard */; };
 		FF5DF60F20AB4D83009C2897 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF5DF60E20AB4D83009C2897 /* GoogleService-Info.plist */; };
@@ -25,6 +27,8 @@
 		2597FF0BF0726ABBFA91CF62 /* Pods-InterviewMeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InterviewMeApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InterviewMeApp/Pods-InterviewMeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		9923D488D981203123E3D81C /* Pods-InterviewMeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InterviewMeApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-InterviewMeApp/Pods-InterviewMeApp.release.xcconfig"; sourceTree = "<group>"; };
 		B31F155120AB395D002A20E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = InterviewMeApp/Base.lproj/RecordVideo.storyboard; sourceTree = "<group>"; };
+		B31F155320AB3E02002A20E2 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		B31F155520AB3EE3002A20E2 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		B37503C420AA224E00AFB23A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E313558045188ED812C8FDAD /* Pods_InterviewMeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InterviewMeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF14868020AA508B00FE71FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = InterviewMeApp/Base.lproj/createProfile.storyboard; sourceTree = "<group>"; };
@@ -72,6 +76,8 @@
 		B31F154F20AB3462002A20E2 /* Video Capture */ = {
 			isa = PBXGroup;
 			children = (
+				B31F155320AB3E02002A20E2 /* CameraViewController.swift */,
+				B31F155520AB3EE3002A20E2 /* ImageViewController.swift */,
 			);
 			path = "Video Capture";
 			sourceTree = "<group>";
@@ -277,7 +283,22 @@
 				B37503C520AA224E00AFB23A /* LoginViewController.swift in Sources */,
 				FFF2740D20A9E92300D66A0B /* ViewController.swift in Sources */,
 				FFF2740B20A9E92300D66A0B /* AppDelegate.swift in Sources */,
+				B31F155620AB3EE3002A20E2 /* ImageViewController.swift in Sources */,
 				FFDC3E8B20AA425300AADF8A /* CreateProfileViewController.swift in Sources */,
+
+
+				FF5DF61120AB4EC4009C2897 /* FireBaseManager.swift in Sources */,
+
+				FFDC3E8720AA39D900AADF8A /* AuthenticationManger.swift in Sources */,
+				B31F155420AB3E02002A20E2 /* CameraViewController.swift in Sources */,
+
+				FF5DF61120AB4EC4009C2897 /* FireBaseManager.swift in Sources */,
+
+
+				FF5DF61120AB4EC4009C2897 /* FireBaseManager.swift in Sources */,
+
+
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,8 +470,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+
 				DEVELOPMENT_TEAM = A6SH4SB8PT;
 				INFOPLIST_FILE = "$(SRCROOT)/InterviewMeApp/Resources/Info.plist";
+
+				DEVELOPMENT_TEAM = 7VSPJ2N6B9;
+				INFOPLIST_FILE = InterviewMeApp/Info.plist;
+
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -468,8 +494,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+
 				DEVELOPMENT_TEAM = A6SH4SB8PT;
 				INFOPLIST_FILE = "$(SRCROOT)/InterviewMeApp/Resources/Info.plist";
+
+				DEVELOPMENT_TEAM = 7VSPJ2N6B9;
+				INFOPLIST_FILE = InterviewMeApp/Info.plist;
+
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
