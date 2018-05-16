@@ -50,7 +50,7 @@
                                                 <state key="normal" title="Login"/>
                                                 <connections>
                                                     <action selector="loginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T9l-9A-ylk"/>
-                                                    <segue destination="q5H-cc-BIw" kind="show" id="AA9-1v-8SI"/>
+                                                    <segue destination="q5H-cc-BIw" kind="show" identifier="toHomeScreen" id="AA9-1v-8SI"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kq2-Y9-6UW">
@@ -156,7 +156,7 @@
         <!--Title-->
         <scene sceneID="5vp-Sc-cog">
             <objects>
-                <viewController id="q5H-cc-BIw" sceneMemberID="viewController">
+                <viewController id="q5H-cc-BIw" customClass="ViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="se0-ts-9cE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -195,6 +195,9 @@
                     <navigationItem key="navigationItem" title="Title" id="IcQ-XZ-Et2">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="j4C-9d-vyW"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="toLogin" id="BKv-zH-GMQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbc-4o-dIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -233,8 +236,8 @@
         <!--createProfile-->
         <scene sceneID="DhB-Ae-WWY">
             <objects>
-                <viewControllerPlaceholder storyboardName="createProfile" id="nwY-8I-Vkz" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZtQ-8f-qo0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="createProfile" id="nwY-8I-Vkz" sceneMemberID="viewController"/>
             </objects>
             <point key="canvasLocation" x="1578" y="-511"/>
         </scene>
@@ -265,4 +268,7 @@
             <point key="canvasLocation" x="3270" y="35"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="HxJ-2s-mSG"/>
+    </inferredMetricsTieBreakers>
 </document>
