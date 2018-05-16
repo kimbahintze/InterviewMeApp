@@ -12,10 +12,8 @@
 		B31F155420AB3E02002A20E2 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31F155320AB3E02002A20E2 /* CameraViewController.swift */; };
 		B31F155620AB3EE3002A20E2 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31F155520AB3EE3002A20E2 /* ImageViewController.swift */; };
 		B37503C520AA224E00AFB23A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37503C420AA224E00AFB23A /* LoginViewController.swift */; };
-		B37503C820AA276700AFB23A /* daniel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B37503C620AA276700AFB23A /* daniel.storyboard */; };
 		FF14868120AA508B00FE71FD /* createProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF14867F20AA508B00FE71FD /* createProfile.storyboard */; };
 		FF5DF60F20AB4D83009C2897 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF5DF60E20AB4D83009C2897 /* GoogleService-Info.plist */; };
-		FF5DF61120AB4EC4009C2897 /* FireBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5DF61020AB4EC4009C2897 /* FireBaseManager.swift */; };
 		FFDC3E8520AA250A00AADF8A /* kimchi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDC3E8320AA250A00AADF8A /* kimchi.storyboard */; };
 		FFDC3E8B20AA425300AADF8A /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDC3E8A20AA425300AADF8A /* CreateProfileViewController.swift */; };
 		FFF2740B20A9E92300D66A0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF2740A20A9E92300D66A0B /* AppDelegate.swift */; };
@@ -32,11 +30,9 @@
 		B31F155320AB3E02002A20E2 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		B31F155520AB3EE3002A20E2 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		B37503C420AA224E00AFB23A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		B37503C720AA276700AFB23A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = InterviewMeApp/Base.lproj/daniel.storyboard; sourceTree = "<group>"; };
 		E313558045188ED812C8FDAD /* Pods_InterviewMeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InterviewMeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF14868020AA508B00FE71FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = InterviewMeApp/Base.lproj/createProfile.storyboard; sourceTree = "<group>"; };
 		FF5DF60E20AB4D83009C2897 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		FF5DF61020AB4EC4009C2897 /* FireBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseManager.swift; sourceTree = "<group>"; };
 		FFDC3E8420AA250A00AADF8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = InterviewMeApp/Base.lproj/kimchi.storyboard; sourceTree = "<group>"; };
 		FFDC3E8A20AA425300AADF8A /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
 		FFF2740720A9E92300D66A0B /* InterviewMeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InterviewMeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,15 +82,51 @@
 			path = "Video Capture";
 			sourceTree = "<group>";
 		};
+		FF5780B320ABB1EA00C51922 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FF14867F20AA508B00FE71FD /* createProfile.storyboard */,
+				FFF2740E20A9E92300D66A0B /* Main.storyboard */,
+				FFDC3E8320AA250A00AADF8A /* kimchi.storyboard */,
+				B31F155020AB395D002A20E2 /* RecordVideo.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		FF9F711020AB617700A461A9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FFF2740A20A9E92300D66A0B /* AppDelegate.swift */,
 				FFF2741120A9E92400D66A0B /* Assets.xcassets */,
 				FFF2741320A9E92400D66A0B /* LaunchScreen.storyboard */,
 				FFF2741620A9E92400D66A0B /* Info.plist */,
 				FF5DF60E20AB4D83009C2897 /* GoogleService-Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		FFACA4E820ABB20E00206FA4 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FFF2740C20A9E92300D66A0B /* ViewController.swift */,
+				B37503C420AA224E00AFB23A /* LoginViewController.swift */,
+				FFDC3E8A20AA425300AADF8A /* CreateProfileViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		FFACA4E920ABB23000206FA4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FFACA4EA20ABB26000206FA4 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Model Controllers";
 			sourceTree = "<group>";
 		};
 		FFF273FE20A9E92300D66A0B = {
@@ -118,18 +150,12 @@
 		FFF2740920A9E92300D66A0B /* InterviewMeApp */ = {
 			isa = PBXGroup;
 			children = (
-				FFF2740A20A9E92300D66A0B /* AppDelegate.swift */,
-				FFF2740C20A9E92300D66A0B /* ViewController.swift */,
-				B37503C420AA224E00AFB23A /* LoginViewController.swift */,
-				FFDC3E8A20AA425300AADF8A /* CreateProfileViewController.swift */,
-				FF14867F20AA508B00FE71FD /* createProfile.storyboard */,
-				FFF2740E20A9E92300D66A0B /* Main.storyboard */,
-				FFDC3E8320AA250A00AADF8A /* kimchi.storyboard */,
-				B37503C620AA276700AFB23A /* daniel.storyboard */,
-				B31F155020AB395D002A20E2 /* RecordVideo.storyboard */,
+				FFACA4E920ABB23000206FA4 /* Models */,
+				FFACA4EA20ABB26000206FA4 /* Model Controllers */,
+				FF5780B320ABB1EA00C51922 /* Views */,
+				FFACA4E820ABB20E00206FA4 /* View Controllers */,
 				FF9F711020AB617700A461A9 /* Resources */,
 				B31F154F20AB3462002A20E2 /* Video Capture */,
-				FF5DF61020AB4EC4009C2897 /* FireBaseManager.swift */,
 			);
 			path = InterviewMeApp;
 			sourceTree = "<group>";
@@ -197,7 +223,6 @@
 				FF14868120AA508B00FE71FD /* createProfile.storyboard in Resources */,
 				FF5DF60F20AB4D83009C2897 /* GoogleService-Info.plist in Resources */,
 				FFF2741520A9E92400D66A0B /* LaunchScreen.storyboard in Resources */,
-				B37503C820AA276700AFB23A /* daniel.storyboard in Resources */,
 				FFDC3E8520AA250A00AADF8A /* kimchi.storyboard in Resources */,
 				B31F155220AB395D002A20E2 /* RecordVideo.storyboard in Resources */,
 				FFF2741220A9E92400D66A0B /* Assets.xcassets in Resources */,
@@ -235,11 +260,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-InterviewMeApp/Pods-InterviewMeApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -259,6 +286,7 @@
 				B31F155620AB3EE3002A20E2 /* ImageViewController.swift in Sources */,
 				FFDC3E8B20AA425300AADF8A /* CreateProfileViewController.swift in Sources */,
 
+
 				FF5DF61120AB4EC4009C2897 /* FireBaseManager.swift in Sources */,
 
 				FFDC3E8720AA39D900AADF8A /* AuthenticationManger.swift in Sources */,
@@ -268,6 +296,7 @@
 
 
 				FF5DF61120AB4EC4009C2897 /* FireBaseManager.swift in Sources */,
+
 
 
 			);
@@ -282,14 +311,7 @@
 				B31F155120AB395D002A20E2 /* Base */,
 			);
 			name = RecordVideo.storyboard;
-			sourceTree = "<group>";
-		};
-		B37503C620AA276700AFB23A /* daniel.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B37503C720AA276700AFB23A /* Base */,
-			);
-			name = daniel.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		FF14867F20AA508B00FE71FD /* createProfile.storyboard */ = {
@@ -314,6 +336,7 @@
 				FFF2740F20A9E92300D66A0B /* Base */,
 			);
 			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		FFF2741320A9E92400D66A0B /* LaunchScreen.storyboard */ = {
