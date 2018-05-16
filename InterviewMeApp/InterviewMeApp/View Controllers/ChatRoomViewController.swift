@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import TwilioVideo
 
 class ChatRoomViewController: UIViewController {
+    
+    @IBOutlet weak var previewView: TVIVideoView!
     
     override func viewDidLoad() {
         super .viewDidLoad()

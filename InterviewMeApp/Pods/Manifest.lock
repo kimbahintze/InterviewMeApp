@@ -20,10 +20,12 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.4)
   - GTMSessionFetcher/Core (1.1.15)
   - leveldb-library (1.20)
+  - TwilioVideo (2.0.1)
 
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Database
+  - TwilioVideo (~> 2.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -34,6 +36,7 @@ SPEC REPOS:
     - GoogleToolboxForMac
     - GTMSessionFetcher
     - leveldb-library
+    - TwilioVideo
 
 SPEC CHECKSUMS:
   Firebase: 4bd804448ab2596794698773d41520a0af101e65
@@ -43,7 +46,8 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
+  TwilioVideo: d9e0e61748b574f4adb6d540db469b3a93e77e43
 
-PODFILE CHECKSUM: d9f9c14d22672719251d98f99031b6a11f779ded
+PODFILE CHECKSUM: 80229bafd20e320df2980b0e0919b7f90352ff7e
 
 COCOAPODS: 1.5.2

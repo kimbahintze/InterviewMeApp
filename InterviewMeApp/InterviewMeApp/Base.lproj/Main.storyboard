@@ -152,16 +152,16 @@
             </objects>
             <point key="canvasLocation" x="2090" y="8"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Lobby Table View Controller-->
         <scene sceneID="zIz-CR-awr">
             <objects>
-                <tableViewController id="e3y-aj-laR" sceneMemberID="viewController">
+                <tableViewController id="e3y-aj-laR" customClass="LobbyTableViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="CnC-FK-Hme">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="cvf-5W-YMN">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" id="cvf-5W-YMN">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cvf-5W-YMN" id="mkY-WD-1yc">
@@ -169,7 +169,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="1Sp-zt-e8O" kind="show" identifier="toJoinChatRoom" id="Hk6-I6-XvS"/>
+                                    <segue destination="1Sp-zt-e8O" kind="show" identifier="toJoinChatRoom" id="DKG-FD-JAc"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -186,12 +186,12 @@
         <!--Chatroom-->
         <scene sceneID="f0r-aO-Vrw">
             <objects>
-                <viewController title="Chatroom" id="1Sp-zt-e8O" sceneMemberID="viewController">
+                <viewController title="Chatroom" id="1Sp-zt-e8O" customClass="ChatRoomViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Nm-vU-YkJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a72-WD-ZDZ">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a72-WD-ZDZ" customClass="TVIVideoView">
                                 <rect key="frame" x="226" y="416" width="129" height="231"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -207,6 +207,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5Ev-Tn-HYf"/>
                     </view>
+                    <connections>
+                        <outlet property="previewView" destination="a72-WD-ZDZ" id="Zli-Hf-Z77"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eTf-7l-uSj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
