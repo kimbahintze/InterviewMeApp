@@ -11,6 +11,7 @@
 		A05052DD20ACCF0B005981CF /* ChatLobbyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05052DC20ACCF0B005981CF /* ChatLobbyUser.swift */; };
 		A05052E020ACD445005981CF /* LobbyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05052DF20ACD445005981CF /* LobbyTableViewController.swift */; };
 		A05052E220ACD4C9005981CF /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05052E120ACD4C9005981CF /* ChatRoomViewController.swift */; };
+		A05052E420ACE3C9005981CF /* TokenUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05052E320ACE3C9005981CF /* TokenUtilities.swift */; };
 		AF1696ED091B42610905A063 /* Pods_InterviewMeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E313558045188ED812C8FDAD /* Pods_InterviewMeApp.framework */; };
 		B31F155220AB395D002A20E2 /* RecordVideo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B31F155020AB395D002A20E2 /* RecordVideo.storyboard */; };
 		B37503C520AA224E00AFB23A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37503C420AA224E00AFB23A /* LoginViewController.swift */; };
@@ -31,6 +32,7 @@
 		A05052DC20ACCF0B005981CF /* ChatLobbyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatLobbyUser.swift; path = "InterviewMeApp/View Controllers/ChatLobbyUser.swift"; sourceTree = SOURCE_ROOT; };
 		A05052DF20ACD445005981CF /* LobbyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyTableViewController.swift; sourceTree = "<group>"; };
 		A05052E120ACD4C9005981CF /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
+		A05052E320ACE3C9005981CF /* TokenUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TokenUtilities.swift; path = "InterviewMeApp/View Controllers/TokenUtilities.swift"; sourceTree = SOURCE_ROOT; };
 		B31F155120AB395D002A20E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = InterviewMeApp/Base.lproj/RecordVideo.storyboard; sourceTree = "<group>"; };
 		B37503C420AA224E00AFB23A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E313558045188ED812C8FDAD /* Pods_InterviewMeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InterviewMeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				A05052DC20ACCF0B005981CF /* ChatLobbyUser.swift */,
+				A05052E320ACE3C9005981CF /* TokenUtilities.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B37503C520AA224E00AFB23A /* LoginViewController.swift in Sources */,
+				A05052E420ACE3C9005981CF /* TokenUtilities.swift in Sources */,
 				FFF2740D20A9E92300D66A0B /* HomeViewController.swift in Sources */,
 				FFF2740B20A9E92300D66A0B /* AppDelegate.swift in Sources */,
 				A05052E220ACD4C9005981CF /* ChatRoomViewController.swift in Sources */,
