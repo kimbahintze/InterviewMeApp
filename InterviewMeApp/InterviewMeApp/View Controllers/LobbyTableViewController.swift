@@ -14,12 +14,13 @@ class LobbyTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super .viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name: ChatRoomController.NotificationKeys.reloadTable, object: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create", style: .done, target: self, action: #selector(createChatRoom))
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super .viewDidAppear(animated)
-        
+        ChatRoomController.shared.fetchLobby()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,13 +39,23 @@ class LobbyTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toJoinChatRoom" {
+            guard let destinationVC = segue.destination as? ChatRoomViewController, let indexPath = tableView.indexPathForSelectedRow else { return }
             
+            let roomName = ChatRoomController.shared.chatLobbyUsers[indexPath.row]
+            
+            destinationVC.roomName = roomName
         }
     }
     
     @objc func createChatRoom() {
         guard let mainViewController = self.storyboard?.instantiateViewController(withIdentifier: "ChatRoomViewController") else { return }
         navigationController?.pushViewController(mainViewController, animated: true)
+    }
+    
+    @objc private func reloadTable() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 }
 

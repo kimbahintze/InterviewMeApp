@@ -42,9 +42,9 @@ class ChatRoomController {
             if let dictionary = snapshot.value as? [String:Any] {
                 var fetchedLobbyUsers: [String] = []
                 dictionary.forEach({ (key, value) in
-                    guard let userDictionary = value as? [String:Any] else { return }
-                    guard let user = userDictionary["name"] as? String else { return }
-                    fetchedLobbyUsers.append(user)
+                    guard let value = value as? [String:Any] else { return }
+                    guard let name = value["name"] as? String else { return }
+                    fetchedLobbyUsers.append(name)
                 })
                 self.chatLobbyUsers = fetchedLobbyUsers
             }
@@ -52,7 +52,7 @@ class ChatRoomController {
     }
     
     func leaveLobby() {
-        Database.database().reference().child("jobIndustry/\(jobIndustry)/videoChatRooms/\(user?.uid ?? "")").setValue(["name": user?.displayName ?? ""])
+        Database.database().reference().child("jobIndustry/\(jobIndustry)/videoChatRooms/\(user?.uid ?? "")").removeValue()
     }
     
     private init() {
