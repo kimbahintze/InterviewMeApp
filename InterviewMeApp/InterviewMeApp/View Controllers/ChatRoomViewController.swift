@@ -21,112 +21,137 @@ class ChatRoomViewController: UIViewController {
     var remoteParticipant: TVIRemoteParticipant?
     
     @IBOutlet weak var previewView: TVIVideoView!
-    var remoteView: TVIVideoView?
+    var remoteView: TVIVideoView!
     
     override func viewDidLoad() {
         super .viewDidLoad()
         ChatRoomController.shared.enterLobby()
-        joinRoom()
         startPreview()
+        if roomName == nil {
+            createRoom()
+        } else if roomName != nil {
+            joinRoom()
+        }
+        navigationController?.navigationBar.isHidden = true
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super .viewDidDisappear(animated)
         ChatRoomController.shared.leaveLobby()
-        roomName = nil
+        self.roomName = nil
     }
     
-    private func joinRoom() {
-        guard let displayName = ChatRoomController.shared.user?.displayName?.components(separatedBy: .whitespacesAndNewlines).joined() else { return }
-        
-        var token = "ACCESS_TOKEN"
-        var internalRoomName = "ROOM_NAME".components(separatedBy: .whitespacesAndNewlines).joined()
-        
-        if roomName == nil {
-            internalRoomName = displayName
-        } else if roomName != nil {
-            internalRoomName = (roomName?.components(separatedBy: .whitespacesAndNewlines).joined())!
-        }
-        
+    private func createRoom() {
         do {
-            let url = "\(baseTokenURL)name=\(displayName)&roomname=\(internalRoomName)"
-            token = try TokenUtils.fetchToken(url: url)
+            guard let displayName = ChatRoomController.shared.user?.displayName?.components(separatedBy: .whitespacesAndNewlines).joined(),
+                let roomName = ChatRoomController.shared.user?.displayName?.components(separatedBy: .whitespacesAndNewlines).joined() else { return }
+            let url = "\(baseTokenURL)name=\(displayName)&roomname=\(roomName)"
+            let token = try TokenUtils.fetchToken(url: url)
+            let connectOptions = TVIConnectOptions(token: token) { (builder) in
+                builder.roomName = roomName
+                
+                if let audioTracks = self.localAudioTrack {
+                    print("Audio Tracks")
+                    builder.audioTracks = [audioTracks]
+                }
+                
+                if let videoTracks = self.localVideoTrack {
+                    print("Video Tracks")
+                    builder.videoTracks = [videoTracks]
+                }
+            }
+            room = TwilioVideo.connect(with: connectOptions, delegate: self)
         } catch {
             print("Error Creating Room")
         }
-        
-        let connectOptions = TVIConnectOptions(token: token) { (builder) in
-            builder.roomName = internalRoomName
+    }
+    
+    private func joinRoom() {
+        do {
+            guard let displayName = ChatRoomController.shared.user?.displayName?.components(separatedBy: .whitespacesAndNewlines).joined(), let internalRoomName = roomName?.components(separatedBy: .whitespacesAndNewlines).joined() else { return }
             
-            if let videoTrack = self.localVideoTrack {
-                builder.videoTracks = [videoTrack]
+            let url = "\(baseTokenURL)name=\(displayName)&roomname=\(internalRoomName)"
+            let token = try TokenUtils.fetchToken(url: url)
+            print("Join Token: \(token)")
+            let connectOptions = TVIConnectOptions(token: token) { (builder) in
+                builder.roomName = internalRoomName
+                
+                if let audioTracks = self.localAudioTrack {
+                    print("Audio Tracks")
+                    builder.audioTracks = [audioTracks]
+                }
+                
+                if let videoTracks = self.localVideoTrack {
+                    print("Video Tracks")
+                    builder.videoTracks = [videoTracks]
+                }
             }
-            
-            if let audioTrack = self.localAudioTrack {
-                builder.audioTracks = [audioTrack]
-            }
+            room = TwilioVideo.connect(with: connectOptions, delegate: self)
+        } catch {
+            print("Error Joining Room")
         }
-        room = TwilioVideo.connect(with: connectOptions, delegate: self)
+    }
+    
+    private func setupRemote() {
+        self.remoteView = TVIVideoView(frame: CGRect.zero, delegate: self)
+        
+        self.remoteView.contentMode = .scaleAspectFill
+        
+        self.remoteView.clipsToBounds = true
+        
+        self.view.insertSubview(remoteView, at: 0)
+        
+        remoteView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        remoteView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        remoteView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        remoteView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
     private func startPreview() {
-        camera = TVICameraCapturer(source: .frontCamera, delegate: self)
-        localVideoTrack = TVILocalVideoTrack.init(capturer: camera!, enabled: true, constraints: nil, name: "Camera")
-        previewView.contentMode = .scaleAspectFit
-        if (localVideoTrack == nil) {
-        } else {
-            // Add renderer to video track for local preview
-            localVideoTrack!.addRenderer(self.previewView)
+        if let camera = TVICameraCapturer(source: .frontCamera) {
+            let videoTrack = TVILocalVideoTrack(capturer: camera)
+            videoTrack?.addRenderer(previewView)
+            self.localVideoTrack = videoTrack
+            self.camera = camera
+            previewView.contentMode = .scaleAspectFill
+            previewView.clipsToBounds = true
         }
-    }
-    
-    private func setupRemoteView() {
-        remoteView = TVIVideoView(frame: CGRect.zero, delegate: self)
-        
-        self.view.insertSubview(remoteView!, at: 0)
-        
-        self.remoteView?.contentMode = .scaleAspectFit
-        
-        remoteView?.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        remoteView?.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        remoteView?.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        remoteView?.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
 }
 
 extension ChatRoomViewController: TVICameraCapturerDelegate {
     
     func cameraCapturer(_ capturer: TVICameraCapturer, didStartWith source: TVICameraCaptureSource) {
-        previewView.shouldMirror = (source == .frontCamera)
+//        previewView.shouldMirror = (source == .frontCamera)
     }
 }
 
 extension ChatRoomViewController: TVIRoomDelegate {
     
     func didConnect(to room: TVIRoom) {
-        print("\(room.localParticipant?.identity) Owns this lobby, \(room.remoteParticipants.first?.identity) Joined")
-        room.remoteParticipants.first?.delegate = self
+        if room.remoteParticipants.count > 0 {
+            print("\(room.localParticipant?.identity) is local, \(room.remoteParticipants.first?.identity) remote")
+            self.remoteParticipant = room.remoteParticipants.first
+            self.remoteParticipant?.delegate = self
+            print(remoteParticipant?.delegate)
+        }
     }
     
     func room(_ room: TVIRoom, participantDidConnect participant: TVIRemoteParticipant) {
-        if remoteParticipant == nil {
-            print("Remote Participant Nil")
-            participant.delegate = self
-        }
+        participant.delegate = self
     }
     
     func room(_ room: TVIRoom, participantDidDisconnect participant: TVIRemoteParticipant) {
         navigationController?.popViewController(animated: true)
+        ChatRoomController.shared.enterLobby()
     }
 }
 
 extension ChatRoomViewController: TVIRemoteParticipantDelegate {
     func subscribed(to videoTrack: TVIRemoteVideoTrack, publication: TVIRemoteVideoTrackPublication, for participant: TVIRemoteParticipant) {
-        print("Subscribed")
-        if remoteParticipant != nil {
-            setupRemoteView()
-            videoTrack.addRenderer(remoteView!)
-        }
+        setupRemote()
+        videoTrack.addRenderer(self.remoteView!)
+        ChatRoomController.shared.leaveLobby()
     }
 }
 
