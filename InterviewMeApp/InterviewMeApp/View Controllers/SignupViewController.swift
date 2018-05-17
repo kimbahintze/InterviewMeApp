@@ -11,7 +11,6 @@ import FirebaseAuth
 class SignupViewController: UIViewController {
     
     // MARK: - Outlets
-    
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var birthdayTextField: UITextField!
@@ -38,72 +37,18 @@ class SignupViewController: UIViewController {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         confirmPasswordTextField.delegate = self
+        security()
         activityView = UIActivityIndicatorView()
-        birthdayTextField.inputView = datePicker
-        industryTextField.inputView = jobIndustryPicker
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadPicker), name: JobIndustryController.NotificationKeys.reloadPicker, object: nil)
-        jobIndustryPicker.dataSource = self
-        jobIndustryPicker.delegate = self
-    }
-    
-    //MARK: - Actions
-    
-    @IBAction func dateChanged(_ sender: UIDatePicker) {
-        birthdayTextField.text = verifyAge()
-    }
-    
-    func verifyAge() -> String {
-        let dob = datePicker.date
-        let gregorian = Calendar(identifier: .gregorian)
-        let ageComponents = gregorian.dateComponents([.year], from: dob, to: Date())
-        let age = ageComponents.year!
-        return "\(age)"
-    }
-    
-    @IBAction func handleSignup(_ sender: UIButton) {
-        guard let firstName = firstNameTextField.text, !firstName.isEmpty else { return }
-        guard let lastName = lastNameTextField.text, !lastName.isEmpty else { return }
-        guard let email = emailTextField.text, !email.isEmpty else { return }
-        guard let password = passwordTextField.text, !password.isEmpty else { return }
-        guard let confirmPass = passwordTextField.text, !confirmPass.isEmpty else { return }
-        guard let age = birthdayTextField.text, !age.isEmpty else { return }
-        guard let industry = industryTextField.text, !industry.isEmpty else { return }
-        
-        Auth.auth().createUser(withEmail: email, password: password) { (dataResult, error) in
-            if let error = error {
-                print("Error creating user: \(error.localizedDescription)")
-                return
-            }
-            
-            //Sets First & Last name to Auth.auth().currentUser.displayName
-            let name = "\(firstName) \(lastName)"
-            let changeRequest = dataResult?.user.createProfileChangeRequest()
-            changeRequest?.displayName = name
-            changeRequest?.commitChanges(completion: { (error) in
-                if let error = error {
-                    
-                    print("Error commiting name: \(error.localizedDescription)")
-                    self.dismiss(animated: false, completion: nil)
-                }
-                
-                guard let uuid = Auth.auth().currentUser?.uid else { return }
-                let jobIndustry = industry.components(separatedBy: .whitespacesAndNewlines).joined().lowercased()
-                Database.database().reference().child("users").child(uuid).setValue(["jobindustry": jobIndustry])
-                
-                let internalCurrentUser = CurrentUser(displayName: name, jobIndustry: jobIndustry, uuid: uuid, email: email)
-                currentUser = internalCurrentUser
-            })
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            
-            let mainTabBarController = sb.instantiateViewController(withIdentifier: "MainTabBarController")
-            self.present(mainTabBarController, animated: true, completion: nil)
-        }
+
     }
 }
 
 //MARK: - Textfield Delegate
 
 extension SignupViewController: UITextFieldDelegate {
+    
+    
+
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
