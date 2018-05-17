@@ -23,6 +23,10 @@ class LobbyTableViewController: UITableViewController {
         ChatRoomController.shared.fetchLobby()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super .viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
+    }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ChatRoomController.shared.chatLobbyUsers.count
     }

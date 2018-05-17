@@ -5,12 +5,10 @@
 //  Created by Kimba Hintze on 5/14/18.
 //  Copyright © 2018 Kim Lundquist. All rights reserved.
 //
-
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
-
-class SignupViewController: UIViewController, UITextFieldDelegate {
+class SignupViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var firstNameTextField: UITextField!
@@ -20,10 +18,15 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
+    @IBOutlet var datePicker: UIDatePicker!
+    @IBOutlet var jobIndustryPicker: UIPickerView!
+    
+    //MARK: - Properties
     
     var activityView: UIActivityIndicatorView!
+    let jobIndustries = JobIndustryController.shared.jobIndustries
     
-    let picker = UIDatePicker()
+    //MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,50 +39,13 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         confirmPasswordTextField.delegate = self
         security()
         activityView = UIActivityIndicatorView()
-        createDatePicker()
- 
-    }
-   
-    // Password Security
-    func security() {
-        passwordTextField.isSecureTextEntry = true
-        confirmPasswordTextField.isSecureTextEntry = true
-    }
-    // Picker
-    func createDatePicker() {
-        
-        // toolbar
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-        
-        // done button for toolbar
-        let done = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(donePressed(_:)))
-        toolbar.setItems([done], animated: false)
-        
-        birthdayTextField.inputAccessoryView = toolbar
-        birthdayTextField.inputView = picker
-        
-        picker.datePickerMode = .date
-        picker.maximumDate = Calendar.current.date(byAdding: .year, value: 0, to: Date())
-    }
 
-    func verifyAge() {
-        let dob = picker.date
-        let today = Date()
-        let gregorian = Calendar(identifier: .gregorian)
-        let ageComponents = gregorian.dateComponents([.year], from: dob, to: Date())
-        let age = ageComponents.year!
-        birthdayTextField.text = "\(age)"
     }
+}
 
-    @objc func donePressed(_: UIBarButtonItem) {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-  //      birthdayTextField.text = formatter.string(from: picker.date)
-        verifyAge()
-        birthdayTextField.resignFirstResponder()
-    }
+//MARK: - Textfield Delegate
+
+extension SignupViewController: UITextFieldDelegate {
     
     
 
@@ -121,41 +87,30 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
+}
+
+//MARK: - Picker View Datasource & Delegate
+
+extension SignupViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
-    @IBAction func handleSignup(_ sender: UIButton) {
-        guard let firstName = firstNameTextField.text, !firstName.isEmpty else { return }
-        guard let lastName = lastNameTextField.text, !lastName.isEmpty else { return }
-        guard let email = emailTextField.text, !email.isEmpty else { return }
-        guard let password = passwordTextField.text, !password.isEmpty else { return }
-        guard let confirmPass = passwordTextField.text, !confirmPass.isEmpty else { return }
-        guard let birthday = birthdayTextField.text, !birthday.isEmpty else { return }
-        guard let jobIndustry = industryTextField.text, !jobIndustry.isEmpty else { return }
-        
-        Auth.auth().createUser(withEmail: email, password: password) { (dataResult, error) in
-            if error == nil && dataResult != nil {
-                print("User created!")
-                let name = "\(firstName) \(lastName)"
-                
-                let changeRequest = dataResult?.user.createProfileChangeRequest()
-                changeRequest?.displayName = name
-                changeRequest?.commitChanges(completion: { (error) in
-                    if let error = error {
-                        
-                        print("Error commiting name: \(error.localizedDescription)")
-                        self.dismiss(animated: false, completion: nil)
-                    }
-                    
-                    guard let currentUser = Auth.auth().currentUser else { return }
-                    Database.database().reference().child("users").child(currentUser.uid).setValue(["jobindustry": jobIndustry, "birthday":birthday])
-                })
-                let sb = UIStoryboard(name: "Main", bundle: nil)
-                
-                let mainViewController = sb.instantiateViewController(withIdentifier: "MainViewController")
-                self.navigationController?.pushViewController(mainViewController, animated: true)
-                print("IT moved")
-            } else {
-                print("Error creating user: \(error!.localizedDescription)")
-            }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return JobIndustryController.shared.jobIndustries.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return JobIndustryController.shared.jobIndustries[row].name
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        industryTextField.text = JobIndustryController.shared.jobIndustries[row].name
+    }
+    @objc private func reloadPicker() {
+        DispatchQueue.main.async {
+            self.jobIndustryPicker.reloadAllComponents()
         }
     }
 }

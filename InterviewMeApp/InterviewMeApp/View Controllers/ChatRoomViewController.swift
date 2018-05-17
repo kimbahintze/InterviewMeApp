@@ -27,12 +27,7 @@ class ChatRoomViewController: UIViewController {
         super .viewDidLoad()
         ChatRoomController.shared.enterLobby()
         startPreview()
-        if roomName == nil {
-            createRoom()
-        } else if roomName != nil {
-            joinRoom()
-        }
-        navigationController?.navigationBar.isHidden = true
+        createRoom()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -42,35 +37,17 @@ class ChatRoomViewController: UIViewController {
     }
     
     private func createRoom() {
-        do {
-            guard let displayName = ChatRoomController.shared.user?.displayName?.components(separatedBy: .whitespacesAndNewlines).joined(),
-                let roomName = ChatRoomController.shared.user?.displayName?.components(separatedBy: .whitespacesAndNewlines).joined() else { return }
-            let url = "\(baseTokenURL)name=\(displayName)&roomname=\(roomName)"
-            let token = try TokenUtils.fetchToken(url: url)
-            let connectOptions = TVIConnectOptions(token: token) { (builder) in
-                builder.roomName = roomName
-                
-                if let audioTracks = self.localAudioTrack {
-                    print("Audio Tracks")
-                    builder.audioTracks = [audioTracks]
-                }
-                
-                if let videoTracks = self.localVideoTrack {
-                    print("Video Tracks")
-                    builder.videoTracks = [videoTracks]
-                }
-            }
-            room = TwilioVideo.connect(with: connectOptions, delegate: self)
-        } catch {
-            print("Error Creating Room")
+        guard let displayName = currentUser?.displayName?.components(separatedBy: .whitespacesAndNewlines).joined() else { return }
+        var internalRoomName: String?
+        
+        if roomName == nil {
+            internalRoomName = displayName
+        } else if roomName != nil {
+            internalRoomName = roomName?.components(separatedBy: .whitespacesAndNewlines).joined()
         }
-    }
-    
-    private func joinRoom() {
+        
         do {
-            guard let displayName = ChatRoomController.shared.user?.displayName?.components(separatedBy: .whitespacesAndNewlines).joined(), let internalRoomName = roomName?.components(separatedBy: .whitespacesAndNewlines).joined() else { return }
-            
-            let url = "\(baseTokenURL)name=\(displayName)&roomname=\(internalRoomName)"
+            let url = "\(baseTokenURL)name=\(displayName)&roomname=\(internalRoomName ?? "")"
             let token = try TokenUtils.fetchToken(url: url)
             print("Join Token: \(token)")
             let connectOptions = TVIConnectOptions(token: token) { (builder) in
@@ -93,6 +70,8 @@ class ChatRoomViewController: UIViewController {
     }
     
     private func setupRemote() {
+        navigationController?.navigationBar.isHidden = true
+        
         self.remoteView = TVIVideoView(frame: CGRect.zero, delegate: self)
         
         self.remoteView.contentMode = .scaleAspectFill
@@ -101,10 +80,28 @@ class ChatRoomViewController: UIViewController {
         
         self.view.insertSubview(remoteView, at: 0)
         
+        let hangupButton = UIButton()
+        hangupButton.setImage(#imageLiteral(resourceName: "End Call").withRenderingMode(.alwaysTemplate), for: .normal)
+        hangupButton.tintColor = UIColor(red: 223/255, green: 23/255, blue: 26/255, alpha: 1.0)
+        hangupButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.remoteView.addSubview(hangupButton)
+        
+        hangupButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        hangupButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50).isActive = true
+        hangupButton.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        hangupButton.heightAnchor.constraint(equalToConstant: 120).isActive = true
+
+        hangupButton.addTarget(self, action: #selector(hangupCall), for: .touchUpInside)
+        
         remoteView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         remoteView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         remoteView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         remoteView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
+    
+    @objc private func hangupCall() {
+        navigationController?.popViewController(animated: true)
     }
     
     private func startPreview() {
@@ -122,7 +119,7 @@ class ChatRoomViewController: UIViewController {
 extension ChatRoomViewController: TVICameraCapturerDelegate {
     
     func cameraCapturer(_ capturer: TVICameraCapturer, didStartWith source: TVICameraCaptureSource) {
-//        previewView.shouldMirror = (source == .frontCamera)
+        previewView.shouldMirror = (source == .frontCamera)
     }
 }
 
@@ -130,10 +127,8 @@ extension ChatRoomViewController: TVIRoomDelegate {
     
     func didConnect(to room: TVIRoom) {
         if room.remoteParticipants.count > 0 {
-            print("\(room.localParticipant?.identity) is local, \(room.remoteParticipants.first?.identity) remote")
             self.remoteParticipant = room.remoteParticipants.first
             self.remoteParticipant?.delegate = self
-            print(remoteParticipant?.delegate)
         }
     }
     
@@ -143,7 +138,14 @@ extension ChatRoomViewController: TVIRoomDelegate {
     
     func room(_ room: TVIRoom, participantDidDisconnect participant: TVIRemoteParticipant) {
         navigationController?.popViewController(animated: true)
-        ChatRoomController.shared.enterLobby()
+    }
+    
+    func room(_ room: TVIRoom, didDisconnectWithError error: Error?) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func room(_ room: TVIRoom, didFailToConnectWithError error: Error) {
+        navigationController?.popViewController(animated: true)
     }
 }
 

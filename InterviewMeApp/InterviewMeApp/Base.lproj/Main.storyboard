@@ -28,13 +28,13 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="215" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="scs-6r-XQH">
                                                 <rect key="frame" x="0.0" y="40" width="215" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -65,7 +65,6 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Sign Up"/>
                                                 <connections>
-                                                    <action selector="signupButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cwf-ao-0wE"/>
                                                     <segue destination="nwY-8I-Vkz" kind="show" id="fBX-qV-VBO"/>
                                                 </connections>
                                             </button>
@@ -97,65 +96,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1008.8" y="34.632683658170919"/>
+            <point key="canvasLocation" x="518" y="35"/>
         </scene>
-        <!--Home-->
-        <scene sceneID="5vp-Sc-cog">
-            <objects>
-                <viewController storyboardIdentifier="MainViewController" title="Home" id="q5H-cc-BIw" customClass="HomeViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="se0-ts-9cE">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZGH-4R-OAR">
-                                <rect key="frame" x="262" y="608" width="97" height="39"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="VideoRTC"/>
-                                <connections>
-                                    <segue destination="e3y-aj-laR" kind="show" id="Xul-DF-A5J"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ryb-Sx-VPs">
-                                <rect key="frame" x="16" y="606" width="106" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Questions"/>
-                                <connections>
-                                    <segue destination="bIy-y9-RXl" kind="show" id="1nh-ng-NZB"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erQ-MB-LpA">
-                                <rect key="frame" x="127" y="606" width="130" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Self Practice"/>
-                                <connections>
-                                    <segue destination="u63-PT-vjG" kind="show" id="PPr-YL-IQH"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="ZGH-4R-OAR" firstAttribute="leading" secondItem="erQ-MB-LpA" secondAttribute="trailing" constant="5" id="DBz-i4-HVw"/>
-                            <constraint firstItem="u67-w6-C5w" firstAttribute="bottom" secondItem="erQ-MB-LpA" secondAttribute="bottom" constant="20" id="Khj-6Q-hAW"/>
-                            <constraint firstItem="u67-w6-C5w" firstAttribute="trailing" secondItem="ZGH-4R-OAR" secondAttribute="trailing" constant="16" id="Mae-jv-Ibm"/>
-                            <constraint firstItem="erQ-MB-LpA" firstAttribute="leading" secondItem="ryb-Sx-VPs" secondAttribute="trailing" constant="5" id="UFM-bd-pep"/>
-                            <constraint firstItem="ryb-Sx-VPs" firstAttribute="leading" secondItem="u67-w6-C5w" secondAttribute="leading" constant="16" id="boj-U9-Rez"/>
-                            <constraint firstItem="u67-w6-C5w" firstAttribute="bottom" secondItem="ryb-Sx-VPs" secondAttribute="bottom" constant="20" id="eGP-ld-j7g"/>
-                            <constraint firstItem="u67-w6-C5w" firstAttribute="bottom" secondItem="ZGH-4R-OAR" secondAttribute="bottom" constant="20" id="xtK-WE-2Mt"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="u67-w6-C5w"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Title" id="IcQ-XZ-Et2">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="j4C-9d-vyW"/>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zbc-4o-dIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2090" y="8"/>
-        </scene>
-        <!--Lobby Table View Controller-->
+        <!--Video Chat Rooms-->
         <scene sceneID="zIz-CR-awr">
             <objects>
-                <tableViewController id="e3y-aj-laR" customClass="LobbyTableViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Video Chat Rooms" id="e3y-aj-laR" customClass="LobbyTableViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="CnC-FK-Hme">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -178,10 +124,11 @@
                             <outlet property="delegate" destination="e3y-aj-laR" id="gfd-V7-e3C"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="Rn4-WJ-aJA"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zn6-nk-zxK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3057" y="976"/>
+            <point key="canvasLocation" x="6717.6000000000004" y="975.56221889055485"/>
         </scene>
         <!--Chatroom-->
         <scene sceneID="f0r-aO-Vrw">
@@ -192,7 +139,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a72-WD-ZDZ" customClass="TVIVideoView">
-                                <rect key="frame" x="226" y="416" width="129" height="231"/>
+                                <rect key="frame" x="226" y="367" width="129" height="231"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="129" id="0oO-K5-v8c"/>
@@ -213,22 +160,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eTf-7l-uSj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3909.5999999999999" y="976.46176911544239"/>
-        </scene>
-        <!--Interview Questions-->
-        <scene sceneID="OpK-46-nkx">
-            <objects>
-                <viewController title="Interview Questions" id="bIy-y9-RXl" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Wwl-bu-ktd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="EWy-eM-diL"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fTB-84-iZM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3270" y="-739"/>
+            <point key="canvasLocation" x="7575.1999999999998" y="975.56221889055485"/>
         </scene>
         <!--Signup-->
         <scene sceneID="DhB-Ae-WWY">
@@ -236,7 +168,45 @@
                 <viewControllerPlaceholder storyboardName="Signup" id="nwY-8I-Vkz" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZtQ-8f-qo0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1578" y="-511"/>
+            <point key="canvasLocation" x="1074" y="-510"/>
+        </scene>
+        <!--Interview Questions-->
+        <scene sceneID="s86-zH-Xrr">
+            <objects>
+                <tableViewController storyboardIdentifier="InterviewQuestionTableViewController" title="Interview Questions" id="oXF-Hb-V45" customClass="InterviewQuestionsTableViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="DXd-VE-ryv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="QuestionCell" textLabel="92W-cY-NRv" style="IBUITableViewCellStyleDefault" id="0lY-Ep-ta3">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0lY-Ep-ta3" id="B9O-zg-JbN">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="92W-cY-NRv">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="oXF-Hb-V45" id="JPf-pz-J3f"/>
+                            <outlet property="delegate" destination="oXF-Hb-V45" id="ZnI-n4-Atb"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="NCw-1F-yPs"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qfo-Rf-UZX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1534" y="1030"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kXZ-si-3H0">
@@ -254,15 +224,71 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="srJ-eV-gFZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="69.599999999999994" y="34.632683658170919"/>
+            <point key="canvasLocation" x="-396" y="35"/>
         </scene>
-        <!--RecordVideo-->
-        <scene sceneID="cIk-Ip-URF">
+        <!--Tab Bar Controller-->
+        <scene sceneID="v1t-wC-iJw">
             <objects>
-                <viewControllerPlaceholder storyboardName="RecordVideo" id="u63-PT-vjG" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Hsu-c5-DAi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tabBarController storyboardIdentifier="MainTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="Zaz-EO-b04" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="LnF-3w-pxr"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8wZ-Sf-0l4">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="cH4-tE-9w0" kind="relationship" relationship="viewControllers" id="ZVJ-la-OFV"/>
+                        <segue destination="tYP-J3-n38" kind="relationship" relationship="viewControllers" id="7TM-Sh-ybE"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ssY-xY-xdH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3270" y="35"/>
+            <point key="canvasLocation" x="2327" y="120"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="lsv-qf-ZfA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cH4-tE-9w0" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="InterviewQuestions" selectedImage="InterviewQuestions-Filled" id="Ohh-ic-MmQ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Fga-LR-mu4">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="oXF-Hb-V45" kind="relationship" relationship="rootViewController" id="OfJ-R4-TPl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="28i-vs-b6Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="766" y="1030"/>
+        </scene>
+        <!--Video Chat-->
+        <scene sceneID="0Mz-Jq-Ls6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tYP-J3-n38" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Video Chat" image="VideoChat" selectedImage="VideoChat-Filled" id="eVh-BU-UTA"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="E6i-se-J3B">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="e3y-aj-laR" kind="relationship" relationship="rootViewController" id="Gsz-2b-hMG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X9j-2y-pwp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5778.3999999999996" y="975.56221889055485"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="InterviewQuestions" width="23" height="23"/>
+        <image name="InterviewQuestions-Filled" width="23" height="23"/>
+        <image name="VideoChat" width="23" height="23"/>
+        <image name="VideoChat-Filled" width="23" height="23"/>
+    </resources>
 </document>
