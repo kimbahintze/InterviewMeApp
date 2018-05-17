@@ -7,19 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A03856B420AE3D170069BBEE /* InterviewQuestionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03856B320AE3D170069BBEE /* InterviewQuestionHeader.swift */; };
 		A05052DB20ACCDA3005981CF /* ChatRoomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05052DA20ACCDA3005981CF /* ChatRoomController.swift */; };
 		A05052DD20ACCF0B005981CF /* ChatLobbyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05052DC20ACCF0B005981CF /* ChatLobbyUser.swift */; };
 		A05052E020ACD445005981CF /* LobbyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05052DF20ACD445005981CF /* LobbyTableViewController.swift */; };
 		A05052E220ACD4C9005981CF /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05052E120ACD4C9005981CF /* ChatRoomViewController.swift */; };
 		A05052E420ACE3C9005981CF /* TokenUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05052E320ACE3C9005981CF /* TokenUtilities.swift */; };
+		A0C25C5920ADE8B900B7FD85 /* InterviewQuestionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C25C5820ADE8B900B7FD85 /* InterviewQuestionsTableViewController.swift */; };
+		A0C25C5B20ADFBEE00B7FD85 /* InterviewQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C25C5A20ADFBEE00B7FD85 /* InterviewQuestion.swift */; };
+		A0C25C5D20ADFC4400B7FD85 /* InterviewQuestionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C25C5C20ADFC4400B7FD85 /* InterviewQuestionController.swift */; };
+		A0C25C5F20AE017700B7FD85 /* JobIndustry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C25C5E20AE017700B7FD85 /* JobIndustry.swift */; };
+		A0C25C6120AE019300B7FD85 /* JobIndustryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C25C6020AE019300B7FD85 /* JobIndustryController.swift */; };
+		A0C25C6520AE12C100B7FD85 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C25C6420AE12C100B7FD85 /* CurrentUser.swift */; };
+		A0C25C6920AE2BBE00B7FD85 /* CurrentUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C25C6820AE2BBD00B7FD85 /* CurrentUserController.swift */; };
 		AF1696ED091B42610905A063 /* Pods_InterviewMeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E313558045188ED812C8FDAD /* Pods_InterviewMeApp.framework */; };
-		B31F155220AB395D002A20E2 /* RecordVideo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B31F155020AB395D002A20E2 /* RecordVideo.storyboard */; };
 		B37503C520AA224E00AFB23A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37503C420AA224E00AFB23A /* LoginViewController.swift */; };
 		FF14868120AA508B00FE71FD /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF14867F20AA508B00FE71FD /* Signup.storyboard */; };
 		FF5DF60F20AB4D83009C2897 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF5DF60E20AB4D83009C2897 /* GoogleService-Info.plist */; };
 		FFDC3E8B20AA425300AADF8A /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDC3E8A20AA425300AADF8A /* SignupViewController.swift */; };
 		FFF2740B20A9E92300D66A0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF2740A20A9E92300D66A0B /* AppDelegate.swift */; };
-		FFF2740D20A9E92300D66A0B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF2740C20A9E92300D66A0B /* HomeViewController.swift */; };
 		FFF2741020A9E92300D66A0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFF2740E20A9E92300D66A0B /* Main.storyboard */; };
 		FFF2741220A9E92400D66A0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFF2741120A9E92400D66A0B /* Assets.xcassets */; };
 		FFF2741520A9E92400D66A0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFF2741320A9E92400D66A0B /* LaunchScreen.storyboard */; };
@@ -28,12 +34,19 @@
 /* Begin PBXFileReference section */
 		2597FF0BF0726ABBFA91CF62 /* Pods-InterviewMeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InterviewMeApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InterviewMeApp/Pods-InterviewMeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		9923D488D981203123E3D81C /* Pods-InterviewMeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InterviewMeApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-InterviewMeApp/Pods-InterviewMeApp.release.xcconfig"; sourceTree = "<group>"; };
+		A03856B320AE3D170069BBEE /* InterviewQuestionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewQuestionHeader.swift; sourceTree = "<group>"; };
 		A05052DA20ACCDA3005981CF /* ChatRoomController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatRoomController.swift; path = "InterviewMeApp/View Controllers/ChatRoomController.swift"; sourceTree = SOURCE_ROOT; };
 		A05052DC20ACCF0B005981CF /* ChatLobbyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatLobbyUser.swift; path = "InterviewMeApp/View Controllers/ChatLobbyUser.swift"; sourceTree = SOURCE_ROOT; };
 		A05052DF20ACD445005981CF /* LobbyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyTableViewController.swift; sourceTree = "<group>"; };
 		A05052E120ACD4C9005981CF /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
 		A05052E320ACE3C9005981CF /* TokenUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TokenUtilities.swift; path = "InterviewMeApp/View Controllers/TokenUtilities.swift"; sourceTree = SOURCE_ROOT; };
-		B31F155120AB395D002A20E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = InterviewMeApp/Base.lproj/RecordVideo.storyboard; sourceTree = "<group>"; };
+		A0C25C5820ADE8B900B7FD85 /* InterviewQuestionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewQuestionsTableViewController.swift; sourceTree = "<group>"; };
+		A0C25C5A20ADFBEE00B7FD85 /* InterviewQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InterviewQuestion.swift; path = "InterviewMeApp/View Controllers/InterviewQuestion.swift"; sourceTree = SOURCE_ROOT; };
+		A0C25C5C20ADFC4400B7FD85 /* InterviewQuestionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InterviewQuestionController.swift; path = "InterviewMeApp/View Controllers/InterviewQuestionController.swift"; sourceTree = SOURCE_ROOT; };
+		A0C25C5E20AE017700B7FD85 /* JobIndustry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JobIndustry.swift; path = "InterviewMeApp/View Controllers/JobIndustry.swift"; sourceTree = SOURCE_ROOT; };
+		A0C25C6020AE019300B7FD85 /* JobIndustryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JobIndustryController.swift; path = "InterviewMeApp/View Controllers/JobIndustryController.swift"; sourceTree = SOURCE_ROOT; };
+		A0C25C6420AE12C100B7FD85 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CurrentUser.swift; path = "InterviewMeApp/View Controllers/CurrentUser.swift"; sourceTree = SOURCE_ROOT; };
+		A0C25C6820AE2BBD00B7FD85 /* CurrentUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CurrentUserController.swift; path = "InterviewMeApp/View Controllers/CurrentUserController.swift"; sourceTree = SOURCE_ROOT; };
 		B37503C420AA224E00AFB23A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E313558045188ED812C8FDAD /* Pods_InterviewMeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InterviewMeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF14868020AA508B00FE71FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = InterviewMeApp/Base.lproj/Signup.storyboard; sourceTree = "<group>"; };
@@ -41,7 +54,6 @@
 		FFDC3E8A20AA425300AADF8A /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		FFF2740720A9E92300D66A0B /* InterviewMeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InterviewMeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFF2740A20A9E92300D66A0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FFF2740C20A9E92300D66A0B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FFF2740F20A9E92300D66A0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FFF2741120A9E92400D66A0B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFF2741420A9E92400D66A0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -89,7 +101,7 @@
 			children = (
 				FF14867F20AA508B00FE71FD /* Signup.storyboard */,
 				FFF2740E20A9E92300D66A0B /* Main.storyboard */,
-				B31F155020AB395D002A20E2 /* RecordVideo.storyboard */,
+				A03856B320AE3D170069BBEE /* InterviewQuestionHeader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -109,11 +121,11 @@
 		FFACA4E820ABB20E00206FA4 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FFF2740C20A9E92300D66A0B /* HomeViewController.swift */,
 				B37503C420AA224E00AFB23A /* LoginViewController.swift */,
 				FFDC3E8A20AA425300AADF8A /* SignupViewController.swift */,
 				A05052DF20ACD445005981CF /* LobbyTableViewController.swift */,
 				A05052E120ACD4C9005981CF /* ChatRoomViewController.swift */,
+				A0C25C5820ADE8B900B7FD85 /* InterviewQuestionsTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -123,6 +135,9 @@
 			children = (
 				A05052DC20ACCF0B005981CF /* ChatLobbyUser.swift */,
 				A05052E320ACE3C9005981CF /* TokenUtilities.swift */,
+				A0C25C5A20ADFBEE00B7FD85 /* InterviewQuestion.swift */,
+				A0C25C5E20AE017700B7FD85 /* JobIndustry.swift */,
+				A0C25C6420AE12C100B7FD85 /* CurrentUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -131,6 +146,9 @@
 			isa = PBXGroup;
 			children = (
 				A05052DA20ACCDA3005981CF /* ChatRoomController.swift */,
+				A0C25C5C20ADFC4400B7FD85 /* InterviewQuestionController.swift */,
+				A0C25C6020AE019300B7FD85 /* JobIndustryController.swift */,
+				A0C25C6820AE2BBD00B7FD85 /* CurrentUserController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -229,7 +247,6 @@
 				FF14868120AA508B00FE71FD /* Signup.storyboard in Resources */,
 				FF5DF60F20AB4D83009C2897 /* GoogleService-Info.plist in Resources */,
 				FFF2741520A9E92400D66A0B /* LaunchScreen.storyboard in Resources */,
-				B31F155220AB395D002A20E2 /* RecordVideo.storyboard in Resources */,
 				FFF2741220A9E92400D66A0B /* Assets.xcassets in Resources */,
 				FFF2741020A9E92300D66A0B /* Main.storyboard in Resources */,
 			);
@@ -288,13 +305,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				B37503C520AA224E00AFB23A /* LoginViewController.swift in Sources */,
+				A0C25C6120AE019300B7FD85 /* JobIndustryController.swift in Sources */,
 				A05052E420ACE3C9005981CF /* TokenUtilities.swift in Sources */,
-				FFF2740D20A9E92300D66A0B /* HomeViewController.swift in Sources */,
 				FFF2740B20A9E92300D66A0B /* AppDelegate.swift in Sources */,
 				A05052E220ACD4C9005981CF /* ChatRoomViewController.swift in Sources */,
+				A0C25C5920ADE8B900B7FD85 /* InterviewQuestionsTableViewController.swift in Sources */,
+				A03856B420AE3D170069BBEE /* InterviewQuestionHeader.swift in Sources */,
+				A0C25C5F20AE017700B7FD85 /* JobIndustry.swift in Sources */,
+				A0C25C5B20ADFBEE00B7FD85 /* InterviewQuestion.swift in Sources */,
+				A0C25C5D20ADFC4400B7FD85 /* InterviewQuestionController.swift in Sources */,
 				A05052DD20ACCF0B005981CF /* ChatLobbyUser.swift in Sources */,
 				FFDC3E8B20AA425300AADF8A /* SignupViewController.swift in Sources */,
+				A0C25C6920AE2BBE00B7FD85 /* CurrentUserController.swift in Sources */,
 				A05052E020ACD445005981CF /* LobbyTableViewController.swift in Sources */,
+				A0C25C6520AE12C100B7FD85 /* CurrentUser.swift in Sources */,
 				A05052DB20ACCDA3005981CF /* ChatRoomController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,15 +326,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B31F155020AB395D002A20E2 /* RecordVideo.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B31F155120AB395D002A20E2 /* Base */,
-			);
-			name = RecordVideo.storyboard;
-			path = ..;
-			sourceTree = "<group>";
-		};
 		FF14867F20AA508B00FE71FD /* Signup.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
