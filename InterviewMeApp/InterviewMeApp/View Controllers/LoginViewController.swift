@@ -26,7 +26,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        secure()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -106,8 +106,3 @@ extension UIColor {
     }
 }
 
-extension UIColor {
-    convenience init(r: CGFloat, g: CGFloat, b: CGFloat) {
-        self.init(red: r/255, green: g/255, blue: b/255, alpha: 1)
-    }
-}

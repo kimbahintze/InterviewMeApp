@@ -37,7 +37,7 @@ class SignupViewController: UIViewController {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         confirmPasswordTextField.delegate = self
-        security()
+     
         activityView = UIActivityIndicatorView()
 
     }
