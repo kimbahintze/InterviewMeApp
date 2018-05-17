@@ -13,7 +13,6 @@ import FirebaseAuth
 class SignupViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Outlets
-    
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var birthdayTextField: UITextField!
@@ -35,10 +34,17 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         confirmPasswordTextField.delegate = self
+        security()
         activityView = UIActivityIndicatorView()
-      createDatePicker()
+        createDatePicker()
+ 
     }
    
+    // Password Security
+    func security() {
+        passwordTextField.isSecureTextEntry = true
+        confirmPasswordTextField.isSecureTextEntry = true
+    }
     // Picker
     func createDatePicker() {
         
@@ -54,18 +60,29 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         birthdayTextField.inputView = picker
         
         picker.datePickerMode = .date
+        picker.maximumDate = Calendar.current.date(byAdding: .year, value: 0, to: Date())
     }
-    
+
+    func verifyAge() {
+        let dob = picker.date
+        let today = Date()
+        let gregorian = Calendar(identifier: .gregorian)
+        let ageComponents = gregorian.dateComponents([.year], from: dob, to: Date())
+        let age = ageComponents.year!
+        birthdayTextField.text = "\(age)"
+    }
+
     @objc func donePressed(_: UIBarButtonItem) {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
-        let dateString = formatter.string(from: picker.date)
-        
-        birthdayTextField.text = "\(dateString)"
+  //      birthdayTextField.text = formatter.string(from: picker.date)
+        verifyAge()
         birthdayTextField.resignFirstResponder()
-        
     }
+    
+    
+
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
