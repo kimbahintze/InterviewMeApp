@@ -19,6 +19,7 @@ class InterviewQuestionsTableViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name:InterviewQuestionController.NotificationKey.reloadTable, object: nil)
         navigationItem.title = "Interview Questions"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logout))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Categories", style: .done, target: self, action: #selector(changeCategories))
     }
     
     @objc func logout() {
@@ -28,6 +29,10 @@ class InterviewQuestionsTableViewController: UITableViewController {
         } catch {
             print("Trouble Logging Out")
         }
+    }
+    
+    @objc private func changeCategories() {
+        
     }
     
     @objc private func reloadTable() {
