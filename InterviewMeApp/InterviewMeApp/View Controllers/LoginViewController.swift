@@ -24,6 +24,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        secure()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -35,8 +36,29 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // Password
+    func secure() {
+       passwordTextField.isSecureTextEntry = true
+    }
+    
+    func resetPassword(email: String) {
+        Auth.auth().sendPasswordReset(withEmail: email) { (error) in
+            if error == nil {
+                
+                let alert = UIAlertController(title: "An email has been sent to \(email) to reset the password.", message: nil, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                print("An email has been sent to \(email) to reset the password.")
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
+    }
+    
     // MARK: - Actions
     @IBAction func forgotPasswordButtonTapped(_ sender: Any) {
+        guard let email = emailTextField.text else { return }
+        resetPassword(email: email)
     }
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
@@ -64,4 +86,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.present(alert, animated: true, completion: nil)
     }
 
+}
+
+extension UIColor {
+    convenience init(r: CGFloat, g: CGFloat, b: CGFloat) {
+        self.init(red: r/255, green: g/255, blue: b/255, alpha: 1)
+    }
 }
