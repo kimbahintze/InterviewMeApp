@@ -52,7 +52,7 @@ class JobIndustryController {
         dataTask.resume()
     }
     
-    func fetchUserJobIndustry(completion: @escaping(String?) -> Void) {
+    func fetchUserJobIndustry(completion: @escaping(JobIndustry?) -> Void) {
         guard let uuid = Auth.auth().currentUser?.uid else { completion(nil); return }
         guard let url = baseURL?.appendingPathComponent("users/\(uuid)").appendingPathExtension("json") else { completion(nil); return }
         
@@ -66,7 +66,8 @@ class JobIndustryController {
             if let data = data {
                 do {
                     guard let jobIndustryDictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any] else { return }
-                    guard let jobIndustry = jobIndustryDictionary["jobindustry"] as? String else { return }
+                    guard let jobIndustryName = jobIndustryDictionary["jobindustry"] as? String else { return }
+                    let jobIndustry = JobIndustry(name: jobIndustryName)
                     completion(jobIndustry)
                 } catch {
                     print("Error fetchJobIndusty Data: \(error.localizedDescription)")

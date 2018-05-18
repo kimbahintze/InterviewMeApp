@@ -88,7 +88,7 @@ class SignupViewController: UIViewController {
                 }
                 
                 guard let uuid = Auth.auth().currentUser?.uid else { return }
-                let jobIndustry = industry.components(separatedBy: .whitespacesAndNewlines).joined().lowercased()
+                let jobIndustry = industry
                 Database.database().reference().child("users").child(uuid).setValue(["jobindustry": jobIndustry])
             })
             let sb = UIStoryboard(name: "Main", bundle: nil)
