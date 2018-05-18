@@ -19,7 +19,7 @@ class InterviewQuestionsTableViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name:InterviewQuestionController.NotificationKey.reloadTable, object: nil)
         navigationItem.title = "Interview Questions"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logout))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Categories", style: .done, target: self, action: #selector(changeCategories))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Categories", style: .done, target: self, action: #selector(changeJobIndustry))
     }
     
     @objc func logout() {
@@ -31,14 +31,14 @@ class InterviewQuestionsTableViewController: UITableViewController {
         }
     }
     
-    @objc private func changeCategories() {
-        
-    }
-    
     @objc private func reloadTable() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
+    }
+    
+    @objc private func changeJobIndustry() {
+        
     }
 }
 
@@ -56,7 +56,7 @@ extension InterviewQuestionsTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         
-        let interviewQuestion = InterviewQuestionController.shared.interviewQuestions[indexPath.row]
+        let interviewQuestion = InterviewQuestionController.shared.interviewQuestions[indexPath.section]
         
         cell.textLabel?.text = interviewQuestion.answer
         

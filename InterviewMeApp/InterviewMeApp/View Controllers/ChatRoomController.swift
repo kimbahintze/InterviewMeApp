@@ -8,11 +8,13 @@
 
 import Foundation
 import FirebaseDatabase
+import FirebaseAuth
 
 class ChatRoomController {
     
     static let shared = ChatRoomController()
     
+    private let baseURL = URL(string: "https://interviewmeapp-ec527.firebaseio.com/")
     enum NotificationKeys {
         static let reloadTable = Notification.Name("ReloadTable")
     }
@@ -23,8 +25,12 @@ class ChatRoomController {
         }
     }
     
+    
     func enterLobby() {
-        Database.database().reference().child("jobIndustry/\(currentUser?.jobIndustry ?? "")/videoChatRooms/\(currentUser?.uuid ?? "")").setValue(["name": currentUser?.displayName ?? ""])
+        JobIndustryController.shared.fetchUserJobIndustry { (jobIndustry) in
+            guard let jobIndustry = jobIndustry else { return }
+            Database.database().reference().child("jobIndustry/\(jobIndustry)/videoChatRooms/\(Auth.auth().currentUser?.uid ?? "")").setValue(["name": Auth.auth().currentUser?.displayName])
+        }
     }
     
     func fetchLobby() {
@@ -32,22 +38,29 @@ class ChatRoomController {
             chatLobbyUsers.removeAll()
         }
         
-        Database.database().reference().child("jobIndustry/\(currentUser?.jobIndustry ?? "")/videoChatRooms").observe(.value) { (snapshot) in
-            if let dictionary = snapshot.value as? [String:Any] {
-                var fetchedLobbyUsers: [String] = []
-                dictionary.forEach({ (key, value) in
-                    guard let value = value as? [String:Any] else { return }
-                    guard let name = value["name"] as? String else { return }
-                    print(key)
-                    fetchedLobbyUsers.append(name)
-                })
-                self.chatLobbyUsers = fetchedLobbyUsers
+        JobIndustryController.shared.fetchUserJobIndustry { (jobIndustry) in
+            guard let jobIndustry = jobIndustry else { return }
+            Database.database().reference().child("jobIndustry/\(jobIndustry)/videoChatRooms").observe(.value) { (snapshot) in
+                if let dictionary = snapshot.value as? [String:Any] {
+                    var fetchedLobbyUsers: [String] = []
+                    dictionary.forEach({ (key, value) in
+                        guard let value = value as? [String:Any] else { return }
+                        guard let name = value["name"] as? String else { return }
+                        if key != Auth.auth().currentUser?.uid {
+                            fetchedLobbyUsers.append(name)
+                        }
+                    })
+                    self.chatLobbyUsers = fetchedLobbyUsers
+                }
             }
         }
     }
     
     func leaveLobby() {
-        Database.database().reference().child("jobIndustry/\(currentUser?.jobIndustry ?? "")/videoChatRooms/\(currentUser?.uuid ?? "")").removeValue()
+        JobIndustryController.shared.fetchUserJobIndustry { (jobIndustry) in
+            guard let jobIndustry = jobIndustry else { return }
+            Database.database().reference().child("jobIndustry/\(jobIndustry)/videoChatRooms/\(Auth.auth().currentUser?.uid ?? "")").removeValue()
+        }
     }
     
     private init() {

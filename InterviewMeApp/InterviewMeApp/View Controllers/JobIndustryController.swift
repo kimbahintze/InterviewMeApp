@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 class JobIndustryController {
     
@@ -50,6 +51,33 @@ class JobIndustryController {
         }
         dataTask.resume()
     }
+    
+    func fetchUserJobIndustry(completion: @escaping(String?) -> Void) {
+        guard let uuid = Auth.auth().currentUser?.uid else { completion(nil); return }
+        guard let url = baseURL?.appendingPathComponent("users/\(uuid)").appendingPathExtension("json") else { completion(nil); return }
+        
+        let dataTask = URLSession.shared.dataTask(with: url) { (data, _, error) in
+            if let error = error {
+                print("Error fetchJobIndustry Data Task: \(error.localizedDescription)")
+                completion(nil)
+                return
+            }
+            
+            if let data = data {
+                do {
+                    guard let jobIndustryDictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any] else { return }
+                    guard let jobIndustry = jobIndustryDictionary["jobindustry"] as? String else { return }
+                    completion(jobIndustry)
+                } catch {
+                    print("Error fetchJobIndusty Data: \(error.localizedDescription)")
+                    completion(nil)
+                    return
+                }
+            }
+        }
+        dataTask.resume()
+    }
+
     private init() {
         fetchIndustries()
     }
