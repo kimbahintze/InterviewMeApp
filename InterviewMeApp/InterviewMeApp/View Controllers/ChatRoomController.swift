@@ -28,7 +28,7 @@ class ChatRoomController {
     
     func enterLobby() {
         JobIndustryController.shared.fetchUserJobIndustry { (jobIndustry) in
-            guard let jobIndustry = jobIndustry else { return }
+            guard let jobIndustry = jobIndustry?.name.jobIndustryFormat() else { return }
             Database.database().reference().child("jobIndustry/\(jobIndustry)/videoChatRooms/\(Auth.auth().currentUser?.uid ?? "")").setValue(["name": Auth.auth().currentUser?.displayName])
         }
     }
@@ -39,7 +39,7 @@ class ChatRoomController {
         }
         
         JobIndustryController.shared.fetchUserJobIndustry { (jobIndustry) in
-            guard let jobIndustry = jobIndustry else { return }
+            guard let jobIndustry = jobIndustry?.name.jobIndustryFormat() else { return }
             Database.database().reference().child("jobIndustry/\(jobIndustry)/videoChatRooms").observe(.value) { (snapshot) in
                 if let dictionary = snapshot.value as? [String:Any] {
                     var fetchedLobbyUsers: [String] = []
@@ -58,7 +58,7 @@ class ChatRoomController {
     
     func leaveLobby() {
         JobIndustryController.shared.fetchUserJobIndustry { (jobIndustry) in
-            guard let jobIndustry = jobIndustry else { return }
+            guard let jobIndustry = jobIndustry?.name.jobIndustryFormat() else { return }
             Database.database().reference().child("jobIndustry/\(jobIndustry)/videoChatRooms/\(Auth.auth().currentUser?.uid ?? "")").removeValue()
         }
     }

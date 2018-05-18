@@ -25,33 +25,35 @@ class InterviewQuestionController {
         static let reloadTable = Notification.Name("reloadTable")
     }
     
-    func fetchInterviewQuestions(jobIndustry: String?) {
-        JobIndustryController.shared.fetchUserJobIndustry { (jobIndustry) in
-            guard let jobIndustry = jobIndustry else { return }
-            guard let url = self.baseURL?.appendingPathComponent("jobIndustry/\(jobIndustry)").appendingPathExtension("json") else { return }
+    func fetchInterviewQuestions(jobIndustry: JobIndustry?) {
+        if interviewQuestions.count > 0 {
+            interviewQuestions.removeAll()
+        }
+        
+        guard let jobIndustryName = jobIndustry?.name.jobIndustryFormat() else { return }
+        guard let url = self.baseURL?.appendingPathComponent("jobIndustry/\(jobIndustryName)").appendingPathExtension("json") else { return }
+        
+        let dataTask = URLSession.shared.dataTask(with: url) { (data, _, error) in
+            if let error = error {
+                print("Error fetchInterviewQuestions Data Task: \(error.localizedDescription)")
+            }
             
-            let dataTask = URLSession.shared.dataTask(with: url) { (data, _, error) in
-                if let error = error {
-                    print("Error fetchInterviewQuestions Data Task: \(error.localizedDescription)")
-                }
-                
-                if let data = data {
-                    do {
-                        guard let interviewQuestionDictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any] else { return }
-                        var fetchedInterviewQuestions: [InterviewQuestion] = []
-                        interviewQuestionDictionary.forEach({ (key, value) in
-                            guard let questionDictionary = value as? [String:Any] else { return }
-                            guard let interviewQuestion = InterviewQuestion(jsonDictionary: questionDictionary) else { return }
-                            fetchedInterviewQuestions.append(interviewQuestion)
-                        })
-                        self.interviewQuestions = fetchedInterviewQuestions
-                    } catch {
-                        print("Error fetchInterviewQuestions Data: \(error.localizedDescription)")
-                    }
+            if let data = data {
+                do {
+                    guard let interviewQuestionDictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any] else { return }
+                    var fetchedInterviewQuestions: [InterviewQuestion] = []
+                    interviewQuestionDictionary.forEach({ (key, value) in
+                        guard let questionDictionary = value as? [String:Any] else { return }
+                        guard let interviewQuestion = InterviewQuestion(jsonDictionary: questionDictionary) else { return }
+                        fetchedInterviewQuestions.append(interviewQuestion)
+                    })
+                    self.interviewQuestions = fetchedInterviewQuestions
+                } catch {
+                    print("Error fetchInterviewQuestions Data: \(error.localizedDescription)")
                 }
             }
-            dataTask.resume()
         }
+        dataTask.resume()
     }
     
     private init() {

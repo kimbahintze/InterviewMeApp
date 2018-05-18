@@ -8,18 +8,24 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 private let reuseIdentifier = "QuestionCell"
 
 class InterviewQuestionsTableViewController: UITableViewController {
     
+    @IBOutlet var jobIndustryPicker: UIPickerView!
+    var uselessTextField = UITextField(frame: CGRect.zero)
     override func viewDidLoad() {
         super .viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name: Notification.Name("updateViews"), object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name:InterviewQuestionController.NotificationKey.reloadTable, object: nil)
+        
         navigationItem.title = "Interview Questions"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logout))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Categories", style: .done, target: self, action: #selector(changeJobIndustry))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Job Industry", style: .done, target: self, action: #selector(changeJobIndustry))
+        jobIndustryPicker.delegate = self
+        jobIndustryPicker.dataSource = self
     }
     
     @objc func logout() {
@@ -34,11 +40,31 @@ class InterviewQuestionsTableViewController: UITableViewController {
     @objc private func reloadTable() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
+            self.jobIndustryPicker.reloadAllComponents()
         }
     }
     
     @objc private func changeJobIndustry() {
-        
+        JobIndustryController.shared.fetchUserJobIndustry(completion: { (fetchedJobIndustry) in
+            guard let jobIndustry = fetchedJobIndustry else { return }
+            guard let index = JobIndustryController.shared.jobIndustries.index(of: jobIndustry) else { return }
+            DispatchQueue.main.async {
+                self.jobIndustryPicker.selectRow(index, inComponent: 0, animated: false)
+            }
+        })
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { (_) in
+            self.view.addSubview(self.uselessTextField)
+            self.uselessTextField.inputView = self.jobIndustryPicker
+            self.uselessTextField.becomeFirstResponder()
+            
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneChangingIndustry))
+            
+        }
+    }
+    
+    @objc private func doneChangingIndustry() {
+        uselessTextField.resignFirstResponder()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Job Industry", style: .done, target: self, action: #selector(changeJobIndustry))
     }
 }
 
@@ -78,5 +104,27 @@ extension InterviewQuestionsTableViewController {
     }
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         return false
+    }
+}
+
+extension InterviewQuestionsTableViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return JobIndustryController.shared.jobIndustries.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return JobIndustryController.shared.jobIndustries[row].name
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let jobIndustry = JobIndustryController.shared.jobIndustries[row]
+        InterviewQuestionController.shared.fetchInterviewQuestions(jobIndustry: jobIndustry)
+        guard let uuid = Auth.auth().currentUser?.uid else { return }
+        Database.database().reference().child("users/\(uuid)").setValue(["jobindustry":jobIndustry.name])
     }
 }

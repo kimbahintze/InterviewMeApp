@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A03856B420AE3D170069BBEE /* InterviewQuestionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03856B320AE3D170069BBEE /* InterviewQuestionHeader.swift */; };
+		A03856B820AF41150069BBEE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03856B720AF41150069BBEE /* Constants.swift */; };
 		A05052DB20ACCDA3005981CF /* ChatRoomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05052DA20ACCDA3005981CF /* ChatRoomController.swift */; };
 		A05052DD20ACCF0B005981CF /* ChatLobbyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05052DC20ACCF0B005981CF /* ChatLobbyUser.swift */; };
 		A05052E020ACD445005981CF /* LobbyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05052DF20ACD445005981CF /* LobbyTableViewController.swift */; };
@@ -33,6 +34,7 @@
 		2597FF0BF0726ABBFA91CF62 /* Pods-InterviewMeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InterviewMeApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InterviewMeApp/Pods-InterviewMeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		9923D488D981203123E3D81C /* Pods-InterviewMeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InterviewMeApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-InterviewMeApp/Pods-InterviewMeApp.release.xcconfig"; sourceTree = "<group>"; };
 		A03856B320AE3D170069BBEE /* InterviewQuestionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewQuestionHeader.swift; sourceTree = "<group>"; };
+		A03856B720AF41150069BBEE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A05052DA20ACCDA3005981CF /* ChatRoomController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatRoomController.swift; path = "InterviewMeApp/View Controllers/ChatRoomController.swift"; sourceTree = SOURCE_ROOT; };
 		A05052DC20ACCF0B005981CF /* ChatLobbyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatLobbyUser.swift; path = "InterviewMeApp/View Controllers/ChatLobbyUser.swift"; sourceTree = SOURCE_ROOT; };
 		A05052DF20ACD445005981CF /* LobbyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyTableViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				FFF2741320A9E92400D66A0B /* LaunchScreen.storyboard */,
 				FFF2741620A9E92400D66A0B /* Info.plist */,
 				FF5DF60E20AB4D83009C2897 /* GoogleService-Info.plist */,
+				A03856B720AF41150069BBEE /* Constants.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				A05052E420ACE3C9005981CF /* TokenUtilities.swift in Sources */,
 				FFF2740B20A9E92300D66A0B /* AppDelegate.swift in Sources */,
 				A05052E220ACD4C9005981CF /* ChatRoomViewController.swift in Sources */,
+				A03856B820AF41150069BBEE /* Constants.swift in Sources */,
 				A0C25C5920ADE8B900B7FD85 /* InterviewQuestionsTableViewController.swift in Sources */,
 				A03856B420AE3D170069BBEE /* InterviewQuestionHeader.swift in Sources */,
 				A0C25C5F20AE017700B7FD85 /* JobIndustry.swift in Sources */,

@@ -11,3 +11,9 @@ import Foundation
 struct JobIndustry: Codable {
     let name: String
 }
+
+extension JobIndustry: Equatable {}
+
+func ==(lhs: JobIndustry, rhs: JobIndustry) -> Bool {
+    return lhs.name == rhs.name
+}
