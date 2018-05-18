@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 import TwilioVideo
 
 class ChatRoomViewController: UIViewController {
@@ -37,7 +38,9 @@ class ChatRoomViewController: UIViewController {
     }
     
     private func createRoom() {
-        guard let displayName = currentUser?.displayName?.components(separatedBy: .whitespacesAndNewlines).joined() else { return }
+        guard let displayName =
+            Auth.auth().currentUser?.displayName?.components(separatedBy: .whitespacesAndNewlines).joined() else { return }
+        
         var internalRoomName: String?
         
         if roomName == nil {
@@ -49,17 +52,14 @@ class ChatRoomViewController: UIViewController {
         do {
             let url = "\(baseTokenURL)name=\(displayName)&roomname=\(internalRoomName ?? "")"
             let token = try TokenUtils.fetchToken(url: url)
-            print("Join Token: \(token)")
             let connectOptions = TVIConnectOptions(token: token) { (builder) in
                 builder.roomName = internalRoomName
                 
                 if let audioTracks = self.localAudioTrack {
-                    print("Audio Tracks")
                     builder.audioTracks = [audioTracks]
                 }
                 
                 if let videoTracks = self.localVideoTrack {
-                    print("Video Tracks")
                     builder.videoTracks = [videoTracks]
                 }
             }
