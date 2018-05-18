@@ -11,7 +11,6 @@ import FirebaseAuth
 class SignupViewController: UIViewController {
     
     // MARK: - Outlets
-    
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var birthdayTextField: UITextField!
@@ -38,7 +37,9 @@ class SignupViewController: UIViewController {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         confirmPasswordTextField.delegate = self
+     
         activityView = UIActivityIndicatorView()
+
         birthdayTextField.inputView = datePicker
         industryTextField.inputView = jobIndustryPicker
         NotificationCenter.default.addObserver(self, selector: #selector(reloadPicker), name: JobIndustryController.NotificationKeys.reloadPicker, object: nil)
@@ -101,6 +102,9 @@ class SignupViewController: UIViewController {
 //MARK: - Textfield Delegate
 
 extension SignupViewController: UITextFieldDelegate {
+    
+    
+
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {

@@ -26,6 +26,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -55,6 +56,7 @@ class LoginViewController: UIViewController {
         }
     }
     
+
     @IBAction func forgotPasswordButtonTapped(_ sender: Any) {
         guard let email = emailTextField.text else { return }
         resetPassword(email: email)
@@ -103,3 +105,4 @@ extension UIColor {
         self.init(red: r/255, green: g/255, blue: b/255, alpha: 1)
     }
 }
+
