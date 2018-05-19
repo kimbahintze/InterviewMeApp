@@ -20,11 +20,15 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.4)
   - GTMSessionFetcher/Core (1.1.15)
   - leveldb-library (1.20)
+  - RecordButton (1.0.2)
+  - SwiftyCam (2.7.0)
   - TwilioVideo (2.0.1)
 
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Database
+  - RecordButton
+  - SwiftyCam (from `https://github.com/Awalz/SwiftyCam.git`, branch `Swift4`)
   - TwilioVideo (~> 2.0)
 
 SPEC REPOS:
@@ -36,7 +40,18 @@ SPEC REPOS:
     - GoogleToolboxForMac
     - GTMSessionFetcher
     - leveldb-library
+    - RecordButton
     - TwilioVideo
+
+EXTERNAL SOURCES:
+  SwiftyCam:
+    :branch: Swift4
+    :git: https://github.com/Awalz/SwiftyCam.git
+
+CHECKOUT OPTIONS:
+  SwiftyCam:
+    :commit: 85d713d643159cda72db2f3e230777af50cded94
+    :git: https://github.com/Awalz/SwiftyCam.git
 
 SPEC CHECKSUMS:
   Firebase: 4bd804448ab2596794698773d41520a0af101e65
@@ -46,8 +61,10 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
+  RecordButton: 76677be0f4b94f8a387454a23b4b64bd9b6c0e51
+  SwiftyCam: 7c826b73a5b208677aee29390582c771bf748661
   TwilioVideo: d9e0e61748b574f4adb6d540db469b3a93e77e43
 
-PODFILE CHECKSUM: 80229bafd20e320df2980b0e0919b7f90352ff7e
+PODFILE CHECKSUM: 12aca69acf59733fe347195945d97cea09b0367b
 
 COCOAPODS: 1.5.2

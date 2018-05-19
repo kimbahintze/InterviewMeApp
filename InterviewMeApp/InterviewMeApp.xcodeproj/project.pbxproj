@@ -14,6 +14,11 @@
 		A05052E020ACD445005981CF /* LobbyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05052DF20ACD445005981CF /* LobbyTableViewController.swift */; };
 		A05052E220ACD4C9005981CF /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05052E120ACD4C9005981CF /* ChatRoomViewController.swift */; };
 		A05052E420ACE3C9005981CF /* TokenUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05052E320ACE3C9005981CF /* TokenUtilities.swift */; };
+		A05241C120AF5DB700C29F40 /* VideoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05241C020AF5DB700C29F40 /* VideoCollectionViewController.swift */; };
+		A05241C320AF5EB500C29F40 /* VideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05241C220AF5EB500C29F40 /* VideoController.swift */; };
+		A05241C520AF5F4A00C29F40 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05241C420AF5F4A00C29F40 /* Video.swift */; };
+		A05241C720AF61DD00C29F40 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05241C620AF61DD00C29F40 /* CameraViewController.swift */; };
+		A05241CB20AFCC7600C29F40 /* VIdeoCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05241CA20AFCC7600C29F40 /* VIdeoCollectionCell.swift */; };
 		A0C25C5920ADE8B900B7FD85 /* InterviewQuestionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C25C5820ADE8B900B7FD85 /* InterviewQuestionsTableViewController.swift */; };
 		A0C25C5B20ADFBEE00B7FD85 /* InterviewQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C25C5A20ADFBEE00B7FD85 /* InterviewQuestion.swift */; };
 		A0C25C5D20ADFC4400B7FD85 /* InterviewQuestionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C25C5C20ADFC4400B7FD85 /* InterviewQuestionController.swift */; };
@@ -36,10 +41,15 @@
 		A03856B320AE3D170069BBEE /* InterviewQuestionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewQuestionHeader.swift; sourceTree = "<group>"; };
 		A03856B720AF41150069BBEE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A05052DA20ACCDA3005981CF /* ChatRoomController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatRoomController.swift; path = "InterviewMeApp/View Controllers/ChatRoomController.swift"; sourceTree = SOURCE_ROOT; };
-		A05052DC20ACCF0B005981CF /* ChatLobbyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatLobbyUser.swift; path = "InterviewMeApp/View Controllers/ChatLobbyUser.swift"; sourceTree = SOURCE_ROOT; };
+		A05052DC20ACCF0B005981CF /* ChatLobbyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatLobbyUser.swift; path = InterviewMeApp/ChatLobbyUser.swift; sourceTree = SOURCE_ROOT; };
 		A05052DF20ACD445005981CF /* LobbyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyTableViewController.swift; sourceTree = "<group>"; };
 		A05052E120ACD4C9005981CF /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
 		A05052E320ACE3C9005981CF /* TokenUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TokenUtilities.swift; path = "InterviewMeApp/View Controllers/TokenUtilities.swift"; sourceTree = SOURCE_ROOT; };
+		A05241C020AF5DB700C29F40 /* VideoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionViewController.swift; sourceTree = "<group>"; };
+		A05241C220AF5EB500C29F40 /* VideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VideoController.swift; path = "InterviewMeApp/View Controllers/VideoController.swift"; sourceTree = SOURCE_ROOT; };
+		A05241C420AF5F4A00C29F40 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Video.swift; path = "InterviewMeApp/View Controllers/Video.swift"; sourceTree = SOURCE_ROOT; };
+		A05241C620AF61DD00C29F40 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		A05241CA20AFCC7600C29F40 /* VIdeoCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIdeoCollectionCell.swift; sourceTree = "<group>"; };
 		A0C25C5820ADE8B900B7FD85 /* InterviewQuestionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewQuestionsTableViewController.swift; sourceTree = "<group>"; };
 		A0C25C5A20ADFBEE00B7FD85 /* InterviewQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InterviewQuestion.swift; path = "InterviewMeApp/View Controllers/InterviewQuestion.swift"; sourceTree = SOURCE_ROOT; };
 		A0C25C5C20ADFC4400B7FD85 /* InterviewQuestionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InterviewQuestionController.swift; path = "InterviewMeApp/View Controllers/InterviewQuestionController.swift"; sourceTree = SOURCE_ROOT; };
@@ -100,6 +110,7 @@
 				FF14867F20AA508B00FE71FD /* Signup.storyboard */,
 				FFF2740E20A9E92300D66A0B /* Main.storyboard */,
 				A03856B320AE3D170069BBEE /* InterviewQuestionHeader.swift */,
+				A05241CA20AFCC7600C29F40 /* VIdeoCollectionCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -125,6 +136,8 @@
 				A05052DF20ACD445005981CF /* LobbyTableViewController.swift */,
 				A05052E120ACD4C9005981CF /* ChatRoomViewController.swift */,
 				A0C25C5820ADE8B900B7FD85 /* InterviewQuestionsTableViewController.swift */,
+				A05241C020AF5DB700C29F40 /* VideoCollectionViewController.swift */,
+				A05241C620AF61DD00C29F40 /* CameraViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -132,10 +145,10 @@
 		FFACA4E920ABB23000206FA4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A05052DC20ACCF0B005981CF /* ChatLobbyUser.swift */,
 				A05052E320ACE3C9005981CF /* TokenUtilities.swift */,
 				A0C25C5A20ADFBEE00B7FD85 /* InterviewQuestion.swift */,
 				A0C25C5E20AE017700B7FD85 /* JobIndustry.swift */,
+				A05241C420AF5F4A00C29F40 /* Video.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -146,6 +159,7 @@
 				A05052DA20ACCDA3005981CF /* ChatRoomController.swift */,
 				A0C25C5C20ADFC4400B7FD85 /* InterviewQuestionController.swift */,
 				A0C25C6020AE019300B7FD85 /* JobIndustryController.swift */,
+				A05241C220AF5EB500C29F40 /* VideoController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -171,6 +185,7 @@
 		FFF2740920A9E92300D66A0B /* InterviewMeApp */ = {
 			isa = PBXGroup;
 			children = (
+				A05052DC20ACCF0B005981CF /* ChatLobbyUser.swift */,
 				FFACA4E920ABB23000206FA4 /* Models */,
 				FFACA4EA20ABB26000206FA4 /* Model Controllers */,
 				FF5780B320ABB1EA00C51922 /* Views */,
@@ -279,6 +294,8 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-InterviewMeApp/Pods-InterviewMeApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/RecordButton/RecordButton.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyCam/SwiftyCam.framework",
 				"${PODS_ROOT}/TwilioVideo/Build/iOS/TwilioVideo.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 			);
@@ -286,6 +303,8 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RecordButton.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyCam.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwilioVideo.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 			);
@@ -306,16 +325,21 @@
 				A05052E420ACE3C9005981CF /* TokenUtilities.swift in Sources */,
 				FFF2740B20A9E92300D66A0B /* AppDelegate.swift in Sources */,
 				A05052E220ACD4C9005981CF /* ChatRoomViewController.swift in Sources */,
+				A05241C120AF5DB700C29F40 /* VideoCollectionViewController.swift in Sources */,
 				A03856B820AF41150069BBEE /* Constants.swift in Sources */,
+				A05241CB20AFCC7600C29F40 /* VIdeoCollectionCell.swift in Sources */,
 				A0C25C5920ADE8B900B7FD85 /* InterviewQuestionsTableViewController.swift in Sources */,
 				A03856B420AE3D170069BBEE /* InterviewQuestionHeader.swift in Sources */,
 				A0C25C5F20AE017700B7FD85 /* JobIndustry.swift in Sources */,
 				A0C25C5B20ADFBEE00B7FD85 /* InterviewQuestion.swift in Sources */,
 				A0C25C5D20ADFC4400B7FD85 /* InterviewQuestionController.swift in Sources */,
 				A05052DD20ACCF0B005981CF /* ChatLobbyUser.swift in Sources */,
+				A05241C520AF5F4A00C29F40 /* Video.swift in Sources */,
 				FFDC3E8B20AA425300AADF8A /* SignupViewController.swift in Sources */,
 				A05052E020ACD445005981CF /* LobbyTableViewController.swift in Sources */,
+				A05241C720AF61DD00C29F40 /* CameraViewController.swift in Sources */,
 				A05052DB20ACCDA3005981CF /* ChatRoomController.swift in Sources */,
+				A05241C320AF5EB500C29F40 /* VideoController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,7 +18,6 @@ class InterviewQuestionsTableViewController: UITableViewController {
     var uselessTextField = UITextField(frame: CGRect.zero)
     override func viewDidLoad() {
         super .viewDidLoad()
-        
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name:InterviewQuestionController.NotificationKey.reloadTable, object: nil)
         
         navigationItem.title = "Interview Questions"

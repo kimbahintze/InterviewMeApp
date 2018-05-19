@@ -7,6 +7,8 @@ target 'InterviewMeApp' do
 pod'Firebase/Auth'
 pod'Firebase/Database'
 pod'TwilioVideo', '~> 2.0'
+pod'SwiftyCam', :git => 'https://github.com/Awalz/SwiftyCam.git', :branch => 'Swift4'
+pod'RecordButton'
   # Pods for InterviewMeApp
 
 end
