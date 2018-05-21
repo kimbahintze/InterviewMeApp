@@ -10,7 +10,8 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
-private let reuseIdentifier = "QuestionCell"
+private let questionReuseIdentifier = "QuestionCell"
+private let answerReuseIdentifier = "AnswerCell"
 
 class InterviewQuestionsTableViewController: UITableViewController {
     
@@ -25,6 +26,7 @@ class InterviewQuestionsTableViewController: UITableViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Job Industry", style: .done, target: self, action: #selector(changeJobIndustry))
         jobIndustryPicker.delegate = self
         jobIndustryPicker.dataSource = self
+        tableView.separatorStyle = .none
     }
     
     @objc func logout() {
@@ -75,32 +77,40 @@ extension InterviewQuestionsTableViewController {
         return InterviewQuestionController.shared.interviewQuestions.count
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
-        
         let interviewQuestion = InterviewQuestionController.shared.interviewQuestions[indexPath.section]
-        
-        cell.textLabel?.text = interviewQuestion.answer
-        
-        return cell
+        switch indexPath.section {
+        default: switch indexPath.row {
+        case 0: let questionCell = tableView.dequeueReusableCell(withIdentifier: questionReuseIdentifier, for: indexPath)
+        questionCell.textLabel?.text = interviewQuestion.question
+        questionCell.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        return questionCell
+        case 1: let answerCell = tableView.dequeueReusableCell(withIdentifier: answerReuseIdentifier, for: indexPath)
+        answerCell.textLabel?.text = interviewQuestion.answer
+        return answerCell
+        default: break
+            }
+        }
+        return UITableViewCell() 
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = InterviewQuestionHeader()
-        
-        let interviewQuestion = InterviewQuestionController.shared.interviewQuestions[section]
-        
-        headerView.questionLabel.text = interviewQuestion.question
-        
-        return headerView
-    }
+//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let headerView = InterviewQuestionHeader()
+//
+//        let interviewQuestion = InterviewQuestionController.shared.interviewQuestions[section]
+//
+//        headerView.questionLabel.text = interviewQuestion.question
+//
+//        return headerView
+//    }
     
-    override func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        return 50
-    }
+//    override func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+//        return 50
+//    }
+    
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         return false
     }

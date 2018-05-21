@@ -120,16 +120,14 @@ class CameraViewController: SwiftyCamViewController {
 extension CameraViewController: SwiftyCamViewControllerDelegate {
     
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didBeginRecordingVideo camera: SwiftyCamViewController.CameraSelection) {
-        print("Recording")
         
     }
     
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didFinishRecordingVideo camera: SwiftyCamViewController.CameraSelection) {
-        print("End Recording")
     }
     
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didFinishProcessVideoAt url: URL) {
-        VideoController.shared.createVideo(url: url)
+        
     }
     
     
