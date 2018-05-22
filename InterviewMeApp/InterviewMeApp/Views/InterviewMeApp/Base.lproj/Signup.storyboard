@@ -18,74 +18,86 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="2lq-Y5-rHZ">
-                                <rect key="frame" x="118.5" y="184.5" width="138.5" height="298"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="2lq-Y5-rHZ">
+                                <rect key="frame" x="35" y="106" width="305" height="270"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="t5e-9b-NC7">
-                                        <rect key="frame" x="0.0" y="0.0" width="138.5" height="258"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pSj-Kl-gjD">
-                                                <rect key="frame" x="0.0" y="0.0" width="138.5" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sZ7-dO-pRa">
-                                                <rect key="frame" x="0.0" y="38" width="138.5" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Age" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lIy-PV-s5s">
-                                                <rect key="frame" x="0.0" y="76" width="138.5" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Industry" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Qn-eb-exQ">
-                                                <rect key="frame" x="0.0" y="114" width="138.5" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xll-rw-afJ">
-                                                <rect key="frame" x="0.0" y="152" width="138.5" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9la-Te-bcg">
-                                                <rect key="frame" x="0.0" y="190" width="138.5" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dej-im-bq1">
-                                                <rect key="frame" x="0.0" y="228" width="138.5" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="llE-aY-ava">
-                                        <rect key="frame" x="40" y="268" width="59" height="30"/>
-                                        <state key="normal" title="Sign Up!"/>
-                                        <connections>
-                                            <action selector="handleSignup:" destination="jN2-FM-dRg" eventType="touchUpInside" id="ocC-lq-esu"/>
-                                        </connections>
-                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pSj-Kl-gjD">
+                                        <rect key="frame" x="0.0" y="0.0" width="305" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sZ7-dO-pRa">
+                                        <rect key="frame" x="0.0" y="40" width="305" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Age" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lIy-PV-s5s">
+                                        <rect key="frame" x="0.0" y="80" width="305" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Industry" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Qn-eb-exQ">
+                                        <rect key="frame" x="0.0" y="120" width="305" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xll-rw-afJ">
+                                        <rect key="frame" x="0.0" y="160" width="305" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9la-Te-bcg">
+                                        <rect key="frame" x="0.0" y="200" width="305" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dej-im-bq1">
+                                        <rect key="frame" x="0.0" y="240" width="305" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                    </textField>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="InterviewMe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MuL-JU-u07">
+                                <rect key="frame" x="108" y="50" width="158" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.037859189520000003" green="0.88625323830000002" blue="0.68103523580000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="llE-aY-ava">
+                                <rect key="frame" x="35" y="401" width="305" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="DSM-Cg-Bvz"/>
+                                </constraints>
+                                <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <action selector="handleSignup:" destination="jN2-FM-dRg" eventType="touchUpInside" id="ocC-lq-esu"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.45085787770000002" green="0.98829740290000001" blue="0.83763033149999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="2lq-Y5-rHZ" firstAttribute="top" secondItem="MuL-JU-u07" secondAttribute="bottom" constant="20" id="3eC-aT-Cef"/>
                             <constraint firstItem="2lq-Y5-rHZ" firstAttribute="centerX" secondItem="AyB-2L-gym" secondAttribute="centerX" id="5Dr-PK-Nm6"/>
-                            <constraint firstItem="2lq-Y5-rHZ" firstAttribute="centerY" secondItem="AyB-2L-gym" secondAttribute="centerY" id="xYs-mK-5qQ"/>
+                            <constraint firstItem="llE-aY-ava" firstAttribute="leading" secondItem="dhX-MI-Ng9" secondAttribute="leading" constant="35" id="FdF-MY-fBE"/>
+                            <constraint firstItem="MuL-JU-u07" firstAttribute="top" secondItem="dhX-MI-Ng9" secondAttribute="top" constant="30" id="GTd-Iq-ifO"/>
+                            <constraint firstItem="dhX-MI-Ng9" firstAttribute="trailing" secondItem="llE-aY-ava" secondAttribute="trailing" constant="35" id="THs-ru-qkj"/>
+                            <constraint firstItem="llE-aY-ava" firstAttribute="top" secondItem="2lq-Y5-rHZ" secondAttribute="bottom" constant="25" id="YFg-w1-Tb2"/>
+                            <constraint firstItem="2lq-Y5-rHZ" firstAttribute="leading" secondItem="dhX-MI-Ng9" secondAttribute="leading" constant="35" id="bPM-UO-P1T"/>
+                            <constraint firstItem="MuL-JU-u07" firstAttribute="centerX" secondItem="AyB-2L-gym" secondAttribute="centerX" id="ncs-Lf-lgk"/>
+                            <constraint firstItem="dhX-MI-Ng9" firstAttribute="trailing" secondItem="2lq-Y5-rHZ" secondAttribute="trailing" constant="35" id="vvp-oj-Dhu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dhX-MI-Ng9"/>
                     </view>
                     <connections>
+                        <outlet property="appNameLabel" destination="MuL-JU-u07" id="ofI-Tz-iEL"/>
                         <outlet property="birthdayTextField" destination="lIy-PV-s5s" id="5EA-ua-BcR"/>
                         <outlet property="confirmPasswordTextField" destination="dej-im-bq1" id="Gmc-bs-nVg"/>
                         <outlet property="datePicker" destination="3Qw-ZU-RFx" id="aQk-O6-mxa"/>
@@ -95,6 +107,7 @@
                         <outlet property="jobIndustryPicker" destination="FDd-az-00U" id="tiM-sy-JuO"/>
                         <outlet property="lastNameTextField" destination="sZ7-dO-pRa" id="Pby-bJ-IIF"/>
                         <outlet property="passwordTextField" destination="9la-Te-bcg" id="REL-j7-2ES"/>
+                        <outlet property="signupButton" destination="llE-aY-ava" id="Vsy-A2-Lja"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J5g-5S-Nye" userLabel="First Responder" sceneMemberID="firstResponder"/>

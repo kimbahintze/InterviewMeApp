@@ -29,6 +29,10 @@
 		B3218D4C20B35B4C0042E2A6 /* Video + Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3218D4B20B35B4C0042E2A6 /* Video + Convenience.swift */; };
 		B37503C520AA224E00AFB23A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37503C420AA224E00AFB23A /* LoginViewController.swift */; };
 		FF14868120AA508B00FE71FD /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF14867F20AA508B00FE71FD /* Signup.storyboard */; };
+		FF58A22120B4850600D3586A /* GT-Walsheim-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF58A21E20B4850500D3586A /* GT-Walsheim-Regular.ttf */; };
+		FF58A22220B4850600D3586A /* GT-Walsheim-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF58A21F20B4850600D3586A /* GT-Walsheim-Bold.ttf */; };
+		FF58A22320B4850700D3586A /* GT-Walsheim-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF58A22020B4850600D3586A /* GT-Walsheim-Medium.ttf */; };
+		FF58A22520B4AFC700D3586A /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58A22420B4AFC700D3586A /* EditProfileViewController.swift */; };
 		FF5DF60F20AB4D83009C2897 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF5DF60E20AB4D83009C2897 /* GoogleService-Info.plist */; };
 		FFDC3E8B20AA425300AADF8A /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDC3E8A20AA425300AADF8A /* SignupViewController.swift */; };
 		FFF2740B20A9E92300D66A0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF2740A20A9E92300D66A0B /* AppDelegate.swift */; };
@@ -62,6 +66,10 @@
 		B37503C420AA224E00AFB23A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E313558045188ED812C8FDAD /* Pods_InterviewMeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InterviewMeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF14868020AA508B00FE71FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = InterviewMeApp/Base.lproj/Signup.storyboard; sourceTree = "<group>"; };
+		FF58A21E20B4850500D3586A /* GT-Walsheim-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GT-Walsheim-Regular.ttf"; sourceTree = "<group>"; };
+		FF58A21F20B4850600D3586A /* GT-Walsheim-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GT-Walsheim-Bold.ttf"; sourceTree = "<group>"; };
+		FF58A22020B4850600D3586A /* GT-Walsheim-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GT-Walsheim-Medium.ttf"; sourceTree = "<group>"; };
+		FF58A22420B4AFC700D3586A /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		FF5DF60E20AB4D83009C2897 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FFDC3E8A20AA425300AADF8A /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		FFF2740720A9E92300D66A0B /* InterviewMeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InterviewMeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +133,9 @@
 		FF9F711020AB617700A461A9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FF58A21F20B4850600D3586A /* GT-Walsheim-Bold.ttf */,
+				FF58A22020B4850600D3586A /* GT-Walsheim-Medium.ttf */,
+				FF58A21E20B4850500D3586A /* GT-Walsheim-Regular.ttf */,
 				FFF2740A20A9E92300D66A0B /* AppDelegate.swift */,
 				FFF2741120A9E92400D66A0B /* Assets.xcassets */,
 				FFF2741320A9E92400D66A0B /* LaunchScreen.storyboard */,
@@ -145,6 +156,7 @@
 				A0C25C5820ADE8B900B7FD85 /* InterviewQuestionsTableViewController.swift */,
 				A05241C020AF5DB700C29F40 /* VideoCollectionViewController.swift */,
 				A05241C620AF61DD00C29F40 /* CameraViewController.swift */,
+				FF58A22420B4AFC700D3586A /* EditProfileViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -262,6 +274,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF58A22120B4850600D3586A /* GT-Walsheim-Regular.ttf in Resources */,
+				FF58A22220B4850600D3586A /* GT-Walsheim-Bold.ttf in Resources */,
+				FF58A22320B4850700D3586A /* GT-Walsheim-Medium.ttf in Resources */,
 				FF14868120AA508B00FE71FD /* Signup.storyboard in Resources */,
 				FF5DF60F20AB4D83009C2897 /* GoogleService-Info.plist in Resources */,
 				FFF2741520A9E92400D66A0B /* LaunchScreen.storyboard in Resources */,
@@ -336,6 +351,7 @@
 				A03856B820AF41150069BBEE /* Constants.swift in Sources */,
 				A05241CB20AFCC7600C29F40 /* VIdeoCollectionCell.swift in Sources */,
 				A05EA86220B473F500329A6E /* AnswerTableViewCell.swift in Sources */,
+				FF58A22520B4AFC700D3586A /* EditProfileViewController.swift in Sources */,
 				A0C25C5920ADE8B900B7FD85 /* InterviewQuestionsTableViewController.swift in Sources */,
 				B3218D4C20B35B4C0042E2A6 /* Video + Convenience.swift in Sources */,
 				A0C25C5F20AE017700B7FD85 /* JobIndustry.swift in Sources */,

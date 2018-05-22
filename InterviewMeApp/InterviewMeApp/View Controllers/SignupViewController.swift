@@ -20,6 +20,8 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var jobIndustryPicker: UIPickerView!
+    @IBOutlet weak var appNameLabel: UILabel!
+    @IBOutlet weak var signupButton: UIButton!
     
     //MARK: - Properties
     
@@ -37,9 +39,10 @@ class SignupViewController: UIViewController {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         confirmPasswordTextField.delegate = self
-     
+        self.setup()
+        
         activityView = UIActivityIndicatorView()
-
+        
         birthdayTextField.inputView = datePicker
         industryTextField.inputView = jobIndustryPicker
         NotificationCenter.default.addObserver(self, selector: #selector(reloadPicker), name: JobIndustryController.NotificationKeys.reloadPicker, object: nil)
@@ -52,6 +55,7 @@ class SignupViewController: UIViewController {
     @IBAction func dateChanged(_ sender: UIDatePicker) {
         birthdayTextField.text = verifyAge()
     }
+    
     
     func verifyAge() -> String {
         let dob = datePicker.date
@@ -97,14 +101,36 @@ class SignupViewController: UIViewController {
             self.present(mainTabBarController, animated: true, completion: nil)
         }
     }
+    
+    func setup() {
+        appNameLabel.textColor = mainColor
+        appNameLabel.font = UIFont(name: GTWalsheimBold, size: 35)
+        firstNameTextField.textColor = darkFontColor
+        firstNameTextField.font = UIFont(name: GTWalsheimRegular, size: 12)
+        lastNameTextField.textColor = darkFontColor
+        lastNameTextField.font = UIFont(name: GTWalsheimRegular, size: 12)
+        birthdayTextField.textColor = darkFontColor
+        birthdayTextField.font = UIFont(name: GTWalsheimRegular, size: 12)
+        industryTextField.textColor = darkFontColor
+        industryTextField.font = UIFont(name: GTWalsheimRegular, size: 12)
+        emailTextField.textColor = darkFontColor
+        emailTextField.font = UIFont(name: GTWalsheimRegular, size: 12)
+        passwordTextField.textColor = darkFontColor
+        passwordTextField.font = UIFont(name: GTWalsheimRegular, size: 12)
+        confirmPasswordTextField.textColor = darkFontColor
+        confirmPasswordTextField.font = UIFont(name: GTWalsheimRegular, size: 12)
+        signupButton.layer.cornerRadius = 25
+        signupButton.backgroundColor = mainColor
+        signupButton.titleLabel?.font = UIFont(name: GTWalsheimRegular, size: 20)
+        signupButton.setTitleColor(UIColor.white, for: .normal)
+    }
+    
+    
 }
 
 //MARK: - Textfield Delegate
 
 extension SignupViewController: UITextFieldDelegate {
-    
-    
-
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {

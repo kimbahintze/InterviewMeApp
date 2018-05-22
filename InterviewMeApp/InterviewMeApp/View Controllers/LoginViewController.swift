@@ -31,9 +31,13 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        self.appLabelSetup()
+        self.welcomeSetup()
+        self.emailSetup()
+        self.passwordSetup()
+        self.forgotPasswordSetup()
         self.loginButtonSetup()
         self.newUserSetup()
-        self.forgotPasswordSetup()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -64,7 +68,7 @@ class LoginViewController: UIViewController {
         }
     }
     
-
+    
     @IBAction func forgotPasswordButtonTapped(_ sender: Any) {
         guard let email = emailTextField.text else { return }
         resetPassword(email: email)
@@ -93,22 +97,42 @@ class LoginViewController: UIViewController {
     
     // Set Up
     
-    func loginButtonSetup() {
-        loginButton.layer.cornerRadius = 25
-        loginButton.titleLabel?.font.withSize(40)
-        
+    func appLabelSetup() {
+        appNameLabel.textColor = mainColor
+        appNameLabel.font = UIFont(name: GTWalsheimBold, size: 35)
     }
     
-    func newUserSetup() {
-        newUserLabel.font = UIFont.boldSystemFont(ofSize: 20)
-        signupButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        signupButton.titleLabel?.textColor = UIColor(r: 44, g: 212, b: 140)
-        
+    func welcomeSetup() {
+        welcomeBackLabel.font = UIFont(name: GTWalsheimMedium, size: 22)
+    }
+    
+    func emailSetup() {
+        emailTextField.textColor = lightFontColor
+        emailTextField.font = UIFont(name: GTWalsheimRegular, size: 18)
+    }
+    
+    func passwordSetup() {
+        passwordTextField.textColor = lightFontColor
+        passwordTextField.font = UIFont(name: GTWalsheimRegular, size: 18)
     }
     
     func forgotPasswordSetup() {
-        forgotPasswordButton.titleLabel?.textColor = UIColor.gray
+        forgotPasswordButton.setTitleColor(darkFontColor, for: .normal)
+        forgotPasswordButton.titleLabel?.font = UIFont(name: GTWalsheimMedium, size: 15)
     }
+    
+    func loginButtonSetup() {
+        loginButton.layer.cornerRadius = 25
+        loginButton.backgroundColor = mainColor
+        loginButton.titleLabel?.font = UIFont(name: GTWalsheimRegular, size: 20)
+    }
+    
+    func newUserSetup() {
+        newUserLabel.font = UIFont(name: GTWalsheimBold, size: 18)
+        signupButton.titleLabel?.font = UIFont(name: GTWalsheimBold, size: 18)
+        signupButton.setTitleColor(mainColor, for: .normal)
+    }
+    
 }
 
 //MARK: - TextField Delegate
@@ -125,11 +149,4 @@ extension LoginViewController: UITextFieldDelegate {
     }
 }
 
-//MARK: - Color Extension
-
-extension UIColor {
-    convenience init(r: CGFloat, g: CGFloat, b: CGFloat) {
-        self.init(red: r/255, green: g/255, blue: b/255, alpha: 1)
-    }
-}
 
