@@ -7,10 +7,18 @@
 //
 
 import UIKit
+protocol AnswerTableViewCellDelegate: class {
+    func addQuestionToInterview(cell: AnswerTableViewCell)
+    func removeQuestionFromInterview(cell: AnswerTableViewCell)
+}
 
 class AnswerTableViewCell: UITableViewCell {
     
-    let answerLabel: UILabel = {
+    weak var delegate: AnswerTableViewCellDelegate?
+    
+    var isChecked = false
+    
+    private let answerLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -19,9 +27,10 @@ class AnswerTableViewCell: UITableViewCell {
         return label
     }()
     
-    let addButton: UIButton = {
+    private let addButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "Add").colorChange(), for: .normal)
+        button.tintColor = mainColor
         button.contentMode = .scaleAspectFit
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -40,8 +49,8 @@ class AnswerTableViewCell: UITableViewCell {
         contentView.addSubview(answerLabel)
         contentView.addSubview(addButton)
         
-        answerLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30).isActive = true
-        answerLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -45).isActive = true
+        answerLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 46).isActive = true
+        answerLabel.trailingAnchor.constraint(equalTo: addButton.leadingAnchor, constant: -8).isActive = true
         answerLabel.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         answerLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         
@@ -50,5 +59,34 @@ class AnswerTableViewCell: UITableViewCell {
         addButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         addButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         addButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        addButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
+        
+        
+    }
+    
+    func setupViews(interviewQuestion: InterviewQuestion) {
+        answerLabel.text = interviewQuestion.answer
+        
+        for savedInterviewQuestion in InterviewQuestionController.shared.savedInterviewQuestions {
+            if interviewQuestion.uuid == savedInterviewQuestion.uuid {
+                addButton.setImage(#imageLiteral(resourceName: "Check").colorChange(), for: .normal)
+                isChecked = true
+                break
+            } else {
+                addButton.setImage(#imageLiteral(resourceName: "Add").colorChange(), for: .normal)
+            }
+        }
+    }
+    
+    @objc private func addButtonTapped() {
+        if isChecked {
+            delegate?.removeQuestionFromInterview(cell: self)
+            addButton.setImage(#imageLiteral(resourceName: "Add").colorChange(), for: .normal)
+            isChecked = false
+        } else {
+            delegate?.addQuestionToInterview(cell: self)
+            addButton.setImage(#imageLiteral(resourceName: "Check").colorChange(), for: .normal)
+            isChecked = true
+        }
     }
 }

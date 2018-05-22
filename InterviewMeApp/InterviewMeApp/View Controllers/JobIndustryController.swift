@@ -68,7 +68,9 @@ class JobIndustryController {
                     guard let jobIndustryDictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any] else { return }
                     guard let jobIndustryName = jobIndustryDictionary["jobindustry"] as? String else { return }
                     let jobIndustry = JobIndustry(name: jobIndustryName)
-                    completion(jobIndustry)
+                    DispatchQueue.main.async {
+                        completion(jobIndustry)
+                    }
                 } catch {
                     print("Error fetchJobIndusty Data: \(error.localizedDescription)")
                     completion(nil)

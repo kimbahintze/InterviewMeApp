@@ -11,11 +11,13 @@ import Foundation
 struct InterviewQuestion: Codable {
     let question: String?
     let answer: String?
+    let uuid: String
     
     init?(jsonDictionary: [String:Any]) {
-        guard let question = jsonDictionary["question"] as? String, let answer = jsonDictionary["answer"] as? String else { return nil }
+        guard let question = jsonDictionary["question"] as? String, let answer = jsonDictionary["answer"] as? String, let uuid = jsonDictionary["uuid"] as? String else { return nil }
         self.question = question
         self.answer = answer
+        self.uuid = uuid
     }
 }
 

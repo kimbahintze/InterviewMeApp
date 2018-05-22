@@ -82,17 +82,24 @@ extension InterviewQuestionsTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let interviewQuestion = InterviewQuestionController.shared.interviewQuestions[indexPath.section]
-        switch indexPath.section {
-        default: switch indexPath.row {
+        
+        switch indexPath.row {
+            
         case 0: let questionCell = tableView.dequeueReusableCell(withIdentifier: questionReuseIdentifier, for: indexPath)
+        
         questionCell.textLabel?.text = interviewQuestion.question
         questionCell.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        
         return questionCell
+            
         case 1: guard let answerCell = tableView.dequeueReusableCell(withIdentifier: answerReuseIdentifier, for: indexPath) as? AnswerTableViewCell else { return UITableViewCell() }
-        answerCell.answerLabel.text = interviewQuestion.answer
+        
+        answerCell.setupViews(interviewQuestion: interviewQuestion)
+        answerCell.delegate = self
+        
         return answerCell
+            
         default: break
-            }
         }
         return UITableViewCell() 
     }
@@ -102,8 +109,9 @@ extension InterviewQuestionsTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 500
     }
+
 }
 
 extension InterviewQuestionsTableViewController: UIPickerViewDelegate, UIPickerViewDataSource {
@@ -126,4 +134,24 @@ extension InterviewQuestionsTableViewController: UIPickerViewDelegate, UIPickerV
         guard let uuid = Auth.auth().currentUser?.uid else { return }
         Database.database().reference().child("users/\(uuid)").setValue(["jobindustry":jobIndustry.name])
     }
+}
+
+extension InterviewQuestionsTableViewController: AnswerTableViewCellDelegate {
+    func removeQuestionFromInterview(cell: AnswerTableViewCell) {
+        JobIndustryController.shared.fetchUserJobIndustry { (fetchedJobIndustry) in
+            guard let jobIndustry = fetchedJobIndustry, let currentUser = Auth.auth().currentUser, let indexPath = self.tableView.indexPath(for: cell) else { return }
+            let interviewQuestion = InterviewQuestionController.shared.interviewQuestions[indexPath.section]
+            Database.database().reference().child("users/\(currentUser.uid)/savedQuestions/\(interviewQuestion.uuid)").removeValue()
+        }
+    }
+    
+    func addQuestionToInterview(cell: AnswerTableViewCell) {
+        JobIndustryController.shared.fetchUserJobIndustry { (fetchedJobIndustry) in
+            guard let jobIndustry = fetchedJobIndustry, let currentUser = Auth.auth().currentUser, let indexPath = self.tableView.indexPath(for: cell) else { return }
+            let interviewQuestion = InterviewQuestionController.shared.interviewQuestions[indexPath.section]
+            Database.database().reference().child("users/\(currentUser.uid)/savedQuestions/\(interviewQuestion.uuid)").setValue(["question": interviewQuestion.question, "answer": interviewQuestion.answer, "uuid": interviewQuestion.uuid])
+        }
+    }
+    
+    
 }
