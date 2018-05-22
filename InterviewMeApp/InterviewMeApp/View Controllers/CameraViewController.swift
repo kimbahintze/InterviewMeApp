@@ -32,6 +32,7 @@ class CameraViewController: SwiftyCamViewController {
         super .viewDidLoad()
         cameraDelegate = self
         defaultCamera = .front
+        videoQuality = .low
         setupViews()
         
     }
@@ -71,6 +72,7 @@ class CameraViewController: SwiftyCamViewController {
         shouldUseDeviceOrientation = true
         allowBackgroundAudio = true
         lowLightBoost = true
+        
     }
     
     @objc private func record() {
@@ -84,6 +86,7 @@ class CameraViewController: SwiftyCamViewController {
         recordButton.buttonState = .recording
         isRecording = true
         progressTime = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: true)
+        videoQuality = .low
         startVideoRecording()
     }
     
@@ -106,6 +109,7 @@ class CameraViewController: SwiftyCamViewController {
             isRecording = false
             self.progress = 0 
             recordButton.buttonState = .idle
+            stopVideoRecording()
         }
     }
     
@@ -130,7 +134,7 @@ extension CameraViewController: SwiftyCamViewControllerDelegate {
     
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didFinishRecordingVideo camera: SwiftyCamViewController.CameraSelection) {
     }
-    
+    /*
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didFinishProcessVideoAt url: URL) {
        
         VideoController.shared.saveVideoWithURL(tempURL: url) { (url) in
@@ -141,4 +145,37 @@ extension CameraViewController: SwiftyCamViewControllerDelegate {
             }
         }
     }
+    */
+    
+    func swiftyCam(_ swiftyCam: SwiftyCamViewController, didFinishProcessVideoAt url: URL) {
+        guard let data = NSData(contentsOf: url) else { return }
+        print("File size before compression: \(Double(data.length / 1048576)) mb")
+        let compressedURL = NSURL.fileURL(withPath: NSTemporaryDirectory() + NSUUID().uuidString + ".mov")
+        VideoController.shared.compressVideo(inputURL: url, outputURL: compressedURL) { (exportSession) in
+            guard let session = exportSession else { return }
+            
+            switch session.status {
+            case .unknown:
+                break
+            case .waiting:
+                break
+            case .exporting:
+                break
+            case .completed:
+                VideoController.shared.saveVideoWithURL(tempURL: compressedURL, completion: { (url) in
+                    if let url = url {
+                        let stringURL = url.absoluteString
+                        VideoController.shared.recordVideo(videoURL: stringURL)
+                    }
+                })
+                guard let compressedData = NSData(contentsOf: compressedURL) else { return }
+                print("File size after compression: \(Double(compressedData.length / 1048576)) mb")
+            case .failed:
+                break
+            case .cancelled:
+                break
+            }
+        }
+    }
+    
 }

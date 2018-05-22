@@ -63,7 +63,7 @@ class VideoController {
         
         // lets create your destination file url
         let destinationUrl = documentsDirectoryURL.appendingPathComponent(tempURL.lastPathComponent)
-        
+
         // to check if it exists before downloading it
         if FileManager.default.fileExists(atPath: destinationUrl.path) {
             
@@ -74,8 +74,6 @@ class VideoController {
                 do {
                     // after downloading your file you need to move it to your destination url
                     try FileManager.default.moveItem(at: location, to: destinationUrl)
-                    print("THE destinationUrl", destinationUrl)
-                    print("THE LOCATION", location)
                     completion(destinationUrl)
                 } catch {
                     print(error.localizedDescription)
@@ -85,23 +83,50 @@ class VideoController {
         }
     }
     
-    func deleteFiledInDocDirectory(){
-    let fileManager = FileManager.default
-        
-        guard let tempFolderPath = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first?.absoluteString else {
-            return   // documents directory not found for some reason
-        }
-        do {
-            print("tempFolderPath", tempFolderPath)
-            let filePaths = try fileManager.contentsOfDirectory(atPath: tempFolderPath)
-            for filePath in filePaths {
-                try fileManager.removeItem(atPath: tempFolderPath + filePath)
+    func saveVideoAndCompressURL(tempURL: URL, completion: @escaping(URL?) -> Void) {
+        let documentsDirectoryURL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let destinationUrl = documentsDirectoryURL.appendingPathComponent(tempURL.lastPathComponent)
+
+        let compressedURL = NSURL.fileURL(withPath: NSTemporaryDirectory() + NSUUID().uuidString + ".mov")
+        print("compressedURL", compressedURL)
+        compressVideo(inputURL: destinationUrl as URL, outputURL: compressedURL) { (exportSession) in
+            guard let session = exportSession else { return }
+            switch session.status {
+            case .unknown:
+                break
+            case .waiting:
+                break
+            case .exporting:
+                break
+            case .completed:
+                if FileManager.default.fileExists(atPath: compressedURL.path) {
+                    
+                    // if the file doesn't exist
+                } else {
+                    URLSession.shared.downloadTask(with: tempURL, completionHandler: { (location, response, error) -> Void in
+                        guard let location = location, error == nil else { return }
+                        do {
+                            // after downloading your file you need to move it to your destination url
+                            try FileManager.default.moveItem(at: location, to: compressedURL)
+                            completion(compressedURL)
+                        } catch {
+                            print(error.localizedDescription)
+                            completion(nil)
+                        }
+                    }).resume()
+                }
+                
+//            guard let compressedData = NSData(contentsOf: compressedURL) else { return }
+//                print("File size after compression: \(Double(compressedData.length / 1048576)) mb")
+            case .failed:
+                break
+            case .cancelled:
+                break
             }
-        } catch {
-            print("Could not clear temp folder: \(error.localizedDescription)")
         }
+        
+
     }
-    
     
     func deleteFromDocumentsDirectory(videoURLString: String) {
         print("videoURLSTRING", videoURLString)
@@ -110,25 +135,10 @@ class VideoController {
         let url = documentsDirectory.appendingPathComponent(baseURL.lastPathComponent)
         do {
             let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsDirectory, includingPropertiesForKeys: nil, options: [])
-
             do {
                 for file in directoryContents {
-                    
-                    
-                    
                     if url == documentsDirectory.appendingPathComponent(file.lastPathComponent) {
-                        
-                        print("directoryContents array of files", directoryContents)
-                        print("documentsDirectory", documentsDirectory)
-                        print("THIS FILE WAS DELETED", file)
-                        print("THIS IS THE baseURL", baseURL)
-                        print("THIS IS THE URL", url)
-                        try FileManager.default.removeItem(at: url)
-
                         try FileManager.default.removeItem(at: file)
-                        
-             
-                        
                     }
                 }
             } catch {
@@ -161,7 +171,7 @@ class VideoController {
         return url
     }
     
-    //MARK: Create Thumbnail
+    //MARK: - Create Thumbnail
     func createThumbnail(url: String) -> UIImage? {
         guard let url = URL(string: url) else { return nil}
         let asset = AVAsset(url: url)
@@ -176,8 +186,8 @@ class VideoController {
         }
         return nil
     }
-
-    //MARK: Check Files
+    
+    //MARK: - Check Files
     func checkFiles() {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         do {
@@ -190,6 +200,55 @@ class VideoController {
             }
         } catch {
             print("Cant delete video")
+        }
+    }
+    
+    //MARK: - Compress Video
+    
+    func capture(_ captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAt outputFileURL: URL!, fromConnections connections: [Any]!, error: Error!) {
+        
+        guard let data = NSData(contentsOf: outputFileURL as URL) else { return }
+        
+        print("File size before compression: \(Double(data.length / 1048576)) mb")
+        let compressedURL = NSURL.fileURL(withPath: NSTemporaryDirectory() + NSUUID().uuidString + ".m4v")
+        compressVideo(inputURL: outputFileURL as URL, outputURL: compressedURL) { (exportSession) in
+            guard let session = exportSession else {
+                return
+            }
+            
+            switch session.status {
+            case .unknown:
+                break
+            case .waiting:
+                break
+            case .exporting:
+                break
+            case .completed:
+                guard let compressedData = NSData(contentsOf: compressedURL) else {
+                    return
+                }
+                
+                print("File size after compression: \(Double(compressedData.length / 1048576)) mb")
+            case .failed:
+                break
+            case .cancelled:
+                break
+            }
+        }
+    }
+    
+    func compressVideo(inputURL: URL, outputURL: URL, handler:@escaping (_ exportSession: AVAssetExportSession?)-> Void) {
+        let urlAsset = AVURLAsset(url: inputURL, options: nil)
+        guard let exportSession = AVAssetExportSession(asset: urlAsset, presetName: AVAssetExportPreset1280x720) else {
+            handler(nil)
+            return
+        }
+        
+        exportSession.outputURL = outputURL
+        exportSession.outputFileType = AVFileType.mov
+        exportSession.shouldOptimizeForNetworkUse = true
+        exportSession.exportAsynchronously { () -> Void in
+            handler(exportSession)
         }
     }
 }
