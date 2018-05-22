@@ -22,8 +22,6 @@ class CameraViewController: SwiftyCamViewController {
         return button
     }()
     
-    
-    
     var isRecording = false
     var progress: CGFloat = 0
     var progressTime: Timer!

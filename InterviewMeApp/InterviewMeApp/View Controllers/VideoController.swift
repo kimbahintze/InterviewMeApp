@@ -15,7 +15,7 @@ class VideoController {
     static let shared = VideoController()
     
     var videos: [Video] {
-       return fetchFromCoreData()
+        return fetchFromCoreData()
     }
     
     var arrayOfImages: [UIImage] = []
@@ -37,7 +37,7 @@ class VideoController {
     func saveToCoreData() {
         let moc = CoreDataStack.context
         do {
-           try moc.save()
+            try moc.save()
         } catch let error {
             print("error saving to CD", error.localizedDescription)
         }
@@ -56,7 +56,7 @@ class VideoController {
         return []
     }
     
-    //Save videoWithURL
+    //MARK: Save and Delete from URL
     func saveVideoWithURL(tempURL: URL, completion: @escaping(URL?) -> Void){
         let documentsDirectoryURL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         
@@ -68,7 +68,6 @@ class VideoController {
             
             // if the file doesn't exist
         } else {
-            
             URLSession.shared.downloadTask(with: tempURL, completionHandler: { (location, response, error) -> Void in
                 guard let location = location, error == nil else { return }
                 do {
@@ -84,30 +83,6 @@ class VideoController {
         }
     }
     
-    func getPathDirectory(video: Video) -> URL? {
-        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        guard let videoURLAsString = video.videoURL else { return nil}
-        guard let videoURL = URL(string: videoURLAsString) else { return nil}
-        let url = documentDirectory.appendingPathComponent(videoURL.lastPathComponent)
-        return url
-    }
-    
- 
-    func createThumbnail(url: String) -> UIImage? {
-        guard let url = URL(string: url) else { return nil}
-        let asset = AVAsset(url: url)
-        let imageGenerator = AVAssetImageGenerator(asset: asset)
-        do {
-            imageGenerator.appliesPreferredTrackTransform = true
-            let cgImage = try imageGenerator.copyCGImage(at: CMTimeMake(2, 10), actualTime: nil)
-            let thumbnail = UIImage(cgImage: cgImage)
-            return thumbnail
-        } catch {
-            print("Error creating thumbnail: \(error.localizedDescription)")
-        }
-        return nil
-    }
-
     func deleteFromDocumentsDirectory(videoURLString: String) {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         guard let baseURL = URL(string: videoURLString) else { return }
@@ -127,9 +102,34 @@ class VideoController {
         } catch {
             print(error.localizedDescription)
         }
-        
     }
     
+    //MARK: - Get Path Directory
+    func getPathDirectory(video: Video) -> URL? {
+        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        guard let videoURLAsString = video.videoURL else { return nil}
+        guard let videoURL = URL(string: videoURLAsString) else { return nil}
+        let url = documentDirectory.appendingPathComponent(videoURL.lastPathComponent)
+        return url
+    }
+    
+    //MARK: Create Thumbnail
+    func createThumbnail(url: String) -> UIImage? {
+        guard let url = URL(string: url) else { return nil}
+        let asset = AVAsset(url: url)
+        let imageGenerator = AVAssetImageGenerator(asset: asset)
+        do {
+            imageGenerator.appliesPreferredTrackTransform = true
+            let cgImage = try imageGenerator.copyCGImage(at: CMTimeMake(2, 10), actualTime: nil)
+            let thumbnail = UIImage(cgImage: cgImage)
+            return thumbnail
+        } catch {
+            print("Error creating thumbnail: \(error.localizedDescription)")
+        }
+        return nil
+    }
+
+    //MARK: Check Files
     func checkFiles() {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         do {
