@@ -15,6 +15,11 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var forgotPasswordButton: UIButton!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var appNameLabel: UILabel!
+    @IBOutlet weak var welcomeBackLabel: UILabel!
+    @IBOutlet weak var newUserLabel: UILabel!
+    @IBOutlet weak var signupButton: UIButton!
     
     //MARK: - Properties
     
@@ -26,7 +31,9 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        
+        self.loginButtonSetup()
+        self.newUserSetup()
+        self.forgotPasswordSetup()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -36,6 +43,7 @@ class LoginViewController: UIViewController {
             if Auth.auth().currentUser != nil {
                 guard let mainTabBarController = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarController") else { return }
                 self.present(mainTabBarController, animated: true, completion: nil)
+                
             }
         }
     }
@@ -81,6 +89,25 @@ class LoginViewController: UIViewController {
         let alert = UIAlertController(title: "Error logging in", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Try Again", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    // Set Up
+    
+    func loginButtonSetup() {
+        loginButton.layer.cornerRadius = 25
+        loginButton.titleLabel?.font.withSize(40)
+        
+    }
+    
+    func newUserSetup() {
+        newUserLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        signupButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        signupButton.titleLabel?.textColor = UIColor(r: 44, g: 212, b: 140)
+        
+    }
+    
+    func forgotPasswordSetup() {
+        forgotPasswordButton.titleLabel?.textColor = UIColor.gray
     }
 }
 
