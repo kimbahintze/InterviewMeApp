@@ -8,6 +8,8 @@
 
 import UIKit
 import AVKit
+import MobileCoreServices
+
 
 private let reuseIdentifier = "VideoCell"
 
@@ -16,12 +18,15 @@ class VideoCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super .viewDidLoad()
         collectionView?.register(VideoCollectionCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        VideoController.shared.checkFiles()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(true)
         setupNavigationBar()
         collectionView?.reloadData()
+        
     }
     
     private func setupNavigationBar() {
@@ -32,6 +37,8 @@ class VideoCollectionViewController: UICollectionViewController {
         navigationController?.navigationBar.shadowImage = nil
         navigationController?.navigationBar.tintColor = .blue
     }
+    
+
 }
 
 extension VideoCollectionViewController: UICollectionViewDelegateFlowLayout {
@@ -42,19 +49,19 @@ extension VideoCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? VideoCollectionCell else { return UICollectionViewCell() }
-        
+        cell.delegate = self
         let video = VideoController.shared.videos[indexPath.row]
+        guard let url = VideoController.shared.getPathDirectory(video: video) else { return UICollectionViewCell() }
         
-        cell.thumbnailImage.image = VideoController.shared.createThumbnail(url: video.url)
-        print(video.url)
+        cell.thumbnailImage.image = VideoController.shared.createThumbnail(url: url.absoluteString)
         cell.backgroundColor = .red
-        
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let video = VideoController.shared.videos[indexPath.row]
-        let player = AVPlayer(url: video.url)
+        guard let url = VideoController.shared.getPathDirectory(video: video) else { return }
+        let player = AVPlayer(url: url)
         let playerController = AVPlayerViewController()
         playerController.player = player
         self.present(playerController, animated: true) {
@@ -62,13 +69,32 @@ extension VideoCollectionViewController: UICollectionViewDelegateFlowLayout {
         }
     }
     
+    
+
+    
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: 100)
     }
-    
-    
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsetsMake(20, 20, 20, 20)
+    }
+}
+
+extension VideoCollectionViewController: VideoCellDelegate {
+    
+    func delete(cell: VideoCollectionCell) {
+        let alertController = UIAlertController(title: "Delete Video?", message: "Are you sure?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
+            guard let indexPath = self.collectionView?.indexPath(for: cell) else { return }
+            let video = VideoController.shared.videos[indexPath.item]
+            VideoController.shared.deleteVideo(video: video)
+            self.collectionView?.deleteItems(at: [indexPath])
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(deleteAction)
+        present(alertController, animated: true, completion: nil)
     }
 }

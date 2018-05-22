@@ -34,7 +34,7 @@ class InterviewQuestionsTableViewController: UITableViewController {
             try Auth.auth().signOut()
             dismiss(animated: true, completion: nil)
         } catch {
-            print("Trouble Logging Out")
+            print("Trouble Logging Out \(error.localizedDescription)")
         }
     }
     
