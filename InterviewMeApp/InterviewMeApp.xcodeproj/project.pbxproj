@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A03856B420AE3D170069BBEE /* InterviewQuestionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03856B320AE3D170069BBEE /* InterviewQuestionHeader.swift */; };
 		A03856B820AF41150069BBEE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03856B720AF41150069BBEE /* Constants.swift */; };
 		A05052DB20ACCDA3005981CF /* ChatRoomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05052DA20ACCDA3005981CF /* ChatRoomController.swift */; };
 		A05052DD20ACCF0B005981CF /* ChatLobbyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05052DC20ACCF0B005981CF /* ChatLobbyUser.swift */; };
@@ -18,6 +17,7 @@
 		A05241C320AF5EB500C29F40 /* VideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05241C220AF5EB500C29F40 /* VideoController.swift */; };
 		A05241C720AF61DD00C29F40 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05241C620AF61DD00C29F40 /* CameraViewController.swift */; };
 		A05241CB20AFCC7600C29F40 /* VIdeoCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05241CA20AFCC7600C29F40 /* VIdeoCollectionCell.swift */; };
+		A05EA86220B473F500329A6E /* AnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05EA86120B473F500329A6E /* AnswerTableViewCell.swift */; };
 		A0C25C5920ADE8B900B7FD85 /* InterviewQuestionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C25C5820ADE8B900B7FD85 /* InterviewQuestionsTableViewController.swift */; };
 		A0C25C5B20ADFBEE00B7FD85 /* InterviewQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C25C5A20ADFBEE00B7FD85 /* InterviewQuestion.swift */; };
 		A0C25C5D20ADFC4400B7FD85 /* InterviewQuestionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C25C5C20ADFC4400B7FD85 /* InterviewQuestionController.swift */; };
@@ -40,7 +40,6 @@
 /* Begin PBXFileReference section */
 		2597FF0BF0726ABBFA91CF62 /* Pods-InterviewMeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InterviewMeApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InterviewMeApp/Pods-InterviewMeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		9923D488D981203123E3D81C /* Pods-InterviewMeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InterviewMeApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-InterviewMeApp/Pods-InterviewMeApp.release.xcconfig"; sourceTree = "<group>"; };
-		A03856B320AE3D170069BBEE /* InterviewQuestionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewQuestionHeader.swift; sourceTree = "<group>"; };
 		A03856B720AF41150069BBEE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A05052DA20ACCDA3005981CF /* ChatRoomController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatRoomController.swift; path = "InterviewMeApp/View Controllers/ChatRoomController.swift"; sourceTree = SOURCE_ROOT; };
 		A05052DC20ACCF0B005981CF /* ChatLobbyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatLobbyUser.swift; path = InterviewMeApp/ChatLobbyUser.swift; sourceTree = SOURCE_ROOT; };
@@ -51,6 +50,7 @@
 		A05241C220AF5EB500C29F40 /* VideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VideoController.swift; path = "InterviewMeApp/View Controllers/VideoController.swift"; sourceTree = SOURCE_ROOT; };
 		A05241C620AF61DD00C29F40 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		A05241CA20AFCC7600C29F40 /* VIdeoCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIdeoCollectionCell.swift; sourceTree = "<group>"; };
+		A05EA86120B473F500329A6E /* AnswerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerTableViewCell.swift; sourceTree = "<group>"; };
 		A0C25C5820ADE8B900B7FD85 /* InterviewQuestionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewQuestionsTableViewController.swift; sourceTree = "<group>"; };
 		A0C25C5A20ADFBEE00B7FD85 /* InterviewQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InterviewQuestion.swift; path = "InterviewMeApp/View Controllers/InterviewQuestion.swift"; sourceTree = SOURCE_ROOT; };
 		A0C25C5C20ADFC4400B7FD85 /* InterviewQuestionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InterviewQuestionController.swift; path = "InterviewMeApp/View Controllers/InterviewQuestionController.swift"; sourceTree = SOURCE_ROOT; };
@@ -116,8 +116,8 @@
 			children = (
 				FF14867F20AA508B00FE71FD /* Signup.storyboard */,
 				FFF2740E20A9E92300D66A0B /* Main.storyboard */,
-				A03856B320AE3D170069BBEE /* InterviewQuestionHeader.swift */,
 				A05241CA20AFCC7600C29F40 /* VIdeoCollectionCell.swift */,
+				A05EA86120B473F500329A6E /* AnswerTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -335,9 +335,9 @@
 				B3218D4820B35ADF0042E2A6 /* VideoCoreData.xcdatamodeld in Sources */,
 				A03856B820AF41150069BBEE /* Constants.swift in Sources */,
 				A05241CB20AFCC7600C29F40 /* VIdeoCollectionCell.swift in Sources */,
+				A05EA86220B473F500329A6E /* AnswerTableViewCell.swift in Sources */,
 				A0C25C5920ADE8B900B7FD85 /* InterviewQuestionsTableViewController.swift in Sources */,
 				B3218D4C20B35B4C0042E2A6 /* Video + Convenience.swift in Sources */,
-				A03856B420AE3D170069BBEE /* InterviewQuestionHeader.swift in Sources */,
 				A0C25C5F20AE017700B7FD85 /* JobIndustry.swift in Sources */,
 				A0C25C5B20ADFBEE00B7FD85 /* InterviewQuestion.swift in Sources */,
 				A0C25C5D20ADFC4400B7FD85 /* InterviewQuestionController.swift in Sources */,

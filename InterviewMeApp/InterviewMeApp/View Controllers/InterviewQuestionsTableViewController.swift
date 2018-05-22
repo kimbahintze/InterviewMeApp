@@ -20,7 +20,7 @@ class InterviewQuestionsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super .viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name:InterviewQuestionController.NotificationKey.reloadTable, object: nil)
-        
+        tableView.register(AnswerTableViewCell.self, forCellReuseIdentifier: answerReuseIdentifier)
         navigationItem.title = "Interview Questions"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logout))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Job Industry", style: .done, target: self, action: #selector(changeJobIndustry))
@@ -88,8 +88,8 @@ extension InterviewQuestionsTableViewController {
         questionCell.textLabel?.text = interviewQuestion.question
         questionCell.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         return questionCell
-        case 1: let answerCell = tableView.dequeueReusableCell(withIdentifier: answerReuseIdentifier, for: indexPath)
-        answerCell.textLabel?.text = interviewQuestion.answer
+        case 1: guard let answerCell = tableView.dequeueReusableCell(withIdentifier: answerReuseIdentifier, for: indexPath) as? AnswerTableViewCell else { return UITableViewCell() }
+        answerCell.answerLabel.text = interviewQuestion.answer
         return answerCell
         default: break
             }
@@ -97,22 +97,12 @@ extension InterviewQuestionsTableViewController {
         return UITableViewCell() 
     }
     
-//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let headerView = InterviewQuestionHeader()
-//
-//        let interviewQuestion = InterviewQuestionController.shared.interviewQuestions[section]
-//
-//        headerView.questionLabel.text = interviewQuestion.question
-//
-//        return headerView
-//    }
-    
-//    override func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-//        return 50
-//    }
-    
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         return false
+    }
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
 }
 

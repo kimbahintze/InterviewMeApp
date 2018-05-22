@@ -56,6 +56,10 @@ class InterviewQuestionController {
         dataTask.resume()
     }
     
+    func addQuestionsToInterview() {
+        
+    }
+    
     private init() {
         JobIndustryController.shared.fetchUserJobIndustry { (jobIndustry) in
             self.fetchInterviewQuestions(jobIndustry: jobIndustry)

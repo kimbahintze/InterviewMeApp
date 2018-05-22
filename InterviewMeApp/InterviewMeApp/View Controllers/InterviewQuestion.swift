@@ -18,3 +18,8 @@ struct InterviewQuestion: Codable {
         self.answer = answer
     }
 }
+
+extension InterviewQuestion: Equatable {}
+func ==(lhs: InterviewQuestion, rhs: InterviewQuestion) -> Bool {
+    return lhs.question == rhs.question && lhs.answer == rhs.answer
+}
