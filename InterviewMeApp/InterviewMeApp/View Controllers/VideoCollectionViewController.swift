@@ -64,6 +64,8 @@ extension VideoCollectionViewController: UICollectionViewDelegateFlowLayout {
             player.play()
         }
     }
+    
+    
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: 100)
@@ -90,4 +92,12 @@ extension VideoCollectionViewController: VideoCellDelegate {
         alertController.addAction(deleteAction)
         present(alertController, animated: true, completion: nil)
     }
+}
+
+class AVPlayerViewControllerRotatable: AVPlayerViewController {
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
 }
