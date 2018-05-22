@@ -19,6 +19,12 @@ class InterviewQuestionController {
         }
     }
     
+    var savedInterviewQuestions: [InterviewQuestion] = [] {
+        didSet {
+            NotificationCenter.default.post(name: NotificationKey.reloadTable, object: self)
+        }
+    }
+    
     let baseURL = URL(string: "https://interviewmeapp-ec527.firebaseio.com/")
     
     enum NotificationKey {
@@ -56,13 +62,39 @@ class InterviewQuestionController {
         dataTask.resume()
     }
     
-    func addQuestionsToInterview() {
+    func fetchSavedQuestions(jobIndustry: JobIndustry?) {
+        guard let currentUser = Auth.auth().currentUser else { return }
+        guard let url = baseURL?.appendingPathComponent("users/\(currentUser.uid)/savedQuestions").appendingPathExtension("json") else { return }
         
+        let dataTask = URLSession.shared.dataTask(with: url) { (data, _, error) in
+            if let error = error {
+                print("Error fetching saved questions: \(error.localizedDescription)")
+                return
+            }
+            
+            if let data = data {
+                do {
+                    guard let interviewQuestionDictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any] else { return }
+                    var fetchedSavedQuestions: [InterviewQuestion] = []
+                    interviewQuestionDictionary.forEach({ (key, value) in
+                        guard let dictionary = value as? [String: Any] else { return }
+                        guard let interviewQuestion = InterviewQuestion(jsonDictionary: dictionary) else { return }
+                        fetchedSavedQuestions.append(interviewQuestion)
+                    })
+                    self.savedInterviewQuestions = fetchedSavedQuestions
+                } catch {
+                    print("Error getting data: \(error.localizedDescription)")
+                    return
+                }
+            }
+        }
+        dataTask.resume()
     }
     
     private init() {
         JobIndustryController.shared.fetchUserJobIndustry { (jobIndustry) in
             self.fetchInterviewQuestions(jobIndustry: jobIndustry)
+            self.fetchSavedQuestions(jobIndustry: jobIndustry)
         }
     }
 }
