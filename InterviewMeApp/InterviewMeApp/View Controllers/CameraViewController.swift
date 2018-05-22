@@ -22,6 +22,8 @@ class CameraViewController: SwiftyCamViewController {
         return button
     }()
     
+    
+    
     var isRecording = false
     var progress: CGFloat = 0
     var progressTime: Timer!
@@ -33,11 +35,29 @@ class CameraViewController: SwiftyCamViewController {
         cameraDelegate = self
         defaultCamera = .front
         setupViews()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
         setupNavigationBar()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super .viewDidAppear(animated)
+        Timer.scheduledTimer(withTimeInterval: 0.35, repeats: false) { (_) in
+            self.recordButton.addTarget(self, action: #selector(self.record), for: .touchUpInside)
+            self.view.addSubview(self.recordButton)
+            self.view.bringSubview(toFront: self.recordButton)
+            
+            self.recordButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+            self.recordButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -50).isActive = true
+            self.recordButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
+            self.recordButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
+            
+            guard let captureButton = self.recordButton as UIButton as? SwiftyCamButton else { return }
+            captureButton.delegate = self
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -53,18 +73,6 @@ class CameraViewController: SwiftyCamViewController {
         shouldUseDeviceOrientation = true
         allowBackgroundAudio = true
         lowLightBoost = true
-        
-        recordButton.addTarget(self, action: #selector(record), for: .touchUpInside)
-        view.addSubview(recordButton)
-        view.bringSubview(toFront: recordButton)
-        
-        recordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        recordButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50).isActive = true
-        recordButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        recordButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        
-        guard let captureButton = recordButton as UIButton as? SwiftyCamButton else { return }
-        captureButton.delegate = self
     }
     
     @objc private func record() {
@@ -120,15 +128,18 @@ class CameraViewController: SwiftyCamViewController {
 extension CameraViewController: SwiftyCamViewControllerDelegate {
     
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didBeginRecordingVideo camera: SwiftyCamViewController.CameraSelection) {
-        
     }
     
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didFinishRecordingVideo camera: SwiftyCamViewController.CameraSelection) {
     }
     
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didFinishProcessVideoAt url: URL) {
-        
+       
+        VideoController.shared.saveVideoWithURL(tempURL: url) { (url) in
+            if let url = url {
+                let stringURL = "\(url)"
+                VideoController.shared.recordVideo(videoURL: stringURL)
+            }
+        }
     }
-    
-    
 }

@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol VideoCellDelegate: class {
+    func delete(cell: VideoCollectionCell)
+}
+
 class VideoCollectionCell: UICollectionViewCell {
+    
+    weak var delegate: VideoCellDelegate?
     
     let thumbnailImage: UIImageView = {
         let imageView = UIImageView()
@@ -20,6 +26,8 @@ class VideoCollectionCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super .init(frame: frame)
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPress(_:)))
+        self.addGestureRecognizer(longPressGesture)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,5 +42,11 @@ class VideoCollectionCell: UICollectionViewCell {
         thumbnailImage.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         thumbnailImage.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         thumbnailImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+    }
+    
+    @objc func longPress(_ gesture: UILongPressGestureRecognizer) {
+        if gesture.state != .ended {
+            delegate?.delete(cell: self)
+        }
     }
 }

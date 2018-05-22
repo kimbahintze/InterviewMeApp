@@ -8,32 +8,63 @@
 
 import UIKit
 import AVFoundation
+import CoreData
 
 class VideoController {
     
     static let shared = VideoController()
     
-    var videos: [Video] = []
+    var videos: [Video] {
+       return fetchFromCoreData()
+    }
+    
+    var arrayOfImages: [UIImage] = []
     
     //MARK: - CRUD
     
-    //Create
-    func createVideo(permanentURL: URL) {
-        let video = Video(url: permanentURL)
-        videos.append(video)
+    func recordVideo(videoURL: String) {
+        let _ = Video(videoURL: videoURL)
+        saveToCoreData()
     }
     
-    //Save
+    func deleteVideo(video: Video) {
+        video.managedObjectContext?.delete(video)
+        guard let videoString = video.videoURL else { return }
+        deleteFromDocumentsDirectory(videoURLString: videoString)
+        saveToCoreData()
+    }
+    
+    func saveToCoreData() {
+        let moc = CoreDataStack.context
+        do {
+           try moc.save()
+        } catch let error {
+            print("error saving to CD", error.localizedDescription)
+        }
+    }
+    
+    func fetchFromCoreData() -> [Video] {
+        let moc = CoreDataStack.context
+        var videosToReturn: [Video]
+        let request: NSFetchRequest<Video> = Video.fetchRequest()
+        do {
+            videosToReturn = try moc.fetch(request)
+            return videosToReturn
+        } catch let error {
+            print("error fetching videos", error)
+        }
+        return []
+    }
+    
+    //Save videoWithURL
     func saveVideoWithURL(tempURL: URL, completion: @escaping(URL?) -> Void){
         let documentsDirectoryURL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         
         // lets create your destination file url
         let destinationUrl = documentsDirectoryURL.appendingPathComponent(tempURL.lastPathComponent)
-        print(destinationUrl)
         
         // to check if it exists before downloading it
         if FileManager.default.fileExists(atPath: destinationUrl.path) {
-            print("The file already exists at path")
             
             // if the file doesn't exist
         } else {
@@ -53,38 +84,22 @@ class VideoController {
         }
     }
     
-    //Load
-    private func loadVideos() -> [Video] {
-        do {
-            let jsonDecoder = JSONDecoder()
-            let data = try Data(contentsOf: fileURL())
-            let videos = try jsonDecoder.decode([Video].self, from: data)
-            return videos
-        } catch {
-            print("Error loading videos : \(error.localizedDescription)")
-        }
-        return []
-    }
-    
-    //Delete
-    func deleteVideo(video: Video) {
-        guard let index = videos.index(of: video) else { return }
-        videos.remove(at: index)
-        
-    }
-    
-    private func fileURL() -> URL {
+    func getPathDirectory(video: Video) -> URL? {
         let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let fullURL = documentDirectory.appendingPathComponent("Movies").appendingPathExtension("json")
-        return fullURL
+        guard let videoURLAsString = video.videoURL else { return nil}
+        guard let videoURL = URL(string: videoURLAsString) else { return nil}
+        let url = documentDirectory.appendingPathComponent(videoURL.lastPathComponent)
+        return url
     }
     
-    func createThumbnail(url: URL) -> UIImage? {
+ 
+    func createThumbnail(url: String) -> UIImage? {
+        guard let url = URL(string: url) else { return nil}
+        let asset = AVAsset(url: url)
+        let imageGenerator = AVAssetImageGenerator(asset: asset)
         do {
-            let asset = AVAsset(url: url)
-            let imageGenerator = AVAssetImageGenerator(asset: asset)
             imageGenerator.appliesPreferredTrackTransform = true
-            let cgImage = try imageGenerator.copyCGImage(at: CMTime(seconds: 5, preferredTimescale: 0), actualTime: nil)
+            let cgImage = try imageGenerator.copyCGImage(at: CMTimeMake(2, 10), actualTime: nil)
             let thumbnail = UIImage(cgImage: cgImage)
             return thumbnail
         } catch {
@@ -92,8 +107,42 @@ class VideoController {
         }
         return nil
     }
+
+    func deleteFromDocumentsDirectory(videoURLString: String) {
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        guard let baseURL = URL(string: videoURLString) else { return }
+        let url = documentsDirectory.appendingPathComponent(baseURL.lastPathComponent)
+        do {
+            let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsDirectory, includingPropertiesForKeys: nil, options: [])
+            do {
+                for file in directoryContents {
+                    print(directoryContents)
+                    if url == documentsDirectory.appendingPathComponent(file.lastPathComponent) {
+                        try FileManager.default.removeItem(at: file)
+                    }
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+    }
     
-    private init() {
-        videos = loadVideos()
+    func checkFiles() {
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        do {
+            let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsDirectory, includingPropertiesForKeys: nil, options: [])
+            
+            print("DirectoryContentsAmount: \(directoryContents.count)")
+            do {
+                for file in directoryContents {
+                    print(file)
+                }
+            }
+        } catch {
+            print("Cant delete video")
+        }
     }
 }
