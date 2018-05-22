@@ -137,6 +137,7 @@ extension CameraViewController: SwiftyCamViewControllerDelegate {
             if let url = url {
                 let stringURL = "\(url)"
                 VideoController.shared.recordVideo(videoURL: stringURL)
+                VideoController.shared.checkFiles()
             }
         }
     }
