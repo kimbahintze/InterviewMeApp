@@ -19,14 +19,12 @@ class VideoCollectionViewController: UICollectionViewController {
         super .viewDidLoad()
         collectionView?.register(VideoCollectionCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         VideoController.shared.checkFiles()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(true)
         setupNavigationBar()
         collectionView?.reloadData()
-        
     }
     
     private func setupNavigationBar() {
@@ -37,8 +35,6 @@ class VideoCollectionViewController: UICollectionViewController {
         navigationController?.navigationBar.shadowImage = nil
         navigationController?.navigationBar.tintColor = .blue
     }
-    
-
 }
 
 extension VideoCollectionViewController: UICollectionViewDelegateFlowLayout {
@@ -68,11 +64,7 @@ extension VideoCollectionViewController: UICollectionViewDelegateFlowLayout {
             player.play()
         }
     }
-    
-    
 
-    
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: 100)
     }
