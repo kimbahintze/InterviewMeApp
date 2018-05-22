@@ -47,5 +47,11 @@
 	<string>App needs access to microphone for video chat</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>GT-Walsheim-Bold.ttf</string>
+		<string>GT-Walsheim-Medium.ttf</string>
+		<string>GT-Walsheim-Regular.ttf</string>
+	</array>
 </dict>
 </plist>
