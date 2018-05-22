@@ -31,6 +31,7 @@ class VideoController {
         video.managedObjectContext?.delete(video)
         guard let videoString = video.videoURL else { return }
         deleteFromDocumentsDirectory(videoURLString: videoString)
+        deleteTempDirectory()
         saveToCoreData()
     }
     
@@ -73,7 +74,8 @@ class VideoController {
                 do {
                     // after downloading your file you need to move it to your destination url
                     try FileManager.default.moveItem(at: location, to: destinationUrl)
-                    
+                    print("THE destinationUrl", destinationUrl)
+                    print("THE LOCATION", location)
                     completion(destinationUrl)
                 } catch {
                     print(error.localizedDescription)
@@ -83,21 +85,67 @@ class VideoController {
         }
     }
     
+    func deleteFiledInDocDirectory(){
+    let fileManager = FileManager.default
+        
+        guard let tempFolderPath = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first?.absoluteString else {
+            return   // documents directory not found for some reason
+        }
+        do {
+            print("tempFolderPath", tempFolderPath)
+            let filePaths = try fileManager.contentsOfDirectory(atPath: tempFolderPath)
+            for filePath in filePaths {
+                try fileManager.removeItem(atPath: tempFolderPath + filePath)
+            }
+        } catch {
+            print("Could not clear temp folder: \(error.localizedDescription)")
+        }
+    }
+    
+    
     func deleteFromDocumentsDirectory(videoURLString: String) {
+        print("videoURLSTRING", videoURLString)
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         guard let baseURL = URL(string: videoURLString) else { return }
         let url = documentsDirectory.appendingPathComponent(baseURL.lastPathComponent)
         do {
             let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsDirectory, includingPropertiesForKeys: nil, options: [])
+
             do {
                 for file in directoryContents {
-                    print(directoryContents)
+                    
+                    
+                    
                     if url == documentsDirectory.appendingPathComponent(file.lastPathComponent) {
+                        
+                        print("directoryContents array of files", directoryContents)
+                        print("documentsDirectory", documentsDirectory)
+                        print("THIS FILE WAS DELETED", file)
+                        print("THIS IS THE baseURL", baseURL)
+                        print("THIS IS THE URL", url)
+                        try FileManager.default.removeItem(at: url)
+
                         try FileManager.default.removeItem(at: file)
+                        
+             
+                        
                     }
                 }
             } catch {
-                print(error.localizedDescription)
+                print("Could not delete at the folder:", error.localizedDescription)
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func deleteTempDirectory() {
+        let baseURL = FileManager.default.temporaryDirectory
+        do {
+            let tempContents = try FileManager.default.contentsOfDirectory(at: baseURL, includingPropertiesForKeys: nil, options: [])
+            print(tempContents)
+            for path in tempContents {
+                try FileManager.default.removeItem(at: path)
             }
         } catch {
             print(error.localizedDescription)
@@ -134,7 +182,6 @@ class VideoController {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         do {
             let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsDirectory, includingPropertiesForKeys: nil, options: [])
-            
             print("DirectoryContentsAmount: \(directoryContents.count)")
             do {
                 for file in directoryContents {

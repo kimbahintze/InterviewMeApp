@@ -83,6 +83,7 @@ extension VideoCollectionViewController: VideoCellDelegate {
             guard let indexPath = self.collectionView?.indexPath(for: cell) else { return }
             let video = VideoController.shared.videos[indexPath.item]
             VideoController.shared.deleteVideo(video: video)
+            VideoController.shared.checkFiles()
             self.collectionView?.deleteItems(at: [indexPath])
         }
         alertController.addAction(cancelAction)
