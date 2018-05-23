@@ -17,7 +17,7 @@ class CameraViewController: SwiftyCamViewController {
     let recordButton: RecordButton = {
         let button = RecordButton(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         button.buttonColor = .white
-        button.progressColor = .red
+        button.progressColor = mainColor
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -32,14 +32,13 @@ class CameraViewController: SwiftyCamViewController {
         super .viewDidLoad()
         cameraDelegate = self
         defaultCamera = .front
-        videoQuality = .low
         setupViews()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
         setupNavigationBar()
+        VideoController.shared.checkFiles()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -70,9 +69,8 @@ class CameraViewController: SwiftyCamViewController {
         pinchToZoom = false
         tapToFocus = true
         shouldUseDeviceOrientation = true
-        allowBackgroundAudio = true
+        allowBackgroundAudio = false
         lowLightBoost = true
-        
     }
     
     @objc private func record() {
@@ -86,7 +84,6 @@ class CameraViewController: SwiftyCamViewController {
         recordButton.buttonState = .recording
         isRecording = true
         progressTime = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: true)
-        videoQuality = .low
         startVideoRecording()
     }
     
@@ -119,7 +116,7 @@ class CameraViewController: SwiftyCamViewController {
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.view.backgroundColor = .clear
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "Back").withRenderingMode(.alwaysTemplate), style: .done, target: self, action: #selector(popController))
-        navigationController?.navigationBar.tintColor = .orange
+        navigationController?.navigationBar.tintColor = .white
     }
     
     @objc private func popController() {
@@ -134,48 +131,23 @@ extension CameraViewController: SwiftyCamViewControllerDelegate {
     
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didFinishRecordingVideo camera: SwiftyCamViewController.CameraSelection) {
     }
-    /*
-    func swiftyCam(_ swiftyCam: SwiftyCamViewController, didFinishProcessVideoAt url: URL) {
-       
-        VideoController.shared.saveVideoWithURL(tempURL: url) { (url) in
-            if let url = url {
-                let stringURL = "\(url)"
-                VideoController.shared.recordVideo(videoURL: stringURL)
-                VideoController.shared.checkFiles()
-            }
-        }
-    }
-    */
     
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didFinishProcessVideoAt url: URL) {
-        guard let data = NSData(contentsOf: url) else { return }
-        print("File size before compression: \(Double(data.length / 1048576)) mb")
-        let compressedURL = NSURL.fileURL(withPath: NSTemporaryDirectory() + NSUUID().uuidString + ".mov")
-        VideoController.shared.compressVideo(inputURL: url, outputURL: compressedURL) { (exportSession) in
-            guard let session = exportSession else { return }
-            
-            switch session.status {
-            case .unknown:
-                break
-            case .waiting:
-                break
-            case .exporting:
-                break
-            case .completed:
-                VideoController.shared.saveVideoWithURL(tempURL: compressedURL, completion: { (url) in
+        VideoController.shared.checkFileSize(sizeUrl: url, message: "BEFORE COMPRESSION THE SIZE")
+        let newURL = NSURL.fileURL(withPath: NSTemporaryDirectory() + NSUUID().uuidString + ".mov")
+        VideoController.shared.compressVideo(inputURL: url, outputURL: newURL) { (exportSession) in
+            if exportSession?.status == .completed {
+                VideoController.shared.checkFileSize(sizeUrl: newURL, message: "AFTER COMPRESSION SIZE")
+                VideoController.shared.saveVideoWithURL(tempURL: newURL, completion: { (url) in
                     if let url = url {
-                        let stringURL = url.absoluteString
+                        let stringURL = "\(url)"
                         VideoController.shared.recordVideo(videoURL: stringURL)
+                        VideoController.shared.deleteTempDirectory()
                     }
                 })
-                guard let compressedData = NSData(contentsOf: compressedURL) else { return }
-                print("File size after compression: \(Double(compressedData.length / 1048576)) mb")
-            case .failed:
-                break
-            case .cancelled:
-                break
+            } else if exportSession?.status == .failed {
+                print("there was a problem compressing")
             }
         }
     }
-    
 }

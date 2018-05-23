@@ -45,12 +45,12 @@ extension VideoCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? VideoCollectionCell else { return UICollectionViewCell() }
+        
         cell.delegate = self
         let video = VideoController.shared.videos[indexPath.row]
         guard let url = VideoController.shared.getPathDirectory(video: video) else { return UICollectionViewCell() }
-        
         cell.thumbnailImage.image = VideoController.shared.createThumbnail(url: url.absoluteString)
-        cell.backgroundColor = .red
+
         return cell
     }
     
@@ -64,21 +64,19 @@ extension VideoCollectionViewController: UICollectionViewDelegateFlowLayout {
             player.play()
         }
     }
-    
-    
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 100)
+        return CGSize(width: 150, height: 150)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(20, 20, 20, 20)
+        return UIEdgeInsetsMake(30, 30, 30, 30)
     }
 }
 
 extension VideoCollectionViewController: VideoCellDelegate {
     
-    func delete(cell: VideoCollectionCell) {
+    func deleteAlert(cell: VideoCollectionCell) {
         let alertController = UIAlertController(title: "Delete Video?", message: "Are you sure?", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
@@ -92,12 +90,4 @@ extension VideoCollectionViewController: VideoCellDelegate {
         alertController.addAction(deleteAction)
         present(alertController, animated: true, completion: nil)
     }
-}
-
-class AVPlayerViewControllerRotatable: AVPlayerViewController {
-    
-    override var shouldAutorotate: Bool {
-        return false
-    }
-    
 }
