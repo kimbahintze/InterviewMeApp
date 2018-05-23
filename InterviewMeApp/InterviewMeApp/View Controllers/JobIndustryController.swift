@@ -19,11 +19,7 @@ class JobIndustryController {
         static let reloadPicker = Notification.Name("ReloadPicker")
     }
     
-    var jobIndustries: [JobIndustry] = [] {
-        didSet {
-            NotificationCenter.default.post(name: NotificationKeys.reloadPicker, object: self)
-        }
-    }
+    var jobIndustries: [JobIndustry] = []
     
     private func fetchIndustries() {
         guard let url = baseURL?.appendingPathComponent("jobIndustry").appendingPathExtension("json") else { return }

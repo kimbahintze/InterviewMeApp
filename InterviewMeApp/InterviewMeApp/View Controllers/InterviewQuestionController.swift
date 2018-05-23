@@ -53,6 +53,7 @@ class InterviewQuestionController {
                         guard let interviewQuestion = InterviewQuestion(jsonDictionary: questionDictionary) else { return }
                         fetchedInterviewQuestions.append(interviewQuestion)
                     })
+                    self.fetchSavedQuestions(jobIndustry: jobIndustry)
                     self.interviewQuestions = fetchedInterviewQuestions
                 } catch {
                     print("Error fetchInterviewQuestions Data: \(error.localizedDescription)")
@@ -94,7 +95,6 @@ class InterviewQuestionController {
     private init() {
         JobIndustryController.shared.fetchUserJobIndustry { (jobIndustry) in
             self.fetchInterviewQuestions(jobIndustry: jobIndustry)
-            self.fetchSavedQuestions(jobIndustry: jobIndustry)
         }
     }
 }

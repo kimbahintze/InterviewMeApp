@@ -22,11 +22,13 @@ class InterviewQuestionsTableViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name:InterviewQuestionController.NotificationKey.reloadTable, object: nil)
         tableView.register(AnswerTableViewCell.self, forCellReuseIdentifier: answerReuseIdentifier)
         navigationItem.title = "Interview Questions"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logout))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Reload", style: .done, target: self, action: #selector(reloadTable))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Job Industry", style: .done, target: self, action: #selector(changeJobIndustry))
         jobIndustryPicker.delegate = self
         jobIndustryPicker.dataSource = self
         tableView.separatorStyle = .none
+        
+        
     }
     
     @objc func logout() {
@@ -41,7 +43,6 @@ class InterviewQuestionsTableViewController: UITableViewController {
     @objc private func reloadTable() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
-            self.jobIndustryPicker.reloadAllComponents()
         }
     }
     
@@ -92,11 +93,11 @@ extension InterviewQuestionsTableViewController {
         
         return questionCell
             
-        case 1: guard let answerCell = tableView.dequeueReusableCell(withIdentifier: answerReuseIdentifier, for: indexPath) as? AnswerTableViewCell else { return UITableViewCell() }
+        case 1: let answerCell = tableView.dequeueReusableCell(withIdentifier: answerReuseIdentifier, for: indexPath)
         
-        answerCell.setupViews(interviewQuestion: interviewQuestion)
-        answerCell.delegate = self
-        
+        answerCell.textLabel?.text = interviewQuestion.answer
+//        answerCell.delegate = self
+
         return answerCell
             
         default: break
@@ -108,8 +109,12 @@ extension InterviewQuestionsTableViewController {
         return false
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 500
+        return 100
     }
 
 }
@@ -139,7 +144,7 @@ extension InterviewQuestionsTableViewController: UIPickerViewDelegate, UIPickerV
 extension InterviewQuestionsTableViewController: AnswerTableViewCellDelegate {
     func removeQuestionFromInterview(cell: AnswerTableViewCell) {
         JobIndustryController.shared.fetchUserJobIndustry { (fetchedJobIndustry) in
-            guard let jobIndustry = fetchedJobIndustry, let currentUser = Auth.auth().currentUser, let indexPath = self.tableView.indexPath(for: cell) else { return }
+            guard let currentUser = Auth.auth().currentUser, let indexPath = self.tableView.indexPath(for: cell) else { return }
             let interviewQuestion = InterviewQuestionController.shared.interviewQuestions[indexPath.section]
             Database.database().reference().child("users/\(currentUser.uid)/savedQuestions/\(interviewQuestion.uuid)").removeValue()
         }
@@ -147,11 +152,9 @@ extension InterviewQuestionsTableViewController: AnswerTableViewCellDelegate {
     
     func addQuestionToInterview(cell: AnswerTableViewCell) {
         JobIndustryController.shared.fetchUserJobIndustry { (fetchedJobIndustry) in
-            guard let jobIndustry = fetchedJobIndustry, let currentUser = Auth.auth().currentUser, let indexPath = self.tableView.indexPath(for: cell) else { return }
+            guard let currentUser = Auth.auth().currentUser, let indexPath = self.tableView.indexPath(for: cell) else { return }
             let interviewQuestion = InterviewQuestionController.shared.interviewQuestions[indexPath.section]
             Database.database().reference().child("users/\(currentUser.uid)/savedQuestions/\(interviewQuestion.uuid)").setValue(["question": interviewQuestion.question, "answer": interviewQuestion.answer, "uuid": interviewQuestion.uuid])
         }
     }
-    
-    
 }
