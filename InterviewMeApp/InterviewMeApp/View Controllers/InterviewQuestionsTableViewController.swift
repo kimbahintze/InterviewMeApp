@@ -16,17 +16,13 @@ private let answerReuseIdentifier = "AnswerCell"
 class InterviewQuestionsTableViewController: UITableViewController {
     
     @IBOutlet var jobIndustryPicker: UIPickerView!
+    
     var uselessTextField = UITextField(frame: CGRect.zero)
     override func viewDidLoad() {
         super .viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name:InterviewQuestionController.NotificationKey.reloadTable, object: nil)
-        tableView.register(AnswerTableViewCell.self, forCellReuseIdentifier: answerReuseIdentifier)
-        navigationItem.title = "Interview Questions"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Reload", style: .done, target: self, action: #selector(reloadTable))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Job Industry", style: .done, target: self, action: #selector(changeJobIndustry))
         jobIndustryPicker.delegate = self
         jobIndustryPicker.dataSource = self
-        tableView.separatorStyle = .none
         
         
     }
@@ -93,16 +89,15 @@ extension InterviewQuestionsTableViewController {
         
         return questionCell
             
-        case 1: let answerCell = tableView.dequeueReusableCell(withIdentifier: answerReuseIdentifier, for: indexPath)
+        case 1: guard let answerCell = tableView.dequeueReusableCell(withIdentifier: answerReuseIdentifier, for: indexPath) as? AnswerTableViewCell else { return UITableViewCell() }
         
-        answerCell.textLabel?.text = interviewQuestion.answer
-//        answerCell.delegate = self
+        answerCell.answerLabel.text = interviewQuestion.answer
+        answerCell.delegate = self
 
         return answerCell
             
-        default: break
+        default: return UITableViewCell()
         }
-        return UITableViewCell() 
     }
     
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {

@@ -33,7 +33,7 @@ class VideoCollectionViewController: UICollectionViewController {
         navigationController?.navigationBar.barTintColor = nil
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.shadowImage = nil
-        navigationController?.navigationBar.tintColor = .blue
+        navigationController?.navigationBar.tintColor = mainColor
     }
 }
 

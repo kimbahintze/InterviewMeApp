@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -73,8 +74,8 @@
                                     <action selector="loginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1nY-Px-LoD"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c1m-fy-Xpi">
-                                <rect key="frame" x="98" y="515" width="176" height="43"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c1m-fy-Xpi">
+                                <rect key="frame" x="97" y="515" width="181" height="42"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="KLr-qz-XKt">
                                         <rect key="frame" x="0.0" y="5" width="181" height="32"/>
@@ -119,6 +120,7 @@
                             <constraint firstItem="c1m-fy-Xpi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Bbw-rJ-heN"/>
                             <constraint firstItem="DNm-NF-sEq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="35" id="M5x-DY-d10"/>
                             <constraint firstItem="c1m-fy-Xpi" firstAttribute="top" secondItem="wca-ak-pni" secondAttribute="bottom" constant="25" id="Y6Z-jT-hFF"/>
+                            <constraint firstItem="Kq2-Y9-6UW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="224" id="ach-lr-VSw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Kq2-Y9-6UW" secondAttribute="trailing" constant="35" id="bFO-QH-qZZ"/>
                             <constraint firstItem="DNm-NF-sEq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ew7-zB-Qhc"/>
                             <constraint firstItem="tqF-lJ-ssi" firstAttribute="centerX" secondItem="G8h-eh-GMf" secondAttribute="centerX" id="je9-lQ-Oxy"/>
@@ -171,7 +173,7 @@
                             <outlet property="delegate" destination="e3y-aj-laR" id="gfd-V7-e3C"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Rn4-WJ-aJA"/>
+                    <navigationItem key="navigationItem" title="Lobby" id="GxF-vs-DSN"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zn6-nk-zxK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -221,7 +223,7 @@
         <scene sceneID="s86-zH-Xrr">
             <objects>
                 <tableViewController storyboardIdentifier="InterviewQuestionTableViewController" title="Interview Questions" id="oXF-Hb-V45" customClass="InterviewQuestionsTableViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="DXd-VE-ryv">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="DXd-VE-ryv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -230,11 +232,11 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0lY-Ep-ta3" id="B9O-zg-JbN">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="92W-cY-NRv">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="92W-cY-NRv">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -243,22 +245,45 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AnswerCell" textLabel="ldX-IQ-JSb" style="IBUITableViewCellStyleDefault" id="7nK-cN-Yvb">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AnswerCell" id="7nK-cN-Yvb" customClass="AnswerTableViewCell" customModule="InterviewMeApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7nK-cN-Yvb" id="LSa-dt-uSp">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ldX-IQ-JSb">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cmj-jT-yaS">
+                                            <rect key="frame" x="16" y="11.5" width="305" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CXU-0Z-qkC">
+                                            <rect key="frame" x="329" y="7" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="YNG-u8-P2P"/>
+                                                <constraint firstAttribute="width" constant="30" id="ohS-zZ-mXb"/>
+                                            </constraints>
+                                            <state key="normal" title="Button" image="Add"/>
+                                            <connections>
+                                                <action selector="addButtonTapped:" destination="7nK-cN-Yvb" eventType="touchUpInside" id="gE1-fj-JL5"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Cmj-jT-yaS" firstAttribute="centerY" secondItem="LSa-dt-uSp" secondAttribute="centerY" id="57S-Kp-f2f"/>
+                                        <constraint firstItem="Cmj-jT-yaS" firstAttribute="leading" secondItem="LSa-dt-uSp" secondAttribute="leadingMargin" id="9R1-za-1jD"/>
+                                        <constraint firstItem="Cmj-jT-yaS" firstAttribute="top" secondItem="LSa-dt-uSp" secondAttribute="topMargin" constant="0.5" id="Cnb-rV-U3J"/>
+                                        <constraint firstItem="CXU-0Z-qkC" firstAttribute="leading" secondItem="Cmj-jT-yaS" secondAttribute="trailing" constant="8" id="axg-ft-le6"/>
+                                        <constraint firstItem="CXU-0Z-qkC" firstAttribute="centerY" secondItem="LSa-dt-uSp" secondAttribute="centerY" id="kNO-BW-FRe"/>
+                                        <constraint firstAttribute="trailing" secondItem="CXU-0Z-qkC" secondAttribute="trailing" constant="16" id="oJW-lt-0AX"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Cmj-jT-yaS" secondAttribute="bottom" constant="1" id="qFM-be-mj1"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="addButton" destination="CXU-0Z-qkC" id="WeF-XI-oua"/>
+                                    <outlet property="answerLabel" destination="Cmj-jT-yaS" id="rSL-g8-Lbg"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -266,7 +291,7 @@
                             <outlet property="delegate" destination="oXF-Hb-V45" id="ZnI-n4-Atb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="NCw-1F-yPs"/>
+                    <navigationItem key="navigationItem" title="Interview Questions" id="SmW-pJ-vkD"/>
                     <connections>
                         <outlet property="jobIndustryPicker" destination="ASg-HT-w4c" id="MNJ-gv-oyA"/>
                     </connections>
@@ -277,7 +302,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                 </pickerView>
             </objects>
-            <point key="canvasLocation" x="1534" y="1030"/>
+            <point key="canvasLocation" x="1533.5999999999999" y="1029.5352323838081"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kXZ-si-3H0">
@@ -319,7 +344,7 @@
             </objects>
             <point key="canvasLocation" x="2772" y="99"/>
         </scene>
-        <!--Saved-->
+        <!--Recordings-->
         <scene sceneID="Ft9-dn-6A5">
             <objects>
                 <collectionViewController id="VP8-aX-5Vs" customClass="VideoCollectionViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -348,12 +373,7 @@
                             <outlet property="delegate" destination="VP8-aX-5Vs" id="YCB-Bj-bpe"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Saved" id="msn-du-R3q">
-                        <barButtonItem key="leftBarButtonItem" title="Import" id="F8F-BP-ZXX">
-                            <connections>
-                                <action selector="importVideos:" destination="VP8-aX-5Vs" id="HDl-xS-fLC"/>
-                            </connections>
-                        </barButtonItem>
+                    <navigationItem key="navigationItem" title="Recordings" id="msn-du-R3q">
                         <barButtonItem key="rightBarButtonItem" title="Record" id="Rmm-bc-qd9">
                             <connections>
                                 <segue destination="T9M-Cm-R8p" kind="show" id="gWf-t6-Yyt"/>
@@ -447,11 +467,7 @@
                         <viewLayoutGuide key="safeArea" id="5W5-Ne-v7u"/>
                     </view>
                     <navigationItem key="navigationItem" title="Edit Profile" id="3qy-90-pAM">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="2MN-dh-HmJ">
-                            <connections>
-                                <action selector="cancelButtonTapped:" destination="qrL-dc-Tb3" id="PvG-9x-0RZ"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="Xuq-tS-FJp"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="l9g-SB-oX4">
                             <connections>
                                 <action selector="saveButtonTapped:" destination="qrL-dc-Tb3" id="BRR-QZ-Tbb"/>
@@ -544,6 +560,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Add" width="50" height="50"/>
         <image name="InterviewQuestions" width="23" height="23"/>
         <image name="InterviewQuestions-Filled" width="23" height="23"/>
         <image name="SelfRecord" width="23" height="23"/>
