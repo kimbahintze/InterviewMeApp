@@ -9,7 +9,7 @@
 import UIKit
 
 protocol VideoCellDelegate: class {
-    func delete(cell: VideoCollectionCell)
+    func deleteAlert(cell: VideoCollectionCell)
 }
 
 class VideoCollectionCell: UICollectionViewCell {
@@ -42,11 +42,12 @@ class VideoCollectionCell: UICollectionViewCell {
         thumbnailImage.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         thumbnailImage.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         thumbnailImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        thumbnailImage.layer.cornerRadius = 20.0
     }
     
     @objc func longPress(_ gesture: UILongPressGestureRecognizer) {
         if gesture.state != .ended {
-            delegate?.delete(cell: self)
+            delegate?.deleteAlert(cell: self)
         }
     }
 }

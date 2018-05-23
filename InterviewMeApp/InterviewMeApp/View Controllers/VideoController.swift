@@ -18,9 +18,7 @@ class VideoController {
         return fetchFromCoreData()
     }
     
-    var arrayOfImages: [UIImage] = []
-    
-    //MARK: - CRUD
+    //MARK: - CRUD and Fetch
     
     func recordVideo(videoURL: String) {
         let _ = Video(videoURL: videoURL)
@@ -69,6 +67,7 @@ class VideoController {
             
             // if the file doesn't exist
         } else {
+            
             URLSession.shared.downloadTask(with: tempURL, completionHandler: { (location, response, error) -> Void in
                 guard let location = location, error == nil else { return }
                 do {
@@ -81,51 +80,6 @@ class VideoController {
                 }
             }).resume()
         }
-    }
-    
-    func saveVideoAndCompressURL(tempURL: URL, completion: @escaping(URL?) -> Void) {
-        let documentsDirectoryURL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let destinationUrl = documentsDirectoryURL.appendingPathComponent(tempURL.lastPathComponent)
-
-        let compressedURL = NSURL.fileURL(withPath: NSTemporaryDirectory() + NSUUID().uuidString + ".mov")
-        print("compressedURL", compressedURL)
-        compressVideo(inputURL: destinationUrl as URL, outputURL: compressedURL) { (exportSession) in
-            guard let session = exportSession else { return }
-            switch session.status {
-            case .unknown:
-                break
-            case .waiting:
-                break
-            case .exporting:
-                break
-            case .completed:
-                if FileManager.default.fileExists(atPath: compressedURL.path) {
-                    
-                    // if the file doesn't exist
-                } else {
-                    URLSession.shared.downloadTask(with: tempURL, completionHandler: { (location, response, error) -> Void in
-                        guard let location = location, error == nil else { return }
-                        do {
-                            // after downloading your file you need to move it to your destination url
-                            try FileManager.default.moveItem(at: location, to: compressedURL)
-                            completion(compressedURL)
-                        } catch {
-                            print(error.localizedDescription)
-                            completion(nil)
-                        }
-                    }).resume()
-                }
-                
-//            guard let compressedData = NSData(contentsOf: compressedURL) else { return }
-//                print("File size after compression: \(Double(compressedData.length / 1048576)) mb")
-            case .failed:
-                break
-            case .cancelled:
-                break
-            }
-        }
-        
-
     }
     
     func deleteFromDocumentsDirectory(videoURLString: String) {
@@ -203,47 +157,19 @@ class VideoController {
         }
     }
     
-    //MARK: - Compress Video
-    
-    func capture(_ captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAt outputFileURL: URL!, fromConnections connections: [Any]!, error: Error!) {
-        
-        guard let data = NSData(contentsOf: outputFileURL as URL) else { return }
-        
-        print("File size before compression: \(Double(data.length / 1048576)) mb")
-        let compressedURL = NSURL.fileURL(withPath: NSTemporaryDirectory() + NSUUID().uuidString + ".m4v")
-        compressVideo(inputURL: outputFileURL as URL, outputURL: compressedURL) { (exportSession) in
-            guard let session = exportSession else {
-                return
-            }
-            
-            switch session.status {
-            case .unknown:
-                break
-            case .waiting:
-                break
-            case .exporting:
-                break
-            case .completed:
-                guard let compressedData = NSData(contentsOf: compressedURL) else {
-                    return
-                }
-                
-                print("File size after compression: \(Double(compressedData.length / 1048576)) mb")
-            case .failed:
-                break
-            case .cancelled:
-                break
-            }
-        }
+    func checkFileSize(sizeUrl: URL, message: String){
+        guard let data = NSData(contentsOf: sizeUrl) else { return }
+        print(message, (Double(data.length) / 1048576), " mb")
     }
+    
+    //MARK: - Compress Video
     
     func compressVideo(inputURL: URL, outputURL: URL, handler:@escaping (_ exportSession: AVAssetExportSession?)-> Void) {
         let urlAsset = AVURLAsset(url: inputURL, options: nil)
-        guard let exportSession = AVAssetExportSession(asset: urlAsset, presetName: AVAssetExportPreset1280x720) else {
+        guard let exportSession = AVAssetExportSession(asset: urlAsset, presetName: AVAssetExportPresetMediumQuality) else {
             handler(nil)
             return
         }
-        
         exportSession.outputURL = outputURL
         exportSession.outputFileType = AVFileType.mov
         exportSession.shouldOptimizeForNetworkUse = true
@@ -252,3 +178,6 @@ class VideoController {
         }
     }
 }
+
+
+
