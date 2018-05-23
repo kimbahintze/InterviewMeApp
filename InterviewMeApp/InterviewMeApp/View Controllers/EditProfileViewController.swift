@@ -41,6 +41,7 @@ class EditProfileViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadPicker), name: JobIndustryController.NotificationKeys.reloadPicker, object: nil)
         industryPicker.dataSource = self
         industryPicker.delegate = self
+        self.setupFont()
     
     }
     
@@ -48,6 +49,14 @@ class EditProfileViewController: UIViewController {
     
     @IBAction func saveButtonTapped(_ sender: Any) {
        updateUsersProfile()
+        editFirstNameTextField.resignFirstResponder()
+        editLastNameTextField.resignFirstResponder()
+        editAgeTextField.resignFirstResponder()
+        editIndustryTextField.resignFirstResponder()
+        let alert = UIAlertController(title: "Profile updated!", message: nil, preferredStyle: .alert)
+        let okay = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(okay)
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
@@ -85,15 +94,24 @@ class EditProfileViewController: UIViewController {
     func updateUsersProfile() {
         if let userID = Auth.auth().currentUser?.uid {
         
-            guard let editedFirstName = editFirstNameTextField.text else { return }
-            guard let editedLastName = editLastNameTextField.text else { return }
-            guard let editedAge = editAgeTextField.text else { return }
-            guard let editedIndustry = editIndustryTextField.text else { return }
+            guard let editedFirstName = editFirstNameTextField.text, !editedFirstName.isEmpty else { return }
+            guard let editedLastName = editLastNameTextField.text, !editedLastName.isEmpty else { return }
+            guard let editedAge = editAgeTextField.text, !editedAge.isEmpty else { return }
+            guard let editedIndustry = editIndustryTextField.text, !editedIndustry.isEmpty else { return }
             
-            let newValues = ["firstName": editedFirstName,
-                             "lastName": editedLastName,
-                             "age": editedAge,
-                             "jobindustry": editedIndustry]
+            let newValues = ["age": editedAge,
+                             "jobindustry": editedIndustry,
+                             "firstName": editedFirstName,
+                             "lastName": editedLastName]
+            
+            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+            let name = "\(editedFirstName) \(editedLastName)"
+            changeRequest?.displayName = name
+            changeRequest?.commitChanges(completion: { (error) in
+                if let error = error {
+                    print("Error saving name: \(error.localizedDescription)")
+                }
+            })
             
             // update firebase
             self.databaseRef.child("users").child(userID).updateChildValues(newValues) { (error, ref) in
@@ -104,6 +122,17 @@ class EditProfileViewController: UIViewController {
                 print("Profile Successfully Update")
             }
         }
+    }
+    
+    func setupFont() {
+        editFirstNameTextField.textColor = darkFontColor
+        editFirstNameTextField.font = UIFont(name: GTWalsheimRegular, size: 12)
+        editLastNameTextField.textColor = darkFontColor
+        editLastNameTextField.font = UIFont(name: GTWalsheimRegular, size: 12)
+        editIndustryTextField.textColor = darkFontColor
+        editIndustryTextField.font = UIFont(name: GTWalsheimRegular, size: 12)
+        editAgeTextField.textColor = darkFontColor
+        editAgeTextField.font = UIFont(name: GTWalsheimRegular, size: 12)
     }
 }
 
