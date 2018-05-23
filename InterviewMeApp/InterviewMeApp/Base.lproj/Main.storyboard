@@ -408,7 +408,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kBZ-j4-G7m">
-                                <rect key="frame" x="35" y="238.5" width="305" height="190"/>
+                                <rect key="frame" x="35" y="258.5" width="305" height="150"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UiJ-qt-0IQ">
                                         <rect key="frame" x="0.0" y="0.0" width="305" height="30"/>
@@ -434,12 +434,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RG6-ux-9oP">
-                                        <rect key="frame" x="0.0" y="160" width="305" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -453,11 +447,41 @@
                         <viewLayoutGuide key="safeArea" id="5W5-Ne-v7u"/>
                     </view>
                     <navigationItem key="navigationItem" title="Edit Profile" id="3qy-90-pAM">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="2MN-dh-HmJ"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="l9g-SB-oX4"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="2MN-dh-HmJ">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="qrL-dc-Tb3" id="PvG-9x-0RZ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="l9g-SB-oX4">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="qrL-dc-Tb3" id="BRR-QZ-Tbb"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="agePicker" destination="64N-bc-vVS" id="8b5-Ds-oKX"/>
+                        <outlet property="editAgeTextField" destination="yDg-Ba-XSq" id="OSc-vN-f03"/>
+                        <outlet property="editFirstNameTextField" destination="UiJ-qt-0IQ" id="hWC-0t-4j3"/>
+                        <outlet property="editIndustryTextField" destination="Bmu-ah-s7b" id="eAq-lH-2Rw"/>
+                        <outlet property="editLastNameTextField" destination="zwf-Xx-s37" id="OOM-vD-K2W"/>
+                        <outlet property="industryPicker" destination="uoE-6s-Qaq" id="pgX-vh-FjM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q3n-nv-3g2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pickerView contentMode="scaleToFill" id="uoE-6s-Qaq">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="162"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                </pickerView>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="64N-bc-vVS">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="162"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <date key="date" timeIntervalSinceReferenceDate="548747568.71260703">
+                        <!--2018-05-23 05:52:48 +0000-->
+                    </date>
+                    <connections>
+                        <action selector="dateChanged:" destination="qrL-dc-Tb3" eventType="valueChanged" id="ZDJ-r2-yr0"/>
+                    </connections>
+                </datePicker>
             </objects>
             <point key="canvasLocation" x="3593" y="1908"/>
         </scene>

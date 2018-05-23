@@ -8,9 +8,11 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
+
 class SignupViewController: UIViewController {
     
     // MARK: - Outlets
+    
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var birthdayTextField: UITextField!
@@ -40,9 +42,8 @@ class SignupViewController: UIViewController {
         passwordTextField.delegate = self
         confirmPasswordTextField.delegate = self
         self.setup()
-        
         activityView = UIActivityIndicatorView()
-        
+        handleSignup(signupButton)
         birthdayTextField.inputView = datePicker
         industryTextField.inputView = jobIndustryPicker
         NotificationCenter.default.addObserver(self, selector: #selector(reloadPicker), name: JobIndustryController.NotificationKeys.reloadPicker, object: nil)
@@ -55,7 +56,6 @@ class SignupViewController: UIViewController {
     @IBAction func dateChanged(_ sender: UIDatePicker) {
         birthdayTextField.text = verifyAge()
     }
-    
     
     func verifyAge() -> String {
         let dob = datePicker.date
@@ -93,7 +93,7 @@ class SignupViewController: UIViewController {
                 
                 guard let uuid = Auth.auth().currentUser?.uid else { return }
                 let jobIndustry = industry
-                Database.database().reference().child("users").child(uuid).setValue(["jobindustry": jobIndustry])
+                Database.database().reference().child("users").child(uuid).setValue(["jobindustry": jobIndustry, "age": age, "firstName": firstName, "lastName": lastName, "email": email])
             })
             let sb = UIStoryboard(name: "Main", bundle: nil)
             
@@ -124,7 +124,6 @@ class SignupViewController: UIViewController {
         signupButton.titleLabel?.font = UIFont(name: GTWalsheimRegular, size: 20)
         signupButton.setTitleColor(UIColor.white, for: .normal)
     }
-    
     
 }
 
