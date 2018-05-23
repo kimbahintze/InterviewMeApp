@@ -49,12 +49,19 @@ class SignupViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadPicker), name: JobIndustryController.NotificationKeys.reloadPicker, object: nil)
         jobIndustryPicker.dataSource = self
         jobIndustryPicker.delegate = self
+//        datePicker.addStyle()
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+//            self.datePicker.addStyle()
+//        }
+        datePicker.setValue(UIColor.white, forKey: "textColor")
+        datePicker.backgroundColor = mainColor
     }
     
     //MARK: - Actions
     
     @IBAction func dateChanged(_ sender: UIDatePicker) {
         birthdayTextField.text = verifyAge()
+        
     }
     
     func verifyAge() -> String {
@@ -189,9 +196,43 @@ extension SignupViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         industryTextField.text = JobIndustryController.shared.jobIndustries[row].name
     }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var pickerLabel: UILabel? = (view as? UILabel)
+        if pickerLabel == nil {
+            pickerLabel = UILabel()
+            pickerLabel?.font = UIFont(name: GTWalsheimRegular, size: 20)
+            pickerLabel?.textAlignment = .center
+        }
+        pickerLabel?.text = JobIndustryController.shared.jobIndustries[row].name
+        pickerLabel?.textColor = UIColor.white
+        pickerLabel?.backgroundColor = mainColor
+        return pickerLabel!
+    }
+    
+    
     @objc private func reloadPicker() {
         DispatchQueue.main.async {
             self.jobIndustryPicker.reloadAllComponents()
         }
     }
 }
+
+//extension UIDatePicker {
+//
+//    func addStyle(view: UIView? = nil) {
+//        let view = view ?? self
+//        for subview in view.subviews {
+//            if let label = subview as? UILabel {
+//                if let text = label.text {
+//                    print("UIDatePicker :: stylizeLabel :: \(text)\n")
+//
+//                    label.font = UIFont(name: GTWalsheimRegular, size: 20)
+//                    label.textColor = UIColor.white
+//                }
+//            } else {
+//                addStyle(view: subview)
+//            }
+//        }
+//    }
+//}
