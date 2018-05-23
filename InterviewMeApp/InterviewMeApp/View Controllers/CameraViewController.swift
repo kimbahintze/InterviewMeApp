@@ -126,12 +126,6 @@ class CameraViewController: SwiftyCamViewController {
 
 extension CameraViewController: SwiftyCamViewControllerDelegate {
     
-    func swiftyCam(_ swiftyCam: SwiftyCamViewController, didBeginRecordingVideo camera: SwiftyCamViewController.CameraSelection) {
-    }
-    
-    func swiftyCam(_ swiftyCam: SwiftyCamViewController, didFinishRecordingVideo camera: SwiftyCamViewController.CameraSelection) {
-    }
-    
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didFinishProcessVideoAt url: URL) {
         VideoController.shared.checkFileSize(sizeUrl: url, message: "BEFORE COMPRESSION THE SIZE")
         let newURL = NSURL.fileURL(withPath: NSTemporaryDirectory() + NSUUID().uuidString + ".mov")
