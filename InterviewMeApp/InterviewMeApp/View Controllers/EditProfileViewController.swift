@@ -59,9 +59,15 @@ class EditProfileViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func cancelButtonTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+    @IBAction func logoutButtonTapped(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+            self.dismiss(animated: true, completion: nil)
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
+    
     
     @IBAction func dateChanged(_ sender: UIDatePicker) {
         editAgeTextField.text = reVerifyAge()
