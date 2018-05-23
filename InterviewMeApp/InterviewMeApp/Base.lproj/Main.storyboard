@@ -120,7 +120,6 @@
                             <constraint firstItem="c1m-fy-Xpi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Bbw-rJ-heN"/>
                             <constraint firstItem="DNm-NF-sEq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="35" id="M5x-DY-d10"/>
                             <constraint firstItem="c1m-fy-Xpi" firstAttribute="top" secondItem="wca-ak-pni" secondAttribute="bottom" constant="25" id="Y6Z-jT-hFF"/>
-                            <constraint firstItem="Kq2-Y9-6UW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="224" id="ach-lr-VSw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Kq2-Y9-6UW" secondAttribute="trailing" constant="35" id="bFO-QH-qZZ"/>
                             <constraint firstItem="DNm-NF-sEq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ew7-zB-Qhc"/>
                             <constraint firstItem="tqF-lJ-ssi" firstAttribute="centerX" secondItem="G8h-eh-GMf" secondAttribute="centerX" id="je9-lQ-Oxy"/>
@@ -467,7 +466,11 @@
                         <viewLayoutGuide key="safeArea" id="5W5-Ne-v7u"/>
                     </view>
                     <navigationItem key="navigationItem" title="Edit Profile" id="3qy-90-pAM">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="Xuq-tS-FJp"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="Xuq-tS-FJp">
+                            <connections>
+                                <action selector="logoutButtonTapped:" destination="qrL-dc-Tb3" id="hko-uv-X5W"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="l9g-SB-oX4">
                             <connections>
                                 <action selector="saveButtonTapped:" destination="qrL-dc-Tb3" id="BRR-QZ-Tbb"/>
@@ -543,7 +546,7 @@
         <scene sceneID="7Qt-b8-bv1">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nMx-Mf-Onu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Edit Profile" image="edit-1" selectedImage="edit-1" id="QXr-dC-nad"/>
+                    <tabBarItem key="tabBarItem" title="Edit Profile" image="Edit" selectedImage="Edit-Filled" id="QXr-dC-nad"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UcY-NF-yXW">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -561,13 +564,14 @@
     </scenes>
     <resources>
         <image name="Add" width="50" height="50"/>
+        <image name="Edit" width="23" height="23"/>
+        <image name="Edit-Filled" width="23" height="23"/>
         <image name="InterviewQuestions" width="23" height="23"/>
         <image name="InterviewQuestions-Filled" width="23" height="23"/>
         <image name="SelfRecord" width="23" height="23"/>
         <image name="SelfRecord-Filled" width="23" height="23"/>
         <image name="VideoChat" width="23" height="23"/>
         <image name="VideoChat-Filled" width="23" height="23"/>
-        <image name="edit-1" width="25" height="25"/>
     </resources>
     <color key="tintColor" red="0.22352941176470589" green="0.84313725490196079" blue="0.62352941176470589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
