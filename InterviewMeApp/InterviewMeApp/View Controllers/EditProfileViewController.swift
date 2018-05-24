@@ -31,7 +31,6 @@ class EditProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         databaseRef = Database.database().reference()
-        loadProfileData()
         editFirstNameTextField.delegate = self
         editLastNameTextField.delegate = self
         editAgeTextField.delegate = self
@@ -41,10 +40,14 @@ class EditProfileViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadPicker), name: JobIndustryController.NotificationKeys.reloadPicker, object: nil)
         industryPicker.dataSource = self
         industryPicker.delegate = self
-        self.setupFont()
-    
+        navigationItem.titleView = logoTitleView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super .viewWillAppear(animated)
+        loadProfileData()
+        setPicker()
+    }
     // MARK: - Actions
     
     @IBAction func saveButtonTapped(_ sender: Any) {
@@ -86,7 +89,7 @@ class EditProfileViewController: UIViewController {
         if let userID = Auth.auth().currentUser?.uid {
             databaseRef.child("users").child(userID).observe(.value, with: { (snapshot) in
                 
-                guard let values = snapshot.value as? NSDictionary else { return }
+                guard let values = snapshot.value as? [String:Any] else { return }
                 
                 self.editFirstNameTextField.text = values["firstName"] as? String
                 self.editLastNameTextField.text = values["lastName"] as? String
@@ -127,18 +130,21 @@ class EditProfileViewController: UIViewController {
                 }
                 print("Profile Successfully Update")
             }
+            JobIndustryController.shared.fetchUserJobIndustry { (fetchedJobIndustry) in
+                guard let jobIndustry = fetchedJobIndustry else { return }
+                InterviewQuestionController.shared.fetchInterviewQuestions(jobIndustry: jobIndustry)
+            }
         }
     }
     
-    func setupFont() {
-        editFirstNameTextField.textColor = darkFontColor
-        editFirstNameTextField.font = UIFont(name: GTWalsheimRegular, size: 12)
-        editLastNameTextField.textColor = darkFontColor
-        editLastNameTextField.font = UIFont(name: GTWalsheimRegular, size: 12)
-        editIndustryTextField.textColor = darkFontColor
-        editIndustryTextField.font = UIFont(name: GTWalsheimRegular, size: 12)
-        editAgeTextField.textColor = darkFontColor
-        editAgeTextField.font = UIFont(name: GTWalsheimRegular, size: 12)
+    private func setPicker() {
+        JobIndustryController.shared.fetchUserJobIndustry { (fetchedJobIndustry) in
+            guard let jobIndustry = fetchedJobIndustry else { return }
+            guard let index = JobIndustryController.shared.jobIndustries.index(of: jobIndustry) else { return }
+            DispatchQueue.main.async {
+                self.industryPicker.selectRow(index, inComponent: 0, animated: true)
+            }
+        }
     }
 }
 
@@ -188,23 +194,10 @@ extension EditProfileViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        editIndustryTextField.text = JobIndustryController.shared.jobIndustries[row].name
-       let selectedJob = JobIndustryController.shared.jobIndustries[row]
-        InterviewQuestionController.shared.fetchInterviewQuestions(jobIndustry: selectedJob)
+        let jobIndustry = JobIndustryController.shared.jobIndustries[row]
+        editIndustryTextField.text = jobIndustry.name
     }
     
-//    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-//        var pickerLabel: UILabel? = (view as? UILabel)
-//        if pickerLabel == nil {
-//            pickerLabel = UILabel()
-//            pickerLabel?.font = UIFont(name: GTWalsheimRegular, size: 20)
-//            pickerLabel?.textAlignment = .center
-//        }
-//        pickerLabel?.text = JobIndustryController.shared.jobIndustries[row].name
-//        pickerLabel?.textColor = UIColor.white
-//        pickerLabel?.backgroundColor = mainColor
-//        return pickerLabel!
-//    }
     @objc private func reloadPicker() {
         DispatchQueue.main.async {
             self.industryPicker.reloadAllComponents()
