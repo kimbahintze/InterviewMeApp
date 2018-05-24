@@ -36,7 +36,7 @@ class InterviewQuestionsTableViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name:InterviewQuestionController.NotificationKey.reloadTable, object: nil)
         jobIndustryPicker.delegate = self
         jobIndustryPicker.dataSource = self
-        
+        navigationItem.titleView = logoTitleView()
         isOnBoarded = UserDefaults().bool(forKey: "Completed")
         
         if isOnBoarded == false {

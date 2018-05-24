@@ -37,6 +37,7 @@ class CameraViewController: SwiftyCamViewController {
     //MARK: - LifeCycle
     
     override func viewDidLoad() {
+        self.videoGravity = .resizeAspectFill
         super .viewDidLoad()
         cameraDelegate = self
         defaultCamera = .front
