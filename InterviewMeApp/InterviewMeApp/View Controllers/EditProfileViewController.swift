@@ -189,20 +189,22 @@ extension EditProfileViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         editIndustryTextField.text = JobIndustryController.shared.jobIndustries[row].name
+       let selectedJob = JobIndustryController.shared.jobIndustries[row]
+        InterviewQuestionController.shared.fetchInterviewQuestions(jobIndustry: selectedJob)
     }
     
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        var pickerLabel: UILabel? = (view as? UILabel)
-        if pickerLabel == nil {
-            pickerLabel = UILabel()
-            pickerLabel?.font = UIFont(name: GTWalsheimRegular, size: 20)
-            pickerLabel?.textAlignment = .center
-        }
-        pickerLabel?.text = JobIndustryController.shared.jobIndustries[row].name
-        pickerLabel?.textColor = UIColor.white
-        pickerLabel?.backgroundColor = mainColor
-        return pickerLabel!
-    }
+//    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+//        var pickerLabel: UILabel? = (view as? UILabel)
+//        if pickerLabel == nil {
+//            pickerLabel = UILabel()
+//            pickerLabel?.font = UIFont(name: GTWalsheimRegular, size: 20)
+//            pickerLabel?.textAlignment = .center
+//        }
+//        pickerLabel?.text = JobIndustryController.shared.jobIndustries[row].name
+//        pickerLabel?.textColor = UIColor.white
+//        pickerLabel?.backgroundColor = mainColor
+//        return pickerLabel!
+//    }
     @objc private func reloadPicker() {
         DispatchQueue.main.async {
             self.industryPicker.reloadAllComponents()
