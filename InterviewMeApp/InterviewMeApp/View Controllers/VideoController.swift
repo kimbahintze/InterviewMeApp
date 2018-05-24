@@ -140,24 +140,6 @@ class VideoController {
         return nil
     }
     
-    //MARK: - Check Files
-    func checkFiles() {
-        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        do {
-            let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsDirectory, includingPropertiesForKeys: nil, options: [])
-            do {
-                for file in directoryContents {
-                }
-            }
-        } catch {
-            print("Cant delete video")
-        }
-    }
-    
-    func checkFileSize(sizeUrl: URL, message: String){
-        guard let data = NSData(contentsOf: sizeUrl) else { return }
-    }
-    
     //MARK: - Compress Video
     
     func compressVideo(inputURL: URL, outputURL: URL, handler:@escaping (_ exportSession: AVAssetExportSession?)-> Void) {

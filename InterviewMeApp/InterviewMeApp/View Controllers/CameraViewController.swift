@@ -47,7 +47,6 @@ class CameraViewController: SwiftyCamViewController {
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
         setupNavigationBar()
-        VideoController.shared.checkFiles()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -151,11 +150,9 @@ class CameraViewController: SwiftyCamViewController {
 extension CameraViewController: SwiftyCamViewControllerDelegate {
     
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didFinishProcessVideoAt url: URL) {
-        VideoController.shared.checkFileSize(sizeUrl: url, message: "BEFORE COMPRESSION THE SIZE")
         let newURL = NSURL.fileURL(withPath: NSTemporaryDirectory() + NSUUID().uuidString + ".mov")
         VideoController.shared.compressVideo(inputURL: url, outputURL: newURL) { (exportSession) in
             if exportSession?.status == .completed {
-                VideoController.shared.checkFileSize(sizeUrl: newURL, message: "AFTER COMPRESSION SIZE")
                 VideoController.shared.saveVideoWithURL(tempURL: newURL, completion: { (url) in
                     if let url = url {
                         let stringURL = "\(url)"
