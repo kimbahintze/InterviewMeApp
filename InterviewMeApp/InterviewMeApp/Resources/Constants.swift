@@ -16,6 +16,11 @@ public let GTWalsheimRegular = "GTWalsheimRegular"
 public let GTWalsheimMedium = "GTWalsheimMedium"
 public let GTWalsheimBold = "GTWalsheimBold"
 
+func logoTitleView() -> UIView {
+    let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+    imageView.image = #imageLiteral(resourceName: "Logo")
+    return imageView
+}
 
 extension String {
     

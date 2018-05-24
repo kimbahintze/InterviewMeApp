@@ -40,15 +40,12 @@ class LoginViewController: UIViewController {
         self.newUserSetup()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super .viewDidAppear(animated)
-        
-        Timer.scheduledTimer(withTimeInterval: 0.25, repeats: false) { (_) in
-            if Auth.auth().currentUser != nil {
-                guard let mainTabBarController = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarController") else { return }
-                self.present(mainTabBarController, animated: true, completion: nil)
-                
-            }
+    override func viewWillAppear(_ animated: Bool) {
+        super .viewWillAppear(animated)
+        if Auth.auth().currentUser != nil {
+            guard let mainTabBarController = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarController") else { return }
+            self.present(mainTabBarController, animated: false, completion: nil)
+            
         }
     }
     
