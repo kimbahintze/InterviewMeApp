@@ -19,6 +19,7 @@ class VideoCollectionViewController: UICollectionViewController {
         super .viewDidLoad()
         collectionView?.register(VideoCollectionCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         VideoController.shared.checkFiles()
+        navigationItem.titleView = logoTitleView()
     }
     
     override func viewWillAppear(_ animated: Bool) {

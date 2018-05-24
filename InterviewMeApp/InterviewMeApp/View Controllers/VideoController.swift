@@ -107,7 +107,6 @@ class VideoController {
         let baseURL = FileManager.default.temporaryDirectory
         do {
             let tempContents = try FileManager.default.contentsOfDirectory(at: baseURL, includingPropertiesForKeys: nil, options: [])
-            print(tempContents)
             for path in tempContents {
                 try FileManager.default.removeItem(at: path)
             }
@@ -146,10 +145,8 @@ class VideoController {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         do {
             let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsDirectory, includingPropertiesForKeys: nil, options: [])
-            print("DirectoryContentsAmount: \(directoryContents.count)")
             do {
                 for file in directoryContents {
-                    print(file)
                 }
             }
         } catch {
@@ -159,7 +156,6 @@ class VideoController {
     
     func checkFileSize(sizeUrl: URL, message: String){
         guard let data = NSData(contentsOf: sizeUrl) else { return }
-        print(message, (Double(data.length) / 1048576), " mb")
     }
     
     //MARK: - Compress Video

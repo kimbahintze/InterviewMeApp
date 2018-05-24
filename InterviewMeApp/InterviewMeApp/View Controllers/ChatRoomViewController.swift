@@ -137,11 +137,11 @@ extension ChatRoomViewController: TVIRoomDelegate {
     }
     
     func room(_ room: TVIRoom, participantDidDisconnect participant: TVIRemoteParticipant) {
-        navigationController?.popViewController(animated: true)
+        ChatRoomController.shared.enterLobby()
     }
     
     func room(_ room: TVIRoom, didDisconnectWithError error: Error?) {
-        navigationController?.popViewController(animated: true)
+        ChatRoomController.shared.enterLobby()
     }
     
     func room(_ room: TVIRoom, didFailToConnectWithError error: Error) {

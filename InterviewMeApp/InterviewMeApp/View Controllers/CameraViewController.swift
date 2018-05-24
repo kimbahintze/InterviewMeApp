@@ -22,6 +22,14 @@ class CameraViewController: SwiftyCamViewController {
         return button
     }()
     
+    let questionView: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        view.backgroundColor = UIColor.white
+        view.layer.cornerRadius = 10
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     var isRecording = false
     var progress: CGFloat = 0
     var progressTime: Timer!
@@ -55,6 +63,14 @@ class CameraViewController: SwiftyCamViewController {
             
             guard let captureButton = self.recordButton as UIButton as? SwiftyCamButton else { return }
             captureButton.delegate = self
+            
+            self.view.addSubview(self.questionView)
+            self.view.bringSubview(toFront: self.questionView)
+            
+            self.questionView.widthAnchor.constraint(equalTo: self.view.widthAnchor, constant: -5).isActive = true
+            self.questionView.heightAnchor.constraint(equalToConstant: 80).isActive = true
+            self.questionView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+            self.questionView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         }
     }
     
@@ -69,8 +85,12 @@ class CameraViewController: SwiftyCamViewController {
         pinchToZoom = false
         tapToFocus = true
         shouldUseDeviceOrientation = true
-        allowBackgroundAudio = false
+        allowBackgroundAudio = true
         lowLightBoost = true
+    }
+    
+    private func showQuestionView() {
+        questionView.center.y = 20
     }
     
     @objc private func record() {
@@ -78,6 +98,9 @@ class CameraViewController: SwiftyCamViewController {
             stopRecording()
         } else {
             startRecording()
+        }
+        UIView.animate(withDuration: 0.3) {
+            self.showQuestionView()
         }
     }
     @objc private func startRecording() {

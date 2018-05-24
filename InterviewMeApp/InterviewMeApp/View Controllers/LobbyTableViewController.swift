@@ -15,7 +15,8 @@ class LobbyTableViewController: UITableViewController {
     override func viewDidLoad() {
         super .viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name: ChatRoomController.NotificationKeys.reloadTable, object: nil)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create", style: .done, target: self, action: #selector(createChatRoom))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create", style: .plain, target: self, action: #selector(createChatRoom))
+        navigationItem.titleView = logoTitleView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
