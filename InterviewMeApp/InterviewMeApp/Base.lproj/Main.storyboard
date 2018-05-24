@@ -290,7 +290,13 @@
                             <outlet property="delegate" destination="oXF-Hb-V45" id="ZnI-n4-Atb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Interview Questions" id="SmW-pJ-vkD"/>
+                    <navigationItem key="navigationItem" title="Interview Questions" id="SmW-pJ-vkD">
+                        <barButtonItem key="rightBarButtonItem" title="Post" id="AJg-SW-qO4">
+                            <connections>
+                                <segue destination="JcB-1z-G30" kind="show" identifier="toPostedQuestionsVC" id="kXv-wH-K4e"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="jobIndustryPicker" destination="ASg-HT-w4c" id="MNJ-gv-oyA"/>
                     </connections>
@@ -301,7 +307,57 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                 </pickerView>
             </objects>
-            <point key="canvasLocation" x="1533.5999999999999" y="1029.5352323838081"/>
+            <point key="canvasLocation" x="290" y="1030"/>
+        </scene>
+        <!--Posted Questions Table View Controller-->
+        <scene sceneID="xed-zW-0aE">
+            <objects>
+                <tableViewController id="JcB-1z-G30" customClass="PostedQuestionsTableViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oem-hD-Knn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="12i-zh-kJK">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Post a question here..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JIo-QT-mC3">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="JIo-QT-mC3" secondAttribute="bottom" id="Rdi-d9-l5a"/>
+                                <constraint firstItem="JIo-QT-mC3" firstAttribute="top" secondItem="12i-zh-kJK" secondAttribute="top" id="URL-No-lgK"/>
+                                <constraint firstItem="JIo-QT-mC3" firstAttribute="leading" secondItem="12i-zh-kJK" secondAttribute="leading" id="YPI-j0-Mlc"/>
+                                <constraint firstAttribute="trailing" secondItem="JIo-QT-mC3" secondAttribute="trailing" id="bDs-3Q-Da1"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="19G-8U-1lK">
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="19G-8U-1lK" id="kC1-DU-Ora">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="rOb-px-eMe" kind="show" identifier="toPostedAnswersVC" id="A7f-nO-UdN"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="JcB-1z-G30" id="lj9-yS-ouc"/>
+                            <outlet property="delegate" destination="JcB-1z-G30" id="Yfd-qX-k5M"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LeS-zo-1Wx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1007" y="1030"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kXZ-si-3H0">
@@ -401,7 +457,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="28i-vs-b6Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="766" y="1030"/>
+            <point key="canvasLocation" x="-460" y="1030"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="dnj-u6-C8T">
@@ -522,6 +578,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X9j-2y-pwp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5009" y="1030"/>
+        </scene>
+        <!--Posted Answers Table View Controller-->
+        <scene sceneID="DA1-2d-xpG">
+            <objects>
+                <tableViewController id="rOb-px-eMe" customClass="PostedAnswersTableViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oiA-nR-4tD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="FOm-BH-9r6">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="144"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Type answer here..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="c4w-5h-ngn">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="144"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                </textView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="c4w-5h-ngn" secondAttribute="trailing" id="AjX-q8-gZM"/>
+                                <constraint firstAttribute="bottom" secondItem="c4w-5h-ngn" secondAttribute="bottom" id="KoF-ZQ-hdE"/>
+                                <constraint firstItem="c4w-5h-ngn" firstAttribute="leading" secondItem="FOm-BH-9r6" secondAttribute="leading" id="XFX-l0-o0e"/>
+                                <constraint firstItem="c4w-5h-ngn" firstAttribute="top" secondItem="FOm-BH-9r6" secondAttribute="top" id="uQT-A5-SPr"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ac8-zZ-kxv">
+                                <rect key="frame" x="0.0" y="172" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ac8-zZ-kxv" id="yot-4X-HbR">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="rOb-px-eMe" id="8qd-y7-214"/>
+                            <outlet property="delegate" destination="rOb-px-eMe" id="hnP-eL-aPZ"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K6x-rz-qch" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1743" y="1031"/>
         </scene>
         <!--Self Practice-->
         <scene sceneID="BO5-C1-XTD">

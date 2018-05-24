@@ -17,9 +17,19 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>App needs access to camera for video chat</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>App needs access to microphone for video chat</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>GT-Walsheim-Bold.ttf</string>
+		<string>GT-Walsheim-Medium.ttf</string>
+		<string>GT-Walsheim-Regular.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -41,17 +51,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSCameraUsageDescription</key>
-	<string>App needs access to camera for video chat</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>App needs access to microphone for video chat</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
-	<key>UIAppFonts</key>
-	<array>
-		<string>GT-Walsheim-Bold.ttf</string>
-		<string>GT-Walsheim-Medium.ttf</string>
-		<string>GT-Walsheim-Regular.ttf</string>
-	</array>
 </dict>
 </plist>
