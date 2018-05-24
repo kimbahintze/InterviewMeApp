@@ -9,22 +9,42 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import AlertOnboarding
+
 
 private let questionReuseIdentifier = "QuestionCell"
 private let answerReuseIdentifier = "AnswerCell"
 
 class InterviewQuestionsTableViewController: UITableViewController {
     
+    //MARK: - Properties
+    var alertView: AlertOnboarding!
+    var isOnBoarded: Bool = false
+    
+    var arrayOfImage = ["InterviewQuestions", "VideoChat", "SelfRecord", "Edit"]
+    var arrayOfTitle = ["MOC QUESTIONS", "LIVE MOC", "MOC RECORD", "EDIT PROFILE"]
+    var arrayOfDescription = ["Moc Questions is a place where you can review interview questions and answers.",
+                              "Get over your fears and start practicing with another person!",
+                              "Practice makes perfect, Moc Record records your answers to interview questions.", "Edit profile allows you to change your information."]
+    
     @IBOutlet var jobIndustryPicker: UIPickerView!
     
     var uselessTextField = UITextField(frame: CGRect.zero)
+    
     override func viewDidLoad() {
         super .viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name:InterviewQuestionController.NotificationKey.reloadTable, object: nil)
         jobIndustryPicker.delegate = self
         jobIndustryPicker.dataSource = self
         
+        isOnBoarded = UserDefaults().bool(forKey: "Completed")
         
+        if isOnBoarded == false {
+            alertView = AlertOnboarding(arrayOfImage: arrayOfImage, arrayOfTitle: arrayOfTitle, arrayOfDescription: arrayOfDescription)
+            alertView.delegate = self
+            
+            alertView.show()
+        }
     }
     
     @objc func logout() {
@@ -56,7 +76,6 @@ class InterviewQuestionsTableViewController: UITableViewController {
             self.uselessTextField.becomeFirstResponder()
             
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneChangingIndustry))
-            
         }
     }
     
@@ -152,4 +171,25 @@ extension InterviewQuestionsTableViewController: AnswerTableViewCellDelegate {
             Database.database().reference().child("users/\(currentUser.uid)/savedQuestions/\(interviewQuestion.uuid)").setValue(["question": interviewQuestion.question, "answer": interviewQuestion.answer, "uuid": interviewQuestion.uuid])
         }
     }
+}
+
+
+extension InterviewQuestionsTableViewController: AlertOnboardingDelegate {
+
+    func alertOnboardingSkipped(_ currentStep: Int, maxStep: Int) {
+        print("Onboarding skipped the \(currentStep) step and the max step he saw was the number \(maxStep)")
+        UserDefaults().set(true, forKey: "Completed")
+    }
+    
+    func alertOnboardingCompleted() {
+        print("Onboarding completed!")
+        UserDefaults().set(true, forKey: "Completed")
+        
+    }
+    
+    func alertOnboardingNext(_ nextStep: Int) {
+        print("Next step triggered! \(nextStep)")
+    }
+    
+    
 }

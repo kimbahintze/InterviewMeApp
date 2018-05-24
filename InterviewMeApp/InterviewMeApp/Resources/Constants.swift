@@ -12,9 +12,9 @@ import UIKit
 let mainColor = UIColor(red: 44/255, green: 212/255, blue: 140/255, alpha: 1.0)
 let lightFontColor = UIColor(red: 169/255, green: 170/255, blue: 198/255, alpha: 1.0)
 let darkFontColor = UIColor(red: 100/255, green: 100/255, blue: 118/255, alpha: 1.0)
-let GTWalsheimRegular = "GTWalsheimRegular"
-let GTWalsheimMedium = "GTWalsheimMedium"
-let GTWalsheimBold = "GTWalsheimBold"
+public let GTWalsheimRegular = "GTWalsheimRegular"
+public let GTWalsheimMedium = "GTWalsheimMedium"
+public let GTWalsheimBold = "GTWalsheimBold"
 
 func logoTitleView() -> UIView {
     let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
