@@ -22,8 +22,12 @@ class VideoCollectionViewController: UICollectionViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super .viewWillAppear(true)
+        super.viewWillAppear(true)
         setupNavigationBar()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         collectionView?.reloadData()
     }
     
@@ -50,11 +54,11 @@ extension VideoCollectionViewController: UICollectionViewDelegateFlowLayout {
         let video = VideoController.shared.videos[indexPath.row]
         guard let url = VideoController.shared.getPathDirectory(video: video) else { return UICollectionViewCell() }
         cell.thumbnailImage.image = VideoController.shared.createThumbnail(url: url.absoluteString)
-
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         let video = VideoController.shared.videos[indexPath.row]
         guard let url = VideoController.shared.getPathDirectory(video: video) else { return }
         let player = AVPlayer(url: url)
@@ -90,3 +94,5 @@ extension VideoCollectionViewController: VideoCellDelegate {
         present(alertController, animated: true, completion: nil)
     }
 }
+
+
