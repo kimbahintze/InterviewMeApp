@@ -23,16 +23,36 @@ class CameraViewController: SwiftyCamViewController {
     }()
     
     let questionView: UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        view.backgroundColor = UIColor.white
-        view.layer.cornerRadius = 10
-        view.translatesAutoresizingMaskIntoConstraints = false
+//        let view = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+        
+        let view = UIView()
+        view.backgroundColor = .red
+        view.layer.cornerRadius = 15
+        view.layer.masksToBounds = true
+        return view
+    }()
+    
+    let savingLabel : UILabel = {
+        let label = UILabel(frame: CGRect(x: 50, y: 0, width: 160, height: 46))
+        label.text = "Saving"
+        label.font = UIFont(name: "GTWalsheimMedium", size: 20)
+        label.textColor = UIColor(white: 0.9, alpha: 0.7)
+        return label
+    }()
+    
+    let boxView : UIVisualEffectView = {
+        let view = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+        view.layer.cornerRadius = 15
+        view.layer.masksToBounds = true
         return view
     }()
     
     var isRecording = false
     var progress: CGFloat = 0
     var progressTime: Timer!
+    
+    
+    var activityIndicator = UIActivityIndicatorView()
     
     //MARK: - LifeCycle
     
@@ -63,14 +83,6 @@ class CameraViewController: SwiftyCamViewController {
             
             guard let captureButton = self.recordButton as UIButton as? SwiftyCamButton else { return }
             captureButton.delegate = self
-            
-            self.view.addSubview(self.questionView)
-            self.view.bringSubview(toFront: self.questionView)
-            
-            self.questionView.widthAnchor.constraint(equalTo: self.view.widthAnchor, constant: -5).isActive = true
-            self.questionView.heightAnchor.constraint(equalToConstant: 80).isActive = true
-            self.questionView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-            self.questionView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         }
     }
     
@@ -108,6 +120,7 @@ class CameraViewController: SwiftyCamViewController {
         isRecording = true
         progressTime = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: true)
         startVideoRecording()
+        startQuestionView()
     }
     
     @objc private func stopRecording() {
@@ -116,6 +129,7 @@ class CameraViewController: SwiftyCamViewController {
         isRecording = false
         progressTime.invalidate()
         stopVideoRecording()
+        startActivityIndicator()
     }
     
     @objc private func updateProgress() {
@@ -130,6 +144,7 @@ class CameraViewController: SwiftyCamViewController {
             self.progress = 0 
             recordButton.buttonState = .idle
             stopVideoRecording()
+            stopActivityIndicator()
         }
     }
     
@@ -145,6 +160,32 @@ class CameraViewController: SwiftyCamViewController {
     @objc private func popController() {
         navigationController?.popViewController(animated: true)
     }
+
+    func startActivityIndicator() {
+        boxView.frame = CGRect(x: view.frame.midX - savingLabel.frame.width/2, y: view.frame.midY - savingLabel.frame.height/2 , width: 160, height: 46)
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 46, height: 46)
+        activityIndicator.startAnimating()
+        
+        boxView.contentView.addSubview(activityIndicator)
+        boxView.contentView.addSubview(savingLabel)
+        view.addSubview(boxView)
+    }
+    
+    func stopActivityIndicator() {
+        activityIndicator.stopAnimating()
+        savingLabel.removeFromSuperview()
+        activityIndicator.removeFromSuperview()
+        boxView.removeFromSuperview()
+        popController()
+    }
+    
+    //Question View
+    func startQuestionView() {
+        questionView.frame = CGRect(x: 100, y: 200, width: 200, height: 200)
+        view.addSubview(questionView)
+        questionView.addSubview(savingLabel)
+    }
 }
 
 extension CameraViewController: SwiftyCamViewControllerDelegate {
@@ -153,13 +194,16 @@ extension CameraViewController: SwiftyCamViewControllerDelegate {
         let newURL = NSURL.fileURL(withPath: NSTemporaryDirectory() + NSUUID().uuidString + ".mov")
         VideoController.shared.compressVideo(inputURL: url, outputURL: newURL) { (exportSession) in
             if exportSession?.status == .completed {
-                VideoController.shared.saveVideoWithURL(tempURL: newURL, completion: { (url) in
-                    if let url = url {
-                        let stringURL = "\(url)"
-                        VideoController.shared.recordVideo(videoURL: stringURL)
-                        VideoController.shared.deleteTempDirectory()
-                    }
-                })
+                DispatchQueue.main.async {
+                    VideoController.shared.saveVideoWithURL(tempURL: newURL, completion: { (url) in
+                        if let url = url {
+                            let stringURL = "\(url)"
+                            VideoController.shared.recordVideo(videoURL: stringURL)
+                            VideoController.shared.deleteTempDirectory()
+                        }
+                    })
+                        self.stopActivityIndicator()
+                }
             } else if exportSession?.status == .failed {
                 print("there was a problem compressing")
             }
