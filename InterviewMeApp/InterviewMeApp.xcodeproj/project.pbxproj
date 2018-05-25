@@ -30,13 +30,15 @@
 		B37503C520AA224E00AFB23A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37503C420AA224E00AFB23A /* LoginViewController.swift */; };
 		FF14868120AA508B00FE71FD /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF14867F20AA508B00FE71FD /* Signup.storyboard */; };
 		FF1BDE5920B681550031593E /* PostedQuestionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BDE5820B681550031593E /* PostedQuestionsTableViewController.swift */; };
-		FF1BDE5B20B683680031593E /* PostedAnswersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BDE5A20B683680031593E /* PostedAnswersTableViewController.swift */; };
 		FF58A22120B4850600D3586A /* GT-Walsheim-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF58A21E20B4850500D3586A /* GT-Walsheim-Regular.ttf */; };
 		FF58A22220B4850600D3586A /* GT-Walsheim-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF58A21F20B4850600D3586A /* GT-Walsheim-Bold.ttf */; };
 		FF58A22320B4850700D3586A /* GT-Walsheim-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF58A22020B4850600D3586A /* GT-Walsheim-Medium.ttf */; };
 		FF58A22520B4AFC700D3586A /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58A22420B4AFC700D3586A /* EditProfileViewController.swift */; };
 		FF5DF60F20AB4D83009C2897 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF5DF60E20AB4D83009C2897 /* GoogleService-Info.plist */; };
 		FFDC3E8B20AA425300AADF8A /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDC3E8A20AA425300AADF8A /* SignupViewController.swift */; };
+		FFDD3DB720B7A1DA00BD277D /* AnswersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDD3DB620B7A1DA00BD277D /* AnswersViewController.swift */; };
+		FFDD3DB920B7A1F100BD277D /* PostAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDD3DB820B7A1F100BD277D /* PostAnswerViewController.swift */; };
+		FFDD3DBD20B7A54D00BD277D /* UserQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDD3DBC20B7A54D00BD277D /* UserQuestion.swift */; };
 		FFF2740B20A9E92300D66A0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF2740A20A9E92300D66A0B /* AppDelegate.swift */; };
 		FFF2741020A9E92300D66A0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFF2740E20A9E92300D66A0B /* Main.storyboard */; };
 		FFF2741220A9E92400D66A0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFF2741120A9E92400D66A0B /* Assets.xcassets */; };
@@ -69,13 +71,15 @@
 		E313558045188ED812C8FDAD /* Pods_InterviewMeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InterviewMeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF14868020AA508B00FE71FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = InterviewMeApp/Base.lproj/Signup.storyboard; sourceTree = "<group>"; };
 		FF1BDE5820B681550031593E /* PostedQuestionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostedQuestionsTableViewController.swift; sourceTree = "<group>"; };
-		FF1BDE5A20B683680031593E /* PostedAnswersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostedAnswersTableViewController.swift; sourceTree = "<group>"; };
 		FF58A21E20B4850500D3586A /* GT-Walsheim-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GT-Walsheim-Regular.ttf"; sourceTree = "<group>"; };
 		FF58A21F20B4850600D3586A /* GT-Walsheim-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GT-Walsheim-Bold.ttf"; sourceTree = "<group>"; };
 		FF58A22020B4850600D3586A /* GT-Walsheim-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GT-Walsheim-Medium.ttf"; sourceTree = "<group>"; };
 		FF58A22420B4AFC700D3586A /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		FF5DF60E20AB4D83009C2897 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FFDC3E8A20AA425300AADF8A /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		FFDD3DB620B7A1DA00BD277D /* AnswersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswersViewController.swift; sourceTree = "<group>"; };
+		FFDD3DB820B7A1F100BD277D /* PostAnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAnswerViewController.swift; sourceTree = "<group>"; };
+		FFDD3DBC20B7A54D00BD277D /* UserQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserQuestion.swift; sourceTree = "<group>"; };
 		FFF2740720A9E92300D66A0B /* InterviewMeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InterviewMeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFF2740A20A9E92300D66A0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFF2740F20A9E92300D66A0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -162,7 +166,8 @@
 				A05241C620AF61DD00C29F40 /* CameraViewController.swift */,
 				FF58A22420B4AFC700D3586A /* EditProfileViewController.swift */,
 				FF1BDE5820B681550031593E /* PostedQuestionsTableViewController.swift */,
-				FF1BDE5A20B683680031593E /* PostedAnswersTableViewController.swift */,
+				FFDD3DB620B7A1DA00BD277D /* AnswersViewController.swift */,
+				FFDD3DB820B7A1F100BD277D /* PostAnswerViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -173,6 +178,7 @@
 				A05052E320ACE3C9005981CF /* TokenUtilities.swift */,
 				A0C25C5A20ADFBEE00B7FD85 /* InterviewQuestion.swift */,
 				A0C25C5E20AE017700B7FD85 /* JobIndustry.swift */,
+				FFDD3DBC20B7A54D00BD277D /* UserQuestion.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -374,11 +380,13 @@
 				A0C25C6120AE019300B7FD85 /* JobIndustryController.swift in Sources */,
 				A05052E420ACE3C9005981CF /* TokenUtilities.swift in Sources */,
 				FFF2740B20A9E92300D66A0B /* AppDelegate.swift in Sources */,
+				FFDD3DB920B7A1F100BD277D /* PostAnswerViewController.swift in Sources */,
 				A05052E220ACD4C9005981CF /* ChatRoomViewController.swift in Sources */,
 				A05241C120AF5DB700C29F40 /* VideoCollectionViewController.swift in Sources */,
 				B3218D4820B35ADF0042E2A6 /* VideoCoreData.xcdatamodeld in Sources */,
 				A03856B820AF41150069BBEE /* Constants.swift in Sources */,
 				A05241CB20AFCC7600C29F40 /* VIdeoCollectionCell.swift in Sources */,
+				FFDD3DB720B7A1DA00BD277D /* AnswersViewController.swift in Sources */,
 				A05EA86220B473F500329A6E /* AnswerTableViewCell.swift in Sources */,
 				FF58A22520B4AFC700D3586A /* EditProfileViewController.swift in Sources */,
 				A0C25C5920ADE8B900B7FD85 /* InterviewQuestionsTableViewController.swift in Sources */,
@@ -392,8 +400,8 @@
 				A05052E020ACD445005981CF /* LobbyTableViewController.swift in Sources */,
 				FF1BDE5920B681550031593E /* PostedQuestionsTableViewController.swift in Sources */,
 				A05241C720AF61DD00C29F40 /* CameraViewController.swift in Sources */,
-				FF1BDE5B20B683680031593E /* PostedAnswersTableViewController.swift in Sources */,
 				A05052DB20ACCDA3005981CF /* ChatRoomController.swift in Sources */,
+				FFDD3DBD20B7A54D00BD277D /* UserQuestion.swift in Sources */,
 				A05241C320AF5EB500C29F40 /* VideoController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -549,7 +557,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DJ9Q6RC5SN;
+				DEVELOPMENT_TEAM = A6SH4SB8PT;
 				INFOPLIST_FILE = "$(SRCROOT)/InterviewMeApp/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -569,7 +577,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DJ9Q6RC5SN;
+				DEVELOPMENT_TEAM = A6SH4SB8PT;
 				INFOPLIST_FILE = "$(SRCROOT)/InterviewMeApp/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
