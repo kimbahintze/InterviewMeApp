@@ -81,6 +81,8 @@ class SignupViewController: UIViewController {
         guard let age = birthdayTextField.text, !age.isEmpty else { return }
         guard let industry = industryTextField.text, !industry.isEmpty else { return }
         
+        
+        
         Auth.auth().createUser(withEmail: email, password: password) { (dataResult, error) in
             if let error = error {
                 print("Error creating user: \(error.localizedDescription)")

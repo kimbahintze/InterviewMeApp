@@ -312,9 +312,9 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                 </pickerView>
             </objects>
-            <point key="canvasLocation" x="290" y="1030"/>
+            <point key="canvasLocation" x="-500" y="1030"/>
         </scene>
-        <!--Posted Questions Table View Controller-->
+        <!--  -->
         <scene sceneID="xed-zW-0aE">
             <objects>
                 <tableViewController id="JcB-1z-G30" customClass="PostedQuestionsTableViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -322,35 +322,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="12i-zh-kJK">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Post a question here..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JIo-QT-mC3">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                    <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </textField>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="bottom" secondItem="JIo-QT-mC3" secondAttribute="bottom" id="Rdi-d9-l5a"/>
-                                <constraint firstItem="JIo-QT-mC3" firstAttribute="top" secondItem="12i-zh-kJK" secondAttribute="top" id="URL-No-lgK"/>
-                                <constraint firstItem="JIo-QT-mC3" firstAttribute="leading" secondItem="12i-zh-kJK" secondAttribute="leading" id="YPI-j0-Mlc"/>
-                                <constraint firstAttribute="trailing" secondItem="JIo-QT-mC3" secondAttribute="trailing" id="bDs-3Q-Da1"/>
-                            </constraints>
-                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="QuestionCell" id="19G-8U-1lK">
-                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="19G-8U-1lK" id="kC1-DU-Ora">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="rOb-px-eMe" kind="show" identifier="toPostedAnswersVC" id="A7f-nO-UdN"/>
+                                    <segue destination="fxx-Ij-kqa" kind="presentation" trigger="accessoryAction" id="cVR-IK-GWK"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -359,10 +340,81 @@
                             <outlet property="delegate" destination="JcB-1z-G30" id="Yfd-qX-k5M"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="  " id="6gZ-V7-8jR">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="72Z-MU-7qJ">
+                            <connections>
+                                <action selector="addQButtonTapped:" destination="JcB-1z-G30" id="Rek-vn-pyA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LeS-zo-1Wx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1007" y="1030"/>
+            <point key="canvasLocation" x="204" y="1030"/>
+        </scene>
+        <!--Answers View Controller-->
+        <scene sceneID="LD0-c4-f83">
+            <objects>
+                <viewController id="fxx-Ij-kqa" customClass="AnswersViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rvb-UO-Azv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sBa-Wm-gqD">
+                                <rect key="frame" x="40" y="100" width="295" height="487"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="RTf-Ef-0ug">
+                                    <rect key="frame" x="0.0" y="0.0" width="295" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Post An Answer"/>
+                                    <connections>
+                                        <segue destination="85m-wv-LcV" kind="presentation" id="ibB-uP-PJt"/>
+                                    </connections>
+                                </button>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="245-Gp-1gc" firstAttribute="bottom" secondItem="sBa-Wm-gqD" secondAttribute="bottom" constant="80" id="SrK-B8-fGx"/>
+                            <constraint firstItem="245-Gp-1gc" firstAttribute="trailing" secondItem="sBa-Wm-gqD" secondAttribute="trailing" constant="40" id="Zld-gd-bLg"/>
+                            <constraint firstItem="sBa-Wm-gqD" firstAttribute="leading" secondItem="245-Gp-1gc" secondAttribute="leading" constant="40" id="f8v-2h-VeB"/>
+                            <constraint firstItem="sBa-Wm-gqD" firstAttribute="top" secondItem="245-Gp-1gc" secondAttribute="top" constant="80" id="zdH-Vo-697"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="245-Gp-1gc"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wpe-R9-Cq4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="927" y="1029"/>
+        </scene>
+        <!--Post Answer View Controller-->
+        <scene sceneID="j0I-qg-zkq">
+            <objects>
+                <viewController id="85m-wv-LcV" customClass="PostAnswerViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GYJ-6J-oK5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Type your answer here..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="97L-bd-wwI">
+                                <rect key="frame" x="65" y="220" width="245" height="247"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="J7O-Dm-VMZ" firstAttribute="trailing" secondItem="97L-bd-wwI" secondAttribute="trailing" constant="65" id="L3R-uI-apA"/>
+                            <constraint firstItem="97L-bd-wwI" firstAttribute="leading" secondItem="J7O-Dm-VMZ" secondAttribute="leading" constant="65" id="MpQ-B4-36f"/>
+                            <constraint firstItem="97L-bd-wwI" firstAttribute="top" secondItem="J7O-Dm-VMZ" secondAttribute="top" constant="200" id="XSG-lp-Hwg"/>
+                            <constraint firstItem="J7O-Dm-VMZ" firstAttribute="bottom" secondItem="97L-bd-wwI" secondAttribute="bottom" constant="200" id="hgj-ga-pBQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="J7O-Dm-VMZ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VH2-bb-5er" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1620" y="1028.6356821589206"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kXZ-si-3H0">
@@ -462,7 +514,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="28i-vs-b6Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-460" y="1030"/>
+            <point key="canvasLocation" x="-1202" y="1030"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="dnj-u6-C8T">
@@ -583,53 +635,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X9j-2y-pwp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5009" y="1030"/>
-        </scene>
-        <!--Posted Answers Table View Controller-->
-        <scene sceneID="DA1-2d-xpG">
-            <objects>
-                <tableViewController id="rOb-px-eMe" customClass="PostedAnswersTableViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oiA-nR-4tD">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="FOm-BH-9r6">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="144"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Type answer here..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="c4w-5h-ngn">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="144"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                </textView>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="trailing" secondItem="c4w-5h-ngn" secondAttribute="trailing" id="AjX-q8-gZM"/>
-                                <constraint firstAttribute="bottom" secondItem="c4w-5h-ngn" secondAttribute="bottom" id="KoF-ZQ-hdE"/>
-                                <constraint firstItem="c4w-5h-ngn" firstAttribute="leading" secondItem="FOm-BH-9r6" secondAttribute="leading" id="XFX-l0-o0e"/>
-                                <constraint firstItem="c4w-5h-ngn" firstAttribute="top" secondItem="FOm-BH-9r6" secondAttribute="top" id="uQT-A5-SPr"/>
-                            </constraints>
-                        </view>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AnswerCell" id="ac8-zZ-kxv">
-                                <rect key="frame" x="0.0" y="172" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ac8-zZ-kxv" id="yot-4X-HbR">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="rOb-px-eMe" id="8qd-y7-214"/>
-                            <outlet property="delegate" destination="rOb-px-eMe" id="hnP-eL-aPZ"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="K6x-rz-qch" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1743" y="1031"/>
         </scene>
         <!--Self Practice-->
         <scene sceneID="BO5-C1-XTD">
