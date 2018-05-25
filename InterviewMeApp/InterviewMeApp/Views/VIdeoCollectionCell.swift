@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 protocol VideoCellDelegate: class {
     func deleteAlert(cell: VideoCollectionCell)
@@ -46,8 +47,26 @@ class VideoCollectionCell: UICollectionViewCell {
     }
     
     @objc func longPress(_ gesture: UILongPressGestureRecognizer) {
-        if gesture.state != .ended {
+        switch gesture.state {
+        case .began:
+            break
+        case .changed:
+            let animation = CABasicAnimation(keyPath: "position")
+            animation.duration = 0.05
+            animation.repeatCount = 3.0
+            animation.autoreverses = true
+            animation.fromValue = NSValue(cgPoint: CGPoint(x: self.center.x - 2, y: self.center.y - 1))
+            animation.toValue = NSValue(cgPoint: CGPoint(x: self.center.x + 2, y: self.center.y + 1))
+            self.layer.add(animation, forKey: "shake")
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+        case .ended:
             delegate?.deleteAlert(cell: self)
+        case .possible:
+            break
+        case .cancelled:
+            break
+        case .failed:
+            break
         }
     }
 }

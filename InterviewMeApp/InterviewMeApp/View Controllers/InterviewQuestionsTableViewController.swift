@@ -12,6 +12,7 @@ import FirebaseDatabase
 import AlertOnboarding
 
 
+
 private let questionReuseIdentifier = "QuestionCell"
 private let answerReuseIdentifier = "AnswerCell"
 
@@ -21,7 +22,7 @@ class InterviewQuestionsTableViewController: UITableViewController {
     var alertView: AlertOnboarding!
     var isOnBoarded: Bool = false
     
-    var arrayOfImage = ["InterviewQuestions", "VideoChat", "SelfRecord", "Edit"]
+    var arrayOfImage = ["faq", "video-call", "movie-player", "man"]
     var arrayOfTitle = ["MOC QUESTIONS", "LIVE MOC", "MOC RECORD", "EDIT PROFILE"]
     var arrayOfDescription = ["Moc Questions is a place where you can review interview questions and answers.",
                               "Get over your fears and start practicing with another person!",
@@ -182,7 +183,6 @@ extension InterviewQuestionsTableViewController: AlertOnboardingDelegate {
     }
     
     func alertOnboardingCompleted() {
-        print("Onboarding completed!")
         UserDefaults().set(true, forKey: "Completed")
         
     }

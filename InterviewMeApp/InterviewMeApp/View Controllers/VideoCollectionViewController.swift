@@ -70,7 +70,7 @@ extension VideoCollectionViewController: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(30, 30, 30, 30)
+        return UIEdgeInsets(top: 30, left: 20, bottom: 100, right: 30)
     }
 }
 

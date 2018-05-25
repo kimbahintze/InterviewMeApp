@@ -45,7 +45,6 @@ class LoginViewController: UIViewController {
         if Auth.auth().currentUser != nil {
             guard let mainTabBarController = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarController") else { return }
             self.present(mainTabBarController, animated: false, completion: nil)
-            
         }
     }
     
@@ -64,7 +63,6 @@ class LoginViewController: UIViewController {
             }
         }
     }
-    
     
     @IBAction func forgotPasswordButtonTapped(_ sender: Any) {
         guard let email = emailTextField.text else { return }
@@ -106,11 +104,13 @@ class LoginViewController: UIViewController {
     func emailSetup() {
         emailTextField.textColor = lightFontColor
         emailTextField.font = UIFont(name: GTWalsheimRegular, size: 18)
+        emailTextField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
     }
     
     func passwordSetup() {
         passwordTextField.textColor = lightFontColor
         passwordTextField.font = UIFont(name: GTWalsheimRegular, size: 18)
+        passwordTextField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
     }
     
     func forgotPasswordSetup() {
@@ -128,6 +128,20 @@ class LoginViewController: UIViewController {
         newUserLabel.font = UIFont(name: GTWalsheimBold, size: 18)
         signupButton.titleLabel?.font = UIFont(name: GTWalsheimBold, size: 18)
         signupButton.setTitleColor(mainColor, for: .normal)
+    }
+    
+    @objc func handleTextInputChange() {
+        
+        let isFormValid = emailTextField.text?.count ?? 0 > 0 &&
+            passwordTextField.text?.count ?? 0 > 0
+        
+        if isFormValid {
+            loginButton.isEnabled = true
+            loginButton.backgroundColor = mainColor
+        } else {
+            loginButton.isEnabled = false
+            loginButton.backgroundColor = UIColor(red: 44/255, green: 212/255, blue: 140/255, alpha: 0.6)
+        }
     }
     
 }
