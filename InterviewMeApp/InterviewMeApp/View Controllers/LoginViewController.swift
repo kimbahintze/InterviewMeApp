@@ -16,10 +16,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var appNameLabel: UILabel!
     @IBOutlet weak var welcomeBackLabel: UILabel!
-    @IBOutlet weak var newUserLabel: UILabel!
-    @IBOutlet weak var signupButton: UIButton!
     
     //MARK: - Properties
     
@@ -31,13 +28,10 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        self.appLabelSetup()
-        self.welcomeSetup()
-        self.emailSetup()
-        self.passwordSetup()
-        self.forgotPasswordSetup()
-        self.loginButtonSetup()
-        self.newUserSetup()
+        navigationController?.navigationBar.isHidden = true
+        handleTextInputChange()
+        emailTextField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,51 +84,11 @@ class LoginViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    // Set Up
-    
-    func appLabelSetup() {
-        appNameLabel.textColor = mainColor
-        appNameLabel.font = UIFont(name: GTWalsheimBold, size: 35)
-    }
-    
-    func welcomeSetup() {
-        welcomeBackLabel.font = UIFont(name: GTWalsheimMedium, size: 22)
-    }
-    
-    func emailSetup() {
-        emailTextField.textColor = lightFontColor
-        emailTextField.font = UIFont(name: GTWalsheimRegular, size: 18)
-        emailTextField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
-    }
-    
-    func passwordSetup() {
-        passwordTextField.textColor = lightFontColor
-        passwordTextField.font = UIFont(name: GTWalsheimRegular, size: 18)
-        passwordTextField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
-    }
-    
-    func forgotPasswordSetup() {
-        forgotPasswordButton.setTitleColor(darkFontColor, for: .normal)
-        forgotPasswordButton.titleLabel?.font = UIFont(name: GTWalsheimMedium, size: 15)
-    }
-    
-    func loginButtonSetup() {
-        loginButton.layer.cornerRadius = 25
-        loginButton.backgroundColor = mainColor
-        loginButton.titleLabel?.font = UIFont(name: GTWalsheimRegular, size: 20)
-    }
-    
-    func newUserSetup() {
-        newUserLabel.font = UIFont(name: GTWalsheimBold, size: 18)
-        signupButton.titleLabel?.font = UIFont(name: GTWalsheimBold, size: 18)
-        signupButton.setTitleColor(mainColor, for: .normal)
-    }
-    
     @objc func handleTextInputChange() {
-        
+
         let isFormValid = emailTextField.text?.count ?? 0 > 0 &&
             passwordTextField.text?.count ?? 0 > 0
-        
+
         if isFormValid {
             loginButton.isEnabled = true
             loginButton.backgroundColor = mainColor

@@ -15,7 +15,6 @@ class SignupViewController: UIViewController {
     
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
-    @IBOutlet weak var birthdayTextField: UITextField!
     @IBOutlet weak var industryTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -36,7 +35,6 @@ class SignupViewController: UIViewController {
         super.viewDidLoad()
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
-        birthdayTextField.delegate = self
         industryTextField.delegate = self
         emailTextField.delegate = self
         passwordTextField.delegate = self
@@ -44,33 +42,15 @@ class SignupViewController: UIViewController {
         self.setup()
         activityView = UIActivityIndicatorView()
         handleSignup(signupButton)
-        birthdayTextField.inputView = datePicker
         industryTextField.inputView = jobIndustryPicker
         NotificationCenter.default.addObserver(self, selector: #selector(reloadPicker), name: JobIndustryController.NotificationKeys.reloadPicker, object: nil)
         jobIndustryPicker.dataSource = self
         jobIndustryPicker.delegate = self
-//        datePicker.addStyle()
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-//            self.datePicker.addStyle()
-//        }
         datePicker.setValue(UIColor.white, forKey: "textColor")
         datePicker.backgroundColor = mainColor
     }
     
     //MARK: - Actions
-    
-    @IBAction func dateChanged(_ sender: UIDatePicker) {
-        birthdayTextField.text = verifyAge()
-        
-    }
-    
-    func verifyAge() -> String {
-        let dob = datePicker.date
-        let gregorian = Calendar(identifier: .gregorian)
-        let ageComponents = gregorian.dateComponents([.year], from: dob, to: Date())
-        let age = ageComponents.year!
-        return "\(age)"
-    }
     
     @IBAction func handleSignup(_ sender: UIButton) {
         guard let firstName = firstNameTextField.text, !firstName.isEmpty else { return }
@@ -78,7 +58,6 @@ class SignupViewController: UIViewController {
         guard let email = emailTextField.text, !email.isEmpty else { return }
         guard let password = passwordTextField.text, !password.isEmpty else { return }
         guard let confirmPass = passwordTextField.text, !confirmPass.isEmpty else { return }
-        guard let age = birthdayTextField.text, !age.isEmpty else { return }
         guard let industry = industryTextField.text, !industry.isEmpty else { return }
         
         
@@ -102,7 +81,7 @@ class SignupViewController: UIViewController {
                 
                 guard let uuid = Auth.auth().currentUser?.uid else { return }
                 let jobIndustry = industry
-                Database.database().reference().child("users").child(uuid).setValue(["jobindustry": jobIndustry, "age": age, "firstName": firstName, "lastName": lastName, "email": email])
+                Database.database().reference().child("users").child(uuid).setValue(["jobindustry": jobIndustry, "firstName": firstName, "lastName": lastName, "email": email])
             })
             let sb = UIStoryboard(name: "Main", bundle: nil)
             
@@ -118,8 +97,6 @@ class SignupViewController: UIViewController {
         firstNameTextField.font = UIFont(name: GTWalsheimRegular, size: 12)
         lastNameTextField.textColor = darkFontColor
         lastNameTextField.font = UIFont(name: GTWalsheimRegular, size: 12)
-        birthdayTextField.textColor = darkFontColor
-        birthdayTextField.font = UIFont(name: GTWalsheimRegular, size: 12)
         industryTextField.textColor = darkFontColor
         industryTextField.font = UIFont(name: GTWalsheimRegular, size: 12)
         emailTextField.textColor = darkFontColor
@@ -148,10 +125,6 @@ extension SignupViewController: UITextFieldDelegate {
             break
         case lastNameTextField:
             lastNameTextField.resignFirstResponder()
-            birthdayTextField.becomeFirstResponder()
-            break
-        case birthdayTextField:
-            birthdayTextField.resignFirstResponder()
             industryTextField.becomeFirstResponder()
             break
         case industryTextField:
