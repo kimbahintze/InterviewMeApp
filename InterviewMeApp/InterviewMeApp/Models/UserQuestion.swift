@@ -7,13 +7,24 @@
 //
 
 import Foundation
+import FirebaseDatabase
 
-struct UserQuestion: Codable {
-    let userQuestion: String?
-   
-    init(userQuestion: String) {
+// add codable later
+struct UserQuestion {
+    
+  
+    let userQuestion: String
+    let questionID: String?
+    
+    init?(jsonDictionary: [String:Any], key: String) {
+        guard let userQuestion = jsonDictionary["userQuestion"] as? String else { return nil }
         self.userQuestion = userQuestion
+        self.questionID = key
+    }
+   
+    init(userQuestion: String, questionID: String?) {
+        self.userQuestion = userQuestion
+        self.questionID = questionID
     }
 }
-
 
