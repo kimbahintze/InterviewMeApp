@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         UITabBar.appearance().tintColor = mainColor
         UINavigationBar.appearance().tintColor = mainColor
+        
         return true
     }
 

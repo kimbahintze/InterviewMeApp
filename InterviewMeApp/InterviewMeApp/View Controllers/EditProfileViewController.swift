@@ -15,7 +15,6 @@ class EditProfileViewController: UIViewController {
     
     @IBOutlet weak var editFirstNameTextField: UITextField!
     @IBOutlet weak var editLastNameTextField: UITextField!
-    @IBOutlet weak var editAgeTextField: UITextField!
     @IBOutlet weak var editIndustryTextField: UITextField!
     @IBOutlet var industryPicker: UIPickerView!
     @IBOutlet var agePicker: UIDatePicker!
@@ -33,9 +32,7 @@ class EditProfileViewController: UIViewController {
         databaseRef = Database.database().reference()
         editFirstNameTextField.delegate = self
         editLastNameTextField.delegate = self
-        editAgeTextField.delegate = self
         editIndustryTextField.delegate = self
-        editAgeTextField.inputView = agePicker
         editIndustryTextField.inputView = industryPicker
         NotificationCenter.default.addObserver(self, selector: #selector(reloadPicker), name: JobIndustryController.NotificationKeys.reloadPicker, object: nil)
         industryPicker.dataSource = self
@@ -54,7 +51,6 @@ class EditProfileViewController: UIViewController {
        updateUsersProfile()
         editFirstNameTextField.resignFirstResponder()
         editLastNameTextField.resignFirstResponder()
-        editAgeTextField.resignFirstResponder()
         editIndustryTextField.resignFirstResponder()
         let alert = UIAlertController(title: "Profile updated!", message: nil, preferredStyle: .alert)
         let okay = UIAlertAction(title: "Ok", style: .default, handler: nil)
@@ -69,11 +65,6 @@ class EditProfileViewController: UIViewController {
         } catch let error {
             print(error.localizedDescription)
         }
-    }
-    
-    
-    @IBAction func dateChanged(_ sender: UIDatePicker) {
-        editAgeTextField.text = reVerifyAge()
     }
     
     func reVerifyAge() -> String {
@@ -93,7 +84,6 @@ class EditProfileViewController: UIViewController {
                 
                 self.editFirstNameTextField.text = values["firstName"] as? String
                 self.editLastNameTextField.text = values["lastName"] as? String
-                self.editAgeTextField.text = values["age"] as? String
                 self.editIndustryTextField.text = values["jobindustry"] as? String
  
             })
@@ -105,11 +95,9 @@ class EditProfileViewController: UIViewController {
         
             guard let editedFirstName = editFirstNameTextField.text, !editedFirstName.isEmpty else { return }
             guard let editedLastName = editLastNameTextField.text, !editedLastName.isEmpty else { return }
-            guard let editedAge = editAgeTextField.text, !editedAge.isEmpty else { return }
             guard let editedIndustry = editIndustryTextField.text, !editedIndustry.isEmpty else { return }
             
-            let newValues = ["age": editedAge,
-                             "jobindustry": editedIndustry,
+            let newValues = ["jobindustry": editedIndustry,
                              "firstName": editedFirstName,
                              "lastName": editedLastName]
             
@@ -158,10 +146,6 @@ extension EditProfileViewController: UITextFieldDelegate {
             break
         case editLastNameTextField:
             editLastNameTextField.resignFirstResponder()
-            editAgeTextField.becomeFirstResponder()
-            break
-        case editAgeTextField:
-            editAgeTextField.resignFirstResponder()
             editIndustryTextField.becomeFirstResponder()
             break
         case editIndustryTextField:

@@ -20,12 +20,32 @@ class ChatRoomViewController: UIViewController {
     var localVideoTrack: TVILocalVideoTrack?
     var localAudioTrack = TVILocalAudioTrack()
     var remoteParticipant: TVIRemoteParticipant?
-    
+
+  
     @IBOutlet weak var previewView: TVIVideoView!
     var remoteView: TVIVideoView!
     
+    
+    var activityIndicator = UIActivityIndicatorView()
+    let waitingLabel : UILabel = {
+        let label = UILabel(frame: CGRect(x: 40, y: 0, width: 160, height: 100))
+        label.text = "Waiting on others to join"
+        label.numberOfLines = 0
+        label.textAlignment = .natural
+        label.font = UIFont(name: "GTWalsheimMedium", size: 20)
+        label.textColor = UIColor(white: 0.9, alpha: 0.7)
+        return label
+    }()
+    
+    let boxView : UIVisualEffectView = {
+        let view = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+        view.layer.cornerRadius = 15
+        view.layer.masksToBounds = true
+        return view
+    }()
+    
     override func viewDidLoad() {
-        super .viewDidLoad()
+        super.viewDidLoad()
         ChatRoomController.shared.enterLobby()
         startPreview()
         createRoom()
@@ -35,6 +55,11 @@ class ChatRoomViewController: UIViewController {
         super .viewDidDisappear(animated)
         ChatRoomController.shared.leaveLobby()
         self.roomName = nil
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
     }
     
     private func createRoom() {
@@ -113,6 +138,26 @@ class ChatRoomViewController: UIViewController {
             previewView.contentMode = .scaleAspectFill
             previewView.clipsToBounds = true
         }
+        tabBarController?.tabBar.isHidden = true
+        startActivityIndicator()
+    }
+    
+    func startActivityIndicator() {
+        boxView.frame = CGRect(x: view.frame.midX - waitingLabel.frame.width/2, y: view.frame.midY - waitingLabel.frame.height/2 , width: 160, height: 120)
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        activityIndicator.frame = CGRect(x: 80, y: 100, width: 0, height: 0)
+        activityIndicator.startAnimating()
+        
+        boxView.contentView.addSubview(activityIndicator)
+        boxView.contentView.addSubview(waitingLabel)
+        view.addSubview(boxView)
+    }
+    
+    func stopActivityIndicator() {
+        activityIndicator.stopAnimating()
+        waitingLabel.removeFromSuperview()
+        activityIndicator.removeFromSuperview()
+        boxView.removeFromSuperview()
     }
 }
 
@@ -154,6 +199,7 @@ extension ChatRoomViewController: TVIRemoteParticipantDelegate {
         setupRemote()
         videoTrack.addRenderer(self.remoteView!)
         ChatRoomController.shared.leaveLobby()
+        stopActivityIndicator()
     }
 }
 
