@@ -545,6 +545,12 @@
                                 <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GT Walsheim" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Icons made by Freepik &amp; Monkik from www.flaticon.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXG-mb-Qco">
+                                <rect key="frame" x="0.0" y="667" width="414" height="20"/>
+                                <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GT Walsheim" pointSize="14"/>
+                                <color key="textColor" red="0.66274509800000003" green="0.66666666669999997" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -555,7 +561,9 @@
                             <constraint firstItem="zwf-Xx-s37" firstAttribute="top" secondItem="UiJ-qt-0IQ" secondAttribute="bottom" constant="30" id="5kP-vK-wfy"/>
                             <constraint firstItem="fxd-dp-RTm" firstAttribute="top" relation="lessThanOrEqual" secondItem="5W5-Ne-v7u" secondAttribute="top" constant="65" id="DjO-ku-Fgt"/>
                             <constraint firstItem="5W5-Ne-v7u" firstAttribute="trailing" secondItem="Bmu-ah-s7b" secondAttribute="trailing" constant="35" id="Nih-zo-pqR"/>
+                            <constraint firstItem="yXG-mb-Qco" firstAttribute="leading" secondItem="5W5-Ne-v7u" secondAttribute="leading" id="QOc-aa-boE"/>
                             <constraint firstItem="zwf-Xx-s37" firstAttribute="leading" secondItem="5W5-Ne-v7u" secondAttribute="leading" constant="35" id="WIV-04-OLM"/>
+                            <constraint firstAttribute="trailing" secondItem="yXG-mb-Qco" secondAttribute="trailing" id="WVT-Vf-7BY"/>
                             <constraint firstItem="UiJ-qt-0IQ" firstAttribute="top" secondItem="fxd-dp-RTm" secondAttribute="bottom" constant="50" id="Zjq-Ix-uBv"/>
                             <constraint firstItem="fxd-dp-RTm" firstAttribute="leading" secondItem="5W5-Ne-v7u" secondAttribute="leading" constant="47" id="cl6-54-XXR"/>
                             <constraint firstItem="zwf-Xx-s37" firstAttribute="top" secondItem="UiJ-qt-0IQ" secondAttribute="bottom" constant="30" id="h7a-P9-YF4"/>
@@ -563,6 +571,7 @@
                             <constraint firstItem="UiJ-qt-0IQ" firstAttribute="leading" secondItem="5W5-Ne-v7u" secondAttribute="leading" constant="35" id="jqS-IF-zIL"/>
                             <constraint firstItem="5W5-Ne-v7u" firstAttribute="trailing" secondItem="UiJ-qt-0IQ" secondAttribute="trailing" constant="35" id="l2K-m8-fX9"/>
                             <constraint firstItem="5W5-Ne-v7u" firstAttribute="trailing" secondItem="fxd-dp-RTm" secondAttribute="trailing" constant="34" id="nRs-wR-WW0"/>
+                            <constraint firstItem="yXG-mb-Qco" firstAttribute="bottom" secondItem="5W5-Ne-v7u" secondAttribute="bottom" id="sSb-dH-pTi"/>
                             <constraint firstItem="fxd-dp-RTm" firstAttribute="top" relation="greaterThanOrEqual" secondItem="5W5-Ne-v7u" secondAttribute="top" constant="30" id="uWO-Sc-ha2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5W5-Ne-v7u"/>
