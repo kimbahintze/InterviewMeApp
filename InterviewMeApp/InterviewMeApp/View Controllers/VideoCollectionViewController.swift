@@ -19,6 +19,10 @@ class VideoCollectionViewController: UICollectionViewController {
         super .viewDidLoad()
         collectionView?.register(VideoCollectionCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         navigationItem.titleView = logoTitleView()
+        JobIndustryController.shared.fetchUserJobIndustry { (jobindustry) in
+            InterviewQuestionController.shared.fetchSavedQuestions(jobIndustry: jobindustry)
+            print("jobindustry", jobindustry)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,6 +33,7 @@ class VideoCollectionViewController: UICollectionViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         collectionView?.reloadData()
+
     }
     
     private func setupNavigationBar() {
