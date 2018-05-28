@@ -18,17 +18,10 @@ class EditProfileViewController: UIViewController {
     @IBOutlet var industryPicker: UIPickerView!
     @IBOutlet var agePicker: UIDatePicker!
     
-    
-    // MARK: - Properties
-    
-    var databaseRef: DatabaseReference!
-    let jobIndustries = JobIndustryController.shared.jobIndustries
-    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        databaseRef = Database.database().reference()
         editFullNameTextField.delegate = self
         editIndustryTextField.delegate = self
         editIndustryTextField.inputView = industryPicker
@@ -43,16 +36,19 @@ class EditProfileViewController: UIViewController {
         loadProfileData()
         setPicker()
     }
+    
     // MARK: - Actions
     
     @IBAction func saveButtonTapped(_ sender: Any) {
        updateUsersProfile()
         editFullNameTextField.resignFirstResponder()
         editIndustryTextField.resignFirstResponder()
-        let alert = UIAlertController(title: "Profile updated!", message: nil, preferredStyle: .alert)
-        let okay = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        alert.addAction(okay)
-        self.present(alert, animated: true, completion: nil)
+        let alertController = UIAlertController(title: "Profile Updated", message: nil, preferredStyle: .alert)
+        
+        alertController.view.tintColor = mainColor
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func logoutButtonTapped(_ sender: Any) {
@@ -75,7 +71,7 @@ class EditProfileViewController: UIViewController {
     func loadProfileData() {
         
         if let userID = Auth.auth().currentUser?.uid {
-            databaseRef.child("users").child(userID).observe(.value, with: { (snapshot) in
+            Database.database().reference().child("users/\(userID)").observe(.value, with: { (snapshot) in
                 
                 guard let values = snapshot.value as? [String:Any] else { return }
                 
@@ -105,12 +101,11 @@ class EditProfileViewController: UIViewController {
             })
             
             // update firebase
-            self.databaseRef.child("users").child(userID).updateChildValues(newValues) { (error, ref) in
+            Database.database().reference().child("users/\(userID)").updateChildValues(newValues) { (error, ref) in
                 if error != nil {
                     print(error!)
                     return
                 }
-                print("Profile Successfully Update")
             }
             JobIndustryController.shared.fetchUserJobIndustry { (fetchedJobIndustry) in
                 guard let jobIndustry = fetchedJobIndustry else { return }
