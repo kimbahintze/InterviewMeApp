@@ -12,6 +12,8 @@ import FirebaseAuth
 class InterviewQuestionController {
     
     static let shared = InterviewQuestionController()
+
+    var index : Int = 0
     
     var interviewQuestions: [InterviewQuestion] = [] {
         didSet {
@@ -24,6 +26,7 @@ class InterviewQuestionController {
             NotificationCenter.default.post(name: NotificationKey.reloadTable, object: self)
         }
     }
+    
     
     let baseURL = URL(string: "https://interviewmeapp-ec527.firebaseio.com/")
     
@@ -91,8 +94,6 @@ class InterviewQuestionController {
         }
         dataTask.resume()
     }
-    
-    
 
     private init() {
         JobIndustryController.shared.fetchUserJobIndustry { (jobIndustry) in
@@ -102,10 +103,20 @@ class InterviewQuestionController {
     }
 }
 
-
 extension InterviewQuestionController {
-    func randomizeInterviewQuestions(array: [InterviewQuestion]) -> Array<Any> {
-        return []
+    func randomizeInterviewQuestions(array: [InterviewQuestion]) -> String {
+        if savedInterviewQuestions.isEmpty { return "NO NORE QUESTIONS!"}
+        index = Int(arc4random_uniform(UInt32(array.count)))
+//        let interviewQuestion = savedInterviewQuestions[index]
+        let interviewQuestion = array[index]
+             print("BEFORE!!! REMOVALLLLY savedInterviewQuestions.count", savedInterviewQuestions.count)
+        return interviewQuestion.question ?? ""
+    }
+    
+    func removeInterviewQuestion() {
+        if savedInterviewQuestions.isEmpty { return }
+        savedInterviewQuestions.remove(at: index)
+        print("AFTER REMOVALLLLY savedInterviewQuestions.count", savedInterviewQuestions.count)
     }
 }
 
