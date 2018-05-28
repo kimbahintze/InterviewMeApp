@@ -43,7 +43,7 @@ class VideoCollectionCell: UICollectionViewCell {
         thumbnailImage.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         thumbnailImage.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         thumbnailImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        thumbnailImage.layer.cornerRadius = 15.0
+        thumbnailImage.layer.cornerRadius = 10
     }
     
     @objc func longPress(_ gesture: UILongPressGestureRecognizer) {

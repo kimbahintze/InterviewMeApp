@@ -13,8 +13,7 @@ class EditProfileViewController: UIViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var editFirstNameTextField: UITextField!
-    @IBOutlet weak var editLastNameTextField: UITextField!
+    @IBOutlet weak var editFullNameTextField: UITextField!
     @IBOutlet weak var editIndustryTextField: UITextField!
     @IBOutlet var industryPicker: UIPickerView!
     @IBOutlet var agePicker: UIDatePicker!
@@ -30,8 +29,7 @@ class EditProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         databaseRef = Database.database().reference()
-        editFirstNameTextField.delegate = self
-        editLastNameTextField.delegate = self
+        editFullNameTextField.delegate = self
         editIndustryTextField.delegate = self
         editIndustryTextField.inputView = industryPicker
         NotificationCenter.default.addObserver(self, selector: #selector(reloadPicker), name: JobIndustryController.NotificationKeys.reloadPicker, object: nil)
@@ -49,8 +47,7 @@ class EditProfileViewController: UIViewController {
     
     @IBAction func saveButtonTapped(_ sender: Any) {
        updateUsersProfile()
-        editFirstNameTextField.resignFirstResponder()
-        editLastNameTextField.resignFirstResponder()
+        editFullNameTextField.resignFirstResponder()
         editIndustryTextField.resignFirstResponder()
         let alert = UIAlertController(title: "Profile updated!", message: nil, preferredStyle: .alert)
         let okay = UIAlertAction(title: "Ok", style: .default, handler: nil)
@@ -82,8 +79,7 @@ class EditProfileViewController: UIViewController {
                 
                 guard let values = snapshot.value as? [String:Any] else { return }
                 
-                self.editFirstNameTextField.text = values["firstName"] as? String
-                self.editLastNameTextField.text = values["lastName"] as? String
+                self.editFullNameTextField.text = values["fullName"] as? String
                 self.editIndustryTextField.text = values["jobindustry"] as? String
  
             })
@@ -93,16 +89,14 @@ class EditProfileViewController: UIViewController {
     func updateUsersProfile() {
         if let userID = Auth.auth().currentUser?.uid {
         
-            guard let editedFirstName = editFirstNameTextField.text, !editedFirstName.isEmpty else { return }
-            guard let editedLastName = editLastNameTextField.text, !editedLastName.isEmpty else { return }
+            guard let editedFullName = editFullNameTextField.text, !editedFullName.isEmpty else { return }
             guard let editedIndustry = editIndustryTextField.text, !editedIndustry.isEmpty else { return }
             
             let newValues = ["jobindustry": editedIndustry,
-                             "firstName": editedFirstName,
-                             "lastName": editedLastName]
+                             "fullName": editedFullName]
             
             let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-            let name = "\(editedFirstName) \(editedLastName)"
+            let name = "\(editedFullName)"
             changeRequest?.displayName = name
             changeRequest?.commitChanges(completion: { (error) in
                 if let error = error {
@@ -140,12 +134,12 @@ extension EditProfileViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
-        case editFirstNameTextField:
-            editFirstNameTextField.resignFirstResponder()
-            editLastNameTextField.becomeFirstResponder()
+        case editFullNameTextField:
+            editFullNameTextField.resignFirstResponder()
+            editIndustryTextField.becomeFirstResponder()
             break
-        case editLastNameTextField:
-            editLastNameTextField.resignFirstResponder()
+        case editIndustryTextField:
+            editIndustryTextField.resignFirstResponder()
             editIndustryTextField.becomeFirstResponder()
             break
         case editIndustryTextField:

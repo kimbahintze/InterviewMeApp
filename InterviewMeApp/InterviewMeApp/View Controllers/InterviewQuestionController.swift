@@ -92,9 +92,19 @@ class InterviewQuestionController {
         dataTask.resume()
     }
     
+    
+
     private init() {
         JobIndustryController.shared.fetchUserJobIndustry { (jobIndustry) in
             self.fetchInterviewQuestions(jobIndustry: jobIndustry)
         }
     }
 }
+
+
+extension InterviewQuestionController {
+    func randomizeInterviewQuestions(array: [InterviewQuestion]) -> Array<Any> {
+        return []
+    }
+}
+

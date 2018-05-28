@@ -13,15 +13,12 @@ class SignupViewController: UIViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var firstNameTextField: UITextField!
-    @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var fullNameTextField: UITextField!
     @IBOutlet weak var industryTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
-    @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var jobIndustryPicker: UIPickerView!
-    @IBOutlet weak var appNameLabel: UILabel!
     @IBOutlet weak var signupButton: UIButton!
     
     //MARK: - Properties
@@ -33,28 +30,29 @@ class SignupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        firstNameTextField.delegate = self
-        lastNameTextField.delegate = self
+        fullNameTextField.delegate = self
         industryTextField.delegate = self
         emailTextField.delegate = self
         passwordTextField.delegate = self
         confirmPasswordTextField.delegate = self
         self.setup()
         activityView = UIActivityIndicatorView()
-        handleSignup(signupButton)
         industryTextField.inputView = jobIndustryPicker
         NotificationCenter.default.addObserver(self, selector: #selector(reloadPicker), name: JobIndustryController.NotificationKeys.reloadPicker, object: nil)
         jobIndustryPicker.dataSource = self
         jobIndustryPicker.delegate = self
-        datePicker.setValue(UIColor.white, forKey: "textColor")
-        datePicker.backgroundColor = mainColor
+        fullNameTextField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
+        industryTextField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
+        emailTextField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
+        confirmPasswordTextField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
+        handleTextInputChange()
     }
     
     //MARK: - Actions
     
     @IBAction func handleSignup(_ sender: UIButton) {
-        guard let firstName = firstNameTextField.text, !firstName.isEmpty else { return }
-        guard let lastName = lastNameTextField.text, !lastName.isEmpty else { return }
+        guard let fullName = fullNameTextField.text, !fullName.isEmpty else { return }
         guard let email = emailTextField.text, !email.isEmpty else { return }
         guard let password = passwordTextField.text, !password.isEmpty else { return }
         guard let confirmPass = passwordTextField.text, !confirmPass.isEmpty else { return }
@@ -69,9 +67,8 @@ class SignupViewController: UIViewController {
             }
             
             //Sets First & Last name to Auth.auth().currentUser.displayName
-            let name = "\(firstName) \(lastName)"
             let changeRequest = dataResult?.user.createProfileChangeRequest()
-            changeRequest?.displayName = name
+            changeRequest?.displayName = fullName
             changeRequest?.commitChanges(completion: { (error) in
                 if let error = error {
                     
@@ -81,7 +78,7 @@ class SignupViewController: UIViewController {
                 
                 guard let uuid = Auth.auth().currentUser?.uid else { return }
                 let jobIndustry = industry
-                Database.database().reference().child("users").child(uuid).setValue(["jobindustry": jobIndustry, "firstName": firstName, "lastName": lastName, "email": email])
+                Database.database().reference().child("users").child(uuid).setValue(["jobindustry": jobIndustry, "fullName": fullName, "email": email])
             })
             let sb = UIStoryboard(name: "Main", bundle: nil)
             
@@ -91,12 +88,8 @@ class SignupViewController: UIViewController {
     }
     
     func setup() {
-        appNameLabel.textColor = mainColor
-        appNameLabel.font = UIFont(name: GTWalsheimBold, size: 35)
-        firstNameTextField.textColor = darkFontColor
-        firstNameTextField.font = UIFont(name: GTWalsheimRegular, size: 12)
-        lastNameTextField.textColor = darkFontColor
-        lastNameTextField.font = UIFont(name: GTWalsheimRegular, size: 12)
+        fullNameTextField.textColor = darkFontColor
+        fullNameTextField.font = UIFont(name: GTWalsheimRegular, size: 12)
         industryTextField.textColor = darkFontColor
         industryTextField.font = UIFont(name: GTWalsheimRegular, size: 12)
         emailTextField.textColor = darkFontColor
@@ -105,12 +98,36 @@ class SignupViewController: UIViewController {
         passwordTextField.font = UIFont(name: GTWalsheimRegular, size: 12)
         confirmPasswordTextField.textColor = darkFontColor
         confirmPasswordTextField.font = UIFont(name: GTWalsheimRegular, size: 12)
-        signupButton.layer.cornerRadius = 25
-        signupButton.backgroundColor = mainColor
-        signupButton.titleLabel?.font = UIFont(name: GTWalsheimRegular, size: 20)
-        signupButton.setTitleColor(UIColor.white, for: .normal)
     }
     
+    @IBAction func popController(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func handleTextInputChange() {
+        
+        let isFormValid = emailTextField.text?.count ?? 0 > 0 &&
+            passwordTextField.text?.count ?? 0 > 0 &&
+            confirmPasswordTextField.text?.count ?? 0 > 0 &&
+            fullNameTextField.text?.count ?? 0 > 0 &&
+            industryTextField.text?.count ?? 0 > 0
+        
+        
+        if isFormValid {
+            signupButton.isEnabled = true
+            signupButton.backgroundColor = mainColor
+        } else {
+            signupButton.isEnabled = false
+            signupButton.backgroundColor = UIColor(red: 44/255, green: 212/255, blue: 140/255, alpha: 0.6)
+        }
+    }
+    @IBAction func keyboardWillShow(_ sender: UITextField) {
+        self.view.frame.origin.y -= 216 * 0.4
+    }
+    
+    @IBAction func keyboardWillHide(_ sender: UITextField) {
+        self.view.frame.origin.y = 0
+    }
 }
 
 //MARK: - Textfield Delegate
@@ -119,12 +136,8 @@ extension SignupViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
-        case firstNameTextField:
-            firstNameTextField.resignFirstResponder()
-            lastNameTextField.becomeFirstResponder()
-            break
-        case lastNameTextField:
-            lastNameTextField.resignFirstResponder()
+        case fullNameTextField:
+            fullNameTextField.resignFirstResponder()
             industryTextField.becomeFirstResponder()
             break
         case industryTextField:
