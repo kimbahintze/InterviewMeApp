@@ -40,6 +40,7 @@ class LoginViewController: UIViewController {
             guard let mainTabBarController = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarController") else { return }
             self.present(mainTabBarController, animated: false, completion: nil)
         }
+        setupNavBar()
     }
     
     //MARK: - Actions
@@ -58,9 +59,8 @@ class LoginViewController: UIViewController {
         }
     }
     
-    @IBAction func forgotPasswordButtonTapped(_ sender: Any) {
-        guard let email = emailTextField.text else { return }
-        resetPassword(email: email)
+    private func setupNavBar() {
+        navigationController?.navigationBar.isHidden = true
     }
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
