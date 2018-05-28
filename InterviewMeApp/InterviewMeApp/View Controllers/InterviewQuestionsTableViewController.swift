@@ -111,7 +111,7 @@ extension InterviewQuestionsTableViewController {
             
         case 1: guard let answerCell = tableView.dequeueReusableCell(withIdentifier: answerReuseIdentifier, for: indexPath) as? AnswerTableViewCell else { return UITableViewCell() }
         
-        answerCell.answerLabel.text = interviewQuestion.answer
+        answerCell.setupViews(interviewQuestion: interviewQuestion)
         answerCell.delegate = self
 
         return answerCell

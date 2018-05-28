@@ -97,6 +97,7 @@ class InterviewQuestionController {
     private init() {
         JobIndustryController.shared.fetchUserJobIndustry { (jobIndustry) in
             self.fetchInterviewQuestions(jobIndustry: jobIndustry)
+            self.fetchSavedQuestions(jobIndustry: jobIndustry)
         }
     }
 }
