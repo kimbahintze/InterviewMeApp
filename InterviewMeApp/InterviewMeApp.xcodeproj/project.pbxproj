@@ -44,7 +44,6 @@
 		FFF2741020A9E92300D66A0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFF2740E20A9E92300D66A0B /* Main.storyboard */; };
 		FFF2741220A9E92400D66A0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFF2741120A9E92400D66A0B /* Assets.xcassets */; };
 		FFF2741520A9E92400D66A0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFF2741320A9E92400D66A0B /* LaunchScreen.storyboard */; };
-		FFFC044120B8681900CA6F42 /* UserQuestionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC044020B8681900CA6F42 /* UserQuestionController.swift */; };
 		FFFC044320B878FF00CA6F42 /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC044220B878FF00CA6F42 /* QuestionTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -90,7 +89,6 @@
 		FFF2741120A9E92400D66A0B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFF2741420A9E92400D66A0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FFF2741620A9E92400D66A0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FFFC044020B8681900CA6F42 /* UserQuestionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserQuestionController.swift; sourceTree = "<group>"; };
 		FFFC044220B878FF00CA6F42 /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -198,7 +196,6 @@
 				A0C25C5C20ADFC4400B7FD85 /* InterviewQuestionController.swift */,
 				A0C25C6020AE019300B7FD85 /* JobIndustryController.swift */,
 				A05241C220AF5EB500C29F40 /* VideoController.swift */,
-				FFFC044020B8681900CA6F42 /* UserQuestionController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -395,7 +392,6 @@
 				B3218D4820B35ADF0042E2A6 /* VideoCoreData.xcdatamodeld in Sources */,
 				A03856B820AF41150069BBEE /* Constants.swift in Sources */,
 				A05241CB20AFCC7600C29F40 /* VIdeoCollectionCell.swift in Sources */,
-				FFFC044120B8681900CA6F42 /* UserQuestionController.swift in Sources */,
 				FFDD3DB720B7A1DA00BD277D /* AnswersViewController.swift in Sources */,
 				A05EA86220B473F500329A6E /* AnswerTableViewCell.swift in Sources */,
 				FF58A22520B4AFC700D3586A /* EditProfileViewController.swift in Sources */,
@@ -569,7 +565,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+
+				DEVELOPMENT_TEAM = A6SH4SB8PT;
+
 				DEVELOPMENT_TEAM = DJ9Q6RC5SN;
+
 				INFOPLIST_FILE = "$(SRCROOT)/InterviewMeApp/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -589,7 +589,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+
+				DEVELOPMENT_TEAM = A6SH4SB8PT;
+
 				DEVELOPMENT_TEAM = DJ9Q6RC5SN;
+
 				INFOPLIST_FILE = "$(SRCROOT)/InterviewMeApp/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (

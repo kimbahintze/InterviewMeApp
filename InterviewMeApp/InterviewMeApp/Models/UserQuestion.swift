@@ -13,18 +13,12 @@ import FirebaseDatabase
 struct UserQuestion {
     
   
-    let userQuestion: String
-    let questionID: String?
-    
-    init?(jsonDictionary: [String:Any], key: String) {
-        guard let userQuestion = jsonDictionary["userQuestion"] as? String else { return nil }
-        self.userQuestion = userQuestion
-        self.questionID = key
-    }
+    let userQuestion: String?
+    let id: String?
    
-    init(userQuestion: String, questionID: String?) {
+    init(userQuestion: String?, id: String?) {
         self.userQuestion = userQuestion
-        self.questionID = questionID
+        self.id = id
     }
 }
 
