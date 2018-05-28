@@ -21,6 +21,32 @@ class PostedQuestionsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         databaseRef = Database.database().reference().child("userQuestions")
+        
+        // observing the data changes
+        databaseRef.observe(DataEventType.value) { (snapshot) in
+            
+            // if the reference has some values
+            if snapshot.childrenCount > 0 {
+                
+                // clearing the list
+                self.userQuestions.removeAll()
+                
+                // iterating through all the values
+                for questions in snapshot.children.allObjects as! [DataSnapshot] {
+                    // getting values
+                    let questionObject = questions.value as? [String: AnyObject]
+                    let userQ = questionObject?["userQuestion"]
+                    let questionID = questionObject?["id"]
+                    
+                    // creating question object with model and fetched values
+                    let question = UserQuestion(userQuestion: userQ as! String?, id: questionID as! String?)
+                    self.userQuestions.append(question)
+                    print("Question added")
+                }
+                self.tableView.reloadData()
+                print("Tableview loaded")
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
