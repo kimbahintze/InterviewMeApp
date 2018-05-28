@@ -18,6 +18,7 @@
 		A05241C720AF61DD00C29F40 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05241C620AF61DD00C29F40 /* CameraViewController.swift */; };
 		A05241CB20AFCC7600C29F40 /* VIdeoCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05241CA20AFCC7600C29F40 /* VIdeoCollectionCell.swift */; };
 		A05EA86220B473F500329A6E /* AnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05EA86120B473F500329A6E /* AnswerTableViewCell.swift */; };
+		A07E2D3D20BC634A00E6E13B /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07E2D3C20BC634A00E6E13B /* ForgotPasswordViewController.swift */; };
 		A0C25C5920ADE8B900B7FD85 /* InterviewQuestionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C25C5820ADE8B900B7FD85 /* InterviewQuestionsTableViewController.swift */; };
 		A0C25C5B20ADFBEE00B7FD85 /* InterviewQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C25C5A20ADFBEE00B7FD85 /* InterviewQuestion.swift */; };
 		A0C25C5D20ADFC4400B7FD85 /* InterviewQuestionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C25C5C20ADFC4400B7FD85 /* InterviewQuestionController.swift */; };
@@ -61,6 +62,7 @@
 		A05241C620AF61DD00C29F40 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		A05241CA20AFCC7600C29F40 /* VIdeoCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIdeoCollectionCell.swift; sourceTree = "<group>"; };
 		A05EA86120B473F500329A6E /* AnswerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerTableViewCell.swift; sourceTree = "<group>"; };
+		A07E2D3C20BC634A00E6E13B /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		A0C25C5820ADE8B900B7FD85 /* InterviewQuestionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewQuestionsTableViewController.swift; sourceTree = "<group>"; };
 		A0C25C5A20ADFBEE00B7FD85 /* InterviewQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InterviewQuestion.swift; path = "InterviewMeApp/View Controllers/InterviewQuestion.swift"; sourceTree = SOURCE_ROOT; };
 		A0C25C5C20ADFC4400B7FD85 /* InterviewQuestionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InterviewQuestionController.swift; path = "InterviewMeApp/View Controllers/InterviewQuestionController.swift"; sourceTree = SOURCE_ROOT; };
@@ -173,6 +175,7 @@
 				FFFC044220B878FF00CA6F42 /* QuestionTableViewCell.swift */,
 				FFDD3DB620B7A1DA00BD277D /* AnswersViewController.swift */,
 				FFDD3DB820B7A1F100BD277D /* PostAnswerViewController.swift */,
+				A07E2D3C20BC634A00E6E13B /* ForgotPasswordViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				A05052E020ACD445005981CF /* LobbyTableViewController.swift in Sources */,
 				FF1BDE5920B681550031593E /* PostedQuestionsTableViewController.swift in Sources */,
 				A05241C720AF61DD00C29F40 /* CameraViewController.swift in Sources */,
+				A07E2D3D20BC634A00E6E13B /* ForgotPasswordViewController.swift in Sources */,
 				A05052DB20ACCDA3005981CF /* ChatRoomController.swift in Sources */,
 				FFDD3DBD20B7A54D00BD277D /* UserQuestion.swift in Sources */,
 				A05241C320AF5EB500C29F40 /* VideoController.swift in Sources */,
@@ -565,7 +569,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7VSPJ2N6B9;
+				DEVELOPMENT_TEAM = DJ9Q6RC5SN;
 				INFOPLIST_FILE = "$(SRCROOT)/InterviewMeApp/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -585,7 +589,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7VSPJ2N6B9;
+				DEVELOPMENT_TEAM = DJ9Q6RC5SN;
 				INFOPLIST_FILE = "$(SRCROOT)/InterviewMeApp/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (

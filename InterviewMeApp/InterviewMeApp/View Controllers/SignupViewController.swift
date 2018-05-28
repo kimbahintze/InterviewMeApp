@@ -19,6 +19,7 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet var jobIndustryPicker: UIPickerView!
+    @IBOutlet weak var signupButton: UIButton!
     
     //MARK: - Properties
     
@@ -30,7 +31,6 @@ class SignupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fullNameTextField.delegate = self
-        
         industryTextField.delegate = self
         emailTextField.delegate = self
         passwordTextField.delegate = self
@@ -41,6 +41,12 @@ class SignupViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadPicker), name: JobIndustryController.NotificationKeys.reloadPicker, object: nil)
         jobIndustryPicker.dataSource = self
         jobIndustryPicker.delegate = self
+        fullNameTextField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
+        industryTextField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
+        emailTextField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
+        confirmPasswordTextField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
+        handleTextInputChange()
     }
     
     //MARK: - Actions
@@ -98,6 +104,30 @@ class SignupViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    @objc func handleTextInputChange() {
+        
+        let isFormValid = emailTextField.text?.count ?? 0 > 0 &&
+            passwordTextField.text?.count ?? 0 > 0 &&
+            confirmPasswordTextField.text?.count ?? 0 > 0 &&
+            fullNameTextField.text?.count ?? 0 > 0 &&
+            industryTextField.text?.count ?? 0 > 0
+        
+        
+        if isFormValid {
+            signupButton.isEnabled = true
+            signupButton.backgroundColor = mainColor
+        } else {
+            signupButton.isEnabled = false
+            signupButton.backgroundColor = UIColor(red: 44/255, green: 212/255, blue: 140/255, alpha: 0.6)
+        }
+    }
+    @IBAction func keyboardWillShow(_ sender: UITextField) {
+        self.view.frame.origin.y -= 216 * 0.4
+    }
+    
+    @IBAction func keyboardWillHide(_ sender: UITextField) {
+        self.view.frame.origin.y = 0
+    }
 }
 
 //MARK: - Textfield Delegate
