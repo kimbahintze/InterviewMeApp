@@ -12,6 +12,8 @@ import TwilioVideo
 
 class ChatRoomViewController: UIViewController {
     
+    //MARK: - Properties
+    
     let baseTokenURL = "https://wisteria-saola-1695.twil.io/create-video-token?"
     
     var roomName: String?
@@ -42,6 +44,15 @@ class ChatRoomViewController: UIViewController {
         return label
     }()
     
+    let hangupButton: UIButton = {
+        let button = UIButton()
+        button.setImage(#imageLiteral(resourceName: "End Call"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    //MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         ChatRoomController.shared.enterLobby()
@@ -57,8 +68,10 @@ class ChatRoomViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tabBarController?.tabBar.isHidden = false
+        tabBarController?.tabBar.isHidden = true
     }
+    
+    //MARK: - Actions
     
     private func createRoom() {
         guard let displayName =
@@ -103,17 +116,12 @@ class ChatRoomViewController: UIViewController {
         
         self.view.insertSubview(remoteView, at: 0)
         
-        let hangupButton = UIButton()
-        hangupButton.setImage(#imageLiteral(resourceName: "End Call").withRenderingMode(.alwaysTemplate), for: .normal)
-        hangupButton.tintColor = UIColor(red: 223/255, green: 23/255, blue: 26/255, alpha: 1.0)
-        hangupButton.translatesAutoresizingMaskIntoConstraints = false
-        
         self.remoteView.addSubview(hangupButton)
         
         hangupButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        hangupButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50).isActive = true
-        hangupButton.widthAnchor.constraint(equalToConstant: 120).isActive = true
-        hangupButton.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        hangupButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30).isActive = true
+        hangupButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        hangupButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
 
         hangupButton.addTarget(self, action: #selector(hangupCall), for: .touchUpInside)
         
@@ -121,8 +129,16 @@ class ChatRoomViewController: UIViewController {
         remoteView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         remoteView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         remoteView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        stopActivityIndicator()
     }
     
+    private func removeRemote() {
+        navigationController?.navigationBar.isHidden = false
+        remoteView.removeFromSuperview()
+        hangupButton.removeFromSuperview()
+        startActivityIndicator()
+    }
     @objc private func hangupCall() {
         navigationController?.popViewController(animated: true)
     }
@@ -136,14 +152,12 @@ class ChatRoomViewController: UIViewController {
             previewView.contentMode = .scaleAspectFill
             previewView.clipsToBounds = true
         }
-        tabBarController?.tabBar.isHidden = true
         startActivityIndicator()
     }
     
-    func startActivityIndicator() {
+    private func startActivityIndicator() {
         view.addSubview(boxView)
         boxView.contentView.addSubview(waitingLabel)
-        boxView.contentView.addSubview(activityIndicator)
         
         boxView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         boxView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -5).isActive = true
@@ -156,10 +170,8 @@ class ChatRoomViewController: UIViewController {
         waitingLabel.trailingAnchor.constraint(equalTo: boxView.trailingAnchor, constant: -8).isActive = true
     }
     
-    func stopActivityIndicator() {
-        activityIndicator.stopAnimating()
+    private func stopActivityIndicator() {
         waitingLabel.removeFromSuperview()
-        activityIndicator.removeFromSuperview()
         boxView.removeFromSuperview()
     }
 }
@@ -186,7 +198,7 @@ extension ChatRoomViewController: TVIRoomDelegate {
     
     func room(_ room: TVIRoom, participantDidDisconnect participant: TVIRemoteParticipant) {
         ChatRoomController.shared.enterLobby()
-        startActivityIndicator()
+        removeRemote()
     }
     
     func room(_ room: TVIRoom, didDisconnectWithError error: Error?) {
@@ -203,7 +215,6 @@ extension ChatRoomViewController: TVIRemoteParticipantDelegate {
         setupRemote()
         videoTrack.addRenderer(self.remoteView!)
         ChatRoomController.shared.leaveLobby()
-        stopActivityIndicator()
     }
 }
 

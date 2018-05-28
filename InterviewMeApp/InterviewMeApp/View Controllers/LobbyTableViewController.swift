@@ -12,6 +12,8 @@ private let reuseIdentifier = "UserCell"
 
 class LobbyTableViewController: UITableViewController {
     
+    //MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super .viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name: ChatRoomController.NotificationKeys.reloadTable, object: nil)
@@ -27,7 +29,27 @@ class LobbyTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
+        tabBarController?.tabBar.isHidden = false
     }
+    
+    //MARK: - Actions
+    
+    @objc private func createChatRoom() {
+        guard let mainViewController = self.storyboard?.instantiateViewController(withIdentifier: "ChatRoomViewController") else { return }
+        navigationController?.pushViewController(mainViewController, animated: true)
+    }
+    
+    @objc private func reloadTable() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+}
+
+//MARK: - Table View Datasource & Delegate
+
+extension LobbyTableViewController {
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ChatRoomController.shared.chatLobbyUsers.count
     }
@@ -49,17 +71,6 @@ class LobbyTableViewController: UITableViewController {
             let roomName = ChatRoomController.shared.chatLobbyUsers[indexPath.row]
             
             destinationVC.roomName = roomName
-        }
-    }
-    
-    @objc func createChatRoom() {
-        guard let mainViewController = self.storyboard?.instantiateViewController(withIdentifier: "ChatRoomViewController") else { return }
-        navigationController?.pushViewController(mainViewController, animated: true)
-    }
-    
-    @objc private func reloadTable() {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
         }
     }
 }

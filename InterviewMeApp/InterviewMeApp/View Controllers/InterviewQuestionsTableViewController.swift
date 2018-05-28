@@ -19,14 +19,6 @@ private let answerReuseIdentifier = "AnswerCell"
 class InterviewQuestionsTableViewController: UITableViewController {
     
     //MARK: - Properties
-    var alertView: AlertOnboarding!
-    var isOnBoarded: Bool = false
-    
-    var arrayOfImage = ["faq", "video-call", "movie-player", "man"]
-    var arrayOfTitle = ["MOC QUESTIONS", "LIVE MOC", "MOC RECORD", "EDIT PROFILE"]
-    var arrayOfDescription = ["Moc Questions is a place where you can review interview questions and answers.",
-                              "Get over your fears and start practicing with another person!",
-                              "Practice makes perfect, Moc Record records your answers to interview questions.", "Edit profile allows you to change your information."]
     
     @IBOutlet var jobIndustryPicker: UIPickerView!
     
@@ -38,22 +30,24 @@ class InterviewQuestionsTableViewController: UITableViewController {
         jobIndustryPicker.delegate = self
         jobIndustryPicker.dataSource = self
         navigationItem.titleView = logoTitleView()
-        isOnBoarded = UserDefaults().bool(forKey: "Completed")
-        
-        if isOnBoarded == false {
-            alertView = AlertOnboarding(arrayOfImage: arrayOfImage, arrayOfTitle: arrayOfTitle, arrayOfDescription: arrayOfDescription)
-            alertView.delegate = self
-            
-            alertView.show()
-        }
-    }
-    
-    @objc func logout() {
-        do {
-            try Auth.auth().signOut()
-            dismiss(animated: true, completion: nil)
-        } catch {
-            print("Trouble Logging Out \(error.localizedDescription)")
+        checkOnBoarding { (hasOnBoarded) in
+            if hasOnBoarded == "false" {
+                let alertView = AlertOnboarding(arrayOfImage: ["faq",
+                                                               "video-call",
+                                                               "movie-player",
+                                                               "man"],
+                                                arrayOfTitle: ["MOC QUESTIONS",
+                                                               "LIVE MOC",
+                                                               "MOC RECORD",
+                                                               "EDIT PROFILE"],
+                                                arrayOfDescription: ["Moc Questions is a place where you can review interview questions and answers.",
+                                                                     "Get over your fears and start practicing with another person!",
+                                                                     "Practice makes perfect, Moc Record records your answers to interview questions.",
+                                                                     "Edit profile allows you to change your information."])
+                
+                alertView.delegate = self
+                alertView.show()
+            }
         }
     }
     
@@ -63,26 +57,19 @@ class InterviewQuestionsTableViewController: UITableViewController {
         }
     }
     
-    @objc private func changeJobIndustry() {
-        JobIndustryController.shared.fetchUserJobIndustry(completion: { (fetchedJobIndustry) in
-            guard let jobIndustry = fetchedJobIndustry else { return }
-            guard let index = JobIndustryController.shared.jobIndustries.index(of: jobIndustry) else { return }
-            DispatchQueue.main.async {
-                self.jobIndustryPicker.selectRow(index, inComponent: 0, animated: false)
+    private func checkOnBoarding(completion: @escaping(String?) -> Void) {
+        guard let currentUser = Auth.auth().currentUser else { completion(nil); return}
+        Database.database().reference().child("users/\(currentUser.uid)").observeSingleEvent(of: .value) { (snapshot) in
+            if let dictionary = snapshot.value as? [String: Any] {
+                guard let onboardingStatus = dictionary["onboarding"] as? String else { return }
+                completion(onboardingStatus)
             }
-        })
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { (_) in
-            self.view.addSubview(self.uselessTextField)
-            self.uselessTextField.inputView = self.jobIndustryPicker
-            self.uselessTextField.becomeFirstResponder()
-            
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneChangingIndustry))
         }
     }
     
-    @objc private func doneChangingIndustry() {
-        uselessTextField.resignFirstResponder()
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Job Industry", style: .done, target: self, action: #selector(changeJobIndustry))
+    private func changeOnBoarding() {
+        guard let currentUser = Auth.auth().currentUser else { return }
+        Database.database().reference().child("users/\(currentUser.uid)").updateChildValues(["onboarding": "true"])
     }
 }
 
@@ -176,20 +163,13 @@ extension InterviewQuestionsTableViewController: AnswerTableViewCellDelegate {
 
 
 extension InterviewQuestionsTableViewController: AlertOnboardingDelegate {
-
+    func alertOnboardingNext(_ nextStep: Int) {}
+    
     func alertOnboardingSkipped(_ currentStep: Int, maxStep: Int) {
-        print("Onboarding skipped the \(currentStep) step and the max step he saw was the number \(maxStep)")
-        UserDefaults().set(true, forKey: "Completed")
+        changeOnBoarding()
     }
     
     func alertOnboardingCompleted() {
-        UserDefaults().set(true, forKey: "Completed")
-        
+        changeOnBoarding()
     }
-    
-    func alertOnboardingNext(_ nextStep: Int) {
-        print("Next step triggered! \(nextStep)")
-    }
-    
-    
 }
