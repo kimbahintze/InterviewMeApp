@@ -35,8 +35,6 @@ class SignupViewController: UIViewController {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         confirmPasswordTextField.delegate = self
-        self.setup()
-        activityView = UIActivityIndicatorView()
         industryTextField.inputView = jobIndustryPicker
         NotificationCenter.default.addObserver(self, selector: #selector(reloadPicker), name: JobIndustryController.NotificationKeys.reloadPicker, object: nil)
         jobIndustryPicker.dataSource = self
@@ -78,26 +76,13 @@ class SignupViewController: UIViewController {
                 
                 guard let uuid = Auth.auth().currentUser?.uid else { return }
                 let jobIndustry = industry
-                Database.database().reference().child("users").child(uuid).setValue(["jobindustry": jobIndustry, "fullName": fullName, "email": email])
+                Database.database().reference().child("users").child(uuid).setValue(["jobindustry": jobIndustry, "fullName": fullName, "email": email, "onboarding": "false"])
             })
             let sb = UIStoryboard(name: "Main", bundle: nil)
             
             let mainTabBarController = sb.instantiateViewController(withIdentifier: "MainTabBarController")
             self.present(mainTabBarController, animated: true, completion: nil)
         }
-    }
-    
-    func setup() {
-        fullNameTextField.textColor = darkFontColor
-        fullNameTextField.font = UIFont(name: GTWalsheimRegular, size: 12)
-        industryTextField.textColor = darkFontColor
-        industryTextField.font = UIFont(name: GTWalsheimRegular, size: 12)
-        emailTextField.textColor = darkFontColor
-        emailTextField.font = UIFont(name: GTWalsheimRegular, size: 12)
-        passwordTextField.textColor = darkFontColor
-        passwordTextField.font = UIFont(name: GTWalsheimRegular, size: 12)
-        confirmPasswordTextField.textColor = darkFontColor
-        confirmPasswordTextField.font = UIFont(name: GTWalsheimRegular, size: 12)
     }
     
     @IBAction func popController(_ sender: UIButton) {
@@ -193,8 +178,6 @@ extension SignupViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             pickerLabel?.textAlignment = .center
         }
         pickerLabel?.text = JobIndustryController.shared.jobIndustries[row].name
-        pickerLabel?.textColor = UIColor.white
-        pickerLabel?.backgroundColor = mainColor
         return pickerLabel!
     }
     
