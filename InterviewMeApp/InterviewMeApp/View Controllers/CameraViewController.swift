@@ -12,6 +12,7 @@ import RecordButton
 
 class CameraViewController: SwiftyCamViewController {
     
+    
     //MARK: - Properties
     
     let recordButton: RecordButton = {
@@ -23,14 +24,21 @@ class CameraViewController: SwiftyCamViewController {
     }()
     
     let questionView: UIView = {
-//        let view = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
-        
         let view = UIView()
         view.backgroundColor = .red
-        view.layer.cornerRadius = 15
         view.layer.masksToBounds = true
         return view
     }()
+    
+    let questionLabel: UILabel = {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 400, height: 46))
+        label.text = InterviewQuestionController.shared.interviewQuestions.randomizeQuestions()?.question
+        label.font = UIFont(name: "GTWalsheimMedium", size: 20)
+        label.textColor = UIColor.black
+        return label
+    }()
+    
+
     
     let savingLabel : UILabel = {
         let label = UILabel(frame: CGRect(x: 50, y: 0, width: 160, height: 46))
@@ -62,11 +70,16 @@ class CameraViewController: SwiftyCamViewController {
         cameraDelegate = self
         defaultCamera = .front
         setupViews()
+        startQuestionView()
+        
+        print("QQQQQQQQQQQQQQQQQQQQQQQ", questionLabel.text)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
         setupNavigationBar()
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -77,13 +90,16 @@ class CameraViewController: SwiftyCamViewController {
             self.view.bringSubview(toFront: self.recordButton)
             
             self.recordButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-            self.recordButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -50).isActive = true
+            self.recordButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -30).isActive = true
             self.recordButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
             self.recordButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
             
             guard let captureButton = self.recordButton as UIButton as? SwiftyCamButton else { return }
             captureButton.delegate = self
         }
+        
+        
+
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -120,7 +136,7 @@ class CameraViewController: SwiftyCamViewController {
         isRecording = true
         progressTime = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: true)
         startVideoRecording()
-        startQuestionView()
+        
     }
     
     @objc private func stopRecording() {
@@ -182,9 +198,12 @@ class CameraViewController: SwiftyCamViewController {
     
     //Question View
     func startQuestionView() {
-        questionView.frame = CGRect(x: 100, y: 200, width: 200, height: 200)
         view.addSubview(questionView)
-        questionView.addSubview(savingLabel)
+        view.bringSubview(toFront: questionView)
+        questionView.frame = CGRect(x: 0, y: 400, width: 400, height: 50)
+        questionView.addSubview(questionLabel)
+        self.questionView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        self.questionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -50).isActive = true
     }
 }
 
@@ -203,10 +222,22 @@ extension CameraViewController: SwiftyCamViewControllerDelegate {
                         }
                     })
                         self.stopActivityIndicator()
+
                 }
             } else if exportSession?.status == .failed {
                 print("there was a problem compressing")
             }
         }
     }
+}
+
+extension Array {
+    func randomizeQuestions() -> Element? {
+        if InterviewQuestionController.shared.interviewQuestions.isEmpty { return nil }
+        let index = Int(arc4random_uniform(UInt32(InterviewQuestionController.shared.interviewQuestions.count)))
+        InterviewQuestionController.shared.interviewQuestions.remove(at: index)
+        return self[index]
+    }
+    
+  
 }
