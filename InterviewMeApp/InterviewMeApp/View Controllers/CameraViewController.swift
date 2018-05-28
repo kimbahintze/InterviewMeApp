@@ -32,14 +32,13 @@ class CameraViewController: SwiftyCamViewController {
     
     let questionLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 400, height: 46))
-        label.text = InterviewQuestionController.shared.interviewQuestions.randomizeQuestions()?.question
+        label.text = InterviewQuestionController.shared.savedInterviewQuestions.randomizeQuestions()?.question
         label.font = UIFont(name: "GTWalsheimMedium", size: 20)
         label.textColor = UIColor.black
         return label
     }()
     
 
-    
     let savingLabel : UILabel = {
         let label = UILabel(frame: CGRect(x: 50, y: 0, width: 160, height: 46))
         label.text = "Saving"
@@ -233,9 +232,9 @@ extension CameraViewController: SwiftyCamViewControllerDelegate {
 
 extension Array {
     func randomizeQuestions() -> Element? {
-        if InterviewQuestionController.shared.interviewQuestions.isEmpty { return nil }
-        let index = Int(arc4random_uniform(UInt32(InterviewQuestionController.shared.interviewQuestions.count)))
-        InterviewQuestionController.shared.interviewQuestions.remove(at: index)
+        if InterviewQuestionController.shared.savedInterviewQuestions.isEmpty { return nil }
+        let index = Int(arc4random_uniform(UInt32(InterviewQuestionController.shared.savedInterviewQuestions.count)))
+        InterviewQuestionController.shared.savedInterviewQuestions.remove(at: index)
         return self[index]
     }
     
