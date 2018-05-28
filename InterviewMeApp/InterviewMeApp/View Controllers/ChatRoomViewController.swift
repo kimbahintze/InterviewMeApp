@@ -25,23 +25,21 @@ class ChatRoomViewController: UIViewController {
     @IBOutlet weak var previewView: TVIVideoView!
     var remoteView: TVIVideoView!
     
-    
-    var activityIndicator = UIActivityIndicatorView()
-    let waitingLabel : UILabel = {
-        let label = UILabel(frame: CGRect(x: 40, y: 0, width: 160, height: 100))
-        label.text = "Waiting on others to join"
-        label.numberOfLines = 0
-        label.textAlignment = .natural
-        label.font = UIFont(name: "GTWalsheimMedium", size: 20)
-        label.textColor = UIColor(white: 0.9, alpha: 0.7)
-        return label
-    }()
-    
     let boxView : UIVisualEffectView = {
         let view = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
-        view.layer.cornerRadius = 15
-        view.layer.masksToBounds = true
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
+    }()
+    
+    let waitingLabel : UILabel = {
+        let label = UILabel()
+        label.text = "Waiting on others to join"
+        label.numberOfLines = 2
+        label.textAlignment = .center
+        label.font = UIFont(name: GTWalsheimMedium, size: 20)
+        label.textColor = UIColor(white: 0.9, alpha: 0.7)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
     override func viewDidLoad() {
@@ -143,14 +141,19 @@ class ChatRoomViewController: UIViewController {
     }
     
     func startActivityIndicator() {
-        boxView.frame = CGRect(x: view.frame.midX - waitingLabel.frame.width/2, y: view.frame.midY - waitingLabel.frame.height/2 , width: 160, height: 120)
-        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
-        activityIndicator.frame = CGRect(x: 80, y: 100, width: 0, height: 0)
-        activityIndicator.startAnimating()
-        
-        boxView.contentView.addSubview(activityIndicator)
-        boxView.contentView.addSubview(waitingLabel)
         view.addSubview(boxView)
+        boxView.contentView.addSubview(waitingLabel)
+        boxView.contentView.addSubview(activityIndicator)
+        
+        boxView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        boxView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -5).isActive = true
+        boxView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        boxView.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        
+        waitingLabel.centerXAnchor.constraint(equalTo: boxView.centerXAnchor).isActive = true
+        waitingLabel.centerYAnchor.constraint(equalTo: boxView.centerYAnchor).isActive = true
+        waitingLabel.leadingAnchor.constraint(equalTo: boxView.leadingAnchor, constant: 8).isActive = true
+        waitingLabel.trailingAnchor.constraint(equalTo: boxView.trailingAnchor, constant: -8).isActive = true
     }
     
     func stopActivityIndicator() {
@@ -183,6 +186,7 @@ extension ChatRoomViewController: TVIRoomDelegate {
     
     func room(_ room: TVIRoom, participantDidDisconnect participant: TVIRemoteParticipant) {
         ChatRoomController.shared.enterLobby()
+        startActivityIndicator()
     }
     
     func room(_ room: TVIRoom, didDisconnectWithError error: Error?) {
