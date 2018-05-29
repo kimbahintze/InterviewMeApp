@@ -27,8 +27,16 @@ class ChatRoomViewController: UIViewController {
     @IBOutlet weak var previewView: TVIVideoView!
     var remoteView: TVIVideoView!
     
+    let activityIndicator : UIActivityIndicatorView = {
+       let indicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        indicator.startAnimating()
+        return indicator
+    }()
+    
     let boxView : UIVisualEffectView = {
         let view = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+        view.layer.cornerRadius = 20
+        view.clipsToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -158,21 +166,26 @@ class ChatRoomViewController: UIViewController {
     private func startActivityIndicator() {
         view.addSubview(boxView)
         boxView.contentView.addSubview(waitingLabel)
+        boxView.contentView.addSubview(activityIndicator)
         
         boxView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         boxView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -5).isActive = true
         boxView.heightAnchor.constraint(equalToConstant: 150).isActive = true
         boxView.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        
+
         waitingLabel.centerXAnchor.constraint(equalTo: boxView.centerXAnchor).isActive = true
-        waitingLabel.centerYAnchor.constraint(equalTo: boxView.centerYAnchor).isActive = true
+        waitingLabel.centerYAnchor.constraint(equalTo: boxView.centerYAnchor, constant: -20).isActive = true
         waitingLabel.leadingAnchor.constraint(equalTo: boxView.leadingAnchor, constant: 8).isActive = true
         waitingLabel.trailingAnchor.constraint(equalTo: boxView.trailingAnchor, constant: -8).isActive = true
+        
+        activityIndicator.frame = CGRect(x: 75, y: 110, width: 0, height: 0)
+        
     }
     private func stopActivityIndicator() {
 
         waitingLabel.removeFromSuperview()
         boxView.removeFromSuperview()
+        activityIndicator.stopAnimating()
     }
 }
 
