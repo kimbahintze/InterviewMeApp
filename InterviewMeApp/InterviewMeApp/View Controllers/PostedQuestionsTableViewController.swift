@@ -41,10 +41,8 @@ class PostedQuestionsTableViewController: UITableViewController {
                     // creating question object with model and fetched values
                     let question = UserQuestion(userQuestion: userQ as! String?, id: questionID as! String?)
                     self.userQuestions.append(question)
-                    print("Question added")
                 }
                 self.tableView.reloadData()
-                print("Tableview loaded")
             }
         }
     }
@@ -97,18 +95,18 @@ class PostedQuestionsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as? QuestionTableViewCell else { return UITableViewCell() }
         let userQuestion = userQuestions[indexPath.row]
-        cell.textLabel?.text = self.userQuestionTextField.text
         cell.userQuestion = userQuestion
         return cell
     }
     
     // MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "toAnswerVC" {
+            guard let userAnswersVC = segue.destination as? AnswersViewController,
+                let indexPath = tableView.indexPathForSelectedRow else { return }
+            let userAnswer = usersAnswers[indexPath.row]
+           userAnswersVC?.userAnswer = userAnswer
+        }
     }
-    
-    
 }

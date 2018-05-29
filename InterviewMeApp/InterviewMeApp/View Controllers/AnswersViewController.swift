@@ -8,20 +8,39 @@
 
 import UIKit
 
-class AnswersViewController: UIViewController {
-
+class AnswersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    static var shared = AnswersViewController()
+   
+    var usersAnswers: [UserAnswer] = []
+    // MARK: - Outlets
+    @IBOutlet weak var usersAnswersTableView: UITableView!
+    
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        usersAnswersTableView.dataSource = self
+        usersAnswersTableView.delegate = self
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    // MARK: - Actions
+    @IBAction func postButtonTapped(_ sender: Any) {
     }
     
-
+    // MARK: - Tableview datasource and delegates
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+      return usersAnswers.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = usersAnswersTableView.dequeueReusableCell(withIdentifier: "userAnswerCell", for: indexPath)
+        
+        return cell
+    }
+    
+    
+   
+    
     /*
     // MARK: - Navigation
 

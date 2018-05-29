@@ -169,8 +169,8 @@ class ChatRoomViewController: UIViewController {
         waitingLabel.leadingAnchor.constraint(equalTo: boxView.leadingAnchor, constant: 8).isActive = true
         waitingLabel.trailingAnchor.constraint(equalTo: boxView.trailingAnchor, constant: -8).isActive = true
     }
-    
     private func stopActivityIndicator() {
+
         waitingLabel.removeFromSuperview()
         boxView.removeFromSuperview()
     }

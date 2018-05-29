@@ -11,9 +11,8 @@ import FirebaseDatabase
 
 // add codable later
 struct UserQuestion {
-    
   
-    let userQuestion: String?
+    var userQuestion: String?
     let id: String?
    
     init(userQuestion: String?, id: String?) {

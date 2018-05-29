@@ -399,15 +399,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="QuestionCell" id="19G-8U-1lK">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="QuestionCell" id="19G-8U-1lK" customClass="QuestionTableViewCell" customModule="InterviewMeApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="19G-8U-1lK" id="kC1-DU-Ora">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="19G-8U-1lK" id="kC1-DU-Ora" customClass="QuestionTableViewCell" customModule="InterviewMeApp" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Prj-5C-cZl">
+                                            <rect key="frame" x="8" y="11" width="398" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="Prj-5C-cZl" secondAttribute="trailing" constant="8" id="aKe-AR-jDO"/>
+                                        <constraint firstItem="Prj-5C-cZl" firstAttribute="centerX" secondItem="kC1-DU-Ora" secondAttribute="centerX" id="lQD-kc-QDS"/>
+                                        <constraint firstItem="Prj-5C-cZl" firstAttribute="leading" secondItem="kC1-DU-Ora" secondAttribute="leading" constant="8" id="uDB-B3-YQ6"/>
+                                        <constraint firstItem="Prj-5C-cZl" firstAttribute="centerY" secondItem="kC1-DU-Ora" secondAttribute="centerY" id="zUv-D5-dz0"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="fxx-Ij-kqa" kind="presentation" trigger="accessoryAction" id="cVR-IK-GWK"/>
+                                    <outlet property="questionLabel" destination="Prj-5C-cZl" id="NEy-He-pgB"/>
+                                    <segue destination="fxx-Ij-kqa" kind="presentation" identifier="toAnswerVC" trigger="accessoryAction" id="cVR-IK-GWK"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -426,7 +441,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LeS-zo-1Wx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="204" y="1030"/>
+            <point key="canvasLocation" x="202.89855072463769" y="1029.6195652173915"/>
         </scene>
         <!--Answers View Controller-->
         <scene sceneID="LD0-c4-f83">
@@ -436,17 +451,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sBa-Wm-gqD">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sBa-Wm-gqD">
                                 <rect key="frame" x="40" y="100" width="334" height="556"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="RTf-Ef-0ug">
-                                    <rect key="frame" x="0.0" y="0.0" width="334" height="44"/>
+                                    <rect key="frame" x="0.0" y="228" width="334" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" title="Post An Answer"/>
                                     <connections>
-                                        <segue destination="85m-wv-LcV" kind="presentation" id="ibB-uP-PJt"/>
+                                        <action selector="postButtonTapped:" destination="fxx-Ij-kqa" eventType="touchUpInside" id="JbA-0n-kxT"/>
+                                        <segue destination="85m-wv-LcV" kind="presentation" identifier="toPostAnAnswerVC" id="ibB-uP-PJt"/>
                                     </connections>
                                 </button>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="userAnswerCell" id="ud7-8U-6fM">
+                                        <rect key="frame" x="0.0" y="28" width="334" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ud7-8U-6fM" id="VxO-du-8k1">
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="199.66666666666666"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -458,6 +484,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="245-Gp-1gc"/>
                     </view>
+                    <connections>
+                        <outlet property="usersAnswersTableView" destination="sBa-Wm-gqD" id="PGC-mq-JvR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wpe-R9-Cq4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -477,16 +506,28 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hmb-OP-g5R">
+                                <rect key="frame" x="319" y="506" width="30" height="30"/>
+                                <state key="normal" title="+"/>
+                                <connections>
+                                    <action selector="addButtonTapped:" destination="85m-wv-LcV" eventType="touchUpInside" id="ltz-9r-PtH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Hmb-OP-g5R" firstAttribute="bottom" secondItem="97L-bd-wwI" secondAttribute="bottom" id="7j6-PS-42X"/>
                             <constraint firstItem="J7O-Dm-VMZ" firstAttribute="trailing" secondItem="97L-bd-wwI" secondAttribute="trailing" constant="65" id="L3R-uI-apA"/>
                             <constraint firstItem="97L-bd-wwI" firstAttribute="leading" secondItem="J7O-Dm-VMZ" secondAttribute="leading" constant="65" id="MpQ-B4-36f"/>
                             <constraint firstItem="97L-bd-wwI" firstAttribute="top" secondItem="J7O-Dm-VMZ" secondAttribute="top" constant="200" id="XSG-lp-Hwg"/>
                             <constraint firstItem="J7O-Dm-VMZ" firstAttribute="bottom" secondItem="97L-bd-wwI" secondAttribute="bottom" constant="200" id="hgj-ga-pBQ"/>
+                            <constraint firstItem="J7O-Dm-VMZ" firstAttribute="trailing" secondItem="Hmb-OP-g5R" secondAttribute="trailing" constant="65" id="rm2-6o-S0t"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="J7O-Dm-VMZ"/>
                     </view>
+                    <connections>
+                        <outlet property="writeAnAnswerTextField" destination="97L-bd-wwI" id="15d-6l-e0A"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VH2-bb-5er" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

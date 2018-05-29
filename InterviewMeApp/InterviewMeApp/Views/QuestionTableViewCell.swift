@@ -10,27 +10,23 @@ import UIKit
 
 class QuestionTableViewCell: UITableViewCell {
     
-    // MARK: - Outlets
-    weak var questionLabel: UILabel!
-
+    @IBOutlet weak var questionLabel: UILabel!
+    
     // MARK: - Properties
     var userQuestion: UserQuestion? {
         didSet {
             updateViews()
-            labelContstraints()
         }
     }
     
     func updateViews() {
         guard let userQuestion = userQuestion else { return }
-        questionLabel?.text = userQuestion.userQuestion
+        questionLabel.text = userQuestion.userQuestion
+        questionLabel.font = UIFont(name: GTWalsheimMedium, size: 20)
+        questionLabel.translatesAutoresizingMaskIntoConstraints = false
+        questionLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        questionLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 8).isActive = true
+        questionLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: 8).isActive = true
     }
     
-    // MARK: - Contraints
-    func labelContstraints() {
-        questionLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(questionLabel)
-        questionLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        questionLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-    }
 }
