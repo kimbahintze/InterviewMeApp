@@ -27,14 +27,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Back" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tqF-lJ-ssi">
-                                <rect key="frame" x="0.0" y="209" width="414" height="51"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Back" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="tqF-lJ-ssi">
+                                <rect key="frame" x="0.0" y="209" width="414" height="51.333333333333314"/>
                                 <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GT Walsheim" pointSize="36"/>
                                 <color key="textColor" red="0.39215686274509803" green="0.39215686274509803" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in to continue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="coa-AW-vH4">
-                                <rect key="frame" x="0.0" y="260" width="414" height="33"/>
+                                <rect key="frame" x="0.0" y="260.33333333333331" width="414" height="32.666666666666686"/>
                                 <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GT Walsheim" pointSize="23"/>
                                 <color key="textColor" red="0.66274509800000003" green="0.66666666669999997" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -88,7 +88,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New User?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZv-xj-1Zd">
-                                <rect key="frame" x="139" y="696" width="71" height="20"/>
+                                <rect key="frame" x="139.66666666666666" y="696" width="70.333333333333343" height="20"/>
                                 <fontDescription key="fontDescription" name="GTWalsheimBold" family="GT Walsheim" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -372,7 +372,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="SmW-pJ-vkD">
-                        <barButtonItem key="leftBarButtonItem" title="Saved" id="9tN-b0-ebi">
+                        <barButtonItem key="leftBarButtonItem" title="Saved Questions" id="9tN-b0-ebi">
                             <connections>
                                 <segue destination="33o-mb-WSA" kind="show" identifier="toSavedQuestionVC" id="uqG-xP-o7y"/>
                             </connections>
@@ -395,22 +395,71 @@
             </objects>
             <point key="canvasLocation" x="-500" y="1030"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Saved Questions Table View Controller-->
         <scene sceneID="6iB-iR-MLe">
             <objects>
-                <tableViewController id="33o-mb-WSA" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="1kI-yc-ul0">
+                <tableViewController id="33o-mb-WSA" customClass="SavedQuestionsTableViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="1kI-yc-ul0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Qzn-x7-7pv">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="QuestionCell" textLabel="2vy-lR-rq1" style="IBUITableViewCellStyleDefault" id="6VZ-oG-pqA" customClass="QuestionTableViewCell" customModule="InterviewMeApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qzn-x7-7pv" id="Mft-Pl-Aa5">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6VZ-oG-pqA" id="t9x-6y-d2L">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2vy-lR-rq1">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AnswerCell" id="lk1-cr-OkJ" customClass="AnswerTableViewCell" customModule="InterviewMeApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lk1-cr-OkJ" id="AMb-wk-qe3">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9c7-ef-Xct">
+                                            <rect key="frame" x="20" y="11.000000000000002" width="341" height="21.666666666666671"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0W-XX-rJH">
+                                            <rect key="frame" x="369" y="7.6666666666666679" width="30" height="30.000000000000004"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="mn2-Zj-cMg"/>
+                                                <constraint firstAttribute="width" constant="30" id="yjm-qh-hih"/>
+                                            </constraints>
+                                            <state key="normal" image="Add"/>
+                                            <connections>
+                                                <action selector="addButtonTapped:" destination="lk1-cr-OkJ" eventType="touchUpInside" id="xW3-BR-yS3"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="f0W-XX-rJH" firstAttribute="centerY" secondItem="AMb-wk-qe3" secondAttribute="centerY" id="3Ri-8e-uXP"/>
+                                        <constraint firstItem="f0W-XX-rJH" firstAttribute="leading" secondItem="9c7-ef-Xct" secondAttribute="trailing" constant="8" id="QoO-TE-zkD"/>
+                                        <constraint firstItem="9c7-ef-Xct" firstAttribute="top" secondItem="AMb-wk-qe3" secondAttribute="topMargin" id="aSX-WW-WJe"/>
+                                        <constraint firstItem="9c7-ef-Xct" firstAttribute="leading" secondItem="AMb-wk-qe3" secondAttribute="leadingMargin" id="flY-VW-4ov"/>
+                                        <constraint firstAttribute="trailing" secondItem="f0W-XX-rJH" secondAttribute="trailing" constant="15" id="iiz-Ks-vME"/>
+                                        <constraint firstItem="9c7-ef-Xct" firstAttribute="centerY" secondItem="AMb-wk-qe3" secondAttribute="centerY" id="taM-gB-fZj"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="9c7-ef-Xct" secondAttribute="bottom" id="vwq-VA-Plw"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="addButton" destination="f0W-XX-rJH" id="WnE-yv-ekh"/>
+                                    <outlet property="answerLabel" destination="9c7-ef-Xct" id="AYV-62-u3B"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
