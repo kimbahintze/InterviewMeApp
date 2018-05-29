@@ -101,12 +101,12 @@ class PostedQuestionsTableViewController: UITableViewController {
     
     // MARK: - Navigation
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "toAnswerVC" {
-//            guard let userAnswersVC = segue.destination as? AnswersViewController,
-//                let indexPath = tableView.indexPathForSelectedRow else { return }
-//           let userAnswer = userQuestions[indexPath.row]
-//           userAnswersVC.usersAnswers = userAnswer
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toAnswerVC" {
+            guard let destinationVC = segue.destination as? AnswersViewController,
+                let indexPath = tableView.indexPathForSelectedRow else { return }
+           let userQuestion = userQuestions[indexPath.row]
+            destinationVC.userQuestion = userQuestion
+        }
+    }
 }

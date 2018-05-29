@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
+
 
 class PostAnswerViewController: UIViewController {
 
@@ -15,24 +17,29 @@ class PostAnswerViewController: UIViewController {
     
     var databaseRef: DatabaseReference!
     
+    var userQuestion: UserQuestion!
+    var userAnswer: UserAnswer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    func writeYourAnswer(answer: String) {
+        let key = databaseRef.childByAutoId().key
+        let addedAnswer = ["id": key, "userAnswer": answer as String]
+        Database.database().reference().child("userQuestions").child(userQuestion.id!).setValue([addedAnswer]) {
+            (error: Error?, databaseRef:DatabaseReference) in
+            if let error = error {
+                print("Data could not be saved: \(error).")
+            } else {
+                print("Data saved successfully!")
+            }
+        }
+    }
 
     @IBAction func addButtonTapped(_ sender: Any) {
-  //      writeAnAnswerTextField.text
+        guard let yourAnswer = writeAnAnswerTextField.text else { return }
+        self.writeYourAnswer(answer: yourAnswer)
+        navigationController?.popViewController(animated: true)
     }
-    
-  
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

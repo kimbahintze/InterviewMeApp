@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 class AnswersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     static var shared = AnswersViewController()
    
     var usersAnswers: [UserAnswer] = []
+    var userQuestion: UserQuestion!
+    
+    var databaseRef: DatabaseReference!
+    
     // MARK: - Outlets
     @IBOutlet weak var usersAnswersTableView: UITableView!
     
@@ -34,21 +40,10 @@ class AnswersViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = usersAnswersTableView.dequeueReusableCell(withIdentifier: "userAnswerCell", for: indexPath)
+        let userAnswer = usersAnswers[indexPath.row]
+        cell.textLabel?.text = userAnswer.userAnswer
         
+        databaseRef = Database.database().reference(fromURL: usersAnswers[indexPath.row].userAnswer!)
         return cell
     }
-    
-    
-   
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
