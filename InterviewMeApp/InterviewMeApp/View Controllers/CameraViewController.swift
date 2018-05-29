@@ -32,7 +32,8 @@ class CameraViewController: SwiftyCamViewController {
     
     let questionLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 400, height: 46))
-        label.text = InterviewQuestionController.shared.savedInterviewQuestions.randomizeQuestions()?.question
+        let savedQuestions = InterviewQuestionController.shared.savedInterviewQuestions
+        label.text = InterviewQuestionController.shared.randomizeInterviewQuestions(array: savedQuestions)
         label.font = UIFont(name: "GTWalsheimMedium", size: 20)
         label.textColor = UIColor.black
         return label
@@ -70,15 +71,12 @@ class CameraViewController: SwiftyCamViewController {
         defaultCamera = .front
         setupViews()
         startQuestionView()
-        
-        print("QQQQQQQQQQQQQQQQQQQQQQQ", questionLabel.text)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
         setupNavigationBar()
-
+       
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -96,9 +94,6 @@ class CameraViewController: SwiftyCamViewController {
             guard let captureButton = self.recordButton as UIButton as? SwiftyCamButton else { return }
             captureButton.delegate = self
         }
-        
-        
-
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -221,22 +216,11 @@ extension CameraViewController: SwiftyCamViewControllerDelegate {
                         }
                     })
                         self.stopActivityIndicator()
-
+                    InterviewQuestionController.shared.removeInterviewQuestion()
                 }
             } else if exportSession?.status == .failed {
                 print("there was a problem compressing")
             }
         }
     }
-}
-
-extension Array {
-    func randomizeQuestions() -> Element? {
-        if InterviewQuestionController.shared.savedInterviewQuestions.isEmpty { return nil }
-        let index = Int(arc4random_uniform(UInt32(InterviewQuestionController.shared.savedInterviewQuestions.count)))
-        InterviewQuestionController.shared.savedInterviewQuestions.remove(at: index)
-        return self[index]
-    }
-    
-  
 }

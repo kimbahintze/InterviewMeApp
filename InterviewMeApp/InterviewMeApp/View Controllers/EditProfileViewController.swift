@@ -25,7 +25,6 @@ class EditProfileViewController: UIViewController {
         editFullNameTextField.delegate = self
         editIndustryTextField.delegate = self
         editIndustryTextField.inputView = industryPicker
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadPicker), name: JobIndustryController.NotificationKeys.reloadPicker, object: nil)
         industryPicker.dataSource = self
         industryPicker.delegate = self
         navigationItem.titleView = logoTitleView()
@@ -43,6 +42,7 @@ class EditProfileViewController: UIViewController {
        updateUsersProfile()
         editFullNameTextField.resignFirstResponder()
         editIndustryTextField.resignFirstResponder()
+        ChatRoomController.shared.leaveLobby()
         let alertController = UIAlertController(title: "Profile Updated", message: nil, preferredStyle: .alert)
         
         alertController.view.tintColor = mainColor
@@ -59,58 +59,44 @@ class EditProfileViewController: UIViewController {
             print(error.localizedDescription)
         }
     }
-    
-    func reVerifyAge() -> String {
-        let dob = agePicker.date
-        let gregorian = Calendar(identifier: .gregorian)
-        let ageComponenents = gregorian.dateComponents([.year], from: dob, to: Date())
-        let age = ageComponenents.year!
-        return "\(age)"
-    }
 
     func loadProfileData() {
-        
-        if let userID = Auth.auth().currentUser?.uid {
-            Database.database().reference().child("users/\(userID)").observe(.value, with: { (snapshot) in
-                
-                guard let values = snapshot.value as? [String:Any] else { return }
-                
-                self.editFullNameTextField.text = values["fullName"] as? String
-                self.editIndustryTextField.text = values["jobindustry"] as? String
- 
-            })
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        Database.database().reference().child("users/\(userID)").observeSingleEvent(of: .value) { (snapshot) in
+            if let dictionary = snapshot.value as? [String: Any] {
+                self.editFullNameTextField.text = dictionary["fullName"] as? String
+                self.editIndustryTextField.text = dictionary["jobindustry"] as? String
+            }
         }
     }
     
     func updateUsersProfile() {
-        if let userID = Auth.auth().currentUser?.uid {
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        guard let editedFullName = editFullNameTextField.text, !editedFullName.isEmpty else { return }
+        guard let editedIndustry = editIndustryTextField.text, !editedIndustry.isEmpty else { return }
         
-            guard let editedFullName = editFullNameTextField.text, !editedFullName.isEmpty else { return }
-            guard let editedIndustry = editIndustryTextField.text, !editedIndustry.isEmpty else { return }
-            
-            let newValues = ["jobindustry": editedIndustry,
-                             "fullName": editedFullName]
-            
-            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-            let name = "\(editedFullName)"
-            changeRequest?.displayName = name
-            changeRequest?.commitChanges(completion: { (error) in
-                if let error = error {
-                    print("Error saving name: \(error.localizedDescription)")
-                }
-            })
-            
-            // update firebase
-            Database.database().reference().child("users/\(userID)").updateChildValues(newValues) { (error, ref) in
-                if error != nil {
-                    print(error!)
-                    return
-                }
+        let newValues = ["jobindustry": editedIndustry,
+                         "fullName": editedFullName]
+        
+        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+        let name = "\(editedFullName)"
+        changeRequest?.displayName = name
+        changeRequest?.commitChanges(completion: { (error) in
+            if let error = error {
+                print("Error saving name: \(error.localizedDescription)")
             }
-            JobIndustryController.shared.fetchUserJobIndustry { (fetchedJobIndustry) in
-                guard let jobIndustry = fetchedJobIndustry else { return }
-                InterviewQuestionController.shared.fetchInterviewQuestions(jobIndustry: jobIndustry)
+        })
+        
+        // update firebase
+        Database.database().reference().child("users/\(userID)").updateChildValues(newValues) { (error, ref) in
+            if error != nil {
+                print(error!)
+                return
             }
+        }
+        JobIndustryController.shared.fetchUserJobIndustry { (fetchedJobIndustry) in
+            guard let jobIndustry = fetchedJobIndustry else { return }
+            InterviewQuestionController.shared.fetchInterviewQuestions(jobIndustry: jobIndustry)
         }
     }
     
@@ -126,24 +112,6 @@ class EditProfileViewController: UIViewController {
 }
 
 extension EditProfileViewController: UITextFieldDelegate {
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        switch textField {
-        case editFullNameTextField:
-            editFullNameTextField.resignFirstResponder()
-            editIndustryTextField.becomeFirstResponder()
-            break
-        case editIndustryTextField:
-            editIndustryTextField.resignFirstResponder()
-            editIndustryTextField.becomeFirstResponder()
-            break
-        case editIndustryTextField:
-            break
-        default:
-            break
-        }
-        return true
-    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
@@ -169,11 +137,5 @@ extension EditProfileViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let jobIndustry = JobIndustryController.shared.jobIndustries[row]
         editIndustryTextField.text = jobIndustry.name
-    }
-    
-    @objc private func reloadPicker() {
-        DispatchQueue.main.async {
-            self.industryPicker.reloadAllComponents()
-        }
     }
 }
