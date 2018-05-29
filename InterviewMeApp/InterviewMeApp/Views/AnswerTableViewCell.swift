@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
+
 protocol AnswerTableViewCellDelegate: class {
     func addQuestionToInterview(cell: AnswerTableViewCell)
     func removeQuestionFromInterview(cell: AnswerTableViewCell)

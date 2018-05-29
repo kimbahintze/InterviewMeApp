@@ -9,8 +9,8 @@
 import Foundation
 import FirebaseDatabase
 
-// add codable later
-struct UserAnswer {
+
+struct UserAnswer: Codable, Equatable {
     
     var userAnswer: String?
     let id: String?
@@ -19,4 +19,8 @@ struct UserAnswer {
         self.userAnswer = userAnswer
         self.id = id
     }
+}
+
+func ==(lhs: UserAnswer, rhs: UserAnswer) -> Bool {
+    return lhs.userAnswer == rhs.userAnswer && lhs.id == rhs.id
 }
