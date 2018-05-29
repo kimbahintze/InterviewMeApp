@@ -143,7 +143,6 @@ class ChatRoomViewController: UIViewController {
     func startActivityIndicator() {
         view.addSubview(boxView)
         boxView.contentView.addSubview(waitingLabel)
-        boxView.contentView.addSubview(activityIndicator)
         
         boxView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         boxView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -5).isActive = true
@@ -157,9 +156,7 @@ class ChatRoomViewController: UIViewController {
     }
     
     func stopActivityIndicator() {
-        activityIndicator.stopAnimating()
         waitingLabel.removeFromSuperview()
-        activityIndicator.removeFromSuperview()
         boxView.removeFromSuperview()
     }
 }
