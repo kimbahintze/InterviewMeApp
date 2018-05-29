@@ -12,55 +12,12 @@ import RecordButton
 
 class CameraViewController: SwiftyCamViewController {
     
-    
     //MARK: - Properties
-    
-    let recordButton: RecordButton = {
-        let button = RecordButton(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        button.buttonColor = .white
-        button.progressColor = mainColor
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    let questionView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .red
-        view.layer.masksToBounds = true
-        return view
-    }()
-    
-    let questionLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 400, height: 46))
-        let savedQuestions = InterviewQuestionController.shared.savedInterviewQuestions
-        label.text = InterviewQuestionController.shared.randomizeInterviewQuestions(array: savedQuestions)
-        label.font = UIFont(name: "GTWalsheimMedium", size: 20)
-        label.textColor = UIColor.black
-        return label
-    }()
-    
-
-    let savingLabel : UILabel = {
-        let label = UILabel(frame: CGRect(x: 50, y: 0, width: 160, height: 46))
-        label.text = "Saving"
-        label.font = UIFont(name: "GTWalsheimMedium", size: 20)
-        label.textColor = UIColor(white: 0.9, alpha: 0.7)
-        return label
-    }()
-    
-    let boxView : UIVisualEffectView = {
-        let view = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
-        view.layer.cornerRadius = 15
-        view.layer.masksToBounds = true
-        return view
-    }()
     
     var isRecording = false
     var progress: CGFloat = 0
     var progressTime: Timer!
-    
-    
-    var activityIndicator = UIActivityIndicatorView()
+    let cameraView = CameraView(frame: UIScreen.main.bounds)
     
     //MARK: - LifeCycle
     
@@ -70,29 +27,20 @@ class CameraViewController: SwiftyCamViewController {
         cameraDelegate = self
         defaultCamera = .front
         setupViews()
-        startQuestionView()
+        cameraView.cameraViewController = self
+        guard let captureButton = cameraView.recordButton as UIButton as? SwiftyCamButton else { return }
+        captureButton.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
-        setupNavigationBar()
-       
+        cameraView.setupNavBar()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super .viewDidAppear(animated)
         Timer.scheduledTimer(withTimeInterval: 0.35, repeats: false) { (_) in
-            self.recordButton.addTarget(self, action: #selector(self.record), for: .touchUpInside)
-            self.view.addSubview(self.recordButton)
-            self.view.bringSubview(toFront: self.recordButton)
-            
-            self.recordButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-            self.recordButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -30).isActive = true
-            self.recordButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
-            self.recordButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
-            
-            guard let captureButton = self.recordButton as UIButton as? SwiftyCamButton else { return }
-            captureButton.delegate = self
+            self.view.addSubview(self.cameraView)
         }
     }
     
@@ -112,34 +60,45 @@ class CameraViewController: SwiftyCamViewController {
     }
     
     private func showQuestionView() {
-        questionView.center.y = 20
+        guard let navigationBarHeight = navigationController?.navigationBar.frame.height else { return }
+        cameraView.questionView.center.y = navigationBarHeight + 40
     }
     
-    @objc private func record() {
+    private func hideQuestionView() {
+        guard let navigationBarHeight = navigationController?.navigationBar.frame.height else { return }
+        cameraView.questionView.center.y = -navigationBarHeight - 100
+    }
+    
+    @objc func record() {
         if isRecording {
             stopRecording()
+            UIView.animate(withDuration: 0.33) {
+                self.hideQuestionView()
+            }
         } else {
             startRecording()
-        }
-        UIView.animate(withDuration: 0.3) {
-            self.showQuestionView()
+            UIView.animate(withDuration: 0.33) {
+                self.showQuestionView()
+            }
         }
     }
+    
     @objc private func startRecording() {
-        recordButton.buttonState = .recording
+        cameraView.recordButton.buttonState = .recording
         isRecording = true
         progressTime = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: true)
         startVideoRecording()
-        
+        navigationController?.navigationBar.isHidden = true
     }
     
     @objc private func stopRecording() {
-        recordButton.buttonState = .idle
+        cameraView.recordButton.buttonState = .idle
         self.progress = 0
         isRecording = false
         progressTime.invalidate()
         stopVideoRecording()
         startActivityIndicator()
+        navigationController?.navigationBar.isHidden = false
     }
     
     @objc private func updateProgress() {
@@ -147,57 +106,29 @@ class CameraViewController: SwiftyCamViewController {
         let increment: CGFloat = 0.05
         
         self.progress = progress + (increment / maxDuration)
-        recordButton.setProgress(progress)
+        cameraView.recordButton.setProgress(progress)
         if progress >= 1 {
             progressTime.invalidate()
             isRecording = false
             self.progress = 0 
-            recordButton.buttonState = .idle
+            cameraView.recordButton.buttonState = .idle
             stopVideoRecording()
             stopActivityIndicator()
         }
     }
     
-    private func setupNavigationBar() {
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.isTranslucent = true
-        navigationController?.view.backgroundColor = .clear
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "Back").withRenderingMode(.alwaysTemplate), style: .done, target: self, action: #selector(popController))
-        navigationController?.navigationBar.tintColor = .white
-    }
-    
-    @objc private func popController() {
+    @objc func popController() {
         navigationController?.popViewController(animated: true)
     }
 
     func startActivityIndicator() {
-        boxView.frame = CGRect(x: view.frame.midX - savingLabel.frame.width/2, y: view.frame.midY - savingLabel.frame.height/2 , width: 160, height: 46)
-        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
-        activityIndicator.frame = CGRect(x: 0, y: 0, width: 46, height: 46)
-        activityIndicator.startAnimating()
-        
-        boxView.contentView.addSubview(activityIndicator)
-        boxView.contentView.addSubview(savingLabel)
-        view.addSubview(boxView)
+        cameraView.boxView.isHidden = false
     }
     
     func stopActivityIndicator() {
-        activityIndicator.stopAnimating()
-        savingLabel.removeFromSuperview()
-        activityIndicator.removeFromSuperview()
-        boxView.removeFromSuperview()
+        cameraView.savingLabel.removeFromSuperview()
+        cameraView.boxView.removeFromSuperview()
         popController()
-    }
-    
-    //Question View
-    func startQuestionView() {
-        view.addSubview(questionView)
-        view.bringSubview(toFront: questionView)
-        questionView.frame = CGRect(x: 0, y: 400, width: 400, height: 50)
-        questionView.addSubview(questionLabel)
-        self.questionView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        self.questionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -50).isActive = true
     }
 }
 
@@ -215,7 +146,7 @@ extension CameraViewController: SwiftyCamViewControllerDelegate {
                             VideoController.shared.deleteTempDirectory()
                         }
                     })
-                        self.stopActivityIndicator()
+                    self.stopActivityIndicator()
                     InterviewQuestionController.shared.removeInterviewQuestion()
                 }
             } else if exportSession?.status == .failed {
