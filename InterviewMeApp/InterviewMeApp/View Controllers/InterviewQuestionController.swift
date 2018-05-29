@@ -8,12 +8,13 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseDatabase
 
 class InterviewQuestionController {
     
     static let shared = InterviewQuestionController()
 
-    var index : Int = 0
+//    var index: Int = 0
     
     var interviewQuestions: [InterviewQuestion] = [] {
         didSet {
@@ -35,10 +36,6 @@ class InterviewQuestionController {
     }
     
     func fetchInterviewQuestions(jobIndustry: JobIndustry?) {
-        if interviewQuestions.count > 0 {
-            interviewQuestions.removeAll()
-        }
-        
         guard let jobIndustryName = jobIndustry?.name.jobIndustryFormat() else { return }
         guard let url = self.baseURL?.appendingPathComponent("jobIndustry/\(jobIndustryName)").appendingPathExtension("json") else { return }
         
@@ -98,24 +95,26 @@ class InterviewQuestionController {
     private init() {
         JobIndustryController.shared.fetchUserJobIndustry { (jobIndustry) in
             self.fetchInterviewQuestions(jobIndustry: jobIndustry)
-            
+            self.fetchSavedQuestions(jobIndustry: jobIndustry)
         }
     }
 }
 
-extension InterviewQuestionController {
-    func randomizeInterviewQuestions(array: [InterviewQuestion]) -> String {
-        if savedInterviewQuestions.isEmpty { return "No More Questions."}
-        index = Int(arc4random_uniform(UInt32(array.count)))
-        let interviewQuestion = array[index]
-             print("BEFORE!!!  savedInterviewQuestions.count", savedInterviewQuestions.count)
-        return interviewQuestion.question ?? ""
-    }
-    
-    func removeInterviewQuestion() {
-        if savedInterviewQuestions.isEmpty { return }
-        savedInterviewQuestions.remove(at: index)
-        print("AFTER! savedInterviewQuestions.count", savedInterviewQuestions.count)
-    }
-}
+//extension InterviewQuestionController {
+//    func randomizeInterviewQuestions(array: [InterviewQuestion]) -> String {
+//        if savedInterviewQuestions.isEmpty { return "No More Questions."}
+//        index = Int(arc4random_uniform(UInt32(array.count)))
+//        let interviewQuestion = array[index]
+//        print("BEFORE!!!  savedInterviewQuestions.count", savedInterviewQuestions.count)
+//        return interviewQuestion.question ?? ""
+//    }
+//    
+//    func removeInterviewQuestion() {
+//        if savedInterviewQuestions.isEmpty { return }
+//        guard let currentUser = Auth.auth().currentUser else { return }
+//        let savedInterviewQuestion = savedInterviewQuestions[index]
+//        Database.database().reference().child("users/\(currentUser.uid)/savedQuestions/\(savedInterviewQuestion.uuid)").removeValue()
+//        savedInterviewQuestions.remove(at: index)
+//    }
+//}
 

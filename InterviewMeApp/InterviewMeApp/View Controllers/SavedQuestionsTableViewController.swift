@@ -19,18 +19,16 @@ class SavedQuestionsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.titleView = logoTitleView()
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name:InterviewQuestionController.NotificationKey.reloadTable, object: nil)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name:InterviewQuestionController.NotificationKey.reloadTable, object: nil)
-        JobIndustryController.shared.fetchUserJobIndustry { (fetchedJobIndustry) in
-            guard let jobIndustry = fetchedJobIndustry else { return }
-            InterviewQuestionController.shared.fetchSavedQuestions(jobIndustry: jobIndustry)
-            
-            print("ON SAVEDQVC savedInterviewQuestions.count", InterviewQuestionController.shared.savedInterviewQuestions.count)
-        }
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewDidLoad()
+//        JobIndustryController.shared.fetchUserJobIndustry { (fetchedJobIndustry) in
+//            guard let jobIndustry = fetchedJobIndustry else { return }
+//            InterviewQuestionController.shared.fetchSavedQuestions(jobIndustry: jobIndustry)
+//        }
+//    }
     
     @objc func reloadTable() {
         DispatchQueue.main.async {
@@ -65,7 +63,7 @@ extension SavedQuestionsTableViewController {
         case 1: guard let answerCell = tableView.dequeueReusableCell(withIdentifier: answerReuseIdentifier, for: indexPath) as? AnswerTableViewCell else { return UITableViewCell() }
         
         answerCell.setupViews(interviewQuestion: interviewQuestion)
-        answerCell.delegate = self
+//        answerCell.delegate = self
         
         return answerCell
             
@@ -86,21 +84,21 @@ extension SavedQuestionsTableViewController {
     }
 }
 
-extension SavedQuestionsTableViewController: AnswerTableViewCellDelegate {
-    func removeQuestionFromInterview(cell: AnswerTableViewCell) {
-        JobIndustryController.shared.fetchUserJobIndustry { (fetchedJobIndustry) in
-            guard let currentUser = Auth.auth().currentUser, let indexPath = self.tableView.indexPath(for: cell) else { return }
-            let interviewQuestion = InterviewQuestionController.shared.savedInterviewQuestions[indexPath.section]
-            Database.database().reference().child("users/\(currentUser.uid)/savedQuestions/\(interviewQuestion.uuid)").removeValue()
-            
-        }
-    }
-    
-    func addQuestionToInterview(cell: AnswerTableViewCell) {
-        JobIndustryController.shared.fetchUserJobIndustry { (fetchedJobIndustry) in
-            guard let currentUser = Auth.auth().currentUser, let indexPath = self.tableView.indexPath(for: cell) else { return }
-            let interviewQuestion = InterviewQuestionController.shared.savedInterviewQuestions[indexPath.section]
-            Database.database().reference().child("users/\(currentUser.uid)/savedQuestions/\(interviewQuestion.uuid)").setValue(["question": interviewQuestion.question, "answer": interviewQuestion.answer, "uuid": interviewQuestion.uuid])
-        }
-    }
-}
+//extension SavedQuestionsTableViewController: AnswerTableViewCellDelegate {
+//    func removeQuestionFromInterview(cell: AnswerTableViewCell) {
+//        JobIndustryController.shared.fetchUserJobIndustry { (fetchedJobIndustry) in
+//            guard let currentUser = Auth.auth().currentUser, let indexPath = self.tableView.indexPath(for: cell) else { return }
+//            let interviewQuestion = InterviewQuestionController.shared.savedInterviewQuestions[indexPath.section]
+//            Database.database().reference().child("users/\(currentUser.uid)/savedQuestions/\(interviewQuestion.uuid)").removeValue()
+//
+//        }
+//    }
+//
+//    func addQuestionToInterview(cell: AnswerTableViewCell) {
+//        JobIndustryController.shared.fetchUserJobIndustry { (fetchedJobIndustry) in
+//            guard let currentUser = Auth.auth().currentUser, let indexPath = self.tableView.indexPath(for: cell) else { return }
+//            let interviewQuestion = InterviewQuestionController.shared.savedInterviewQuestions[indexPath.section]
+//            Database.database().reference().child("users/\(currentUser.uid)/savedQuestions/\(interviewQuestion.uuid)").setValue(["question": interviewQuestion.question, "answer": interviewQuestion.answer, "uuid": interviewQuestion.uuid])
+//        }
+//    }
+//}

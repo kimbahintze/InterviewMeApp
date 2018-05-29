@@ -30,6 +30,7 @@ class InterviewQuestionsTableViewController: UITableViewController {
         jobIndustryPicker.delegate = self
         jobIndustryPicker.dataSource = self
         navigationItem.titleView = logoTitleView()
+        
         checkOnBoarding { (hasOnBoarded) in
             if hasOnBoarded == "false" {
                 let alertView = AlertOnboarding(arrayOfImage: ["faq",
@@ -51,14 +52,6 @@ class InterviewQuestionsTableViewController: UITableViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super .viewWillAppear(animated)
-        JobIndustryController.shared.fetchUserJobIndustry { (fetchedJobIndustry) in
-            guard let jobIndustry = fetchedJobIndustry else { return }
-            InterviewQuestionController.shared.fetchSavedQuestions(jobIndustry: jobIndustry)
-        }
-            print("ON INTERVIEWVC savedInterviewQuestions.count", InterviewQuestionController.shared.savedInterviewQuestions.count)
-    }
     @objc private func reloadTable() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -126,14 +119,6 @@ extension InterviewQuestionsTableViewController {
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toSavedQuestionVC" {
-          guard let _ = segue.destination as? SavedQuestionsTableViewController else { return }
-            
-        }
-    }
-
 }
 
 extension InterviewQuestionsTableViewController: UIPickerViewDelegate, UIPickerViewDataSource {
