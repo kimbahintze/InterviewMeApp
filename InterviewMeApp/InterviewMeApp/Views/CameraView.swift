@@ -32,7 +32,7 @@ class CameraView: UIView {
     let questionLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: -100, width: UIScreen.main.bounds.width, height: 50))
         let savedQuestions = InterviewQuestionController.shared.savedInterviewQuestions
-        label.text = InterviewQuestionController.shared.randomizeInterviewQuestions(array: savedQuestions)
+//        label.text = InterviewQuestionController.shared.randomizeInterviewQuestions(array: savedQuestions)
         label.font = UIFont(name: GTWalsheimMedium, size: 20)
         label.textColor = mainColor
         label.numberOfLines = 0
@@ -107,14 +107,5 @@ class CameraView: UIView {
         questionLabel.topAnchor.constraint(equalTo: questionView.topAnchor).isActive = true
         questionLabel.bottomAnchor.constraint(equalTo: questionView.bottomAnchor).isActive = true
         questionLabel.trailingAnchor.constraint(equalTo: questionView.trailingAnchor, constant: -8).isActive = true
-    }
-    
-    func setupNavBar() {
-        cameraViewController?.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        cameraViewController?.navigationController?.navigationBar.shadowImage = UIImage()
-        cameraViewController?.navigationController?.navigationBar.isTranslucent = true
-        cameraViewController?.navigationController?.view.backgroundColor = .clear
-        cameraViewController?.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "Back").withRenderingMode(.alwaysTemplate), style: .done, target: self, action: #selector(cameraViewController?.popController))
-        cameraViewController?.navigationController?.navigationBar.tintColor = .white
     }
 }
