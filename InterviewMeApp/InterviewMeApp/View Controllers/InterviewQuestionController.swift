@@ -98,25 +98,24 @@ class InterviewQuestionController {
     private init() {
         JobIndustryController.shared.fetchUserJobIndustry { (jobIndustry) in
             self.fetchInterviewQuestions(jobIndustry: jobIndustry)
-            self.fetchSavedQuestions(jobIndustry: jobIndustry)
+            
         }
     }
 }
 
 extension InterviewQuestionController {
     func randomizeInterviewQuestions(array: [InterviewQuestion]) -> String {
-        if savedInterviewQuestions.isEmpty { return "NO NORE QUESTIONS!"}
+        if savedInterviewQuestions.isEmpty { return "No More Questions."}
         index = Int(arc4random_uniform(UInt32(array.count)))
-//        let interviewQuestion = savedInterviewQuestions[index]
         let interviewQuestion = array[index]
-             print("BEFORE!!! REMOVALLLLY savedInterviewQuestions.count", savedInterviewQuestions.count)
+             print("BEFORE!!!  savedInterviewQuestions.count", savedInterviewQuestions.count)
         return interviewQuestion.question ?? ""
     }
     
     func removeInterviewQuestion() {
         if savedInterviewQuestions.isEmpty { return }
         savedInterviewQuestions.remove(at: index)
-        print("AFTER REMOVALLLLY savedInterviewQuestions.count", savedInterviewQuestions.count)
+        print("AFTER! savedInterviewQuestions.count", savedInterviewQuestions.count)
     }
 }
 
