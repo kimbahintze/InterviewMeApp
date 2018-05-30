@@ -14,7 +14,7 @@ class PostedQuestionsTableViewController: UITableViewController {
     
     var userQuestions: [UserQuestion] = []
     
-    var databaseRef: DatabaseReference!
+    var databaseRef: DatabaseReference?
     
     weak var userQuestionTextField: UITextField!
     
@@ -22,29 +22,16 @@ class PostedQuestionsTableViewController: UITableViewController {
         super.viewDidLoad()
         databaseRef = Database.database().reference().child("userQuestions")
         
-        // observing the data changes
-        databaseRef.observe(DataEventType.value) { (snapshot) in
-            
-            // if the reference has some values
-            if snapshot.childrenCount > 0 {
-                
-                // clearing the list
-                self.userQuestions.removeAll()
-                
-                // iterating through all the values
-                for questions in snapshot.children.allObjects as! [DataSnapshot] {
-                    // getting values
-                    let questionObject = questions.value as? [String: AnyObject]
-                    let userQ = questionObject?["userQuestion"]
-                    let questionID = questionObject?["id"]
-                    
-                    // creating question object with model and fetched values
-                    let question = UserQuestion(userQuestion: userQ as! String?, id: questionID as! String?)
-                    self.userQuestions.append(question)
-                }
+        databaseRef?.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let dictionary = snapshot.value as? [String:Any] {
+                dictionary.forEach({ (key, value) in
+                    guard let questionDictionary = value as? [String: Any] else { return }
+                    guard let userQuestion = UserQuestion(jsonDictionary: questionDictionary, key: key) else { return }
+                    self.userQuestions.append(userQuestion)
+                })
                 self.tableView.reloadData()
             }
-        }
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,15 +62,7 @@ class PostedQuestionsTableViewController: UITableViewController {
     }
     
     func addUserQuestion(question: String) {
-        
-        // generating a new key inside questions node and getting the generated key
-        let key = databaseRef.childByAutoId().key
-        
-        // creating questions with give values
-        let addedQuestion = ["id": key,
-                             "userQuestion": question as String]
-        
-        databaseRef.child(key).setValue(addedQuestion)
+        databaseRef?.childByAutoId().setValue(["question": question])
     }
     
     // MARK: - Table view data source
@@ -104,9 +83,12 @@ class PostedQuestionsTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toAnswerVC" {
             guard let destinationVC = segue.destination as? AnswersViewController,
-                let indexPath = tableView.indexPathForSelectedRow else { return }
+                let indexPath = tableView.indexPathForSelectedRow,
+                let databaseRef = databaseRef
+                else { return }
            let userQuestion = userQuestions[indexPath.row]
             destinationVC.userQuestion = userQuestion
+            destinationVC.databaseRef = databaseRef
         }
     }
 }

@@ -38,6 +38,7 @@
 		FF58A22320B4850700D3586A /* GT-Walsheim-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF58A22020B4850600D3586A /* GT-Walsheim-Medium.ttf */; };
 		FF58A22520B4AFC700D3586A /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58A22420B4AFC700D3586A /* EditProfileViewController.swift */; };
 		FF5DF60F20AB4D83009C2897 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF5DF60E20AB4D83009C2897 /* GoogleService-Info.plist */; };
+		FFA40DBE20BE0344002A884B /* UserAnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA40DBD20BE0344002A884B /* UserAnswerTableViewCell.swift */; };
 		FFD8120F20BCBC2E003E2039 /* UserAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD8120E20BCBC2E003E2039 /* UserAnswer.swift */; };
 		FFDC3E8B20AA425300AADF8A /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDC3E8A20AA425300AADF8A /* SignupViewController.swift */; };
 		FFDD3DB720B7A1DA00BD277D /* AnswersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDD3DB620B7A1DA00BD277D /* AnswersViewController.swift */; };
@@ -84,6 +85,7 @@
 		FF58A22020B4850600D3586A /* GT-Walsheim-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GT-Walsheim-Medium.ttf"; sourceTree = "<group>"; };
 		FF58A22420B4AFC700D3586A /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		FF5DF60E20AB4D83009C2897 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FFA40DBD20BE0344002A884B /* UserAnswerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnswerTableViewCell.swift; sourceTree = "<group>"; };
 		FFD8120E20BCBC2E003E2039 /* UserAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnswer.swift; sourceTree = "<group>"; };
 		FFDC3E8A20AA425300AADF8A /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		FFDD3DB620B7A1DA00BD277D /* AnswersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswersViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				A05EA86120B473F500329A6E /* AnswerTableViewCell.swift */,
 				FFFC044220B878FF00CA6F42 /* QuestionTableViewCell.swift */,
 				A0597CDC20BDB2C9001E6F0D /* CameraView.swift */,
+				FFA40DBD20BE0344002A884B /* UserAnswerTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				B37503C520AA224E00AFB23A /* LoginViewController.swift in Sources */,
 				A0C25C6120AE019300B7FD85 /* JobIndustryController.swift in Sources */,
 				A05052E420ACE3C9005981CF /* TokenUtilities.swift in Sources */,
+				FFA40DBE20BE0344002A884B /* UserAnswerTableViewCell.swift in Sources */,
 				FFF2740B20A9E92300D66A0B /* AppDelegate.swift in Sources */,
 				FFDD3DB920B7A1F100BD277D /* PostAnswerViewController.swift in Sources */,
 				A05052E220ACD4C9005981CF /* ChatRoomViewController.swift in Sources */,
@@ -577,7 +581,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+
+				DEVELOPMENT_TEAM = A6SH4SB8PT;
+
 				DEVELOPMENT_TEAM = 7VSPJ2N6B9;
+
 				INFOPLIST_FILE = "$(SRCROOT)/InterviewMeApp/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -597,7 +605,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+
+				DEVELOPMENT_TEAM = A6SH4SB8PT;
+
 				DEVELOPMENT_TEAM = 7VSPJ2N6B9;
+
 				INFOPLIST_FILE = "$(SRCROOT)/InterviewMeApp/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
