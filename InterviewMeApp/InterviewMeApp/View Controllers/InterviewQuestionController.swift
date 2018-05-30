@@ -8,12 +8,13 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseDatabase
 
 class InterviewQuestionController {
     
     static let shared = InterviewQuestionController()
 
-    var index : Int = 0
+    var index: Int = 0
     
     var interviewQuestions: [InterviewQuestion] = [] {
         didSet {
@@ -21,11 +22,18 @@ class InterviewQuestionController {
         }
     }
     
-    var savedInterviewQuestions: [InterviewQuestion] = [] {
+//    var savedInterviewQuestions: [InterviewQuestion] = [] {
+//        didSet {
+//            NotificationCenter.default.post(name: NotificationKey.reloadTable, object: self)
+//        }
+//    }
+ 
+    var generalQuestions: [InterviewQuestion] = [] {
         didSet {
             NotificationCenter.default.post(name: NotificationKey.reloadTable, object: self)
         }
     }
+
     
     
     let baseURL = URL(string: "https://interviewmeapp-ec527.firebaseio.com/")
@@ -35,10 +43,6 @@ class InterviewQuestionController {
     }
     
     func fetchInterviewQuestions(jobIndustry: JobIndustry?) {
-        if interviewQuestions.count > 0 {
-            interviewQuestions.removeAll()
-        }
-        
         guard let jobIndustryName = jobIndustry?.name.jobIndustryFormat() else { return }
         guard let url = self.baseURL?.appendingPathComponent("jobIndustry/\(jobIndustryName)").appendingPathExtension("json") else { return }
         
@@ -56,7 +60,7 @@ class InterviewQuestionController {
                         guard let interviewQuestion = InterviewQuestion(jsonDictionary: questionDictionary) else { return }
                         fetchedInterviewQuestions.append(interviewQuestion)
                     })
-                    self.fetchSavedQuestions(jobIndustry: jobIndustry)
+//                    self.fetchSavedQuestions(jobIndustry: jobIndustry)
                     self.interviewQuestions = fetchedInterviewQuestions
                 } catch {
                     print("Error fetchInterviewQuestions Data: \(error.localizedDescription)")
@@ -66,56 +70,87 @@ class InterviewQuestionController {
         dataTask.resume()
     }
     
-    func fetchSavedQuestions(jobIndustry: JobIndustry?) {
-        guard let currentUser = Auth.auth().currentUser else { return }
-        guard let url = baseURL?.appendingPathComponent("users/\(currentUser.uid)/savedQuestions").appendingPathExtension("json") else { return }
+//    func fetchSavedQuestions(jobIndustry: JobIndustry?) {
+//        guard let currentUser = Auth.auth().currentUser else { return }
+//        guard let url = baseURL?.appendingPathComponent("users/\(currentUser.uid)/savedQuestions").appendingPathExtension("json") else { return }
+//
+//        let dataTask = URLSession.shared.dataTask(with: url) { (data, _, error) in
+//            if let error = error {
+//                print("Error fetching saved questions: \(error.localizedDescription)")
+//                return
+//            }
+//
+//            if let data = data {
+//                do {
+//                    guard let interviewQuestionDictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any] else { return }
+//                    var fetchedSavedQuestions: [InterviewQuestion] = []
+//                    interviewQuestionDictionary.forEach({ (key, value) in
+//                        guard let dictionary = value as? [String: Any] else { return }
+//                        guard let interviewQuestion = InterviewQuestion(jsonDictionary: dictionary) else { return }
+//                        fetchedSavedQuestions.append(interviewQuestion)
+//                    })
+//                    self.savedInterviewQuestions = fetchedSavedQuestions
+//                } catch {
+//                    print("Error getting data: \(error.localizedDescription)")
+//                    return
+//                }
+//            }
+//        }
+//        dataTask.resume()
+//    }
+    
+    private init() {
+        JobIndustryController.shared.fetchUserJobIndustry { (jobIndustry) in
+            self.fetchInterviewQuestions(jobIndustry: jobIndustry)
+            self.fetchGeneralQuestions()
+        }
+    }
+    
+    func fetchGeneralQuestions() {
+        guard let url = baseURL?.appendingPathComponent("jobIndustry/general").appendingPathExtension("json") else { return }
         
         let dataTask = URLSession.shared.dataTask(with: url) { (data, _, error) in
             if let error = error {
-                print("Error fetching saved questions: \(error.localizedDescription)")
+                print("error fetching general", error.localizedDescription)
                 return
             }
-            
             if let data = data {
                 do {
-                    guard let interviewQuestionDictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any] else { return }
-                    var fetchedSavedQuestions: [InterviewQuestion] = []
-                    interviewQuestionDictionary.forEach({ (key, value) in
-                        guard let dictionary = value as? [String: Any] else { return }
+                    guard let generalDictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String : Any] else { return }
+                    var fetchedGeneralQuestions: [InterviewQuestion] = []
+                    generalDictionary.forEach({ (key, value) in
+                        guard let dictionary = value as? [String : Any] else { return }
                         guard let interviewQuestion = InterviewQuestion(jsonDictionary: dictionary) else { return }
-                        fetchedSavedQuestions.append(interviewQuestion)
+                        fetchedGeneralQuestions.append(interviewQuestion)
                     })
-                    self.savedInterviewQuestions = fetchedSavedQuestions
+                    self.generalQuestions = fetchedGeneralQuestions
                 } catch {
-                    print("Error getting data: \(error.localizedDescription)")
+                    print("error serializing data", error.localizedDescription)
                     return
                 }
             }
         }
         dataTask.resume()
     }
-
-    private init() {
-        JobIndustryController.shared.fetchUserJobIndustry { (jobIndustry) in
-            self.fetchInterviewQuestions(jobIndustry: jobIndustry)
-            
-        }
-    }
 }
 
 extension InterviewQuestionController {
     func randomizeInterviewQuestions(array: [InterviewQuestion]) -> String {
-        if savedInterviewQuestions.isEmpty { return "No More Questions."}
+        if generalQuestions.isEmpty { return "No More Questions."}
         index = Int(arc4random_uniform(UInt32(array.count)))
         let interviewQuestion = array[index]
-             print("BEFORE!!!  savedInterviewQuestions.count", savedInterviewQuestions.count)
+        print("BEFORE!!!  savedInterviewQuestions.count", generalQuestions.count)
         return interviewQuestion.question ?? ""
     }
     
     func removeInterviewQuestion() {
-        if savedInterviewQuestions.isEmpty { return }
-        savedInterviewQuestions.remove(at: index)
-        print("AFTER! savedInterviewQuestions.count", savedInterviewQuestions.count)
+        if generalQuestions.isEmpty { return }
+        guard let currentUser = Auth.auth().currentUser else { return }
+        let generalQuestion = generalQuestions[index]
+        Database.database().reference().child("users/\(currentUser.uid)/savedQuestions/\(generalQuestion.uuid)").removeValue()
+        generalQuestions.remove(at: index)
+        print("AFTER!!!  savedInterviewQuestions.count", generalQuestions.count)
+        
     }
 }
 

@@ -25,8 +25,8 @@ class AnswerTableViewCell: UITableViewCell {
     var isChecked = false
 
     func setupViews(interviewQuestion: InterviewQuestion) {
-        for savedInterviewQuestion in InterviewQuestionController.shared.savedInterviewQuestions {
-            if interviewQuestion.uuid == savedInterviewQuestion.uuid {
+        for savedInterviewQuestion in InterviewQuestionController.shared.generalQuestions {
+            if interviewQuestion == savedInterviewQuestion {
                 addButton.setImage(#imageLiteral(resourceName: "Check").colorChange(), for: .normal)
                 isChecked = true
                 break
