@@ -61,6 +61,7 @@ class SignupViewController: UIViewController {
         Auth.auth().createUser(withEmail: email, password: password) { (dataResult, error) in
             if let error = error {
                 print("Error creating user: \(error.localizedDescription)")
+                self.handleDuplicateUser()
                 return
             }
             
@@ -83,6 +84,15 @@ class SignupViewController: UIViewController {
             let mainTabBarController = sb.instantiateViewController(withIdentifier: "MainTabBarController")
             self.present(mainTabBarController, animated: true, completion: nil)
         }
+    }
+    
+    func handleDuplicateUser() {
+        let alertController = UIAlertController(title: "Email address is already in use", message: nil, preferredStyle: .alert)
+        
+        alertController.view.tintColor = mainColor
+        let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        alertController.addAction(okayAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func popController(_ sender: UIButton) {

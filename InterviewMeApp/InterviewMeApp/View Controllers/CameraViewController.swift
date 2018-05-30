@@ -55,7 +55,7 @@ class CameraViewController: SwiftyCamViewController {
     
     private func setupViews() {
         tabBarController?.tabBar.isHidden = true
-        maximumVideoDuration = 180
+        maximumVideoDuration = 3
         swipeToZoom = false
         pinchToZoom = false
         tapToFocus = true
@@ -108,7 +108,7 @@ class CameraViewController: SwiftyCamViewController {
     }
     
     @objc private func updateProgress() {
-        let maxDuration: CGFloat = 180
+        let maxDuration: CGFloat = 3
         let increment: CGFloat = 0.05
         
         self.progress = progress + (increment / maxDuration)

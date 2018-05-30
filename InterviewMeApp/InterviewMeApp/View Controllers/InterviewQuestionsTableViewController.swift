@@ -31,6 +31,10 @@ class InterviewQuestionsTableViewController: UITableViewController {
         jobIndustryPicker.dataSource = self
         navigationItem.titleView = logoTitleView()
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super .viewDidAppear(animated)
         checkOnBoarding { (hasOnBoarded) in
             if hasOnBoarded == "false" {
                 let alertView = AlertOnboarding(arrayOfImage: ["faq",
