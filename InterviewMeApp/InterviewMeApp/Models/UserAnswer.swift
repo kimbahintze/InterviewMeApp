@@ -19,6 +19,11 @@ struct UserAnswer: Codable, Equatable {
         self.userAnswer = userAnswer
         self.id = id
     }
+    
+    init?(jsonDictionary: [String:Any], key: String) {
+        self.userAnswer = jsonDictionary["answer"] as? String
+        self.id = key
+    }
 }
 
 func ==(lhs: UserAnswer, rhs: UserAnswer) -> Bool {
