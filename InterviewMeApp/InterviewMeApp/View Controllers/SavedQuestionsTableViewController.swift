@@ -41,7 +41,7 @@ extension SavedQuestionsTableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         
-        return InterviewQuestionController.shared.savedInterviewQuestions.count
+        return InterviewQuestionController.shared.generalQuestions.count
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
@@ -49,7 +49,7 @@ extension SavedQuestionsTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let interviewQuestion = InterviewQuestionController.shared.savedInterviewQuestions[indexPath.section]
+        let interviewQuestion = InterviewQuestionController.shared.generalQuestions[indexPath.section]
         
         switch indexPath.row {
             

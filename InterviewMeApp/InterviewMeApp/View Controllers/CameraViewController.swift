@@ -152,7 +152,7 @@ extension CameraViewController: SwiftyCamViewControllerDelegate {
                         }
                     })
                     self.stopActivityIndicator()
-//                    InterviewQuestionController.shared.removeInterviewQuestion()
+                    InterviewQuestionController.shared.removeInterviewQuestion()
                 }
             } else if exportSession?.status == .failed {
                 print("there was a problem compressing")

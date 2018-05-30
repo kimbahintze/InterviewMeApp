@@ -20,7 +20,7 @@ class VideoCollectionViewController: UICollectionViewController {
         collectionView?.register(VideoCollectionCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         navigationItem.titleView = logoTitleView()
         JobIndustryController.shared.fetchUserJobIndustry { (jobindustry) in
-            InterviewQuestionController.shared.fetchSavedQuestions(jobIndustry: jobindustry)
+            InterviewQuestionController.shared.fetchGeneralQuestions()
             print("jobindustry", jobindustry)
         }
     }

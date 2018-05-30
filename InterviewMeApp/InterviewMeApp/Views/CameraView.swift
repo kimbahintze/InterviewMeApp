@@ -23,24 +23,26 @@ class CameraView: UIView {
     
     let questionView: UIView = {
         let view = UIView()
-        view.backgroundColor = .clear
+        view.backgroundColor = mainColor
         view.layer.masksToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 15
+        view.clipsToBounds = true
         return view
     }()
     
     let questionLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: -100, width: UIScreen.main.bounds.width, height: 50))
-        let savedQuestions = InterviewQuestionController.shared.savedInterviewQuestions
-//        label.text = InterviewQuestionController.shared.randomizeInterviewQuestions(array: savedQuestions)
+        let savedQuestions = InterviewQuestionController.shared.generalQuestions
+        label.text = InterviewQuestionController.shared.randomizeInterviewQuestions(array: savedQuestions)
         label.font = UIFont(name: GTWalsheimMedium, size: 20)
-        label.textColor = mainColor
+        label.textColor = .white
+        label.highlightedTextColor = .white
         label.numberOfLines = 0
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
     
     let savingLabel : UILabel = {
         let label = UILabel()
@@ -59,6 +61,12 @@ class CameraView: UIView {
         view.isHidden = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
+    }()
+    
+    let activityIndicator : UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        indicator.startAnimating()
+        return indicator
     }()
     
     var cameraViewController: CameraViewController? {
@@ -83,6 +91,7 @@ class CameraView: UIView {
         bringSubview(toFront: recordButton)
         addSubview(boxView)
         boxView.contentView.addSubview(savingLabel)
+        boxView.contentView.addSubview(activityIndicator)
         addSubview(questionView)
         questionView.addSubview(questionLabel)
         
@@ -93,13 +102,17 @@ class CameraView: UIView {
         
         boxView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         boxView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        boxView.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        boxView.widthAnchor.constraint(equalToConstant: 140).isActive = true
         boxView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
-        savingLabel.centerXAnchor.constraint(equalTo: boxView.contentView.centerXAnchor).isActive = true
+        savingLabel.centerXAnchor.constraint(equalTo: boxView.contentView.centerXAnchor, constant: 10).isActive = true
         savingLabel.centerYAnchor.constraint(equalTo: boxView.contentView.centerYAnchor).isActive = true
         
-        questionView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
+        activityIndicator.frame = CGRect(x: 25, y: 30, width: 0, height: 0)
+        
+//        questionView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
+        questionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25).isActive = true
+        questionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25).isActive = true
         questionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: -200).isActive = true
         questionView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
