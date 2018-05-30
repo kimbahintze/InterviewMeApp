@@ -139,7 +139,6 @@ extension InterviewQuestionController {
         if generalQuestions.isEmpty { return "No More Questions."}
         index = Int(arc4random_uniform(UInt32(array.count)))
         let interviewQuestion = array[index]
-        print("BEFORE!!!  savedInterviewQuestions.count", generalQuestions.count)
         return interviewQuestion.question ?? ""
     }
     
@@ -149,8 +148,6 @@ extension InterviewQuestionController {
         let generalQuestion = generalQuestions[index]
         Database.database().reference().child("users/\(currentUser.uid)/savedQuestions/\(generalQuestion.uuid)").removeValue()
         generalQuestions.remove(at: index)
-        print("AFTER!!!  savedInterviewQuestions.count", generalQuestions.count)
-        
     }
 }
 

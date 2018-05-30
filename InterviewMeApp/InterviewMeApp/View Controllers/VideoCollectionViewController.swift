@@ -39,6 +39,7 @@ class VideoCollectionViewController: UICollectionViewController {
     private func setupNavigationBar() {
         tabBarController?.tabBar.isHidden = false
         navigationController?.navigationBar.backgroundImage(for: .default)
+        navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.barTintColor = nil
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.shadowImage = nil

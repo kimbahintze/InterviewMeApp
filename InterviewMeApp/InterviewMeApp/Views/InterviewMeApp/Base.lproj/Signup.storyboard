@@ -67,6 +67,10 @@
                                 <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="GTWalsheimRegular" family="GT Walsheim" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                <connections>
+                                    <action selector="keyboardWillHide:" destination="jN2-FM-dRg" eventType="editingDidEnd" id="Avp-W7-lg6"/>
+                                    <action selector="keyboardWillShow:" destination="jN2-FM-dRg" eventType="editingDidBegin" id="btH-fl-YhS"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l88-6I-vCt">
                                 <rect key="frame" x="20" y="309" width="280" height="30"/>
