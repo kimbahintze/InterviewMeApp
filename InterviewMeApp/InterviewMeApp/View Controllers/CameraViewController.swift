@@ -60,8 +60,9 @@ class CameraViewController: SwiftyCamViewController {
         pinchToZoom = false
         tapToFocus = true
         shouldUseDeviceOrientation = true
-        allowBackgroundAudio = true
+        allowBackgroundAudio = false
         lowLightBoost = true
+        allowAutoRotate = false
     }
     
     private func showQuestionView() {
