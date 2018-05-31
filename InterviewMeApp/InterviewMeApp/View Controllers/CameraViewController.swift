@@ -18,6 +18,7 @@ class CameraViewController: SwiftyCamViewController {
     var progress: CGFloat = 0
     var progressTime: Timer!
     let cameraView = CameraView(frame: UIScreen.main.bounds)
+    let maxDuration: Double = 180
     
     //MARK: - LifeCycle
     
@@ -55,7 +56,7 @@ class CameraViewController: SwiftyCamViewController {
     
     private func setupViews() {
         tabBarController?.tabBar.isHidden = true
-        maximumVideoDuration = 180
+        maximumVideoDuration = maxDuration
         swipeToZoom = false
         pinchToZoom = false
         tapToFocus = true
@@ -103,12 +104,11 @@ class CameraViewController: SwiftyCamViewController {
         isRecording = false
         progressTime.invalidate()
         stopVideoRecording()
-        startActivityIndicator()
         navigationController?.navigationBar.isHidden = false
     }
     
     @objc private func updateProgress() {
-        let maxDuration: CGFloat = 180
+        let maxDuration: CGFloat = CGFloat(self.maxDuration)
         let increment: CGFloat = 0.05
         
         self.progress = progress + (increment / maxDuration)
@@ -134,13 +134,10 @@ class CameraViewController: SwiftyCamViewController {
     func stopActivityIndicator() {
         cameraView.savingLabel.removeFromSuperview()
         cameraView.boxView.removeFromSuperview()
-        popController()
     }
-}
-
-extension CameraViewController: SwiftyCamViewControllerDelegate {
     
-    func swiftyCam(_ swiftyCam: SwiftyCamViewController, didFinishProcessVideoAt url: URL) {
+    private func saveVideo(url: URL, completion: @escaping(Bool) -> Void) {
+        startActivityIndicator()
         let newURL = NSURL.fileURL(withPath: NSTemporaryDirectory() + NSUUID().uuidString + ".mov")
         VideoController.shared.compressVideo(inputURL: url, outputURL: newURL) { (exportSession) in
             if exportSession?.status == .completed {
@@ -154,9 +151,22 @@ extension CameraViewController: SwiftyCamViewControllerDelegate {
                     })
                     self.stopActivityIndicator()
                     InterviewQuestionController.shared.removeInterviewQuestion()
+                    completion(true)
                 }
             } else if exportSession?.status == .failed {
                 print("there was a problem compressing")
+                completion(false)
+            }
+        }
+    }
+}
+
+extension CameraViewController: SwiftyCamViewControllerDelegate {
+    
+    func swiftyCam(_ swiftyCam: SwiftyCamViewController, didFinishProcessVideoAt url: URL) {
+        saveVideo(url: url) { (success) in
+            if success {
+                self.popController()
             }
         }
     }
