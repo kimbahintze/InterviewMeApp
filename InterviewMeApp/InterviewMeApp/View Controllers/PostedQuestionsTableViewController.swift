@@ -72,7 +72,9 @@ class PostedQuestionsTableViewController: UITableViewController {
                 else { return }
            let userQuestion = UserQuestionController.shared.userQuestions[indexPath.row]
             destinationVC.userQuestion = userQuestion
-          
+            if UserAnswerController.shared.userAnswers.count > 0 {
+                UserAnswerController.shared.userAnswers.removeAll()
+            }
         }
     }
     
