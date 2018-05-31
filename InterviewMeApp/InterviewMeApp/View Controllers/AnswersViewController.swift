@@ -12,15 +12,12 @@ import FirebaseDatabase
 
 class AnswersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    static var shared = AnswersViewController()
-   
-    var usersAnswers: [UserAnswer] = []
     var userQuestion: UserQuestion?
-    
-    var databaseRef: DatabaseReference?
     
     // MARK: - Outlets
     @IBOutlet weak var usersAnswersTableView: UITableView!
+    
+    @IBOutlet weak var postAnswerButton: UIButton!
     
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -28,51 +25,59 @@ class AnswersViewController: UIViewController, UITableViewDataSource, UITableVie
         usersAnswersTableView.dataSource = self
         usersAnswersTableView.delegate = self
         usersAnswersTableView.layer.cornerRadius = 15
-
-        guard let userQuestionID = userQuestion?.id else { return }
-        Database.database().reference().child("userQuestions").child(userQuestionID).child("userAnswers").observeSingleEvent(of: .value) { (snapshot) in
-            if let dictionary = snapshot.value as? [String: Any] {
-                dictionary.forEach({ (key, value) in
-                    guard let answerDictionary = value as? [String:Any] else { return }
-                    guard let answer = UserAnswer(jsonDictionary: answerDictionary, key: key) else { return }
-                    self.usersAnswers.append(answer)
-                })
-                self.usersAnswersTableView.reloadData()
-            }
-        }
+        postAnswerButton.backgroundColor = mainColor
+        postAnswerButton.setTitleColor(UIColor.white, for: .normal)
+        postAnswerButton.titleLabel?.font = UIFont(name: GTWalsheimBold, size: 16)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name: InterviewQuestionController.NotificationKey.reloadTable, object: nil)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.usersAnswersTableView.reloadData()
-    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        usersAnswersTableView.reloadData()
+        UserAnswerController.shared.fetchAnswers(userQuestion: userQuestion)
     }
-
-    // MARK: - Actions
-    @IBAction func postButtonTapped(_ sender: Any) {
+    
+    @objc private func reloadTable() {
+        DispatchQueue.main.async {
+            self.usersAnswersTableView.reloadData()
+        }
+    }
+    @IBAction func segueToPostQuestion(_ sender: UIButton) {
+        guard let postAnswerViewController = storyboard?.instantiateViewController(withIdentifier: "PostAnswerViewController") as? PostAnswerViewController else { return }
+        postAnswerViewController.modalPresentationStyle = .overCurrentContext
+        postAnswerViewController.userQuestion = userQuestion
+        postAnswerViewController.delegate = self
+        present(postAnswerViewController, animated: true, completion: nil)
     }
     
     // MARK: - Tableview datasource and delegates
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return usersAnswers.count
+      return UserAnswerController.shared.userAnswers.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = usersAnswersTableView.dequeueReusableCell(withIdentifier: "userAnswerCell", for: indexPath) as? UserAnswerTableViewCell else { return UITableViewCell () }
-        let userAnswer = usersAnswers[indexPath.row]
+        let userAnswer = UserAnswerController.shared.userAnswers[indexPath.row]
         cell.userAnswer = userAnswer
         return cell
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toPostAnAnswerVC" {
-            guard let destinationVC = segue.destination as? PostAnswerViewController,
-                let databaseRef = databaseRef
-                else { return }
-            destinationVC.userQuestion = self.userQuestion
-        }
+}
+
+extension AnswersViewController: PostAnswerViewControllerDelegate {
+    func addQuestion(viewController: PostAnswerViewController) {
+        UserAnswerController.shared.fetchAnswers(userQuestion: userQuestion)
     }
+    
+    
 }
