@@ -19,10 +19,11 @@ class PostedQuestionsTableViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name: InterviewQuestionController.NotificationKey.reloadTable, object: nil)
     }
   
-    override func viewDidAppear(_ animated: Bool) {
-        super .viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         UserQuestionController.shared.fetchQuestions()
     }
+    
     // MARK: - Actions
     
     @IBAction func addQButtonTapped(_ sender: Any) {
@@ -71,6 +72,7 @@ class PostedQuestionsTableViewController: UITableViewController {
                 else { return }
            let userQuestion = UserQuestionController.shared.userQuestions[indexPath.row]
             destinationVC.userQuestion = userQuestion
+          
         }
     }
     
