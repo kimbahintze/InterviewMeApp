@@ -28,5 +28,4 @@ class UserAnswerTableViewCell: UITableViewCell {
         answerLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 8).isActive = true
         answerLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: 8).isActive = true
     }
-    
 }
