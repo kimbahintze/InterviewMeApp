@@ -7,41 +7,101 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A03856B820AF41150069BBEE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03856B720AF41150069BBEE /* Constants.swift */; };
+		A05052DB20ACCDA3005981CF /* ChatRoomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05052DA20ACCDA3005981CF /* ChatRoomController.swift */; };
+		A05052DD20ACCF0B005981CF /* ChatLobbyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05052DC20ACCF0B005981CF /* ChatLobbyUser.swift */; };
+		A05052E020ACD445005981CF /* LobbyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05052DF20ACD445005981CF /* LobbyTableViewController.swift */; };
+		A05052E220ACD4C9005981CF /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05052E120ACD4C9005981CF /* ChatRoomViewController.swift */; };
+		A05052E420ACE3C9005981CF /* TokenUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05052E320ACE3C9005981CF /* TokenUtilities.swift */; };
+		A05241C120AF5DB700C29F40 /* VideoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05241C020AF5DB700C29F40 /* VideoCollectionViewController.swift */; };
+		A05241C320AF5EB500C29F40 /* VideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05241C220AF5EB500C29F40 /* VideoController.swift */; };
+		A05241C720AF61DD00C29F40 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05241C620AF61DD00C29F40 /* CameraViewController.swift */; };
+		A05241CB20AFCC7600C29F40 /* VideoCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05241CA20AFCC7600C29F40 /* VideoCollectionCell.swift */; };
+		A0597CDD20BDB2C9001E6F0D /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0597CDC20BDB2C9001E6F0D /* CameraView.swift */; };
+		A05EA86220B473F500329A6E /* AnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05EA86120B473F500329A6E /* AnswerTableViewCell.swift */; };
+		A07E2D3D20BC634A00E6E13B /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07E2D3C20BC634A00E6E13B /* ForgotPasswordViewController.swift */; };
+		A0C25C5920ADE8B900B7FD85 /* InterviewQuestionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C25C5820ADE8B900B7FD85 /* InterviewQuestionsTableViewController.swift */; };
+		A0C25C5B20ADFBEE00B7FD85 /* InterviewQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C25C5A20ADFBEE00B7FD85 /* InterviewQuestion.swift */; };
+		A0C25C5D20ADFC4400B7FD85 /* InterviewQuestionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C25C5C20ADFC4400B7FD85 /* InterviewQuestionController.swift */; };
+		A0C25C5F20AE017700B7FD85 /* JobIndustry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C25C5E20AE017700B7FD85 /* JobIndustry.swift */; };
+		A0C25C6120AE019300B7FD85 /* JobIndustryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C25C6020AE019300B7FD85 /* JobIndustryController.swift */; };
 		AF1696ED091B42610905A063 /* Pods_InterviewMeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E313558045188ED812C8FDAD /* Pods_InterviewMeApp.framework */; };
-		B31F155220AB395D002A20E2 /* RecordVideo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B31F155020AB395D002A20E2 /* RecordVideo.storyboard */; };
+		B3218D4820B35ADF0042E2A6 /* VideoCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3218D4620B35ADF0042E2A6 /* VideoCoreData.xcdatamodeld */; };
+		B3218D4A20B35AEA0042E2A6 /* VideoCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3218D4920B35AEA0042E2A6 /* VideoCoreDataStack.swift */; };
+		B3218D4C20B35B4C0042E2A6 /* Video + Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3218D4B20B35B4C0042E2A6 /* Video + Convenience.swift */; };
 		B37503C520AA224E00AFB23A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37503C420AA224E00AFB23A /* LoginViewController.swift */; };
-		B37503C820AA276700AFB23A /* daniel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B37503C620AA276700AFB23A /* daniel.storyboard */; };
-		FF14868120AA508B00FE71FD /* createProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF14867F20AA508B00FE71FD /* createProfile.storyboard */; };
+		B3EFFE7120BD8C3700EA2347 /* SavedQuestionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EFFE7020BD8C3700EA2347 /* SavedQuestionsTableViewController.swift */; };
+		FF14868120AA508B00FE71FD /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF14867F20AA508B00FE71FD /* Signup.storyboard */; };
+		FF1BDE5920B681550031593E /* PostedQuestionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1BDE5820B681550031593E /* PostedQuestionsTableViewController.swift */; };
+		FF58A22120B4850600D3586A /* GT-Walsheim-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF58A21E20B4850500D3586A /* GT-Walsheim-Regular.ttf */; };
+		FF58A22220B4850600D3586A /* GT-Walsheim-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF58A21F20B4850600D3586A /* GT-Walsheim-Bold.ttf */; };
+		FF58A22320B4850700D3586A /* GT-Walsheim-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF58A22020B4850600D3586A /* GT-Walsheim-Medium.ttf */; };
+		FF58A22520B4AFC700D3586A /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58A22420B4AFC700D3586A /* EditProfileViewController.swift */; };
 		FF5DF60F20AB4D83009C2897 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF5DF60E20AB4D83009C2897 /* GoogleService-Info.plist */; };
-		FF5DF61120AB4EC4009C2897 /* FireBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5DF61020AB4EC4009C2897 /* FireBaseManager.swift */; };
-		FFDC3E8520AA250A00AADF8A /* kimchi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDC3E8320AA250A00AADF8A /* kimchi.storyboard */; };
-		FFDC3E8B20AA425300AADF8A /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDC3E8A20AA425300AADF8A /* CreateProfileViewController.swift */; };
+		FFA40DBE20BE0344002A884B /* UserAnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA40DBD20BE0344002A884B /* UserAnswerTableViewCell.swift */; };
+		FFD8120F20BCBC2E003E2039 /* UserAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD8120E20BCBC2E003E2039 /* UserAnswer.swift */; };
+		FFDC3E8B20AA425300AADF8A /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDC3E8A20AA425300AADF8A /* SignupViewController.swift */; };
+		FFDD3DB720B7A1DA00BD277D /* AnswersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDD3DB620B7A1DA00BD277D /* AnswersViewController.swift */; };
+		FFDD3DB920B7A1F100BD277D /* PostAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDD3DB820B7A1F100BD277D /* PostAnswerViewController.swift */; };
+		FFDD3DBD20B7A54D00BD277D /* UserQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDD3DBC20B7A54D00BD277D /* UserQuestion.swift */; };
 		FFF2740B20A9E92300D66A0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF2740A20A9E92300D66A0B /* AppDelegate.swift */; };
-		FFF2740D20A9E92300D66A0B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF2740C20A9E92300D66A0B /* ViewController.swift */; };
 		FFF2741020A9E92300D66A0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFF2740E20A9E92300D66A0B /* Main.storyboard */; };
 		FFF2741220A9E92400D66A0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFF2741120A9E92400D66A0B /* Assets.xcassets */; };
 		FFF2741520A9E92400D66A0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFF2741320A9E92400D66A0B /* LaunchScreen.storyboard */; };
+		FFFC044320B878FF00CA6F42 /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC044220B878FF00CA6F42 /* QuestionTableViewCell.swift */; };
+		FFFFC34220BF790C005386CB /* UserQuestionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFFC34120BF790C005386CB /* UserQuestionController.swift */; };
+		FFFFC34420BF791D005386CB /* UserAnswerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFFC34320BF791D005386CB /* UserAnswerController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2597FF0BF0726ABBFA91CF62 /* Pods-InterviewMeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InterviewMeApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InterviewMeApp/Pods-InterviewMeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		9923D488D981203123E3D81C /* Pods-InterviewMeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InterviewMeApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-InterviewMeApp/Pods-InterviewMeApp.release.xcconfig"; sourceTree = "<group>"; };
-		B31F155120AB395D002A20E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = InterviewMeApp/Base.lproj/RecordVideo.storyboard; sourceTree = "<group>"; };
+		A03856B720AF41150069BBEE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A05052DA20ACCDA3005981CF /* ChatRoomController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatRoomController.swift; path = "InterviewMeApp/View Controllers/ChatRoomController.swift"; sourceTree = SOURCE_ROOT; };
+		A05052DC20ACCF0B005981CF /* ChatLobbyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatLobbyUser.swift; path = InterviewMeApp/ChatLobbyUser.swift; sourceTree = SOURCE_ROOT; };
+		A05052DF20ACD445005981CF /* LobbyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyTableViewController.swift; sourceTree = "<group>"; };
+		A05052E120ACD4C9005981CF /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
+		A05052E320ACE3C9005981CF /* TokenUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TokenUtilities.swift; path = "InterviewMeApp/View Controllers/TokenUtilities.swift"; sourceTree = SOURCE_ROOT; };
+		A05241C020AF5DB700C29F40 /* VideoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionViewController.swift; sourceTree = "<group>"; };
+		A05241C220AF5EB500C29F40 /* VideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VideoController.swift; path = "InterviewMeApp/View Controllers/VideoController.swift"; sourceTree = SOURCE_ROOT; };
+		A05241C620AF61DD00C29F40 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		A05241CA20AFCC7600C29F40 /* VideoCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionCell.swift; sourceTree = "<group>"; };
+		A0597CDC20BDB2C9001E6F0D /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		A05EA86120B473F500329A6E /* AnswerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerTableViewCell.swift; sourceTree = "<group>"; };
+		A07E2D3C20BC634A00E6E13B /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		A0C25C5820ADE8B900B7FD85 /* InterviewQuestionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewQuestionsTableViewController.swift; sourceTree = "<group>"; };
+		A0C25C5A20ADFBEE00B7FD85 /* InterviewQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InterviewQuestion.swift; path = "InterviewMeApp/View Controllers/InterviewQuestion.swift"; sourceTree = SOURCE_ROOT; };
+		A0C25C5C20ADFC4400B7FD85 /* InterviewQuestionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InterviewQuestionController.swift; path = "InterviewMeApp/View Controllers/InterviewQuestionController.swift"; sourceTree = SOURCE_ROOT; };
+		A0C25C5E20AE017700B7FD85 /* JobIndustry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JobIndustry.swift; path = "InterviewMeApp/View Controllers/JobIndustry.swift"; sourceTree = SOURCE_ROOT; };
+		A0C25C6020AE019300B7FD85 /* JobIndustryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JobIndustryController.swift; path = "InterviewMeApp/View Controllers/JobIndustryController.swift"; sourceTree = SOURCE_ROOT; };
+		B3218D4720B35ADF0042E2A6 /* VideoCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VideoCoreData.xcdatamodel; sourceTree = "<group>"; };
+		B3218D4920B35AEA0042E2A6 /* VideoCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCoreDataStack.swift; sourceTree = "<group>"; };
+		B3218D4B20B35B4C0042E2A6 /* Video + Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Video + Convenience.swift"; sourceTree = "<group>"; };
 		B37503C420AA224E00AFB23A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		B37503C720AA276700AFB23A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = InterviewMeApp/Base.lproj/daniel.storyboard; sourceTree = "<group>"; };
+		B3EFFE7020BD8C3700EA2347 /* SavedQuestionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedQuestionsTableViewController.swift; sourceTree = "<group>"; };
 		E313558045188ED812C8FDAD /* Pods_InterviewMeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InterviewMeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF14868020AA508B00FE71FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = InterviewMeApp/Base.lproj/createProfile.storyboard; sourceTree = "<group>"; };
+		FF14868020AA508B00FE71FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = InterviewMeApp/Base.lproj/Signup.storyboard; sourceTree = "<group>"; };
+		FF1BDE5820B681550031593E /* PostedQuestionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostedQuestionsTableViewController.swift; sourceTree = "<group>"; };
+		FF58A21E20B4850500D3586A /* GT-Walsheim-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GT-Walsheim-Regular.ttf"; sourceTree = "<group>"; };
+		FF58A21F20B4850600D3586A /* GT-Walsheim-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GT-Walsheim-Bold.ttf"; sourceTree = "<group>"; };
+		FF58A22020B4850600D3586A /* GT-Walsheim-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GT-Walsheim-Medium.ttf"; sourceTree = "<group>"; };
+		FF58A22420B4AFC700D3586A /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		FF5DF60E20AB4D83009C2897 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		FF5DF61020AB4EC4009C2897 /* FireBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseManager.swift; sourceTree = "<group>"; };
-		FFDC3E8420AA250A00AADF8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = InterviewMeApp/Base.lproj/kimchi.storyboard; sourceTree = "<group>"; };
-		FFDC3E8A20AA425300AADF8A /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
+		FFA40DBD20BE0344002A884B /* UserAnswerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnswerTableViewCell.swift; sourceTree = "<group>"; };
+		FFD8120E20BCBC2E003E2039 /* UserAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnswer.swift; sourceTree = "<group>"; };
+		FFDC3E8A20AA425300AADF8A /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		FFDD3DB620B7A1DA00BD277D /* AnswersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswersViewController.swift; sourceTree = "<group>"; };
+		FFDD3DB820B7A1F100BD277D /* PostAnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAnswerViewController.swift; sourceTree = "<group>"; };
+		FFDD3DBC20B7A54D00BD277D /* UserQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserQuestion.swift; sourceTree = "<group>"; };
 		FFF2740720A9E92300D66A0B /* InterviewMeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InterviewMeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFF2740A20A9E92300D66A0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FFF2740C20A9E92300D66A0B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FFF2740F20A9E92300D66A0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FFF2741120A9E92400D66A0B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFF2741420A9E92400D66A0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FFF2741620A9E92400D66A0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFFC044220B878FF00CA6F42 /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
+		FFFFC34120BF790C005386CB /* UserQuestionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserQuestionController.swift; sourceTree = "<group>"; };
+		FFFFC34320BF791D005386CB /* UserAnswerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnswerController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,11 +133,89 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B31F154F20AB3462002A20E2 /* Video Capture */ = {
+		B3218D4220B35ABB0042E2A6 /* Video Recording */ = {
 			isa = PBXGroup;
 			children = (
+				B3218D4620B35ADF0042E2A6 /* VideoCoreData.xcdatamodeld */,
+				B3218D4920B35AEA0042E2A6 /* VideoCoreDataStack.swift */,
+				B3218D4B20B35B4C0042E2A6 /* Video + Convenience.swift */,
 			);
-			path = "Video Capture";
+			path = "Video Recording";
+			sourceTree = "<group>";
+		};
+		FF5780B320ABB1EA00C51922 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FF14867F20AA508B00FE71FD /* Signup.storyboard */,
+				FFF2740E20A9E92300D66A0B /* Main.storyboard */,
+				A05241CA20AFCC7600C29F40 /* VideoCollectionCell.swift */,
+				A05EA86120B473F500329A6E /* AnswerTableViewCell.swift */,
+				FFFC044220B878FF00CA6F42 /* QuestionTableViewCell.swift */,
+				A0597CDC20BDB2C9001E6F0D /* CameraView.swift */,
+				FFA40DBD20BE0344002A884B /* UserAnswerTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FF9F711020AB617700A461A9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FF58A21F20B4850600D3586A /* GT-Walsheim-Bold.ttf */,
+				FF58A22020B4850600D3586A /* GT-Walsheim-Medium.ttf */,
+				FF58A21E20B4850500D3586A /* GT-Walsheim-Regular.ttf */,
+				FFF2740A20A9E92300D66A0B /* AppDelegate.swift */,
+				FFF2741120A9E92400D66A0B /* Assets.xcassets */,
+				FFF2741320A9E92400D66A0B /* LaunchScreen.storyboard */,
+				FFF2741620A9E92400D66A0B /* Info.plist */,
+				FF5DF60E20AB4D83009C2897 /* GoogleService-Info.plist */,
+				A03856B720AF41150069BBEE /* Constants.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FFACA4E820ABB20E00206FA4 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B37503C420AA224E00AFB23A /* LoginViewController.swift */,
+				FFDC3E8A20AA425300AADF8A /* SignupViewController.swift */,
+				A05052DF20ACD445005981CF /* LobbyTableViewController.swift */,
+				A05052E120ACD4C9005981CF /* ChatRoomViewController.swift */,
+				A0C25C5820ADE8B900B7FD85 /* InterviewQuestionsTableViewController.swift */,
+				B3EFFE7020BD8C3700EA2347 /* SavedQuestionsTableViewController.swift */,
+				A05241C020AF5DB700C29F40 /* VideoCollectionViewController.swift */,
+				A05241C620AF61DD00C29F40 /* CameraViewController.swift */,
+				FF58A22420B4AFC700D3586A /* EditProfileViewController.swift */,
+				FF1BDE5820B681550031593E /* PostedQuestionsTableViewController.swift */,
+				FFDD3DB620B7A1DA00BD277D /* AnswersViewController.swift */,
+				FFDD3DB820B7A1F100BD277D /* PostAnswerViewController.swift */,
+				A07E2D3C20BC634A00E6E13B /* ForgotPasswordViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		FFACA4E920ABB23000206FA4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A05052E320ACE3C9005981CF /* TokenUtilities.swift */,
+				A0C25C5A20ADFBEE00B7FD85 /* InterviewQuestion.swift */,
+				A0C25C5E20AE017700B7FD85 /* JobIndustry.swift */,
+				FFDD3DBC20B7A54D00BD277D /* UserQuestion.swift */,
+				FFD8120E20BCBC2E003E2039 /* UserAnswer.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FFACA4EA20ABB26000206FA4 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A05052DA20ACCDA3005981CF /* ChatRoomController.swift */,
+				A0C25C5C20ADFC4400B7FD85 /* InterviewQuestionController.swift */,
+				A0C25C6020AE019300B7FD85 /* JobIndustryController.swift */,
+				A05241C220AF5EB500C29F40 /* VideoController.swift */,
+				FFFFC34120BF790C005386CB /* UserQuestionController.swift */,
+				FFFFC34320BF791D005386CB /* UserAnswerController.swift */,
+			);
+			path = "Model Controllers";
 			sourceTree = "<group>";
 		};
 		FFF273FE20A9E92300D66A0B = {
@@ -101,21 +239,13 @@
 		FFF2740920A9E92300D66A0B /* InterviewMeApp */ = {
 			isa = PBXGroup;
 			children = (
-				FFF2740A20A9E92300D66A0B /* AppDelegate.swift */,
-				FFF2740C20A9E92300D66A0B /* ViewController.swift */,
-				B37503C420AA224E00AFB23A /* LoginViewController.swift */,
-				FFDC3E8A20AA425300AADF8A /* CreateProfileViewController.swift */,
-				FF14867F20AA508B00FE71FD /* createProfile.storyboard */,
-				FFF2740E20A9E92300D66A0B /* Main.storyboard */,
-				FFDC3E8320AA250A00AADF8A /* kimchi.storyboard */,
-				B37503C620AA276700AFB23A /* daniel.storyboard */,
-				B31F155020AB395D002A20E2 /* RecordVideo.storyboard */,
-				FFF2741120A9E92400D66A0B /* Assets.xcassets */,
-				FFF2741320A9E92400D66A0B /* LaunchScreen.storyboard */,
-				FFF2741620A9E92400D66A0B /* Info.plist */,
-				FF5DF60E20AB4D83009C2897 /* GoogleService-Info.plist */,
-				B31F154F20AB3462002A20E2 /* Video Capture */,
-				FF5DF61020AB4EC4009C2897 /* FireBaseManager.swift */,
+				B3218D4220B35ABB0042E2A6 /* Video Recording */,
+				A05052DC20ACCF0B005981CF /* ChatLobbyUser.swift */,
+				FFACA4E920ABB23000206FA4 /* Models */,
+				FFACA4EA20ABB26000206FA4 /* Model Controllers */,
+				FF5780B320ABB1EA00C51922 /* Views */,
+				FFACA4E820ABB20E00206FA4 /* View Controllers */,
+				FF9F711020AB617700A461A9 /* Resources */,
 			);
 			path = InterviewMeApp;
 			sourceTree = "<group>";
@@ -132,6 +262,7 @@
 				FFF2740420A9E92300D66A0B /* Frameworks */,
 				FFF2740520A9E92300D66A0B /* Resources */,
 				57A22DDAEB22A7563D0D0C4D /* [CP] Embed Pods Frameworks */,
+				D4CB32C2EA28BDBE9EEB2321 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -154,6 +285,11 @@
 				TargetAttributes = {
 					FFF2740620A9E92300D66A0B = {
 						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -180,12 +316,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF14868120AA508B00FE71FD /* createProfile.storyboard in Resources */,
+				FF58A22120B4850600D3586A /* GT-Walsheim-Regular.ttf in Resources */,
+				FF58A22220B4850600D3586A /* GT-Walsheim-Bold.ttf in Resources */,
+				FF58A22320B4850700D3586A /* GT-Walsheim-Medium.ttf in Resources */,
+				FF14868120AA508B00FE71FD /* Signup.storyboard in Resources */,
 				FF5DF60F20AB4D83009C2897 /* GoogleService-Info.plist in Resources */,
 				FFF2741520A9E92400D66A0B /* LaunchScreen.storyboard in Resources */,
-				B37503C820AA276700AFB23A /* daniel.storyboard in Resources */,
-				FFDC3E8520AA250A00AADF8A /* kimchi.storyboard in Resources */,
-				B31F155220AB395D002A20E2 /* RecordVideo.storyboard in Resources */,
 				FFF2741220A9E92400D66A0B /* Assets.xcassets in Resources */,
 				FFF2741020A9E92300D66A0B /* Main.storyboard in Resources */,
 			);
@@ -219,17 +355,42 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-InterviewMeApp/Pods-InterviewMeApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AlertOnboarding/AlertOnboarding.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/RecordButton/RecordButton.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyCam/SwiftyCam.framework",
+				"${PODS_ROOT}/TwilioVideo/Build/iOS/TwilioVideo.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlertOnboarding.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RecordButton.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyCam.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwilioVideo.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-InterviewMeApp/Pods-InterviewMeApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D4CB32C2EA28BDBE9EEB2321 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-InterviewMeApp/Pods-InterviewMeApp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -239,47 +400,53 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFD8120F20BCBC2E003E2039 /* UserAnswer.swift in Sources */,
 				B37503C520AA224E00AFB23A /* LoginViewController.swift in Sources */,
-				FFF2740D20A9E92300D66A0B /* ViewController.swift in Sources */,
+				A0C25C6120AE019300B7FD85 /* JobIndustryController.swift in Sources */,
+				A05052E420ACE3C9005981CF /* TokenUtilities.swift in Sources */,
+				FFA40DBE20BE0344002A884B /* UserAnswerTableViewCell.swift in Sources */,
 				FFF2740B20A9E92300D66A0B /* AppDelegate.swift in Sources */,
-				FFDC3E8B20AA425300AADF8A /* CreateProfileViewController.swift in Sources */,
-				FF5DF61120AB4EC4009C2897 /* FireBaseManager.swift in Sources */,
+				FFDD3DB920B7A1F100BD277D /* PostAnswerViewController.swift in Sources */,
+				A05052E220ACD4C9005981CF /* ChatRoomViewController.swift in Sources */,
+				A05241C120AF5DB700C29F40 /* VideoCollectionViewController.swift in Sources */,
+				B3218D4820B35ADF0042E2A6 /* VideoCoreData.xcdatamodeld in Sources */,
+				A03856B820AF41150069BBEE /* Constants.swift in Sources */,
+				A05241CB20AFCC7600C29F40 /* VideoCollectionCell.swift in Sources */,
+				FFDD3DB720B7A1DA00BD277D /* AnswersViewController.swift in Sources */,
+				A05EA86220B473F500329A6E /* AnswerTableViewCell.swift in Sources */,
+				FF58A22520B4AFC700D3586A /* EditProfileViewController.swift in Sources */,
+				FFFFC34420BF791D005386CB /* UserAnswerController.swift in Sources */,
+				A0C25C5920ADE8B900B7FD85 /* InterviewQuestionsTableViewController.swift in Sources */,
+				FFFFC34220BF790C005386CB /* UserQuestionController.swift in Sources */,
+				A0597CDD20BDB2C9001E6F0D /* CameraView.swift in Sources */,
+				FFFC044320B878FF00CA6F42 /* QuestionTableViewCell.swift in Sources */,
+				B3218D4C20B35B4C0042E2A6 /* Video + Convenience.swift in Sources */,
+				A0C25C5F20AE017700B7FD85 /* JobIndustry.swift in Sources */,
+				A0C25C5B20ADFBEE00B7FD85 /* InterviewQuestion.swift in Sources */,
+				A0C25C5D20ADFC4400B7FD85 /* InterviewQuestionController.swift in Sources */,
+				A05052DD20ACCF0B005981CF /* ChatLobbyUser.swift in Sources */,
+				FFDC3E8B20AA425300AADF8A /* SignupViewController.swift in Sources */,
+				B3218D4A20B35AEA0042E2A6 /* VideoCoreDataStack.swift in Sources */,
+				A05052E020ACD445005981CF /* LobbyTableViewController.swift in Sources */,
+				FF1BDE5920B681550031593E /* PostedQuestionsTableViewController.swift in Sources */,
+				A05241C720AF61DD00C29F40 /* CameraViewController.swift in Sources */,
+				A07E2D3D20BC634A00E6E13B /* ForgotPasswordViewController.swift in Sources */,
+				A05052DB20ACCDA3005981CF /* ChatRoomController.swift in Sources */,
+				FFDD3DBD20B7A54D00BD277D /* UserQuestion.swift in Sources */,
+				A05241C320AF5EB500C29F40 /* VideoController.swift in Sources */,
+				B3EFFE7120BD8C3700EA2347 /* SavedQuestionsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B31F155020AB395D002A20E2 /* RecordVideo.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B31F155120AB395D002A20E2 /* Base */,
-			);
-			name = RecordVideo.storyboard;
-			sourceTree = "<group>";
-		};
-		B37503C620AA276700AFB23A /* daniel.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B37503C720AA276700AFB23A /* Base */,
-			);
-			name = daniel.storyboard;
-			sourceTree = "<group>";
-		};
-		FF14867F20AA508B00FE71FD /* createProfile.storyboard */ = {
+		FF14867F20AA508B00FE71FD /* Signup.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				FF14868020AA508B00FE71FD /* Base */,
 			);
-			name = createProfile.storyboard;
-			sourceTree = "<group>";
-		};
-		FFDC3E8320AA250A00AADF8A /* kimchi.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FFDC3E8420AA250A00AADF8A /* Base */,
-			);
-			name = kimchi.storyboard;
+			name = Signup.storyboard;
 			sourceTree = "<group>";
 		};
 		FFF2740E20A9E92300D66A0B /* Main.storyboard */ = {
@@ -288,6 +455,7 @@
 				FFF2740F20A9E92300D66A0B /* Base */,
 			);
 			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		FFF2741320A9E92400D66A0B /* LaunchScreen.storyboard */ = {
@@ -421,8 +589,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A6SH4SB8PT;
-				INFOPLIST_FILE = InterviewMeApp/Info.plist;
+				DEVELOPMENT_TEAM = 7VSPJ2N6B9;
+				INFOPLIST_FILE = "$(SRCROOT)/InterviewMeApp/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -440,8 +609,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A6SH4SB8PT;
-				INFOPLIST_FILE = InterviewMeApp/Info.plist;
+				DEVELOPMENT_TEAM = 7VSPJ2N6B9;
+				INFOPLIST_FILE = "$(SRCROOT)/InterviewMeApp/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -475,6 +645,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B3218D4620B35ADF0042E2A6 /* VideoCoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B3218D4720B35ADF0042E2A6 /* VideoCoreData.xcdatamodel */,
+			);
+			currentVersion = B3218D4720B35ADF0042E2A6 /* VideoCoreData.xcdatamodel */;
+			path = VideoCoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FFF273FF20A9E92300D66A0B /* Project object */;
 }

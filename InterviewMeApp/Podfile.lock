@@ -1,37 +1,61 @@
 PODS:
+  - AlertOnboarding (2.0)
   - Firebase/Auth (5.0.0):
     - Firebase/CoreOnly
     - FirebaseAuth (= 5.0.0)
   - Firebase/CoreOnly (5.0.0):
     - FirebaseCore (= 5.0.0)
+  - Firebase/Database (5.0.0):
+    - Firebase/CoreOnly
+    - FirebaseDatabase (= 5.0.0)
   - FirebaseAuth (5.0.0):
     - FirebaseCore (~> 5.0)
     - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseCore (5.0.0):
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseDatabase (5.0.0):
+    - FirebaseCore (~> 5.0)
+    - leveldb-library (~> 1.18)
   - GoogleToolboxForMac/Defines (2.1.4)
-  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
+  - GoogleToolboxForMac/NSData+zlib (2.1.4):
     - GoogleToolboxForMac/Defines (= 2.1.4)
   - GTMSessionFetcher/Core (1.1.15)
+  - leveldb-library (1.20)
+  - RecordButton (1.0.2)
+  - SwiftyCam (2.7.0)
+  - TwilioVideo (2.0.1)
 
 DEPENDENCIES:
+  - AlertOnboarding
   - Firebase/Auth
+  - Firebase/Database
+  - RecordButton
+  - SwiftyCam (from `https://github.com/Awalz/SwiftyCam.git`, branch `Swift4`)
+  - TwilioVideo (~> 2.0)
 
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - Firebase
-    - FirebaseAuth
-    - FirebaseCore
-    - GoogleToolboxForMac
-    - GTMSessionFetcher
+EXTERNAL SOURCES:
+  SwiftyCam:
+    :branch: Swift4
+    :git: https://github.com/Awalz/SwiftyCam.git
+
+CHECKOUT OPTIONS:
+  SwiftyCam:
+    :commit: 85d713d643159cda72db2f3e230777af50cded94
+    :git: https://github.com/Awalz/SwiftyCam.git
 
 SPEC CHECKSUMS:
+  AlertOnboarding: 2e6804e67894894807c5d24bcfcd7905897e6f08
   Firebase: 4bd804448ab2596794698773d41520a0af101e65
   FirebaseAuth: acbeef02fe7c3a26624e309849f3fe30c84115af
   FirebaseCore: e46e4babb9de298fb2f736958edcc6da1dc60d73
+  FirebaseDatabase: 697eb53e5b4fe7cd4fa8756c1f82a9fca011345f
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
+  leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
+  RecordButton: 76677be0f4b94f8a387454a23b4b64bd9b6c0e51
+  SwiftyCam: 7c826b73a5b208677aee29390582c771bf748661
+  TwilioVideo: d9e0e61748b574f4adb6d540db469b3a93e77e43
 
-PODFILE CHECKSUM: 878e5ca2df34e59eeceb88f4bf23fb142dc572ac
+PODFILE CHECKSUM: 4b558edde4258a45eb37143be619f2814b6eaa77
 
-COCOAPODS: 1.5.2
+COCOAPODS: 1.4.0
