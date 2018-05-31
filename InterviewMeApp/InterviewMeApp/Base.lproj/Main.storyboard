@@ -391,9 +391,9 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="Prj-5C-cZl" secondAttribute="trailing" constant="8" id="aKe-AR-jDO"/>
+                                        <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Prj-5C-cZl" secondAttribute="trailing" constant="8" id="aKe-AR-jDO"/>
                                         <constraint firstItem="Prj-5C-cZl" firstAttribute="centerX" secondItem="kC1-DU-Ora" secondAttribute="centerX" id="lQD-kc-QDS"/>
-                                        <constraint firstItem="Prj-5C-cZl" firstAttribute="leading" secondItem="kC1-DU-Ora" secondAttribute="leading" constant="8" id="uDB-B3-YQ6"/>
+                                        <constraint firstItem="Prj-5C-cZl" firstAttribute="leading" relation="lessThanOrEqual" secondItem="kC1-DU-Ora" secondAttribute="leading" constant="8" id="uDB-B3-YQ6"/>
                                         <constraint firstItem="Prj-5C-cZl" firstAttribute="centerY" secondItem="kC1-DU-Ora" secondAttribute="centerY" id="zUv-D5-dz0"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -683,24 +683,24 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxd-dp-RTm">
-                                <rect key="frame" x="47" y="143" width="333" height="50"/>
+                                <rect key="frame" x="47" y="114" width="333" height="50"/>
                                 <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GT Walsheim" pointSize="35"/>
                                 <color key="textColor" red="0.17254901959999999" green="0.83137254900000002" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Full Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UiJ-qt-0IQ">
-                                <rect key="frame" x="35" y="243" width="344" height="30"/>
+                                <rect key="frame" x="35" y="283" width="344" height="30"/>
                                 <color key="textColor" red="0.39215686274509803" green="0.39215686274509803" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GT Walsheim" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Industry" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zwf-Xx-s37">
-                                <rect key="frame" x="35" y="303" width="344" height="30"/>
+                                <rect key="frame" x="35" y="353" width="344" height="30"/>
                                 <color key="textColor" red="0.39215686274509803" green="0.39215686274509803" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GT Walsheim" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Icons made by Freepik &amp; Monkik from www.flaticon.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXG-mb-Qco">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Icons made by Freepik &amp; Monkik from www.flaticon.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="yXG-mb-Qco">
                                 <rect key="frame" x="0.0" y="667" width="414" height="20"/>
                                 <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GT Walsheim" pointSize="14"/>
                                 <color key="textColor" red="0.66274509800000003" green="0.66666666669999997" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -711,17 +711,17 @@
                         <constraints>
                             <constraint firstItem="5W5-Ne-v7u" firstAttribute="trailing" secondItem="zwf-Xx-s37" secondAttribute="trailing" constant="35" id="2Pm-9E-DTD"/>
                             <constraint firstItem="yXG-mb-Qco" firstAttribute="leading" secondItem="5W5-Ne-v7u" secondAttribute="leading" id="QOc-aa-boE"/>
-                            <constraint firstItem="zwf-Xx-s37" firstAttribute="centerY" secondItem="U7U-QR-hgo" secondAttribute="centerY" constant="-50" id="VFv-6r-Sow"/>
+                            <constraint firstItem="zwf-Xx-s37" firstAttribute="centerY" secondItem="U7U-QR-hgo" secondAttribute="centerY" id="VFv-6r-Sow"/>
                             <constraint firstItem="zwf-Xx-s37" firstAttribute="leading" secondItem="5W5-Ne-v7u" secondAttribute="leading" constant="35" id="WIV-04-OLM"/>
                             <constraint firstAttribute="trailing" secondItem="yXG-mb-Qco" secondAttribute="trailing" id="WVT-Vf-7BY"/>
-                            <constraint firstItem="UiJ-qt-0IQ" firstAttribute="top" secondItem="fxd-dp-RTm" secondAttribute="bottom" constant="50" id="Zjq-Ix-uBv"/>
+                            <constraint firstItem="UiJ-qt-0IQ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fxd-dp-RTm" secondAttribute="bottom" constant="20" id="Zjq-Ix-uBv"/>
                             <constraint firstItem="fxd-dp-RTm" firstAttribute="leading" secondItem="5W5-Ne-v7u" secondAttribute="leading" constant="47" id="cl6-54-XXR"/>
-                            <constraint firstItem="zwf-Xx-s37" firstAttribute="top" secondItem="UiJ-qt-0IQ" secondAttribute="bottom" constant="30" id="h7a-P9-YF4"/>
+                            <constraint firstItem="zwf-Xx-s37" firstAttribute="top" secondItem="UiJ-qt-0IQ" secondAttribute="bottom" constant="40" id="h7a-P9-YF4"/>
                             <constraint firstItem="UiJ-qt-0IQ" firstAttribute="leading" secondItem="5W5-Ne-v7u" secondAttribute="leading" constant="35" id="jqS-IF-zIL"/>
                             <constraint firstItem="5W5-Ne-v7u" firstAttribute="trailing" secondItem="UiJ-qt-0IQ" secondAttribute="trailing" constant="35" id="l2K-m8-fX9"/>
                             <constraint firstItem="5W5-Ne-v7u" firstAttribute="trailing" secondItem="fxd-dp-RTm" secondAttribute="trailing" constant="34" id="nRs-wR-WW0"/>
                             <constraint firstItem="yXG-mb-Qco" firstAttribute="bottom" secondItem="5W5-Ne-v7u" secondAttribute="bottom" id="sSb-dH-pTi"/>
-                            <constraint firstItem="fxd-dp-RTm" firstAttribute="top" relation="greaterThanOrEqual" secondItem="5W5-Ne-v7u" secondAttribute="top" constant="30" id="uWO-Sc-ha2"/>
+                            <constraint firstItem="fxd-dp-RTm" firstAttribute="top" secondItem="5W5-Ne-v7u" secondAttribute="top" constant="50" id="uWO-Sc-ha2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5W5-Ne-v7u"/>
                     </view>
