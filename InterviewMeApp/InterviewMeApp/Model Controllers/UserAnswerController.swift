@@ -20,9 +20,6 @@ class UserAnswerController {
     }
     
     func fetchAnswers(userQuestion: UserQuestion?) {
-        if userAnswers.count > 0 {
-            userAnswers.removeAll()
-        }
         guard let userQuestionID = userQuestion?.id else { return }
         Database.database().reference().child("userQuestions").child(userQuestionID).child("userAnswers").observeSingleEvent(of: .value) { (snapshot) in
             if let dictionary = snapshot.value as? [String: Any] {

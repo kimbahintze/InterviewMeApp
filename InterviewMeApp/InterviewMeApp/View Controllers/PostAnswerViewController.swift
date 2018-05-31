@@ -31,10 +31,13 @@ class PostAnswerViewController: UIViewController, UITextViewDelegate {
         writeAnAnswerTextField.font = UIFont(name: GTWalsheimRegular, size: 20)
         writeAnAnswerTextField.backgroundColor = mainColor
         writeAnAnswerTextField.layer.cornerRadius = 15
-
-        let tap = UITapGestureRecognizer(target: self.view, action: Selector("endEditing:"))
-        tap.cancelsTouchesInView = false
-        self.view.addGestureRecognizer(tap)
+        writeAnAnswerTextField.text = "Type your answer here..."
+        writeAnAnswerTextField.textColor = UIColor(red: 254/255, green: 254/255, blue: 254/255, alpha: 1.0)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super .viewDidDisappear(animated)
+        UserAnswerController.shared.userAnswers.removeAll()
     }
     
     func writeYourAnswer(answer: String) {
@@ -52,7 +55,20 @@ class PostAnswerViewController: UIViewController, UITextViewDelegate {
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        writeAnAnswerTextField.text = ""
+        if writeAnAnswerTextField.textColor == UIColor(red: 254/255, green: 254/255, blue: 254/255, alpha: 1.0) {
+            writeAnAnswerTextField.text = nil
+            writeAnAnswerTextField.textColor = .white
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if writeAnAnswerTextField.text.isEmpty {
+            writeAnAnswerTextField.text = "Type your answer here..."
+            writeAnAnswerTextField.textColor = UIColor(red: 254/255, green: 254/255, blue: 254/255, alpha: 1.0)
+        }
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     
     // MARK: - Actions
