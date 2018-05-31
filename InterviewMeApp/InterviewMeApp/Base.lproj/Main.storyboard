@@ -88,7 +88,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New User?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZv-xj-1Zd">
-                                <rect key="frame" x="139.66666666666666" y="696" width="70.333333333333343" height="20"/>
+                                <rect key="frame" x="139.33333333333334" y="696" width="69.333333333333343" height="20"/>
                                 <fontDescription key="fontDescription" name="GTWalsheimBold" family="GT Walsheim" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -166,7 +166,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9jx-WN-CmK">
-                                <rect key="frame" x="116.33333333333333" y="171.66666666666666" width="182.66666666666669" height="31.333333333333343"/>
+                                <rect key="frame" x="115.66666666666667" y="171.66666666666666" width="182.66666666666663" height="31.333333333333343"/>
                                 <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GT Walsheim" pointSize="22"/>
                                 <color key="textColor" red="0.66274509800000003" green="0.66666666669999997" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
