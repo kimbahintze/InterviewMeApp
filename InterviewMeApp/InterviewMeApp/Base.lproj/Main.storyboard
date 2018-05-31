@@ -370,7 +370,7 @@
         <!--  -->
         <scene sceneID="xed-zW-0aE">
             <objects>
-                <tableViewController storyboardIdentifier="userQuestions" id="JcB-1z-G30" customClass="PostedQuestionsTableViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="JcB-1z-G30" customClass="PostedQuestionsTableViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oem-hD-Knn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -420,10 +420,10 @@
             </objects>
             <point key="canvasLocation" x="202.89855072463769" y="1029.6195652173915"/>
         </scene>
-        <!--answersVC-->
+        <!--Answers View Controller-->
         <scene sceneID="LD0-c4-f83">
             <objects>
-                <viewController title="answersVC" id="fxx-Ij-kqa" customClass="AnswersViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fxx-Ij-kqa" customClass="AnswersViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rvb-UO-Azv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -486,10 +486,10 @@
             </objects>
             <point key="canvasLocation" x="926.08695652173924" y="1028.804347826087"/>
         </scene>
-        <!--customAnswerVC-->
+        <!--Post Answer View Controller-->
         <scene sceneID="j0I-qg-zkq">
             <objects>
-                <viewController storyboardIdentifier="PostAnswerViewController" title="customAnswerVC" id="85m-wv-LcV" customClass="PostAnswerViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostAnswerViewController" id="85m-wv-LcV" customClass="PostAnswerViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GYJ-6J-oK5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
