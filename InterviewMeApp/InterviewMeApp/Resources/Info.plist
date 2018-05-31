@@ -23,9 +23,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>App needs access to camera for video chat</string>
+	<string>Use your camera to practice interviews with another person and yourself.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>App needs access to microphone for video chat</string>
+	<string>Use your microphone to practice interviews and record yourself.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>GT-Walsheim-Bold.ttf</string>

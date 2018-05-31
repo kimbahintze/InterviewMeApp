@@ -78,7 +78,6 @@ class CameraView: UIView {
     
     override init(frame: CGRect) {
         super .init(frame: frame)
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -110,7 +109,6 @@ class CameraView: UIView {
         
         activityIndicator.frame = CGRect(x: 25, y: 30, width: 0, height: 0)
         
-//        questionView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
         questionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25).isActive = true
         questionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25).isActive = true
         questionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: -200).isActive = true

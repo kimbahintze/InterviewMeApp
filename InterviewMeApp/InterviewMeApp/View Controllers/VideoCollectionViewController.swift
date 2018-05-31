@@ -33,7 +33,6 @@ class VideoCollectionViewController: UICollectionViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         collectionView?.reloadData()
-
     }
     
     private func setupNavigationBar() {
