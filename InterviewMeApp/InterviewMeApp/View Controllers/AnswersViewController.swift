@@ -31,15 +31,16 @@ class AnswersViewController: UIViewController, UITableViewDataSource, UITableVie
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name: InterviewQuestionController.NotificationKey.reloadTable, object: nil)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         UserAnswerController.shared.fetchAnswers(userQuestion: userQuestion)
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super .viewDidDisappear(animated)
-        UserAnswerController.shared.userAnswers.removeAll()
-    }
+//    override func viewDidDisappear(_ animated: Bool) {
+//        super .viewDidDisappear(animated)
+//        UserAnswerController.shared.userAnswers.removeAll()
+//    }
+    
     @objc private func reloadTable() {
         DispatchQueue.main.async {
             self.usersAnswersTableView.reloadData()
