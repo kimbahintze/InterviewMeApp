@@ -41,6 +41,12 @@ class CameraViewController: SwiftyCamViewController {
         navigationController?.view.backgroundColor = .clear
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "Back").withRenderingMode(.alwaysTemplate), style: .done, target: self, action: #selector(popController))
         navigationController?.navigationBar.tintColor = .white
+        UIApplication.shared.isIdleTimerDisabled = true
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        UIApplication.shared.isIdleTimerDisabled = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
