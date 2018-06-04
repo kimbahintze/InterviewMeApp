@@ -35,20 +35,6 @@ class PostAnswerViewController: UIViewController, UITextViewDelegate {
         writeAnAnswerTextField.textColor = UIColor(red: 254/255, green: 254/255, blue: 254/255, alpha: 1.0)
     }
     
-    func writeYourAnswer(answer: String) {
-        
-        guard let id = userQuestion?.id else { return }
-        
-        Database.database().reference().child("userQuestions").child(id).child("userAnswers").childByAutoId().setValue(["answer":answer]) {
-            (error: Error?, databaseRef:DatabaseReference) in
-            if let error = error {
-                print("Data could not be saved: \(error).")
-            } else {
-                print("Data saved successfully!")
-            }
-        }
-    }
-    
     func textViewDidBeginEditing(_ textView: UITextView) {
         if writeAnAnswerTextField.textColor == UIColor(red: 254/255, green: 254/255, blue: 254/255, alpha: 1.0) {
             writeAnAnswerTextField.text = nil
@@ -69,8 +55,8 @@ class PostAnswerViewController: UIViewController, UITextViewDelegate {
     // MARK: - Actions
 
     @IBAction func addButtonTapped(_ sender: Any) {
-        guard let yourAnswer = writeAnAnswerTextField.text else { return }
-        self.writeYourAnswer(answer: yourAnswer)
+        guard let yourAnswer = writeAnAnswerTextField.text, let userQuestion = userQuestion else { return }
+        UserAnswerController.shared.addAnswer(answer: yourAnswer, userQuestion: userQuestion)
         delegate?.addQuestion(viewController: self)
         dismiss(animated: true, completion: nil)
     }
