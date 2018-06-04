@@ -22,7 +22,7 @@ class EULAViewController: UIViewController {
         eulaTextView.layer.cornerRadius = 15
         eulaTextView.layer.borderWidth = 2
         eulaTextView.layer.borderColor = mainColor.cgColor
-        eulaTextView.font = UIFont(name: "GTWalsheimRegular", size: 20)
+        eulaTextView.font = UIFont(name: "GTWalsheimRegular", size: 15)
      
         
     }
