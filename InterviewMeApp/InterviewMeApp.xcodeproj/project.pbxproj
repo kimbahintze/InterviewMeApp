@@ -29,6 +29,7 @@
 		B3218D4820B35ADF0042E2A6 /* VideoCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3218D4620B35ADF0042E2A6 /* VideoCoreData.xcdatamodeld */; };
 		B3218D4A20B35AEA0042E2A6 /* VideoCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3218D4920B35AEA0042E2A6 /* VideoCoreDataStack.swift */; };
 		B3218D4C20B35B4C0042E2A6 /* Video + Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3218D4B20B35B4C0042E2A6 /* Video + Convenience.swift */; };
+		B3366E9E20C5A60000C8615E /* EULAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3366E9D20C5A60000C8615E /* EULAViewController.swift */; };
 		B37503C520AA224E00AFB23A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37503C420AA224E00AFB23A /* LoginViewController.swift */; };
 		B3EFFE7120BD8C3700EA2347 /* SavedQuestionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EFFE7020BD8C3700EA2347 /* SavedQuestionsTableViewController.swift */; };
 		FF14868120AA508B00FE71FD /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF14867F20AA508B00FE71FD /* Signup.storyboard */; };
@@ -77,6 +78,7 @@
 		B3218D4720B35ADF0042E2A6 /* VideoCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VideoCoreData.xcdatamodel; sourceTree = "<group>"; };
 		B3218D4920B35AEA0042E2A6 /* VideoCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCoreDataStack.swift; sourceTree = "<group>"; };
 		B3218D4B20B35B4C0042E2A6 /* Video + Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Video + Convenience.swift"; sourceTree = "<group>"; };
+		B3366E9D20C5A60000C8615E /* EULAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EULAViewController.swift; sourceTree = "<group>"; };
 		B37503C420AA224E00AFB23A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B3EFFE7020BD8C3700EA2347 /* SavedQuestionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedQuestionsTableViewController.swift; sourceTree = "<group>"; };
 		E313558045188ED812C8FDAD /* Pods_InterviewMeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InterviewMeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,6 +180,7 @@
 			children = (
 				B37503C420AA224E00AFB23A /* LoginViewController.swift */,
 				FFDC3E8A20AA425300AADF8A /* SignupViewController.swift */,
+				B3366E9D20C5A60000C8615E /* EULAViewController.swift */,
 				A05052DF20ACD445005981CF /* LobbyTableViewController.swift */,
 				A05052E120ACD4C9005981CF /* ChatRoomViewController.swift */,
 				A0C25C5820ADE8B900B7FD85 /* InterviewQuestionsTableViewController.swift */,
@@ -409,6 +412,7 @@
 				FFDD3DB920B7A1F100BD277D /* PostAnswerViewController.swift in Sources */,
 				A05052E220ACD4C9005981CF /* ChatRoomViewController.swift in Sources */,
 				A05241C120AF5DB700C29F40 /* VideoCollectionViewController.swift in Sources */,
+				B3366E9E20C5A60000C8615E /* EULAViewController.swift in Sources */,
 				B3218D4820B35ADF0042E2A6 /* VideoCoreData.xcdatamodeld in Sources */,
 				A03856B820AF41150069BBEE /* Constants.swift in Sources */,
 				A05241CB20AFCC7600C29F40 /* VideoCollectionCell.swift in Sources */,
@@ -589,7 +593,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DJ9Q6RC5SN;
+				DEVELOPMENT_TEAM = 7VSPJ2N6B9;
 				INFOPLIST_FILE = "$(SRCROOT)/InterviewMeApp/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -609,7 +613,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DJ9Q6RC5SN;
+				DEVELOPMENT_TEAM = 7VSPJ2N6B9;
 				INFOPLIST_FILE = "$(SRCROOT)/InterviewMeApp/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (

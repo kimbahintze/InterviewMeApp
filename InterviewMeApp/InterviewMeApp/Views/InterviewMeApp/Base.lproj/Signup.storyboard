@@ -101,17 +101,40 @@
                                             </button>
                                         </subviews>
                                     </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="7X1-gH-wcz">
+                                        <rect key="frame" x="20.333333333333343" y="533" width="333.33333333333326" height="45.333333333333371"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By signing up, you indicate you agree to our" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fbd-IO-JwD">
+                                                <rect key="frame" x="0.0" y="0.0" width="333.33333333333331" height="21.666666666666668"/>
+                                                <fontDescription key="fontDescription" name="GTWalsheimRegular" family="GT Walsheim" pointSize="12"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XhP-5I-nIF">
+                                                <rect key="frame" x="0.0" y="23.666666666666629" width="333.33333333333331" height="21.666666666666671"/>
+                                                <fontDescription key="fontDescription" name="GTWalsheimRegular" family="GT Walsheim" pointSize="12"/>
+                                                <state key="normal" title="End-User License Agreement"/>
+                                                <connections>
+                                                    <segue destination="1xn-a5-2k0" kind="presentation" modalPresentationStyle="overCurrentContext" id="27P-4W-VlT"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Fbd-IO-JwD" firstAttribute="leading" secondItem="7X1-gH-wcz" secondAttribute="leading" id="Clu-8P-rR7"/>
+                                            <constraint firstAttribute="trailing" secondItem="Fbd-IO-JwD" secondAttribute="trailing" id="I0F-sK-WF9"/>
+                                        </constraints>
+                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Zlc-bo-SQN">
-                                        <rect key="frame" x="83" y="533" width="208" height="143"/>
+                                        <rect key="frame" x="83" y="598.33333333333337" width="208" height="77.666666666666629"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already a user?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="q0U-Ol-E9q">
-                                                <rect key="frame" x="0.0" y="61.666666666666629" width="99" height="20"/>
+                                                <rect key="frame" x="0.0" y="28.666666666666629" width="99" height="20"/>
                                                 <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GT Walsheim" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsm-K0-crE">
-                                                <rect key="frame" x="109" y="55.666666666666629" width="99" height="32"/>
+                                                <rect key="frame" x="109" y="22.666666666666629" width="99" height="32"/>
                                                 <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GT Walsheim" pointSize="14"/>
                                                 <state key="normal" title="Log in">
                                                     <color key="titleColor" red="0.17254901959999999" green="0.83137254900000002" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -125,11 +148,14 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="xnP-5C-xdd" firstAttribute="centerY" secondItem="Y78-xn-Ays" secondAttribute="centerY" id="6fv-Yv-f1c"/>
-                                    <constraint firstItem="Zlc-bo-SQN" firstAttribute="top" secondItem="xnP-5C-xdd" secondAttribute="bottom" constant="20" id="8uE-16-Fbk"/>
                                     <constraint firstItem="BhI-8Q-qAv" firstAttribute="height" secondItem="Y78-xn-Ays" secondAttribute="height" multiplier="0.1" id="H2V-Ie-fkb"/>
+                                    <constraint firstItem="7X1-gH-wcz" firstAttribute="leading" secondItem="Y78-xn-Ays" secondAttribute="leading" constant="20" id="LAq-IF-5gc"/>
                                     <constraint firstItem="xnP-5C-xdd" firstAttribute="leading" secondItem="Y78-xn-Ays" secondAttribute="leading" constant="20" id="Tn4-Is-vem"/>
+                                    <constraint firstItem="Zlc-bo-SQN" firstAttribute="top" secondItem="7X1-gH-wcz" secondAttribute="bottom" constant="20" id="bG4-ae-3f5"/>
                                     <constraint firstAttribute="trailing" secondItem="xnP-5C-xdd" secondAttribute="trailing" constant="20" id="jxC-NV-rsE"/>
+                                    <constraint firstItem="7X1-gH-wcz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="xnP-5C-xdd" secondAttribute="bottom" constant="10" id="k3B-gM-XvI"/>
                                     <constraint firstItem="xnP-5C-xdd" firstAttribute="top" secondItem="Dd0-Y3-ELk" secondAttribute="bottom" constant="20" id="qBd-sZ-a2j"/>
+                                    <constraint firstAttribute="trailing" secondItem="7X1-gH-wcz" secondAttribute="trailing" constant="20" id="wM3-Ff-vZ8"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -159,6 +185,145 @@
                 </pickerView>
             </objects>
             <point key="canvasLocation" x="865.21739130434787" y="-346.46739130434787"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="wA1-Ga-hmR">
+            <objects>
+                <viewController modalPresentationStyle="overCurrentContext" id="1xn-a5-2k0" customClass="EULAViewController" customModule="InterviewMeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2Ca-Pe-ucZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSR-IT-xXg">
+                                <rect key="frame" x="74" y="93" width="266" height="550"/>
+                                <color key="backgroundColor" red="0.95718987944162437" green="0.95718987944162437" blue="0.95718987944162437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="End-User License Agreement ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="26.666666030883789" name="ArialMT"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="8" minimumLineHeight="36" defaultTabInterval="36" tighteningFactorForTruncation="0.0" headerLevel="1">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <real key="NSStrokeWidth" value="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="24" name="Times-Bold"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="8" minimumLineHeight="36" defaultTabInterval="36" tighteningFactorForTruncation="0.0" headerLevel="1">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <real key="NSStrokeWidth" value="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="12" name="Times-Roman"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" minimumLineHeight="14" defaultTabInterval="36" tighteningFactorForTruncation="0.0">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <real key="NSStrokeWidth" value="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <mutableString key="content">Last updated: June 4, 2018
+
+Please read this End-User License Agreement carefully before clicking the "Sign up" button, downloading or using Möcc.
+
+By clicking the "Sign up" button, downloading or using the Application, you are agreeing to be bound by the terms and conditions of this Agreement.
+
+If you do not agree to the terms of this Agreement, do not click on the "Sign up" button and do not download or use the Application.
+
+License
+
+Möcc grants you a revocable, non-exclusive, non-transferable, limited license to download, install and use the Application solely for your personal, non-commercial purposes strictly in accordance with the terms of this Agreement.
+
+Restrictions
+
+You agree not to, and you will not permit others to:
+
+a) license, sell, rent, lease, assign, distribute, transmit, host, outsource, disclose or otherwise commercially exploit the Application or make the Application available to any third party.
+
+Other restrictions
+
+We maintain a zero-tolerance policy regarding objectionable content. Objectionable content may not be uploaded or displayed to the extent such content includes, is in conjunction with, or alongside any, Objectionable Content. Objectionable Content includes, but is not limited to: sexually explicit materials; obscene, defamatory, libelous, slanderous, violent and/or unlawful content or profanity; content that infringes upon the rights of any third party, including copyright, trademark, privacy, publicity or other personal or proprietary right, or that is deceptive or fraudulent; content that promotes the use or sale of illegal or regulated substances, tobacco products, ammunition and/or firearms; and gambling, including without limitation, any online casino, sports books, bingo or poker. Any user can flag content they deem objectionable for review. Content will be moderated by Möcc to ensure the timely removal of any and all objectionable content. User accounts which have been confirmed responsible for posting objectionable content will be restricted from access to the Möcc Service.
+
+
+Modifications to Application
+
+Möcc reserves the right to modify, suspend or discontinue, temporarily or permanently, the Application or any service to which it connects, with or without notice and without liability to you.
+
+
+
+Term and Termination
+
+This Agreement shall remain in effect until terminated by you or Möcc. 
+
+Möcc may, in its sole discretion, at any time and for any or no reason, suspend or terminate this Agreement with or without prior notice.
+
+This Agreement will terminate immediately, without prior notice from Möcc, in the event that you fail to comply with any provision of this Agreement. You may also terminate this Agreement by deleting the Application and all copies thereof from your mobile device or from your desktop.
+
+Upon termination of this Agreement, you shall cease all use of the Application and delete all copies of the Application from your mobile device or from your desktop.
+
+Severability
+
+If any provision of this Agreement is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law and the remaining provisions will continue in full force and effect.
+
+Amendments to this Agreement
+
+Möcc reserves the right, at its sole discretion, to modify or replace this Agreement at any time. If a revision is material we will provide at least 10 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.
+
+Contact Information
+
+If you have any questions about this Agreement, please contact us.</mutableString>
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14.666666984558105" name="ArialMT"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" minimumLineHeight="20" defaultTabInterval="36" tighteningFactorForTruncation="0.0">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <real key="NSStrokeWidth" value="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.84465640779999995" green="0.51457053419999998" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="gSR-IT-xXg" firstAttribute="centerX" secondItem="2Ca-Pe-ucZ" secondAttribute="centerX" id="NsD-Zp-Z0R"/>
+                            <constraint firstItem="gSR-IT-xXg" firstAttribute="leading" secondItem="p1F-s2-eEG" secondAttribute="leading" constant="74" id="OzO-G2-kP1"/>
+                            <constraint firstItem="gSR-IT-xXg" firstAttribute="top" secondItem="p1F-s2-eEG" secondAttribute="top" constant="73" id="gcv-f9-tXl"/>
+                            <constraint firstItem="gSR-IT-xXg" firstAttribute="centerY" secondItem="2Ca-Pe-ucZ" secondAttribute="centerY" id="o4e-DM-OHG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="p1F-s2-eEG"/>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="200" height="400"/>
+                    <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="eulaTextView" destination="gSR-IT-xXg" id="1pX-Nl-lOm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RAW-iS-40A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1663.7681159420292" y="-351.35869565217394"/>
         </scene>
     </scenes>
     <resources>
