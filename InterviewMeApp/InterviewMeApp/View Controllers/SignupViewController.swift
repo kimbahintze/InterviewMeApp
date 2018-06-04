@@ -20,6 +20,8 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet var jobIndustryPicker: UIPickerView!
     @IBOutlet weak var signupButton: UIButton!
+
+    
     
     //MARK: - Properties
     
