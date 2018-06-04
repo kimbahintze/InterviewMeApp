@@ -32,11 +32,20 @@ class AnswersViewController: UIViewController, UITableViewDataSource, UITableVie
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         UserAnswerController.shared.fetchAnswers(userQuestion: userQuestion)
     }
+<<<<<<< HEAD
 
+=======
+    
+//    override func viewDidDisappear(_ animated: Bool) {
+//        super .viewDidDisappear(animated)
+//        UserAnswerController.shared.userAnswers.removeAll()
+//    }
+    
+>>>>>>> 8ea24401cb49b5efe52d9a8f6605c600ac36bd49
     @objc private func reloadTable() {
         DispatchQueue.main.async {
             self.usersAnswersTableView.reloadData()

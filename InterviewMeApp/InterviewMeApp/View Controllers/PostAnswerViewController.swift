@@ -35,7 +35,10 @@ class PostAnswerViewController: UIViewController, UITextViewDelegate {
         writeAnAnswerTextField.textColor = UIColor(red: 254/255, green: 254/255, blue: 254/255, alpha: 1.0)
     }
     
+<<<<<<< HEAD
     
+=======
+>>>>>>> 8ea24401cb49b5efe52d9a8f6605c600ac36bd49
     func writeYourAnswer(answer: String) {
         
         guard let id = userQuestion?.id else { return }
