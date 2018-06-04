@@ -35,10 +35,6 @@ class PostAnswerViewController: UIViewController, UITextViewDelegate {
         writeAnAnswerTextField.textColor = UIColor(red: 254/255, green: 254/255, blue: 254/255, alpha: 1.0)
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super .viewDidDisappear(animated)
-        UserAnswerController.shared.userAnswers.removeAll()
-    }
     
     func writeYourAnswer(answer: String) {
         

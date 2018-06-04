@@ -14,7 +14,6 @@ class LoginViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var welcomeBackLabel: UILabel!
     
@@ -41,7 +40,11 @@ class LoginViewController: UIViewController {
             self.present(mainTabBarController, animated: false, completion: nil)
         }
         setupNavBar()
+        emailTextField.text = nil
+        passwordTextField.text = nil
     }
+    
+    
     
     //MARK: - Actions
     
