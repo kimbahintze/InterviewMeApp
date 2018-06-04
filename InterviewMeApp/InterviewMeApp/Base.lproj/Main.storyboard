@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -310,7 +309,7 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="92W-cY-NRv">
                                             <rect key="frame" x="20" y="0.0" width="728" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GT Walsheim" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -327,8 +326,8 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CU6-9X-kt8">
                                             <rect key="frame" x="20" y="0.0" width="700" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GT Walsheim" pointSize="20"/>
+                                            <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -368,29 +367,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="QuestionCell" id="19G-8U-1lK" customClass="QuestionTableViewCell" customModule="InterviewMeApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="QuestionCell" textLabel="Fmd-BT-YRt" detailTextLabel="OVV-C7-8Kp" style="IBUITableViewCellStyleSubtitle" id="19G-8U-1lK">
                                 <rect key="frame" x="0.0" y="28" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="19G-8U-1lK" id="kC1-DU-Ora" customClass="QuestionTableViewCell" customModule="InterviewMeApp" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="768" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Prj-5C-cZl">
-                                            <rect key="frame" x="8" y="11" width="752" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fmd-BT-YRt">
+                                            <rect key="frame" x="20" y="-1" width="37.5" height="28.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GT Walsheim" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OVV-C7-8Kp">
+                                            <rect key="frame" x="20" y="27.5" width="42" height="17.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GT Walsheim" pointSize="12"/>
+                                            <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Prj-5C-cZl" secondAttribute="trailing" constant="8" id="aKe-AR-jDO"/>
-                                        <constraint firstItem="Prj-5C-cZl" firstAttribute="centerX" secondItem="kC1-DU-Ora" secondAttribute="centerX" id="lQD-kc-QDS"/>
-                                        <constraint firstItem="Prj-5C-cZl" firstAttribute="leading" relation="lessThanOrEqual" secondItem="kC1-DU-Ora" secondAttribute="leading" constant="8" id="uDB-B3-YQ6"/>
-                                        <constraint firstItem="Prj-5C-cZl" firstAttribute="centerY" secondItem="kC1-DU-Ora" secondAttribute="centerY" id="zUv-D5-dz0"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="questionLabel" destination="Prj-5C-cZl" id="NEy-He-pgB"/>
                                     <segue destination="fxx-Ij-kqa" kind="show" identifier="toAnswerVC" id="kEE-4r-pgX"/>
                                 </connections>
                             </tableViewCell>
@@ -432,30 +432,29 @@
                                     </connections>
                                 </button>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="userAnswerCell" rowHeight="44" id="ud7-8U-6fM" customClass="UserAnswerTableViewCell" customModule="InterviewMeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="userAnswerCell" textLabel="TY8-7S-qdo" detailTextLabel="6TQ-mZ-Aoz" rowHeight="44" style="IBUITableViewCellStyleSubtitle" id="ud7-8U-6fM">
                                         <rect key="frame" x="0.0" y="28" width="738" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ud7-8U-6fM" id="VxO-du-8k1">
                                             <rect key="frame" x="0.0" y="0.0" width="738" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzL-mn-U4Z">
-                                                    <rect key="frame" x="15" y="11" width="708" height="22"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TY8-7S-qdo">
+                                                    <rect key="frame" x="15" y="-1" width="37.5" height="28.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GT Walsheim" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6TQ-mZ-Aoz">
+                                                    <rect key="frame" x="15" y="27.5" width="42" height="17.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="GTWalsheimMedium" family="GT Walsheim" pointSize="12"/>
+                                                    <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="mzL-mn-U4Z" secondAttribute="bottom" id="5Tj-F8-GC9"/>
-                                                <constraint firstItem="mzL-mn-U4Z" firstAttribute="leading" secondItem="VxO-du-8k1" secondAttribute="leadingMargin" id="Gjm-IE-a2L"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="mzL-mn-U4Z" secondAttribute="trailing" id="Z9n-OU-UXg"/>
-                                                <constraint firstItem="mzL-mn-U4Z" firstAttribute="top" secondItem="VxO-du-8k1" secondAttribute="topMargin" id="ZlE-Oa-9OM"/>
-                                            </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="answerLabel" destination="mzL-mn-U4Z" id="bAX-qm-T9e"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

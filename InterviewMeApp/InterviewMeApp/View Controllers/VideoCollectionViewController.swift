@@ -21,7 +21,6 @@ class VideoCollectionViewController: UICollectionViewController {
         navigationItem.titleView = logoTitleView()
         JobIndustryController.shared.fetchUserJobIndustry { (jobindustry) in
             InterviewQuestionController.shared.fetchGeneralQuestions()
-            print("jobindustry", jobindustry)
         }
     }
     

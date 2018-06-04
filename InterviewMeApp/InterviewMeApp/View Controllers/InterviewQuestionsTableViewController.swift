@@ -95,7 +95,6 @@ extension InterviewQuestionsTableViewController {
         case 0: let questionCell = tableView.dequeueReusableCell(withIdentifier: questionReuseIdentifier, for: indexPath)
         
         questionCell.textLabel?.text = interviewQuestion.question
-        questionCell.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         
         return questionCell
             

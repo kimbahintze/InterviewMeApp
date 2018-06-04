@@ -14,18 +14,21 @@ struct UserAnswer: Codable, Equatable {
     
     var userAnswer: String?
     let id: String?
+    let userID: String?
     
-    init(userAnswer: String?, id: String?) {
+    init(userAnswer: String?, id: String?, userID: String?) {
         self.userAnswer = userAnswer
+        self.userID = userID
         self.id = id
     }
     
     init?(jsonDictionary: [String:Any], key: String) {
         self.userAnswer = jsonDictionary["answer"] as? String
+        self.userID = jsonDictionary["userID"] as? String
         self.id = key
     }
 }
 
 func ==(lhs: UserAnswer, rhs: UserAnswer) -> Bool {
-    return lhs.userAnswer == rhs.userAnswer && lhs.id == rhs.id
+    return lhs.userAnswer == rhs.userAnswer && lhs.id == rhs.id && lhs.userID == rhs.userID
 }
