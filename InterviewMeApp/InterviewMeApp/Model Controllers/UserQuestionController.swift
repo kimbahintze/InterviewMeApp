@@ -8,6 +8,7 @@
 
 import Foundation
 import FirebaseDatabase
+import FirebaseAuth
 
 class UserQuestionController {
     
@@ -36,6 +37,7 @@ class UserQuestionController {
     }
     
     func addUserQuestion(question: String) {
-        databaseRef.childByAutoId().setValue(["question": question])
+        guard let currentUserUUID = Auth.auth().currentUser?.uid else { return }
+        databaseRef.childByAutoId().setValue(["question": question, "userID": currentUserUUID])
     }
 }
