@@ -43,10 +43,10 @@ class InterviewQuestionsTableViewController: UITableViewController {
                                                                "LIVE MOC",
                                                                "MOC RECORD",
                                                                "EDIT PROFILE"],
-                                                arrayOfDescription: ["Review and study interview quesitons based on the industry you selected!",
-                                                                     "Get over your fears and try out live Möcc with another person at the same industry!",
-                                                                     "Practice makes perfect, Möcc record your answers to general questions. To delete, hold on to the video image.",
-                                                                     "Profile allows you to edit your information."])
+                                                arrayOfDescription: ["Review and study interview questions based on the industry you selected!",
+                                                                     "Get over your fears and try out live Möcc with another person!",
+                                                                     "Practice makes perfect, Möcc record your answers to general questions. To delete, hold on to the video image and press ok.",
+                                                                     "Profile allows you to edit your information and change your industry."])
                 
                 alertView.delegate = self
                 alertView.show()
